@@ -12,7 +12,7 @@
   <!-- /PWA -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Management 1ère STMG — Delagrave · Lycée Louis Pasteur</title>
+<title>Management 1ère STMG — Lycée Louis Pasteur</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -42,17 +42,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:52px;display:flex;ali
 .nbadge{background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.35);border-radius:4px;padding:2px 6px;font-size:8px;font-weight:700;letter-spacing:1px}
 .nfil{display:flex;gap:2px;flex:1}
 .nb{background:none;border:none;color:var(--mu);padding:4px 9px;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap}
-.nb:hover{color:var(--tx);background:rgba(255,255,255,.06)}
-.nb.ac{color:var(--tx);background:rgba(255,255,255,.09)}
-.nsco{margin-left:auto;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.28);border-radius:16px;padding:3px 10px;font-size:10px;font-weight:700;color:var(--v2);display:flex;align-items:center;gap:4px;white-space:nowrap}
+.nb:hover{color:var(--tx);background:rgba(124,58,237,.08)}
+.nb.ac{color:var(--tx);background:rgba(124,58,237,.13)}
+.nsco{margin-left:auto;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.35);border-radius:16px;padding:3px 10px;font-size:10px;font-weight:700;color:var(--v2);display:flex;align-items:center;gap:4px;white-space:nowrap}
 .ndot{width:5px;height:5px;border-radius:50%;background:var(--v2);animation:pu 2s infinite}
 
 /* HERO */
 #hero{min-height:50vh;position:relative;display:flex;align-items:flex-end;padding:70px 38px 44px;overflow:hidden}
-.hb{position:absolute;inset:0;background:linear-gradient(135deg,#08070f,#0c0b1a 60%,#090816)}
+.hb{position:absolute;inset:0;background:linear-gradient(135deg,#fdf8f0,#f5ede0 60%,#fdf6ee)}
 .hg1{position:absolute;inset:0;background:radial-gradient(ellipse 55% 40% at 54% 32%,rgba(124,58,237,.10) 0%,transparent 64%)}
 .hg2{position:absolute;inset:0;background:radial-gradient(ellipse 26% 20% at 6% 77%,rgba(249,115,22,.09) 0%,transparent 54%)}
-.hgr{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(rgba(140,100,60,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(140,100,60,.3) 1px,transparent 1px);background-size:44px 44px}
+.hgr{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(rgba(120,80,160,.25) 1px,transparent 1px),linear-gradient(90deg,rgba(140,100,60,.3) 1px,transparent 1px);background-size:44px 44px}
 .hc{position:relative;z-index:2;max-width:680px}
 .hbadge{display:inline-flex;align-items:center;gap:6px;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.3);border-radius:5px;padding:4px 11px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--v2);margin-bottom:14px}
 .ht{font-family:var(--fh);font-weight:800;font-size:clamp(26px,4.5vw,52px);line-height:1.05;margin-bottom:10px;letter-spacing:-1px}
@@ -61,12 +61,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:52px;display:flex;ali
 .hp{margin-bottom:22px;max-width:400px}
 .hpl{display:flex;justify-content:space-between;font-size:10px;color:var(--mu);margin-bottom:5px}
 .hpl span:last-child{color:var(--go);font-weight:700}
-.pt{height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+.pt{height:4px;background:rgba(200,180,160,.15);border-radius:2px;overflow:hidden}
 .pf{height:100%;background:linear-gradient(90deg,var(--v),var(--o));border-radius:2px;transition:width .8s cubic-bezier(.4,0,.2,1)}
 .hbts{display:flex;gap:8px;flex-wrap:wrap}
 .bv{background:var(--v);color:#fff;border:none;border-radius:7px;padding:10px 20px;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 4px 18px rgba(124,58,237,.4);transition:all .2s;display:flex;align-items:center;gap:6px}
 .bv:hover{background:#6d28d9;transform:translateY(-2px)}
-.bg{background:rgba(255,255,255,.05);color:var(--tx);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:10px 20px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.bg{background:rgba(200,180,160,.08);color:var(--tx);border:1px solid rgba(180,160,120,.25);border-radius:7px;padding:10px 20px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
 .bg:hover{background:rgba(255,255,255,.09);transform:translateY(-2px)}
 
 /* STATS */
@@ -99,7 +99,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:52px;display:flex;ali
 .cov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;opacity:0;transition:opacity .16s;z-index:3}
 .cc:hover .cov{opacity:1}
 .cst{position:absolute;top:7px;right:7px;z-index:4;width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700}
-.sn2{background:rgba(255,255,255,.07);border:1px solid var(--b1);color:var(--di)}
+.sn2{background:rgba(200,180,160,.15);border:1px solid var(--b1);color:var(--di)}
 .sw{background:#f59e0b;color:#000}.sd{background:#22c55e;color:#fff}
 .cb{padding:10px 12px}
 .cn{font-size:9px;color:var(--di);font-weight:600;margin-bottom:2px;letter-spacing:.5px}
@@ -167,7 +167,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:52px;display:flex;ali
 .bdol{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--t);margin-bottom:5px}
 .bdot{font-size:11px;line-height:1.78;color:var(--mu)}
 .bdt{width:100%;border-collapse:collapse;margin-top:7px;font-size:10px}
-.bdt th{background:rgba(255,255,255,.07);padding:5px 8px;text-align:left;font-weight:700;border:1px solid var(--b2)}
+.bdt th{background:rgba(200,180,160,.15);padding:5px 8px;text-align:left;font-weight:700;border:1px solid var(--b2)}
 .bdt td{padding:5px 8px;border:1px solid var(--b1);color:var(--mu)}
 .bqt{font-family:var(--fh);font-size:12px;font-weight:700;color:var(--a);margin:14px 0 9px;display:flex;align-items:center;gap:5px}
 .bq{background:#fffdf9;border:1px solid var(--b1);border-radius:8px;padding:11px 14px;margin-bottom:8px}
@@ -175,7 +175,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:52px;display:flex;ali
 .bqn{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0;margin-top:1px}
 .bqq{font-size:11px;line-height:1.62;flex:1}
 .bqp{font-size:9px;color:var(--mu);margin-bottom:6px;padding-left:28px}
-.bbtn{background:rgba(255,255,255,.05);border:1px solid var(--b1);border-radius:5px;padding:5px 11px;font-size:10px;font-weight:600;color:var(--mu);cursor:pointer;transition:all .16s;margin-left:28px}
+.bbtn{background:rgba(200,180,160,.08);border:1px solid var(--b1);border-radius:5px;padding:5px 11px;font-size:10px;font-weight:600;color:var(--mu);cursor:pointer;transition:all .16s;margin-left:28px}
 .bbtn:hover{background:rgba(255,255,255,.09);color:var(--tx)}
 .bcor{background:rgba(22,163,74,.07);border:1px solid rgba(22,163,74,.25);border-radius:7px;padding:10px 13px;margin:6px 0 0 28px;font-size:11px;line-height:1.78;color:#15803d;display:none;white-space:pre-line}
 .bcor.show{display:block;animation:fI .26s ease}
@@ -189,7 +189,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:52px;display:flex;ali
 .qc{background:#fffdf9;border:1px solid var(--b1);border-radius:8px;padding:11px 15px;margin-bottom:10px}
 .qq{font-size:12px;font-weight:600;margin-bottom:9px;line-height:1.5}
 .qos{display:flex;flex-direction:column;gap:5px}
-.qo{padding:7px 11px;border:1px solid var(--b1);border-radius:6px;font-size:11px;cursor:pointer;transition:all .15s;background:rgba(255,255,255,.8);color:var(--tx);text-align:left}
+.qo{padding:7px 11px;border:1px solid var(--b1);border-radius:6px;font-size:11px;cursor:pointer;transition:all .15s;background:#fffdf9;color:var(--tx);text-align:left}
 .qo:hover:not(:disabled){border-color:var(--b2);background:rgba(140,100,40,.06)}
 .qo:disabled{cursor:default}
 .qo.ok{background:rgba(22,163,74,.12);border-color:#16a34a;color:#166534}
@@ -203,10 +203,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:52px;display:flex;ali
 .sm{font-size:12px;font-weight:700}.sd2{font-size:10px;color:var(--mu)}
 
 /* VF */
-.vb{display:flex;align-items:flex-start;gap:9px;padding:10px 13px;background:rgba(255,255,255,.022);border-radius:8px;border:1px solid var(--b1);margin-bottom:7px}
+.vb{display:flex;align-items:flex-start;gap:9px;padding:10px 13px;background:rgba(200,180,160,.06);border-radius:8px;border:1px solid var(--b1);margin-bottom:7px}
 .vq{flex:1;font-size:11px;line-height:1.55;color:var(--mu)}
 .vbs{display:flex;gap:5px;flex-shrink:0}
-.vbn{width:30px;height:30px;border-radius:6px;border:1px solid var(--b1);background:rgba(255,255,255,.05);cursor:pointer;font-size:11px;font-weight:700;transition:all .15s;color:var(--mu)}
+.vbn{width:30px;height:30px;border-radius:6px;border:1px solid var(--b1);background:rgba(200,180,160,.08);cursor:pointer;font-size:11px;font-weight:700;transition:all .15s;color:var(--mu)}
 .vbn:hover:not(:disabled){transform:scale(1.07)}
 .vbn:disabled{cursor:default;opacity:.7}
 .vbn.vrai.ok,.vbn.faux.ok{background:rgba(22,163,74,.15);border-color:#16a34a;color:#166534}
@@ -225,8 +225,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:52px;display:flex;ali
 .fbl{font-size:9px;color:var(--g);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}
 .fbd{font-size:11px;line-height:1.65;color:#15803d}
 .fn{display:flex;align-items:center;gap:9px;justify-content:center;margin-bottom:12px}
-.fnb{background:rgba(255,255,255,.07);border:none;color:var(--tx);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:13px;transition:all .16s}
-.fnb:hover{background:rgba(255,255,255,.12)}
+.fnb{background:rgba(200,180,160,.15);border:none;color:var(--tx);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:13px;transition:all .16s}
+.fnb:hover{background:rgba(200,180,160,.22)}
 .fc{font-size:11px;color:var(--mu);font-weight:600}
 .fh{text-align:center;font-size:9px;color:var(--di);margin-top:5px}
 .fp{display:flex;gap:3px;justify-content:center;flex-wrap:wrap;margin-top:9px}
@@ -245,7 +245,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:52px;display:flex;ali
 .bibt{flex:1;height:4px;background:var(--b2);border-radius:2px;overflow:hidden}
 .bibf{height:100%;border-radius:2px;transition:width .7s}
 .bibv{font-size:10px;font-weight:700;width:28px;flex-shrink:0}
-.bim{text-align:center;padding:12px;background:rgba(255,255,255,.022);border-radius:8px;border:1px solid var(--b1);font-size:12px;font-weight:600;line-height:1.5}
+.bim{text-align:center;padding:12px;background:rgba(200,180,160,.06);border-radius:8px;border:1px solid var(--b1);font-size:12px;font-weight:600;line-height:1.5}
 
 /* FOOTER */
 footer{background:var(--s2);border-top:1px solid var(--b1);padding:18px 38px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
@@ -279,12 +279,12 @@ footer{background:var(--s2);border-top:1px solid var(--b1);padding:18px 38px;dis
 <section id="hero" style="padding-top:70px">
   <div class="hb"></div><div class="hg1"></div><div class="hg2"></div><div class="hgr"></div>
   <div class="hc au">
-    <div class="hbadge">▶ Révision Interactive · Delagrave 2025 · Lycée Louis Pasteur · Strasbourg</div>
+    <div class="hbadge">▶ Révisions BAC · Programme officiel · Lycée Louis Pasteur · Strasbourg</div>
     <h1 class="ht">
       <span class="av">Management</span>
-      <span class="sub">1ère STMG · 13 chapitres · Cours · Cas BAC corrigés · QCM · Flashcards</span>
+      <span class="sub">1ère STMG · 13 chapitres · Programme officiel · Cours · QCM · Cas BAC · Flashcards</span>
     </h1>
-    <p class="hd">13 chapitres fidèles au manuel Delagrave 2025 — 3 thèmes, cas d'entreprises réels (Mistral AI, Cabaïa, Europa-Park, Haribo, Renault, Adidas, Nintendo/Sony, Kiabi, Sanofi, Inditex, DK'Bus, Afuté…), cours synthétique + cas BAC (2 docs, 3 questions corrigées) + QCM + Vrai/Faux + Flashcards.</p>
+    <p class="hd">13 chapitres fidèles au programme officiel — 3 thèmes, cas d'entreprises réels (Mistral AI, Cabaïa, Europa-Park, Haribo, Renault, Adidas, Nintendo/Sony, Kiabi, Sanofi, Inditex, DK'Bus, Afuté…), cours synthétique + cas BAC (2 docs, 3 questions corrigées) + QCM + Vrai/Faux + Flashcards.</p>
     <div class="hp">
       <div class="hpl"><span>Progression globale</span><span id="hpct">0%</span></div>
       <div class="pt"><div class="pf" id="hfill" style="width:0%"></div></div>
@@ -1005,7 +1005,7 @@ function renderCat(){
     const pct=Math.round(done/th_chaps.length*100);
     html+=`<div class="tband" style="background:${T.bg};color:${T.c}">
       <div class="tstr" style="color:${T.c}"></div>
-      <div class="ticon" style="background:rgba(255,255,255,.08)">📋</div>
+      <div class="ticon" style="background:rgba(200,180,160,.12)">📋</div>
       <div class="tinfo">
         <div class="ttag" style="color:${T.c}">Thème ${th}</div>
         <div class="tname">${T.n}</div>
