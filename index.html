@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Révisions BAC — Lycée Louis Pasteur</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- PWA -->
+  <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjogIlLDqXZpc2lvbnMgQkFDIOKAlCBMTFAgU3RyYXNib3VyZyIsICJzaG9ydF9uYW1lIjogIlLDqXZpc2lvbnMgTExQIiwgImRlc2NyaXB0aW9uIjogIkFwcGxpY2F0aW9uIGRlIHLDqXZpc2lvbiBCQUMgU1RNRyDigJQgTHljw6llIExvdWlzIFBhc3RldXIgU3RyYXNib3VyZyDigJQgTWFuYWdlbWVudCwgU0dOLCBNU0RHTiIsICJzdGFydF91cmwiOiAiLiIsICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLCAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLCAidGhlbWVfY29sb3IiOiAiI2Y5NzMxNiIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmZGY4ZjAiLCAiY2F0ZWdvcmllcyI6IFsiZWR1Y2F0aW9uIl0sICJsYW5nIjogImZyIiwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIZHBaSFJvUFNJMU1USWlJR2hsYVdkb2REMGlOVEV5SWlCMmFXVjNRbTk0UFNJd0lEQWdOVEV5SURVeE1pSStDaUFnUEhKbFkzUWdkMmxrZEdnOUlqVXhNaUlnYUdWcFoyaDBQU0kxTVRJaUlISjRQU0kyTkNJZ1ptbHNiRDBpSTJZNU56TXhOaUl2UGdvZ0lEeHlaV04wSUhnOUlqTXdJaUI1UFNJek1DSWdkMmxrZEdnOUlqUTFNaUlnYUdWcFoyaDBQU0kwTlRJaUlISjRQU0kwT0NJZ1ptbHNiRDBpY21kaVlTZ3lOVFVzTWpVMUxESTFOU3d3TGpFeUtTSXZQZ29nSUR4MFpYaDBJSGc5SWpJMU5pSWdlVDBpTWpBd0lpQm1iMjUwTFdaaGJXbHNlVDBpUVhKcFlXd2dRbXhoWTJzc2MyRnVjeTF6WlhKcFppSWdabTl1ZEMxM1pXbG5hSFE5SWprd01DSWdabTl1ZEMxemFYcGxQU0l4TVRBaUlHWnBiR3c5SW5kb2FYUmxJaUIwWlhoMExXRnVZMmh2Y2owaWJXbGtaR3hsSWo1TVRGQThMM1JsZUhRK0NpQWdQSFJsZUhRZ2VEMGlNalUySWlCNVBTSXpNREFpSUdadmJuUXRabUZ0YVd4NVBTSkJjbWxoYkN4ellXNXpMWE5sY21sbUlpQm1iMjUwTFhkbGFXZG9kRDBpTnpBd0lpQm1iMjUwTFhOcGVtVTlJalUwSWlCbWFXeHNQU0p5WjJKaEtESTFOU3d5TlRVc01qVTFMREF1T1NraUlIUmxlSFF0WVc1amFHOXlQU0p0YVdSa2JHVWlQbExEcVhacGMybHZibk04TDNSbGVIUStDaUFnUEhSbGVIUWdlRDBpTWpVMklpQjVQU0l6TmpBaUlHWnZiblF0Wm1GdGFXeDVQU0pCY21saGJDeHpZVzV6TFhObGNtbG1JaUJtYjI1MExYZGxhV2RvZEQwaU5qQXdJaUJtYjI1MExYTnBlbVU5SWpNNElpQm1hV3hzUFNKeVoySmhLREkxTlN3eU5UVXNNalUxTERBdU56VXBJaUIwWlhoMExXRnVZMmh2Y2owaWJXbGtaR3hsSWo1Q1FVTWd3cmNnVTFSTlJ6d3ZkR1Y0ZEQ0S1BDOXpkbWMrIiwgInNpemVzIjogIjE5MngxOTIiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIn0sIHsic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIZHBaSFJvUFNJMU1USWlJR2hsYVdkb2REMGlOVEV5SWlCMmFXVjNRbTk0UFNJd0lEQWdOVEV5SURVeE1pSStDaUFnUEhKbFkzUWdkMmxrZEdnOUlqVXhNaUlnYUdWcFoyaDBQU0kxTVRJaUlISjRQU0kyTkNJZ1ptbHNiRDBpSTJZNU56TXhOaUl2UGdvZ0lEeHlaV04wSUhnOUlqTXdJaUI1UFNJek1DSWdkMmxrZEdnOUlqUTFNaUlnYUdWcFoyaDBQU0kwTlRJaUlISjRQU0kwT0NJZ1ptbHNiRDBpY21kaVlTZ3lOVFVzTWpVMUxESTFOU3d3TGpFeUtTSXZQZ29nSUR4MFpYaDBJSGc5SWpJMU5pSWdlVDBpTWpBd0lpQm1iMjUwTFdaaGJXbHNlVDBpUVhKcFlXd2dRbXhoWTJzc2MyRnVjeTF6WlhKcFppSWdabTl1ZEMxM1pXbG5hSFE5SWprd01DSWdabTl1ZEMxemFYcGxQU0l4TVRBaUlHWnBiR3c5SW5kb2FYUmxJaUIwWlhoMExXRnVZMmh2Y2owaWJXbGtaR3hsSWo1TVRGQThMM1JsZUhRK0NpQWdQSFJsZUhRZ2VEMGlNalUySWlCNVBTSXpNREFpSUdadmJuUXRabUZ0YVd4NVBTSkJjbWxoYkN4ellXNXpMWE5sY21sbUlpQm1iMjUwTFhkbGFXZG9kRDBpTnpBd0lpQm1iMjUwTFhOcGVtVTlJalUwSWlCbWFXeHNQU0p5WjJKaEtESTFOU3d5TlRVc01qVTFMREF1T1NraUlIUmxlSFF0WVc1amFHOXlQU0p0YVdSa2JHVWlQbExEcVhacGMybHZibk04TDNSbGVIUStDaUFnUEhSbGVIUWdlRDBpTWpVMklpQjVQU0l6TmpBaUlHWnZiblF0Wm1GdGFXeDVQU0pCY21saGJDeHpZVzV6TFhObGNtbG1JaUJtYjI1MExYZGxhV2RvZEQwaU5qQXdJaUJtYjI1MExYTnBlbVU5SWpNNElpQm1hV3hzUFNKeVoySmhLREkxTlN3eU5UVXNNalUxTERBdU56VXBJaUIwWlhoMExXRnVZMmh2Y2owaWJXbGtaR3hsSWo1Q1FVTWd3cmNnVTFSTlJ6d3ZkR1Y0ZEQ0S1BDOXpkbWMrIiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIn1dfQ==">
+  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+CiAgPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSI2NCIgZmlsbD0iI2Y5NzMxNiIvPgogIDxyZWN0IHg9IjMwIiB5PSIzMCIgd2lkdGg9IjQ1MiIgaGVpZ2h0PSI0NTIiIHJ4PSI0OCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEyKSIvPgogIDx0ZXh0IHg9IjI1NiIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIxMTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MTFA8L3RleHQ+CiAgPHRleHQgeD0iMjU2IiB5PSIzMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjU0IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOSkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlLDqXZpc2lvbnM8L3RleHQ+CiAgPHRleHQgeD0iMjU2IiB5PSIzNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNjAwIiBmb250LXNpemU9IjM4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5CQUMgwrcgU1RNRzwvdGV4dD4KPC9zdmc+">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Révisions LLP">
+<meta name="theme-color" content="#f97316">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fdf8f0;--card:#fffdf9;--b1:#e2d8c8;--b2:#cfc3b0;
+  --o:#f97316;--o2:#ea6800;--t:#0891b2;--g:#16a34a;--v:#7c3aed;
+  --tx:#1c1410;--mu:#6b5e50;--fh:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
+}
+html,body{height:100%;background:var(--bg);color:var(--tx);font-family:var(--fb);overflow:hidden}
+
+/* ── PORTAL ── */
+#portal{height:100%;display:flex;flex-direction:column;overflow-y:auto}
+
+/* header */
+.ph{padding:28px 22px 16px;text-align:center;background:linear-gradient(160deg,#fdf3e7,#f5ede0)}
+.plogo{font-family:var(--fh);font-weight:800;font-size:26px;letter-spacing:-1px;color:var(--o2);margin-bottom:4px}
+.plogo span{color:var(--t)}
+.psub{font-size:11px;color:var(--mu);letter-spacing:1.5px;text-transform:uppercase}
+.pbd{display:inline-block;margin-top:10px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);border-radius:20px;padding:4px 14px;font-size:10px;font-weight:700;color:var(--o2);letter-spacing:.5px}
+
+/* level tabs */
+.ltabs{display:flex;border-bottom:2px solid var(--b1);background:var(--card);padding:0 16px;position:sticky;top:0;z-index:10}
+.lt{flex:1;padding:11px 6px;font-size:12px;font-weight:700;color:var(--mu);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;letter-spacing:.3px}
+.lt.ac{color:var(--o2);border-bottom-color:var(--o)}
+.lt:first-child.ac{color:var(--v);border-bottom-color:var(--v)}
+
+/* app cards */
+.cards{padding:16px;display:flex;flex-direction:column;gap:12px;flex:1}
+.lvl{display:none}.lvl.show{display:flex;flex-direction:column;gap:12px}
+
+.ac-card{background:var(--card);border:1px solid var(--b1);border-radius:14px;padding:18px 16px;cursor:pointer;transition:all .22s;display:flex;align-items:center;gap:14px;box-shadow:0 2px 12px rgba(0,0,0,.04);position:relative;overflow:hidden}
+.ac-card:active{transform:scale(.98)}
+.ac-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.ac-card.mgt::before{background:var(--v)}
+.ac-card.sgn::before{background:var(--o)}
+.ac-card.msdgn::before{background:var(--o)}
+
+.aico{width:52px;height:52px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--fh);font-weight:800}
+.aico.mgt{background:rgba(124,58,237,.12);color:var(--v)}
+.aico.sgn{background:rgba(249,115,22,.12);color:var(--o2)}
+.aico.msdgn{background:rgba(249,115,22,.12);color:var(--o2)}
+.aico .al{font-size:20px;line-height:1}
+.aico .as{font-size:8px;letter-spacing:.5px;opacity:.8;margin-top:1px}
+
+.ainf{flex:1}
+.an{font-family:var(--fh);font-weight:800;font-size:15px;margin-bottom:3px;line-height:1.2}
+.ad{font-size:11px;color:var(--mu);margin-bottom:7px;line-height:1.4}
+.atags{display:flex;gap:5px;flex-wrap:wrap}
+.atag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;letter-spacing:.3px}
+.atag.mgt{background:rgba(124,58,237,.1);color:var(--v)}
+.atag.sgn{background:rgba(249,115,22,.1);color:var(--o2)}
+.atag.msdgn{background:rgba(249,115,22,.1);color:var(--o2)}
+
+.aarr{color:var(--b2);font-size:18px;flex-shrink:0}
+
+/* progress mini */
+.aprog{height:3px;background:var(--b1);border-radius:2px;margin-top:8px;overflow:hidden}
+.aprogf{height:100%;border-radius:2px;transition:width 1s ease}
+.aprogf.mgt{background:var(--v)}
+.aprogf.sgn{background:var(--o)}
+.aprogf.msdgn{background:var(--o)}
+
+/* footer */
+.pfoot{padding:14px 22px;text-align:center;border-top:1px solid var(--b1);background:var(--card)}
+.pfl{font-family:var(--fh);font-weight:800;font-size:12px;color:var(--o2)}
+.pfr{font-size:10px;color:var(--mu);margin-top:2px}
+
+/* ── APP VIEW ── */
+#appview{position:fixed;inset:0;z-index:100;background:var(--bg);display:none;flex-direction:column}
+#appview.open{display:flex}
+
+.av-top{height:44px;background:var(--card);border-bottom:1px solid var(--b1);display:flex;align-items:center;padding:0 14px;gap:10px;flex-shrink:0}
+.av-back{background:none;border:none;cursor:pointer;font-size:13px;font-weight:700;color:var(--o2);display:flex;align-items:center;gap:4px;padding:6px 0}
+.av-title{font-family:var(--fh);font-weight:800;font-size:13px;flex:1;text-align:center;color:var(--tx)}
+.av-ph{width:60px}
+
+#appframe{flex:1;border:none;width:100%;background:var(--bg)}
+
+@media(min-width:500px){
+  .cards{max-width:440px;margin:0 auto;width:100%}
+  .ph{padding:36px 22px 20px}
+  .plogo{font-size:32px}
+}
+</style>
+</head>
+<body>
+
+<!-- PORTAL -->
+<div id="portal">
+  <div class="ph">
+    <div class="plogo">LLP <span>Révisions</span></div>
+    <div class="psub">Lycée Louis Pasteur · Strasbourg</div>
+    <div class="pbd">📚 Économie-Gestion · STMG</div>
+  </div>
+
+  <div class="ltabs">
+    <button class="lt ac" onclick="showLevel(1,this)">1ère STMG</button>
+    <button class="lt" onclick="showLevel(2,this)">Terminale STMG</button>
+  </div>
+
+  <div class="cards">
+    <!-- 1ère -->
+    <div class="lvl show" id="lvl1">
+      <div class="ac-card mgt" onclick="openApp('Management-1ere-STMG-PWA.html','Management','1ère STMG')">
+        <div class="aico mgt"><div class="al">M</div><div class="as">MGT</div></div>
+        <div class="ainf">
+          <div class="an">Management</div>
+          <div class="ad">13 chapitres · Cours, QCM, Cas BAC corrigés, Flashcards</div>
+          <div class="atags">
+            <span class="atag mgt">T1 Production</span>
+            <span class="atag mgt">T2 Acteurs</span>
+            <span class="atag mgt">T3 Société</span>
+          </div>
+          <div class="aprog"><div class="aprogf mgt" id="prog_mgt" style="width:0%"></div></div>
+        </div>
+        <div class="aarr">›</div>
+      </div>
+
+      <div class="ac-card sgn" onclick="openApp('SGN-1ere-STMG-PWA.html','Sciences de Gestion & Numérique','1ère STMG')">
+        <div class="aico sgn"><div class="al">S</div><div class="as">SGN</div></div>
+        <div class="ainf">
+          <div class="an">Sciences de Gestion &amp; Numérique</div>
+          <div class="ad">19 chapitres · Cours, QCM, Cas BAC corrigés, Flashcards</div>
+          <div class="atags">
+            <span class="atag sgn">T1 Individu</span>
+            <span class="atag sgn">T2 Numérique</span>
+            <span class="atag sgn">T3 Valeur</span>
+            <span class="atag sgn">T4 Risque</span>
+          </div>
+          <div class="aprog"><div class="aprogf sgn" id="prog_sgn" style="width:0%"></div></div>
+        </div>
+        <div class="aarr">›</div>
+      </div>
+    </div>
+
+    <!-- Terminale -->
+    <div class="lvl" id="lvl2">
+      <div class="ac-card msdgn" onclick="openApp('MSDGN-Terminale-STMG-PWA.html','Management · SDGN','Terminale STMG')">
+        <div class="aico msdgn"><div class="al">T</div><div class="as">MSDGN</div></div>
+        <div class="ainf">
+          <div class="an">Management · Sciences de Gestion &amp; Numérique</div>
+          <div class="ad">13 chapitres · Cours, QCM, Cas BAC corrigés, Flashcards</div>
+          <div class="atags">
+            <span class="atag msdgn">T1 Production</span>
+            <span class="atag msdgn">T2 Acteurs</span>
+            <span class="atag msdgn">T3 Société</span>
+          </div>
+          <div class="aprog"><div class="aprogf msdgn" id="prog_msdgn" style="width:0%"></div></div>
+        </div>
+        <div class="aarr">›</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pfoot">
+    <div class="pfl">Révisions BAC</div>
+    <div class="pfr">Lycée Louis Pasteur · Strasbourg · Économie-Gestion STMG</div>
+  </div>
+</div>
+
+<!-- APP VIEWER -->
+<div id="appview">
+  <div class="av-top">
+    <button class="av-back" onclick="closeApp()">← Retour</button>
+    <div class="av-title" id="av-title"></div>
+    <div class="av-ph"></div>
+  </div>
+  <iframe id="appframe" src="" title="Application de révision"></iframe>
+</div>
+
+<script>
+function showLevel(n, btn) {
+  document.querySelectorAll('.lt').forEach(b => b.classList.remove('ac'));
+  btn.classList.add('ac');
+  document.getElementById('lvl1').classList.toggle('show', n === 1);
+  document.getElementById('lvl2').classList.toggle('show', n === 2);
+}
+
+function openApp(file, name, level) {
+  const view = document.getElementById('appview');
+  const frame = document.getElementById('appframe');
+  const title = document.getElementById('av-title');
+  title.textContent = name;
+  // Only reload if different file
+  if (frame.dataset.file !== file) {
+    frame.src = file;
+    frame.dataset.file = file;
+  }
+  view.classList.add('open');
+  document.getElementById('portal').style.overflow = 'hidden';
+}
+
+function closeApp() {
+  document.getElementById('appview').classList.remove('open');
+  document.getElementById('portal').style.overflow = 'auto';
+  // Refresh progress bars when returning
+  updateProgress();
+}
+
+function updateProgress() {
+  // Read progress from localStorage keys of each app
+  const keys = {
+    mgt: {sk: 'mgt1_s', total: 13},
+    sgn: {sk: 'sgn1_s', total: 19},
+    msdgn: {sk: 'msdgn_s', total: 13},
+  };
+  for (const [id, cfg] of Object.entries(keys)) {
+    try {
+      const st = JSON.parse(localStorage.getItem(cfg.sk) || '{}');
+      const done = Object.values(st).filter(v => v && v.done).length;
+      const pct = Math.round(done / cfg.total * 100);
+      const el = document.getElementById('prog_' + id);
+      if (el) el.style.width = pct + '%';
+    } catch(e) {}
+  }
+}
+
+// Init
+updateProgress();
+// Refresh progress when returning from iframe
+window.addEventListener('focus', updateProgress);
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  const swCode = atob('CmNvbnN0IENBQ0hFID0gJ2xscF9yZXZpc2lvbnNfdjEnOwpjb25zdCBGSUxFUyA9IFsnLi8nLCAnTWFuYWdlbWVudC0xZXJlLVNUTUctUFdBLmh0bWwnLCAnU0dOLTFlcmUtU1RNRy1QV0EuaHRtbCcsICdNU0RHTi1UZXJtaW5hbGUtU1RNRy1QV0EuaHRtbCddOwoKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdpbnN0YWxsJywgZSA9PiB7CiAgZS53YWl0VW50aWwoCiAgICBjYWNoZXMub3BlbihDQUNIRSkudGhlbihjID0+IGMuYWRkQWxsKEZJTEVTKSkudGhlbigoKSA9PiBzZWxmLnNraXBXYWl0aW5nKCkpCiAgKTsKfSk7CnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignYWN0aXZhdGUnLCBlID0+IHsKICBlLndhaXRVbnRpbCgKICAgIGNhY2hlcy5rZXlzKCkudGhlbihrZXlzID0+IFByb21pc2UuYWxsKAogICAgICBrZXlzLmZpbHRlcihrID0+IGsgIT09IENBQ0hFKS5tYXAoayA9PiBjYWNoZXMuZGVsZXRlKGspKQogICAgKSkudGhlbigoKSA9PiBzZWxmLmNsaWVudHMuY2xhaW0oKSkKICApOwp9KTsKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdmZXRjaCcsIGUgPT4gewogIGUucmVzcG9uZFdpdGgoCiAgICBjYWNoZXMubWF0Y2goZS5yZXF1ZXN0KS50aGVuKHIgPT4gciB8fCBmZXRjaChlLnJlcXVlc3QpLnRoZW4ocmVzID0+IHsKICAgICAgY29uc3QgY2xvbmUgPSByZXMuY2xvbmUoKTsKICAgICAgY2FjaGVzLm9wZW4oQ0FDSEUpLnRoZW4oYyA9PiBjLnB1dChlLnJlcXVlc3QsIGNsb25lKSk7CiAgICAgIHJldHVybiByZXM7CiAgICB9KSkuY2F0Y2goKCkgPT4gY2FjaGVzLm1hdGNoKCcuLycpKQogICk7Cn0pOwo=');
+  const blob = new Blob([swCode], {type: 'application/javascript'});
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl, {scope: '.'})
+    .then(() => console.log('SW: portal registered'))
+    .catch(e => console.log('SW error:', e));
+}
+</script>
+</body>
+</html>
