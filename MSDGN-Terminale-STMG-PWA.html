@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- PWA -->
+  <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjogIk1TREdOIFRlcm1pbmFsZSBTVE1HIiwgInNob3J0X25hbWUiOiAiTVNER04gVGxlIiwgImRlc2NyaXB0aW9uIjogIlLDqXZpc2lvbnMgQkFDIE1hbmFnZW1lbnQgU0RHTiBUZXJtaW5hbGUgU1RNRyDigJQgTHljw6llIExvdWlzIFBhc3RldXIgU3RyYXNib3VyZyIsICJzdGFydF91cmwiOiAiLiIsICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLCAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLCAidGhlbWVfY29sb3IiOiAiI2Y5NzMxNiIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmZGY4ZjAiLCAiY2F0ZWdvcmllcyI6IFsiZWR1Y2F0aW9uIl0sICJsYW5nIjogImZyIiwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIZHBaSFJvUFNJeE9USWlJR2hsYVdkb2REMGlNVGt5SWlCMmFXVjNRbTk0UFNJd0lEQWdNVGt5SURFNU1pSStDaUFnUEhKbFkzUWdkMmxrZEdnOUlqRTVNaUlnYUdWcFoyaDBQU0l4T1RJaUlISjRQU0l5TkNJZ1ptbHNiRDBpSTJWaE5qZ3dNQ0l2UGdvZ0lEeHlaV04wSUhnOUlqRXlJaUI1UFNJeE1pSWdkMmxrZEdnOUlqRTJPU0lnYUdWcFoyaDBQU0l4TmpraUlISjRQU0l4T1NJZ1ptbHNiRDBpY21kaVlTZ3lOVFVzTWpVMUxESTFOU3d3TGpFeUtTSXZQZ29nSUR4MFpYaDBJSGc5SWprMklpQjVQU0l4TURnaUlHWnZiblF0Wm1GdGFXeDVQU0pCY21saGJDQkNiR0ZqYXl4ellXNXpMWE5sY21sbUlpQm1iMjUwTFhkbGFXZG9kRDBpT1RBd0lpQm1iMjUwTFhOcGVtVTlJamd4SWlCbWFXeHNQU0ozYUdsMFpTSWdkR1Y0ZEMxaGJtTm9iM0k5SW0xcFpHUnNaU0lnWkc5dGFXNWhiblF0WW1GelpXeHBibVU5SW0xcFpHUnNaU0krVkR3dmRHVjRkRDRLSUNBOGRHVjRkQ0I0UFNJNU5pSWdlVDBpTVRVM0lpQm1iMjUwTFdaaGJXbHNlVDBpUVhKcFlXd3NjMkZ1Y3kxelpYSnBaaUlnWm05dWRDMTNaV2xuYUhROUlqY3dNQ0lnWm05dWRDMXphWHBsUFNJeU5TSWdabWxzYkQwaWNtZGlZU2d5TlRVc01qVTFMREkxTlN3d0xqZzFLU0lnZEdWNGRDMWhibU5vYjNJOUltMXBaR1JzWlNJK1ZHeGxQQzkwWlhoMFBnbzhMM04yWno0PSIsICJzaXplcyI6ICIxOTJ4MTkyIiwgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIsICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSJ9LCB7InNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSGRwWkhSb1BTSTFNVElpSUdobGFXZG9kRDBpTlRFeUlpQjJhV1YzUW05NFBTSXdJREFnTlRFeUlEVXhNaUkrQ2lBZ1BISmxZM1FnZDJsa2RHZzlJalV4TWlJZ2FHVnBaMmgwUFNJMU1USWlJSEo0UFNJMk5DSWdabWxzYkQwaUkyVmhOamd3TUNJdlBnb2dJRHh5WldOMElIZzlJak14SWlCNVBTSXpNU0lnZDJsa2RHZzlJalExTVNJZ2FHVnBaMmgwUFNJME5URWlJSEo0UFNJMU1TSWdabWxzYkQwaWNtZGlZU2d5TlRVc01qVTFMREkxTlN3d0xqRXlLU0l2UGdvZ0lEeDBaWGgwSUhnOUlqSTFOaUlnZVQwaU1qZzNJaUJtYjI1MExXWmhiV2xzZVQwaVFYSnBZV3dnUW14aFkyc3NjMkZ1Y3kxelpYSnBaaUlnWm05dWRDMTNaV2xuYUhROUlqa3dNQ0lnWm05dWRDMXphWHBsUFNJeU1UVWlJR1pwYkd3OUluZG9hWFJsSWlCMFpYaDBMV0Z1WTJodmNqMGliV2xrWkd4bElpQmtiMjFwYm1GdWRDMWlZWE5sYkdsdVpUMGliV2xrWkd4bElqNVVQQzkwWlhoMFBnb2dJRHgwWlhoMElIZzlJakkxTmlJZ2VUMGlOREl3SWlCbWIyNTBMV1poYldsc2VUMGlRWEpwWVd3c2MyRnVjeTF6WlhKcFppSWdabTl1ZEMxM1pXbG5hSFE5SWpjd01DSWdabTl1ZEMxemFYcGxQU0kyTnlJZ1ptbHNiRDBpY21kaVlTZ3lOVFVzTWpVMUxESTFOU3d3TGpnMUtTSWdkR1Y0ZEMxaGJtTm9iM0k5SW0xcFpHUnNaU0krVkd4bFBDOTBaWGgwUGdvOEwzTjJaejQ9IiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIn1dfQ==">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="MSDGN Tle">
+  <meta name="theme-color" content="#f97316">
+  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiB2aWV3Qm94PSIwIDAgMTkyIDE5MiI+CiAgPHJlY3Qgd2lkdGg9IjE5MiIgaGVpZ2h0PSIxOTIiIHJ4PSIyNCIgZmlsbD0iI2VhNjgwMCIvPgogIDxyZWN0IHg9IjEyIiB5PSIxMiIgd2lkdGg9IjE2OSIgaGVpZ2h0PSIxNjkiIHJ4PSIxOSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEyKSIvPgogIDx0ZXh0IHg9Ijk2IiB5PSIxMDgiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjgxIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+VDwvdGV4dD4KICA8dGV4dCB4PSI5NiIgeT0iMTU3IiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyNSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg1KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VGxlPC90ZXh0Pgo8L3N2Zz4=">
+  <!-- /PWA -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSDGN Terminale STMG — Delagrave 2024</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fdf8f0;--s1:#f5efe4;--s2:#ede5d8;--card:#fffdf9;
+--b1:#e2d8c8;--b2:#cfc3b0;
+--o:#f97316;--o2:#ea6800;--t:#0891b2;--g:#16a34a;--v:#8b5cf6;--a:#d97706;--r:#dc2626;
+--tx:#1c1410;--mu:#6b5e50;--di:#c5b89a;--fh:'Syne',sans-serif;--fb:'DM Sans',sans-serif;}
+html{scroll-behavior:smooth}body{background:var(--bg);color:var(--tx);font-family:var(--fb);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--b2)}::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px}
+button,input{font-family:var(--fb)}
+@keyframes fU{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes fI{from{opacity:0}to{opacity:1}}
+@keyframes sI{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes co{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(160px) rotate(720deg);opacity:0}}
+.au{animation:fU .42s ease both}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:52px;display:flex;align-items:center;padding:0 20px;gap:10px;background:rgba(253,248,240,.97);border-bottom:1px solid rgba(180,160,120,.2);backdrop-filter:blur(16px)}
+.nlogo{font-family:var(--fh);font-weight:800;font-size:15px;color:var(--o2);cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0}
+.nbdg{background:rgba(249,115,22,.2);border:1px solid rgba(249,115,22,.35);border-radius:4px;padding:2px 6px;font-size:8px;font-weight:700;letter-spacing:1px}
+.nfil{display:flex;gap:2px;flex:1}.nb{background:none;border:none;color:var(--mu);padding:4px 9px;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap}
+.nb:hover{color:var(--tx);background:rgba(255,255,255,.06)}.nb.ac{color:var(--tx);background:rgba(255,255,255,.09)}
+.nsco{margin-left:auto;background:rgba(249,115,22,.10);border:1px solid rgba(249,115,22,.28);border-radius:16px;padding:3px 10px;font-size:10px;font-weight:700;color:var(--o2);display:flex;align-items:center;gap:4px;white-space:nowrap}
+.ndot{width:5px;height:5px;border-radius:50%;background:var(--o);animation:pu 2s infinite}
+#hero{min-height:52vh;position:relative;display:flex;align-items:flex-end;padding:70px 38px 44px;overflow:hidden}
+.hb{position:absolute;inset:0;background:linear-gradient(135deg,#fdf8f0,#f5ede0 60%,#fdf6ee)}
+.hg1{position:absolute;inset:0;background:radial-gradient(ellipse 55% 40% at 54% 32%,rgba(249,115,22,.10) 0%,transparent 64%)}
+.hg2{position:absolute;inset:0;background:radial-gradient(ellipse 26% 20% at 7% 78%,rgba(8,145,178,.07) 0%,transparent 54%)}
+.hgr{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(rgba(140,100,60,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(140,100,60,.3) 1px,transparent 1px);background-size:44px 44px}
+.hc{position:relative;z-index:2;max-width:680px}
+.hbdg{display:inline-flex;align-items:center;gap:6px;background:rgba(249,115,22,.10);border:1px solid rgba(249,115,22,.3);border-radius:5px;padding:4px 11px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--o2);margin-bottom:14px}
+.ht{font-family:var(--fh);font-weight:800;font-size:clamp(26px,4.5vw,52px);line-height:1.05;margin-bottom:10px;letter-spacing:-1px}
+.ht .ao{color:var(--o2)}.ht .at{color:var(--t)}.ht .sub{color:var(--mu);font-weight:600;font-size:.54em;display:block;margin-top:3px}
+.hd{font-size:12px;color:var(--mu);line-height:1.78;margin-bottom:20px;max-width:520px}
+.hp{margin-bottom:22px;max-width:400px}.hpl{display:flex;justify-content:space-between;font-size:10px;color:var(--mu);margin-bottom:5px}
+.hpl span:last-child{color:var(--a);font-weight:700}.pt{height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+.pf{height:100%;background:linear-gradient(90deg,var(--o),var(--t));border-radius:2px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.hbts{display:flex;gap:8px;flex-wrap:wrap}
+.bo{background:var(--o);color:#fff;border:none;border-radius:7px;padding:10px 20px;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 4px 18px rgba(249,115,22,.4);transition:all .2s}
+.bo:hover{background:#ea6800;transform:translateY(-2px)}
+.bg{background:rgba(255,255,255,.05);color:var(--tx);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:10px 20px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.bg:hover{background:rgba(255,255,255,.09);transform:translateY(-2px)}
+#ss{background:var(--s2);border-top:1px solid var(--b1);border-bottom:1px solid var(--b2);padding:11px 38px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.si{display:flex;flex-direction:column;gap:1px}.sn{font-family:var(--fh);font-weight:800;font-size:22px;line-height:1}
+.sl{font-size:9px;color:var(--di);letter-spacing:1.5px;text-transform:uppercase}.sp{flex:1;min-width:160px;margin-left:auto}
+.spl{display:flex;justify-content:space-between;font-size:10px;color:var(--mu);margin-bottom:5px}.spl span:last-child{color:var(--a);font-weight:700}
+#cat{padding:22px 38px 56px}
+.tbd{border-radius:10px;padding:12px 17px;display:flex;align-items:center;gap:12px;margin-bottom:16px;position:relative;overflow:hidden;transition:transform .17s}
+.tstr{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(55deg,currentColor 0,currentColor 1px,transparent 0,transparent 18px)}
+.tico{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.tinf{flex:1}.ttg{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.8;margin-bottom:2px}
+.tnm{font-size:13px;font-weight:700;margin-bottom:1px}.tmt{font-size:10px;color:var(--mu)}
+.tpw{text-align:right;flex-shrink:0}.tpn{font-family:var(--fh);font-weight:800;font-size:24px;line-height:1}.tpl{font-size:9px;color:var(--mu)}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:11px;margin-bottom:36px}
+.cc{background:var(--card);border:1px solid var(--b1);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.cc:hover{transform:translateY(-4px) scale(1.012);box-shadow:0 10px 40px rgba(140,100,40,.15)}
+.cth{height:90px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ctic{font-size:34px;position:relative;z-index:1}.cov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;opacity:0;transition:opacity .16s;z-index:3}
+.cc:hover .cov{opacity:1}.cst{position:absolute;top:7px;right:7px;z-index:4;width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700}
+.stn{background:rgba(255,255,255,.07);border:1px solid var(--b1);color:var(--di)}.stw{background:#f59e0b;color:#000}.std{background:#22c55e;color:#fff}
+.cb{padding:10px 12px}.cn{font-size:9px;color:var(--di);font-weight:600;margin-bottom:2px;letter-spacing:.5px}
+.ct{font-size:11px;font-weight:700;line-height:1.38;margin-bottom:7px;min-height:30px}.cf{display:flex;align-items:center;justify-content:space-between;gap:4px}
+.ctg{font-size:8px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:2px 6px;border-radius:3px}
+.ccas{font-size:8px;color:var(--mu);font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100px}
+.mp{display:flex;align-items:center;gap:4px}.mb{width:32px;height:2px;background:var(--b2);border-radius:1px;overflow:hidden}
+.mf{height:100%;border-radius:1px;transition:width .5s}.mp2{font-size:8px;color:var(--mu)}
+#mbd{display:none;position:fixed;inset:0;z-index:600;background:rgba(200,180,140,.45);backdrop-filter:blur(20px);overflow-y:auto;padding:22px 12px}
+#mbd.open{display:flex;align-items:flex-start;justify-content:center}
+#mbox{background:var(--s2);border:1px solid var(--b2);border-radius:14px;width:100%;max-width:820px;overflow:hidden;animation:sI .24s ease;box-shadow:0 20px 60px rgba(100,70,20,.18)}
+.mhd{padding:17px 22px 13px;border-bottom:1px solid var(--b2);position:relative}
+.mcl{position:absolute;top:10px;right:10px;background:rgba(140,100,40,.08);border:none;color:var(--mu);width:25px;height:25px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .17s}
+.mcl:hover{background:rgba(140,100,40,.15);color:var(--tx)}
+.mmt{display:flex;align-items:center;gap:9px;margin-bottom:6px}.mic{width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.mlb{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1px}.mti{font-family:var(--fh);font-weight:800;font-size:17px;line-height:1.2}
+.mca{font-size:10px;color:var(--mu);margin-top:2px;font-style:italic}.mtg2{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.mt2{font-size:9px;padding:2px 7px;border-radius:12px;background:var(--s2);border:1px solid var(--b2);color:var(--mu)}
+.tbar{display:flex;border-bottom:1px solid var(--b2);background:var(--s2);overflow-x:auto}
+.tb{padding:9px 13px;font-size:11px;font-weight:600;color:var(--mu);border:none;background:none;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .16s}
+.tb:hover{color:var(--tx)}.tb.ac{color:var(--tx)}
+.cop{padding:18px 22px}
+.ci{border-radius:8px;padding:12px 15px;margin-bottom:18px;font-size:12px;line-height:1.78;border-left:3px solid var(--o);background:rgba(249,115,22,.09);border-top:1px solid rgba(249,115,22,.18);border-right:1px solid rgba(249,115,22,.18);border-bottom:1px solid rgba(249,115,22,.18)}
+.cs{margin-bottom:20px}.cst2{font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--a);display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.cst2::after{content:'';flex:1;height:1px;background:var(--b2)}
+.cp{display:flex;gap:8px;align-items:flex-start;padding:7px 11px;background:rgba(140,100,40,.03);border-radius:6px;margin-bottom:5px;font-size:11px;line-height:1.75;color:var(--mu);transition:background .18s}
+.cp:hover{background:rgba(140,100,40,.06)}.cp .bl{flex-shrink:0;margin-top:2px;font-size:9px;opacity:.5}
+.cdf{border-radius:8px;padding:10px 14px;margin-bottom:7px;background:rgba(249,115,22,.09);border:1px solid rgba(249,115,22,.22)}
+.cdft{font-size:10px;font-weight:700;color:var(--o2);letter-spacing:.5px;margin-bottom:3px;text-transform:uppercase}
+.cdfd{font-size:11px;line-height:1.65;color:var(--mu)}
+.ctb{width:100%;border-collapse:collapse;margin-bottom:10px;font-size:11px}
+.ctb th{background:rgba(255,255,255,.06);padding:6px 10px;text-align:left;font-weight:700;font-size:10px;border:1px solid var(--b2);color:var(--tx)}
+.ctb td{padding:6px 10px;border:1px solid var(--b1);color:var(--mu);line-height:1.5;vertical-align:top}
+.ctb tr:nth-child(even) td{background:rgba(140,100,40,.05)}
+.cfo{background:rgba(6,182,212,.07);border:1px solid rgba(6,182,212,.2);border-radius:8px;padding:10px 15px;margin-bottom:9px;text-align:center}
+.cfol{font-size:9px;color:var(--t);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}.cfoq{font-family:var(--fh);font-size:15px;font-weight:700}
+.ctip{background:rgba(217,119,6,.08);border:1px solid rgba(217,119,6,.25);border-radius:8px;padding:9px 12px;margin-bottom:7px;font-size:11px;line-height:1.65;color:#92400e}
+.ctip::before{content:'💡 '}
+.cre{background:rgba(22,163,74,.07);border:1px solid rgba(22,163,74,.25);border-radius:8px;padding:12px 15px;margin-top:14px}
+.crel{font-size:9px;font-weight:700;color:var(--g);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:7px}
+.cri{display:flex;gap:6px;align-items:flex-start;font-size:11px;color:#15803d;margin-bottom:4px;line-height:1.55}
+.cri::before{content:'✓';color:var(--g);font-weight:700;flex-shrink:0;margin-top:1px}
+.bop{padding:18px 22px}
+.bhd{border-radius:10px;padding:13px 17px;margin-bottom:16px;background:linear-gradient(135deg,rgba(249,115,22,.12),rgba(8,145,178,.08));border:1px solid rgba(249,115,22,.3)}
+.bhl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--o2);margin-bottom:4px}.ben{font-family:var(--fh);font-size:15px;font-weight:800;margin-bottom:3px}
+.bds{font-size:11px;color:var(--mu);line-height:1.65}.bdo{background:#fffdf9;border:1px solid var(--b1);border-radius:8px;padding:11px 15px;margin-bottom:10px}
+.bdol{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--t);margin-bottom:5px}.bdot{font-size:11px;line-height:1.78;color:var(--mu)}
+.bdt{width:100%;border-collapse:collapse;margin-top:7px;font-size:10px}.bdt th{background:rgba(255,255,255,.07);padding:5px 8px;text-align:left;font-weight:700;border:1px solid var(--b2);color:var(--tx)}
+.bdt td{padding:5px 8px;border:1px solid var(--b1);color:var(--mu)}
+.bqt{font-family:var(--fh);font-size:12px;font-weight:700;color:var(--a);margin:14px 0 9px;display:flex;align-items:center;gap:5px}
+.bq{background:#fffdf9;border:1px solid var(--b1);border-radius:8px;padding:11px 14px;margin-bottom:8px}
+.bqh{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px}.bqn{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0;margin-top:1px}
+.bqq{font-size:11px;line-height:1.62;flex:1}.bqp{font-size:9px;color:var(--mu);margin-bottom:6px;padding-left:28px}
+.bbtn{background:rgba(255,255,255,.05);border:1px solid var(--b1);border-radius:5px;padding:5px 11px;font-size:10px;font-weight:600;color:var(--mu);cursor:pointer;transition:all .16s;margin-left:28px}
+.bbtn:hover{background:rgba(255,255,255,.09);color:var(--tx)}
+.bcor{background:rgba(22,163,74,.07);border:1px solid rgba(22,163,74,.25);border-radius:7px;padding:10px 13px;margin:6px 0 0 28px;font-size:11px;line-height:1.78;color:#15803d;display:none;white-space:pre-line}
+.bcor.show{display:block;animation:fI .26s ease}.bcl{font-size:9px;font-weight:700;color:var(--g);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.aop{padding:18px 22px}.ati{font-family:var(--fh);font-size:15px;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:7px}
+.abd{font-size:9px;font-weight:700;letter-spacing:1.5px;padding:2px 6px;border-radius:3px}.ade{font-size:11px;color:var(--mu);margin-bottom:15px}
+.qc{background:#fffdf9;border:1px solid var(--b1);border-radius:8px;padding:11px 15px;margin-bottom:10px}
+.qq{font-size:12px;font-weight:600;margin-bottom:9px;line-height:1.5}.qos{display:flex;flex-direction:column;gap:5px}
+.qo{padding:7px 11px;border:1px solid var(--b1);border-radius:6px;font-size:11px;cursor:pointer;transition:all .15s;background:rgba(255,255,255,.8);color:var(--tx);text-align:left}
+.qo:hover:not(:disabled){border-color:var(--b2);background:rgba(140,100,40,.06)}.qo:disabled{cursor:default}
+.qo.ok{background:rgba(22,163,74,.12);border-color:#16a34a;color:#166534}.qo.ko{background:rgba(220,38,38,.08);border-color:#dc2626;color:#991b1b}
+.qe{font-size:10px;color:var(--mu);margin-top:5px;padding:5px 9px;background:rgba(140,100,40,.05);border-radius:5px;display:none;line-height:1.55}
+.qe.show{display:block;animation:fI .2s ease}
+.sw{margin-top:14px;padding:12px 16px;border-radius:9px;border:1px solid;display:none}.sw.show{display:flex;align-items:center;gap:12px}
+.sc{width:46px;height:46px;border-radius:50%;border:3px solid;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.sp2{font-family:var(--fh);font-weight:800;font-size:13px;line-height:1}.sm{font-size:12px;font-weight:700}.sd2{font-size:10px;color:var(--mu)}
+.vb{display:flex;align-items:flex-start;gap:9px;padding:10px 13px;background:rgba(255,255,255,.022);border-radius:8px;border:1px solid var(--b1);margin-bottom:7px}
+.vq{flex:1;font-size:11px;line-height:1.55;color:var(--mu)}.vbs{display:flex;gap:5px;flex-shrink:0}
+.vbn{width:30px;height:30px;border-radius:6px;border:1px solid var(--b1);background:rgba(255,255,255,.05);cursor:pointer;font-size:11px;font-weight:700;transition:all .15s;color:var(--mu)}
+.vbn:hover:not(:disabled){transform:scale(1.07)}.vbn:disabled{cursor:default;opacity:.7}
+.vbn.vrai.ok,.vbn.faux.ok{background:rgba(22,163,74,.15);border-color:#16a34a;color:#166534}
+.vbn.vrai.ko,.vbn.faux.ko{background:rgba(220,38,38,.12);border-color:#dc2626;color:#991b1b}
+.ve{font-size:10px;color:var(--mu);margin-top:4px;line-height:1.55;display:none}.ve.show{display:block;animation:fI .18s ease}
+.fwp{perspective:1100px;margin-bottom:15px}
+.fca{width:100%;height:155px;position:relative;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1);cursor:pointer;border-radius:11px}
+.fca.fl{transform:rotateY(180deg)}.ffa{position:absolute;inset:0;border-radius:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;backface-visibility:hidden;border:1px solid var(--b1);text-align:center}
+.ffr{background:#fffdf9;border-color:var(--b1)}.fbk{background:rgba(22,163,74,.08);border-color:rgba(22,163,74,.3);transform:rotateY(180deg)}
+.ffl{font-size:9px;color:var(--mu);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}.fft{font-family:var(--fh);font-size:16px;font-weight:800}
+.fbl{font-size:9px;color:var(--g);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}.fbd{font-size:11px;line-height:1.65;color:#15803d}
+.fn{display:flex;align-items:center;gap:9px;justify-content:center;margin-bottom:12px}
+.fnb{background:rgba(255,255,255,.07);border:none;color:var(--tx);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:13px;transition:all .16s}
+.fnb:hover{background:rgba(255,255,255,.12)}.fc{font-size:11px;color:var(--mu);font-weight:600}.fh{text-align:center;font-size:9px;color:var(--di);margin-top:5px}
+.fp{display:flex;gap:3px;justify-content:center;flex-wrap:wrap;margin-top:9px}
+.fd{width:6px;height:6px;border-radius:50%;background:var(--b2);transition:background .22s;cursor:pointer}.fd.se{background:var(--a)}.fd.cu{background:var(--tx);transform:scale(1.22)}
+.biop{padding:18px 22px}.bicw{display:flex;justify-content:center;margin-bottom:18px}
+.bic{width:88px;height:88px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:4px solid}
+.bip{font-family:var(--fh);font-weight:800;font-size:22px;line-height:1}.bil{font-size:9px;color:var(--mu);letter-spacing:1px;text-transform:uppercase}
+.bibs{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}.bibr{display:flex;align-items:center;gap:8px}
+.bibl{font-size:10px;color:var(--mu);width:82px;flex-shrink:0;text-align:right}.bibt{flex:1;height:4px;background:var(--b2);border-radius:2px;overflow:hidden}
+.bibf{height:100%;border-radius:2px;transition:width .7s}.bibv{font-size:10px;font-weight:700;width:28px;flex-shrink:0}
+.bim{text-align:center;padding:12px;background:rgba(255,255,255,.022);border-radius:8px;border:1px solid var(--b1);font-size:12px;font-weight:600;line-height:1.5}
+footer{background:var(--s2);border-top:1px solid var(--b1);padding:18px 38px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.fb{font-family:var(--fh);font-size:13px;font-weight:800}.fb .fo{color:var(--o2)}.fb .ft{color:var(--t)}
+.fb span{color:var(--mu);font-family:var(--fb);font-weight:400;font-size:10px;display:block;margin-top:1px}
+.fs{font-size:11px;color:var(--mu);text-align:right;line-height:1.85}.fs strong{color:var(--o2)}.fs em{color:var(--t);font-style:normal;font-weight:600}
+.cp2{position:fixed;width:7px;height:7px;border-radius:2px;pointer-events:none;z-index:9999;animation:co .92s ease forwards}
+@media(max-width:600px){#cat,#ss,#hero,footer{padding-left:13px;padding-right:13px}.ht{font-size:24px}.cg{grid-template-columns:1fr 1fr}.nfil{display:none}.tb{padding:8px 9px;font-size:10px}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nlogo" onclick="goTop()">MSDGN <span class="nbdg">Terminale STMG</span></a>
+  <div class="nfil">
+    <button class="nb ac" onclick="fAll(this)">Tous</button>
+    <button class="nb" onclick="fTh(1,this)">Thème 1</button>
+    <button class="nb" onclick="fTh(2,this)">Thème 2</button>
+    <button class="nb" onclick="fTh(3,this)">Thème 3</button>
+  </div>
+  <div class="nsco"><div class="ndot"></div><span id="nsc">0 / 13</span></div>
+</nav>
+<section id="hero" style="padding-top:70px">
+  <div class="hb"></div><div class="hg1"></div><div class="hg2"></div><div class="hgr"></div>
+  <div class="hc au">
+    <div class="hbdg">▶ Révisions BAC · Delagrave 2024 · Lycée Louis Pasteur · Strasbourg</div>
+    <h1 class="ht"><span class="ao">Management</span> · <span class="at">SDGN</span><span class="sub">Terminale STMG · 13 chapitres · Cours · Cas BAC corrigés · QCM · Flashcards</span></h1>
+    <p class="hd">13 chapitres en 3 thèmes, fidèles au programme Terminale STMG. Contextes : Audi, BEL, Decathlon, Manufacture Dénériaz, Fermob, Veepee, FAVI, Getaround, SEB, L'Oréal, Patagonia, Twitch, Pôle Véhicule du Futur.</p>
+    <div class="hp"><div class="hpl"><span>Progression globale</span><span id="hpct">0%</span></div><div class="pt"><div class="pf" id="hfill" style="width:0%"></div></div></div>
+    <div class="hbts"><button class="bo" onclick="openC(0)">▶ Commencer Ch.1</button><button class="bg" onclick="document.getElementById('cat').scrollIntoView({behavior:'smooth'})">📚 Catalogue</button></div>
+  </div>
+</section>
+<div id="ss">
+  <div class="si"><div class="sn">13</div><div class="sl">Chapitres</div></div>
+  <div class="si"><div class="sn">3</div><div class="sl">Thèmes</div></div>
+  <div class="si"><div class="sn" id="sdone">0</div><div class="sl">Validés</div></div>
+  <div class="si"><div class="sn">4</div><div class="sl">Activités</div></div>
+  <div class="sp"><div class="spl"><span>Avancement</span><span id="spct">0%</span></div><div class="pt"><div class="pf" id="sfill" style="width:0%"></div></div></div>
+</div>
+<main id="cat"></main>
+<div id="mbd" onclick="hdBd(event)">
+  <div id="mbox">
+    <div class="mhd">
+      <button class="mcl" onclick="closeM()">✕</button>
+      <div class="mmt"><div class="mic" id="mIc"></div><div><div class="mlb" id="mLb"></div><div class="mti" id="mTi"></div><div class="mca" id="mCa"></div></div></div>
+      <div class="mtg2" id="mTg"></div>
+    </div>
+    <div class="tbar" id="tbar"></div>
+    <div id="tc"></div>
+  </div>
+</div>
+<footer>
+  <div><div class="fb"><span class="fo">Révisions BAC</span><span>Management · Sciences de Gestion et Numérique · Terminale STMG</span></div></div>
+  <div class="fs"><strong>Lycée Louis Pasteur</strong> · Strasbourg<br><em>Économie-Gestion · STMG</em></div>
+</footer>
+<script>
+const TH={
+  1:{c:'#f97316',bg:'rgba(249,115,22,.13)',n:'Les organisations et l\'activité de production'},
+  2:{c:'#06b6d4',bg:'rgba(6,182,212,.13)',n:'Les organisations et les acteurs'},
+  3:{c:'#22c55e',bg:'rgba(34,197,94,.13)',n:'Les organisations et la société'}
+};
+
+const CH=[
+{id:0,n:1,th:1,ic:'🚗',cas:'Audi / Tatie Maryse',
+title:'Quels produits ou services pour quels besoins ?',
+tags:['Démarche marketing','Étude de marché','Création de valeur','Innovation','Business model'],
+cours:{intro:"Toute organisation doit identifier les besoins du marché et y adapter son offre. Le marketing est au cœur de cette démarche. Audi illustre comment une grande entreprise intègre le marketing dans sa stratégie de production pour créer de la valeur.",
+secs:[
+{t:"La démarche et les approches marketing",tbl:{h:['Approche','Définition','Exemple'],r:[['Marketing stratégique','Analyse du marché, segmentation, ciblage, positionnement','Audi cible le segment premium et se positionne sur la haute technologie'],['Marketing opérationnel','Actions concrètes : produit, prix, distribution, communication (4P)','Audi adapte ses modèles et prix par marché'],['Marketing relationnel','Fidélisation et personnalisation de la relation client','Application Audi Connect pour suivre les clients'],['Marketing digital','Utilisation des outils numériques (SEO, réseaux sociaux, data)','Audi utilise les données de ses véhicules pour personnaliser les services']]}},
+{t:"L'étude de marché et la veille",pts:[
+"<strong>Étude de marché :</strong> collecte et analyse d'informations sur l'offre (concurrents) et la demande (besoins des consommateurs) pour adapter l'offre de produits ou services.",
+"<strong>Veille marketing et commerciale :</strong> surveillance permanente de l'environnement (tendances, concurrents, innovations) pour anticiper les évolutions du marché.",
+"Les études peuvent être <strong>quantitatives</strong> (enquêtes, sondages → chiffres) ou <strong>qualitatives</strong> (entretiens, focus groups → opinions, motivations)."]},
+{t:"La création de valeur et le business model",pts:[
+"<strong>Création de valeur :</strong> l'organisation crée de la valeur financière (résultat), mais aussi de la valeur pour le client (valeur perçue), pour les salariés (emplois, rémunération) et pour la société (valeur sociale, environnementale).",
+"<strong>Business model (modèle économique) :</strong> description de la manière dont une organisation crée, délivre et capture de la valeur. Il précise : qui sont les clients ? Quelle est l'offre ? Comment l'organisation gagne-t-elle de l'argent ?",
+"<strong>Innovation de produit :</strong> développement de nouveaux produits ou amélioration significative de produits existants (ex : véhicules électriques Audi, VTT électrique avec Fantic)."]}],
+ret:["Démarche marketing = identifier les besoins du marché et y adapter l'offre","Étude de marché : collecte et analyse d'informations sur l'offre et la demande","Veille commerciale = surveillance permanente des tendances et de la concurrence","Business model = comment l'organisation crée, délivre et capture de la valeur","Innovation de produit = nouveaux produits ou améliorations significatives"]},
+bac:{ent:'Tatie Maryse',desc:"Tatie Maryse est une entreprise créée en 2011 par Nathalie Gabriel-Frédéric. Spécialisée dans les ateliers culinaires de cuisine martiniquaise en extérieur, elle développe des solutions d'accompagnement de marque et de communication culinaire.",
+docs:[
+{lbl:'Document 1 — Présentation de Tatie Maryse',txt:"L'activité a démarré en 2011 avec un blog de cuisine martiniquaise. Aujourd'hui, Tatie Maryse est composée de cinq personnes dont trois collaborateurs. Elle propose des solutions d'accompagnement de marque, de la communication culinaire et des offres pour aider à la diffusion du message culinaire. Les nouveaux projets sont financés par l'autofinancement. Les ateliers culinaires se déroulent en extérieur, avec des équipements professionnels complets, et permettent de réaliser des recettes créatives avec des produits locaux."},
+{lbl:'Document 2 — Le marché des cours de cuisine',txt:"La pratique de la cuisine est de plus en plus populaire en France. L'essor des cours de cuisine est aussi le résultat de l'engouement des émissions télévisées telles que Masterchef ou Topchef. Depuis 2000, les offres de cours de cuisine ont connu une croissance importante. L'offre est diversifiée et les cours proposés durent généralement de 30 minutes à plusieurs heures, voire plusieurs semaines sous la forme de stages. Les thématiques vont de la confection de sushis à la réalisation de cocktails et de pâtisseries. Source : www.businesscoot.com"}],
+qs:[
+{n:1,pts:3,q:"Présentez l'activité de Tatie Maryse et identifiez son positionnement sur le marché.",rep:"Tatie Maryse est une entreprise de services culinaires spécialisée dans la cuisine martiniquaise. Elle propose trois types d'offres : (1) Des ateliers culinaires en extérieur — concept innovant qui 'sort la cuisine de la cuisine' et permet de réaliser des recettes créatives avec des produits locaux ; (2) Des solutions d'accompagnement de marque et de communication culinaire pour les professionnels ; (3) Un blog et magazine culinaire martiniquais à forte audience. Son positionnement est différenciateur : elle n'est ni traiteur, ni restaurant, mais se positionne sur un secteur d'innovation à l'intersection de la gastronomie et de l'événementiel. Elle cible les familles, les particuliers amateurs de cuisine martiniquaise et les entreprises cherchant des activités de team building culinaire."},
+{n:2,pts:3,q:"Montrez que l'offre de Tatie Maryse répond aux caractéristiques du marché des cours de cuisine.",rep:"Le marché des cours de cuisine est en forte croissance depuis 2000 (engouement post-émissions TV). L'offre de Tatie Maryse y répond à plusieurs niveaux : (1) Diversification de l'offre : Tatie Maryse propose différentes formules (ateliers courts, stages, team building) en phase avec la diversité attendue sur ce marché ; (2) Expérience différenciante : le concept d'ateliers en extérieur et la spécialisation en cuisine martiniquaise répond à la demande de nouvelles expériences culinaires authentiques ; (3) Digitalisation : le blog et la présence sur les réseaux sociaux (Facebook, Twitter, Instagram, Pinterest) répondent aux nouvelles habitudes de consommation de contenu culinaire ; (4) Prix adaptés : les prix correspondent aux standards du marché métropolitain tout en étant compétitifs."},
+{n:3,pts:2,q:"Identifiez le business model de Tatie Maryse.",rep:"Le business model de Tatie Maryse peut se décrire ainsi : Clients ciblés : familles et particuliers amateurs de cuisine martiniquaise, comités d'entreprises (team building culinaire), entreprises et marques cherchant une communication culinaire. Proposition de valeur : expérience unique d'apprentissage culinaire martiniquais en extérieur + expertise en communication culinaire. Sources de revenus : (1) Ateliers culinaires payants (particuliers et professionnels) ; (2) Prestations de communication culinaire pour les entreprises ; (3) Publicité et partenariats sur le blog/magazine. Modèle de financement : autofinancement via le succès des activités existantes → les nouveaux projets sont financés par les bénéfices des précédents."}]},
+qcm:[
+{q:"Une étude de marché permet principalement de…",os:["Fixer le prix d'un produit","Collecter et analyser des informations sur l'offre et la demande","Recruter de nouveaux salariés","Calculer le résultat de l'entreprise"],a:1,e:"L'étude de marché collecte et analyse des informations sur la demande (besoins des consommateurs) et l'offre (concurrents) pour adapter les produits et services."},
+{q:"Le business model décrit comment une organisation…",os:["Recrute ses salariés","Crée, délivre et capture de la valeur","Calcule ses coûts de production","Organise son travail"],a:1,e:"Le business model (modèle économique) explique QUI sont les clients, QUELLE est l'offre et COMMENT l'organisation gagne de l'argent."},
+{q:"La veille marketing et commerciale consiste à…",os:["Faire des publicités","Surveiller en permanence l'environnement pour anticiper les évolutions","Analyser les coûts","Former les commerciaux"],a:1,e:"La veille commerciale = surveillance permanente des tendances du marché, des innovations et des concurrents pour adapter la stratégie."},
+{q:"L'innovation de produit chez Audi se manifeste par…",os:["La réduction des prix","Le développement de véhicules électriques et de nouveaux services","La suppression de modèles","La fermeture d'usines"],a:1,e:"Audi innove en développant des véhicules électriques, en intégrant la réalité virtuelle dans ses habitacles (Holoride) et en s'associant à Fantic pour créer un VTT électrique."}],
+vf:[
+{q:"Une approche marketing uniquement quantitative (sondages) suffit pour analyser les besoins des consommateurs.",a:false,e:"Les études quantitatives (chiffres) doivent être complétées par des études qualitatives (entretiens, focus groups) pour comprendre les motivations profondes des consommateurs."},
+{q:"La création de valeur pour une organisation peut avoir une dimension sociale et environnementale.",a:true,e:"La valeur créée par une organisation est multidimensionnelle : financière (résultat), perçue (client), sociale (emplois) et environnementale (impact sur l'écosystème)."},
+{q:"Le business model de Tatie Maryse repose uniquement sur les ventes d'ateliers culinaires.",a:false,e:"Tatie Maryse a plusieurs sources de revenus : ateliers culinaires, prestations de communication culinaire pour les entreprises, et revenus du blog/magazine (publicité, partenariats)."},
+{q:"La veille commerciale est uniquement une activité ponctuelle réalisée lors du lancement d'un produit.",a:false,e:"La veille commerciale est une activité PERMANENTE (continue) de surveillance de l'environnement. Elle ne se limite pas aux phases de lancement."}],
+flash:[
+{t:"Démarche marketing",d:"Processus d'identification des besoins du marché et d'adaptation de l'offre : analyse → segmentation → ciblage → positionnement → mix marketing."},
+{t:"Étude de marché",d:"Collecte et analyse d'informations sur l'offre (concurrents) et la demande (besoins consommateurs) pour adapter les produits ou services."},
+{t:"Business model",d:"Description de la manière dont une organisation crée, délivre et capture de la valeur : qui sont les clients ? Quelle est l'offre ? Comment l'organisation gagne-t-elle ?"},
+{t:"Veille marketing",d:"Surveillance permanente de l'environnement (tendances, concurrents, innovations) pour anticiper les évolutions du marché."},
+{t:"Innovation de produit",d:"Développement de nouveaux produits ou amélioration significative de produits existants pour mieux répondre aux besoins du marché."}]},
+
+{id:1,n:2,th:1,ic:'🧀',cas:'BEL / ELA',
+title:'Quelles ressources pour produire ?',
+tags:['Ressources tangibles','Ressources intangibles','Bilan fonctionnel','GPEC','FRNG','BFR'],
+cours:{intro:"Produire nécessite de mobiliser une combinaison de ressources. Le groupe BEL, spécialisé dans les fromages (Babybel, La Vache qui rit), illustre comment une grande organisation gère ses ressources tangibles, financières et humaines.",
+secs:[
+{t:"Les ressources tangibles et intangibles",tbl:{h:['Type','Définition','Exemples BEL'],r:[['Tangibles matérielles','Biens physiques possédés par l\'organisation','Usines au Maroc et dans 30 pays, machines de production'],['Tangibles financières','Ressources monétaires disponibles','Capital, emprunts, autofinancement'],['Intangibles','Ressources immatérielles, difficiles à copier','Marques Babybel / La Vache qui rit, brevets, savoir-faire, réputation']]}},
+{t:"Les ressources financières — analyse du bilan fonctionnel",pts:[
+"<strong>FRNG (Fonds de Roulement Net Global) :</strong> excédent de ressources stables (capitaux propres + dettes LT) sur les emplois stables (actif immobilisé). FRNG = Ressources stables − Emplois stables.",
+"<strong>BFR (Besoin en Fonds de Roulement) :</strong> besoin de financement lié au cycle d'exploitation. BFR = (Stocks + Créances clients) − Dettes fournisseurs.",
+"<strong>Trésorerie nette = FRNG − BFR.</strong> Si positive : équilibre financier. Si négative : risque de trésorerie.",
+"<strong>Financement de l'investissement :</strong> autofinancement, emprunts bancaires, augmentation de capital, crédit-bail (leasing)."]},
+{t:"Les ressources humaines — GPEC",pts:[
+"<strong>GPEC (Gestion Prévisionnelle des Emplois et des Compétences) :</strong> anticipation des besoins en compétences à moyen terme (3-5 ans) pour adapter les ressources humaines aux évolutions de l'organisation.",
+"<strong>Recrutement :</strong> processus d'identification et de sélection de candidats pour pourvoir un poste (interne ou externe).",
+"<strong>Formation :</strong> développement des compétences des salariés pour adapter leurs savoir-faire aux besoins de l'organisation."]}],
+ret:["Ressources tangibles (physiques + financières) vs intangibles (marques, brevets, savoir-faire)","FRNG = Ressources stables − Emplois stables","BFR = (Stocks + Créances clients) − Dettes fournisseurs","Trésorerie nette = FRNG − BFR (positive = équilibre financier)","GPEC = anticipation des besoins en compétences à 3-5 ans"]},
+bac:{ent:'ELA (Association Européenne contre les Leucodystrophies)',desc:"ELA est une association de parents fondée en 1992 par Guy Alba avec Pascal Prin, Cathy Schorderet. Reconnue d'utilité publique depuis 1996, elle aide les familles touchées par les leucodystrophies, soutient la recherche et sensibilise l'opinion publique.",
+docs:[
+{lbl:"Document 1 — Les missions et ressources d'ELA",txt:"ELA a pour missions : aider et soutenir les familles touchées par la maladie, soutenir la recherche médicale, sensibiliser l'opinion publique et développer son action au niveau international. Ses ressources humaines comprennent des bénévoles, des chercheurs, des partenaires, des parrains et marraines, des sympathisants et donateurs. Ses ressources financières sont principalement des dons et cotisations des membres. ELA bénéficie également d'une forte notoriété (marque) et d'un réseau de partenaires scientifiques et institutionnels (ressources intangibles)."},
+{lbl:"Document 2 — Bilan fonctionnel simplifié ELA (en k€)",data:{h:['Ressources stables','Montant','Emplois stables','Montant'],r:[['Capitaux propres (réserves et report)','2 150','Immobilisations nettes','1 830'],['Dettes financières LT','0','',''],['Total ressources stables','2 150','Total emplois stables','1 830'],['Stocks','45','Dettes fournisseurs','180'],['Créances (subventions à recevoir, dons à encaisser)','620','',''],['Trésorerie active','385','Trésorerie passive','0']]}}],
+qs:[
+{n:1,pts:2,q:"Montrez qu'ELA résulte d'une action collective et que cela en fait une organisation.",rep:"ELA résulte d'une action collective car elle a été fondée par plusieurs parents (Guy Alba, Pascal Prin, Cathy Schorderet et d'autres parents) réunis autour d'un objectif commun : identifier et combattre les leucodystrophies. Elle constitue une organisation car elle réunit plusieurs acteurs (salariés, bénévoles, chercheurs, donateurs) autour d'un but commun non lucratif, avec une structure formalisée (statut d'association loi 1901 reconnue d'utilité publique), une division des tâches et une coordination des actions."},
+{n:2,pts:4,q:"À partir du document 2, calculez le FRNG, le BFR et la trésorerie nette d'ELA. Commentez.",rep:"FRNG = Ressources stables − Emplois stables = 2 150 − 1 830 = 320 k€\nBFR = (Stocks + Créances clients) − Dettes fournisseurs = (45 + 620) − 180 = 665 − 180 = 485 k€\nTrésorerie nette = FRNG − BFR = 320 − 485 = −165 k€\nCommentaire : La trésorerie nette est négative (−165 k€), ce qui est compensé par la trésorerie active de 385 k€. Le BFR (485 k€) est supérieur au FRNG (320 k€), ce qui signifie qu'ELA finance une partie de son besoin d'exploitation par sa trésorerie (385 k€). La situation est tendue mais viable grâce aux réserves de trésorerie. ELA doit surveiller ses délais d'encaissement des dons et subventions (créances de 620 k€) pour maintenir son équilibre financier."},
+{n:3,pts:2,q:"Expliquez la particularité des ressources financières des associations comme ELA par rapport aux entreprises privées.",rep:"Les associations comme ELA présentent des particularités importantes en matière de ressources financières : (1) Pas de capital social ni d'actionnaires → pas de possibilité de lever des fonds en émettant des actions ; (2) Ressources principalement liées aux dons, cotisations et subventions publiques → ressources instables et imprévisibles, dépendant de la générosité des donateurs et des décisions politiques ; (3) Absence d'objectif de profit → pas de distribution de dividendes, mais les excédents doivent être réinvestis dans la mission sociale ; (4) Financement de l'investissement limité : autofinancement sur les excédents, emprunts bancaires difficiles sans garanties. Cela crée une vulnérabilité financière que ne connaissent pas les entreprises privées qui peuvent lever des capitaux sur les marchés."}]},
+qcm:[
+{q:"Le FRNG (Fonds de Roulement Net Global) se calcule par…",os:["CA − Charges de personnel","Ressources stables − Emplois stables","Stocks + Créances − Dettes fournisseurs","Trésorerie active − Trésorerie passive"],a:1,e:"FRNG = Ressources stables (capitaux propres + dettes LT) − Emplois stables (actif immobilisé net). Il mesure l'excédent de ressources longues disponible pour financer l'exploitation."},
+{q:"Les ressources intangibles d'une organisation comprennent…",os:["Les machines et équipements","Les marques, brevets, savoir-faire et réputation","Les stocks de matières premières","Les créances clients"],a:1,e:"Les ressources intangibles sont immatérielles : marques, brevets, licences, savoir-faire, réputation. Elles sont souvent les plus difficiles à copier par la concurrence."},
+{q:"La GPEC consiste à…",os:["Recruter immédiatement des profils manquants","Anticiper les besoins en compétences à moyen terme (3-5 ans)","Licencier les salariés peu performants","Calculer la masse salariale"],a:1,e:"La GPEC anticipe les écarts entre les compétences disponibles et les compétences nécessaires à moyen terme (3-5 ans) pour adapter la politique RH (recrutement, formation, mobilité)."},
+{q:"Une trésorerie nette négative signifie que…",os:["L'entreprise est en faillite","Le BFR est supérieur au FRNG : l'entreprise finance son exploitation par des ressources à court terme","L'entreprise est très rentable","Les dettes sont supérieures au capital"],a:1,e:"Trésorerie nette = FRNG − BFR. Si négative, le BFR > FRNG → l'organisation doit recourir à des financements courts (découverts, crédits de trésorerie) pour couvrir son besoin d'exploitation."}],
+vf:[
+{q:"Les ressources intangibles (marques, brevets) sont souvent plus faciles à copier que les ressources tangibles.",a:false,e:"C'est l'inverse : les ressources intangibles (savoir-faire, réputation, brevets) sont généralement plus difficiles à copier et constituent souvent des avantages concurrentiels durables."},
+{q:"Le BFR est toujours positif pour une organisation.",a:false,e:"Le BFR peut être négatif, notamment dans la grande distribution (les clients paient comptant mais les fournisseurs sont payés à crédit). Un BFR négatif est alors une ressource."},
+{q:"L'autofinancement est un mode de financement interne.",a:true,e:"L'autofinancement utilise les ressources générées par l'organisation elle-même (bénéfices réinvestis, dotations aux amortissements) sans recourir à des capitaux externes."},
+{q:"La GPEC est réservée aux grandes entreprises.",a:false,e:"La GPEC peut être mise en place dans toute organisation souhaitant anticiper ses besoins en compétences. Des dispositifs simplifiés existent pour les PME."}],
+flash:[
+{t:"FRNG",d:"Fonds de Roulement Net Global = Ressources stables − Emplois stables. Mesure l'excédent de ressources longues disponible pour financer l'exploitation."},
+{t:"BFR",d:"Besoin en Fonds de Roulement = (Stocks + Créances clients) − Dettes fournisseurs. Besoin de financement lié au cycle d'exploitation."},
+{t:"Trésorerie nette",d:"FRNG − BFR. Positive = équilibre financier. Négative = l'organisation doit recourir à des financements courts terme."},
+{t:"GPEC",d:"Gestion Prévisionnelle des Emplois et des Compétences : anticipation des besoins RH à 3-5 ans pour adapter recrutement et formation aux évolutions de l'organisation."},
+{t:"Ressources intangibles",d:"Ressources immatérielles (marques, brevets, savoir-faire, réputation). Souvent les plus difficiles à copier et sources d'avantages concurrentiels durables."}]},
+
+{id:2,n:3,th:1,ic:'🏃',cas:'Decathlon',
+title:'Organisation de la production : flexibilité et qualité',
+tags:['Flux tendus','Flux poussés','Logistique','Supply chain','Qualité','Lean management'],
+cours:{intro:"Comment produire efficacement tout en répondant rapidement aux demandes des clients ? Decathlon, leader de la distribution sportive, illustre les enjeux de l'organisation de la production, de la logistique et de la qualité.",
+secs:[
+{t:"Les modes d'organisation de la production",tbl:{h:['Mode','Définition','Avantages','Inconvénients'],r:[['Production à la commande','On produit uniquement après réception d\'une commande client','Pas de stock, personnalisation possible','Délais longs, difficulté de planification'],['Production en série (continue ou discontinue)','Production en grande quantité de produits standardisés','Économies d\'échelle, coûts unitaires faibles','Stock important, rigidité'],['Flux tendus (Juste-à-temps)','Produire la bonne quantité au bon moment (zéro stock)','Réduction des stocks et coûts','Risque de rupture, exige des fournisseurs fiables'],['Flux poussés','Produire en avance selon des prévisions de vente','Disponibilité immédiate des produits','Risque de surproduction et de stocks inutiles']]}},
+{t:"La logistique et la supply chain",pts:[
+"<strong>Logistique :</strong> gestion des flux physiques (approvisionnement, stockage, distribution) et des flux d'informations associés pour optimiser les délais et les coûts.",
+"<strong>Supply chain management (SCM) :</strong> coordination de l'ensemble de la chaîne logistique, des fournisseurs aux clients finaux, pour optimiser les flux.",
+"<strong>Logistique omnicanale :</strong> Decathlon coordonne les flux entre ses 1 700 magasins, son site internet et ses entrepôts pour garantir la disponibilité des produits quel que soit le canal d'achat."]},
+{t:"La qualité et l'amélioration continue",pts:[
+"<strong>Qualité :</strong> ensemble des caractéristiques d'un produit/service qui lui confèrent l'aptitude à satisfaire les besoins exprimés ou implicites des clients.",
+"<strong>Contrôle qualité :</strong> vérification à différentes étapes de la production que les produits correspondent aux normes définies.",
+"<strong>Lean management :</strong> approche de gestion visant à éliminer les gaspillages dans les processus de production pour améliorer la performance.",
+"<strong>Processus d'amélioration continue (Kaizen) :</strong> démarche progressive et permanente d'amélioration des processus, impliquant tous les acteurs."]}],
+ret:["Flux tendus (JAT) = zéro stock, production à la demande | Flux poussés = production anticipée selon prévisions","Logistique = gestion des flux physiques + flux d'informations","Supply chain management = coordination de toute la chaîne fournisseurs → clients","Qualité = aptitude à satisfaire les besoins des clients","Lean management = éliminer les gaspillages | Kaizen = amélioration continue progressive"]},
+bac:{ent:"L'Assurance Maladie",desc:"L'Assurance Maladie est un organisme public qui gère la protection sociale en matière de santé en France. Elle rembourse les soins, indemnise les arrêts de travail et mène des actions de prévention.",
+docs:[
+{lbl:"Document 1 — Les activités de l'Assurance Maladie",txt:"L'Assurance Maladie rembourse les dépenses de santé, indemnise les arrêts de travail (indemnités journalières), lutte contre la fraude, et développe des actions de prévention (campagnes de vaccination, dépistage). Elle assure ses missions via un réseau de CPAM (Caisses Primaires d'Assurance Maladie) dans chaque département. Depuis 2021, la carte Vitale est dématérialisée (e-carte Vitale). Le site ameli.fr permet aux assurés de gérer leurs remboursements, télécharger leurs attestations et envoyer leurs feuilles de soins en ligne."},
+{lbl:"Document 2 — Performance de l'Assurance Maladie",data:{h:['Indicateur','2021','2022','Évolution'],r:[['Délai moyen de traitement des feuilles de soins (jours)','4,2','3,8','−9,5 %'],['Taux de traitement automatique (feuilles de soins)','82 %','86 %','+4 pts'],['Taux de satisfaction des assurés','87 %','89 %','+2 pts'],['Montant des fraudes détectées (M€)','316','345','+9,2 %'],['Coût de gestion par € remboursé','3,1 cts','2,9 cts','−6,5 %']]}}],
+qs:[
+{n:1,pts:2,q:"À partir du document 1, identifiez les flux physiques et les flux d'informations gérés par l'Assurance Maladie.",rep:"Flux physiques (biens et documents tangibles) : envoi de chèques de remboursement ou virements, envoi de la carte Vitale physique, courriers de notification aux assurés, cartes Vitale physiques. Ces flux tendent à se réduire avec la dématérialisation. Flux d'informations (données et messages) : réception des feuilles de soins papier ou électroniques, traitement des remboursements dans les systèmes informatiques, données médicales échangées avec les médecins (protocole de soins), notifications électroniques via ameli.fr, e-carte Vitale. La dématérialisation croissante transforme les flux physiques en flux d'informations, réduisant les délais et les coûts de traitement."},
+{n:2,pts:3,q:"À partir du document 2, analysez la performance de l'Assurance Maladie et identifiez les axes d'amélioration.",rep:"Analyse positive : (1) Efficience accrue : le délai de traitement des feuilles de soins a diminué (4,2 → 3,8 jours, −9,5 %) et le coût de gestion a baissé (3,1 → 2,9 cts/€, −6,5 %) → amélioration de la productivité ; (2) Automatisation croissante : le taux de traitement automatique passe à 86 % → réduction des erreurs et des coûts ; (3) Satisfaction en hausse : 89 % des assurés satisfaits (+2 pts) → qualité de service améliorée ; (4) Lutte contre la fraude : +9,2 % de fraudes détectées → meilleure surveillance. Axes d'amélioration : (1) Accélérer la dématérialisation complète pour réduire encore les délais (objectif < 3 jours) ; (2) Réduire les 14 % de feuilles de soins encore traitées manuellement ; (3) Améliorer l'accessibilité pour les personnes peu à l'aise avec le numérique (fracture digitale)."},
+{n:3,pts:2,q:"Comment le lean management peut-il aider l'Assurance Maladie à améliorer la qualité de son service ?",rep:"Le lean management, appliqué à l'Assurance Maladie, consiste à identifier et éliminer les gaspillages dans le traitement des dossiers : (1) Gaspillages à éliminer : traitements redondants (une feuille de soins traitée plusieurs fois), files d'attente (dossiers en attente de traitement), corrections d'erreurs (retraitements), déplacements inutiles dans les CPAM ; (2) Outils lean applicables : standardisation des processus de traitement (via la dématérialisation), automatisation des tâches répétitives (traitement automatique déjà à 86 %), formation des agents aux processus optimisés ; (3) Résultats attendus : réduction du délai de traitement sous 3 jours, réduction du coût de gestion à 2,5 cts/€, amélioration de la satisfaction assurés au-delà de 90 %."}]},
+qcm:[
+{q:"La production en flux tendus (Juste-à-temps) vise principalement à…",os:["Maximiser les stocks de sécurité","Produire la bonne quantité au bon moment en minimisant les stocks","Augmenter la cadence de production","Réduire la qualité des produits"],a:1,e:"Les flux tendus (JAT = Juste-à-temps) visent le 'zéro stock' : produire exactement ce qui est nécessaire au moment voulu pour éviter les coûts de stockage."},
+{q:"La supply chain management (SCM) concerne…",os:["Uniquement la gestion des stocks","La coordination de toute la chaîne logistique des fournisseurs aux clients","Uniquement la relation avec les fournisseurs","Le transport des produits uniquement"],a:1,e:"Le SCM coordonne l'ensemble de la chaîne : fournisseurs → production → stockage → distribution → clients finaux. Il optimise les flux physiques et informationnels de bout en bout."},
+{q:"Le lean management vise à…",os:["Augmenter les stocks","Éliminer les gaspillages dans les processus de production","Réduire les effectifs","Augmenter les prix de vente"],a:1,e:"Le lean management identifie et élimine tous les gaspillages (délais inutiles, stocks excessifs, défauts, surproduction) pour améliorer la performance."},
+{q:"L'amélioration continue (Kaizen) implique…",os:["Uniquement les dirigeants","Tous les acteurs de l'organisation dans une démarche progressive permanente","Uniquement les ingénieurs qualité","Des changements brutaux et radicaux"],a:1,e:"Le Kaizen est une démarche progressive, permanente, impliquant TOUS les acteurs (du dirigeant à l'opérateur) pour améliorer continuellement les processus."}],
+vf:[
+{q:"Les flux poussés permettent de répondre immédiatement à la demande mais risquent de générer des stocks.",a:true,e:"Les flux poussés produisent selon des prévisions → produits disponibles immédiatement mais risque de surproduction si les prévisions sont inexactes."},
+{q:"Decathlon produit uniquement des biens tangibles.",a:false,e:"Decathlon produit des biens (équipements sportifs) mais aussi des services non tangibles : SAV/réparation, location, commande en ligne, conseils personnalisés."},
+{q:"La qualité d'un produit se limite à l'absence de défauts.",a:false,e:"La qualité est plus large : c'est l'aptitude à satisfaire les besoins exprimés OU implicites des clients. Elle inclut fiabilité, service, design, conformité aux attentes."},
+{q:"Le lean management peut s'appliquer aussi bien à une entreprise industrielle qu'à un service public.",a:true,e:"Le lean est applicable dans tout type d'organisation (industrie, services, secteur public) pour éliminer les gaspillages et améliorer les processus."}],
+flash:[
+{t:"Flux tendus (JAT)",d:"Production Juste-à-Temps = zéro stock, on produit exactement ce qui est nécessaire au bon moment. Exige des fournisseurs très fiables."},
+{t:"Supply chain management",d:"Coordination de l'ensemble de la chaîne logistique, des fournisseurs aux clients finaux, pour optimiser les flux physiques et informationnels."},
+{t:"Lean management",d:"Approche de gestion visant à éliminer les 7 gaspillages (surproduction, attentes, défauts, stocks, transports, mouvements inutiles, traitements excessifs)."},
+{t:"Qualité",d:"Aptitude d'un produit ou service à satisfaire les besoins exprimés ou implicites des clients. Se contrôle et s'améliore en continu."},
+{t:"Kaizen",d:"Amélioration continue progressive, impliquant tous les acteurs de l'organisation pour améliorer constamment les processus et la qualité."}]},
+
+{id:3,n:4,th:1,ic:'⛷️',cas:'Manufacture Dénériaz / Faverges-Seythenex',
+title:'Comment contrôler les coûts ?',
+tags:['Coût complet','Coût spécifique','Charges directes','Charges indirectes','PLM','Budget'],
+cours:{intro:"Maîtriser les coûts est essentiel pour assurer la rentabilité d'une organisation. La Manufacture Dénériaz, fabricant de skis haut de gamme, illustre comment une jeune entreprise gère et contrôle ses coûts pour rester viable.",
+secs:[
+{t:"Le coût complet",pts:[
+"<strong>Coût complet :</strong> ensemble des charges incorporées dans le coût d'un produit ou service (charges directes + charges indirectes réparties).",
+"<strong>Charges directes :</strong> charges affectables directement et sans ambiguïté à un produit (matières premières, main-d'œuvre directe).",
+"<strong>Charges indirectes :</strong> charges qui ne peuvent pas être affectées directement à un produit → doivent être réparties selon des clés de répartition (ex : loyer réparti au prorata du nombre de produits).",
+"<strong>Coût de revient complet = Charges directes + Quote-part des charges indirectes.</strong>"]},
+{t:"Le coût spécifique",pts:[
+"<strong>Coût spécifique :</strong> charges directes affectables à un produit ou à un segment d'activité. Il exclut les charges indirectes communes qui ne peuvent pas être imputées spécifiquement.",
+"<strong>Marge sur coût spécifique = Chiffre d'affaires − Coût spécifique.</strong>",
+"Utilisé pour évaluer la contribution d'un produit à la couverture des charges communes et à la rentabilité globale."],fo:{l:"Coût complet unitaire",eq:"(Charges directes + Charges indirectes réparties) / Quantités produites"}},
+{t:"La gestion du cycle de vie des produits (PLM)",tbl:{h:['Phase','Caractéristiques','Enjeux coûts'],r:[['Lancement','Ventes faibles, investissements R&D élevés','Coûts élevés, résultat souvent négatif'],['Croissance','Ventes en hausse rapide','Économies d\'échelle, amélioration des coûts'],['Maturité','Ventes stables, concurrence forte','Optimisation des coûts, maintien des marges'],['Déclin','Ventes en baisse','Réduction des coûts ou arrêt du produit']]}}],
+ret:["Coût complet = charges directes + quote-part des charges indirectes réparties","Coût spécifique = charges directement affectables à un produit (sans les charges communes)","Marge sur coût spécifique = CA − Coût spécifique","PLM : lancement → croissance → maturité → déclin (chaque phase a des enjeux coûts différents)","Contrôler les coûts = condition essentielle de la rentabilité et de la survie de l'organisation"]},
+bac:{ent:'Faverges-Seythenex (station de ski La Sambuy)',desc:"La station de ski de La Sambuy, gérée par la régie municipale de Faverges-Seythenex (Haute-Savoie), fait face à des difficultés financières liées au réchauffement climatique et à la nécessité d'investir massivement. L'association 'Tous ensemble pour La Sambuy' (TEPS) cherche des solutions pour maintenir l'activité.",
+docs:[
+{lbl:"Document 1 — La situation financière de la station de La Sambuy",txt:"La station de La Sambuy (moyenne montagne, 1 150-1 850 m) affiche un déficit chronique d'exploitation estimé à 500 000 euros pour l'année 2023. La station aurait besoin d'un tas d'investissements dans les années à venir pour renouveler ses équipements et son matériel. Le réchauffement climatique et les difficultés d'enneigement ont également pesé dans la balance. Le Conseil municipal de Faverges-Seythenex a voté la fermeture des remontées mécaniques fin 2023 et lancé une 'réflexion globale' sur la reconversion du site."},
+{lbl:"Document 2 — Les parties prenantes et leurs intérêts",data:{h:['Partie prenante','Intérêts et attentes'],r:[['Commune de Faverges-Seythenex','Équilibre budgétaire, pas de déficit permanent (500 000 €/an)'],['Saisonniers (≈ 40 personnes)','Maintien des emplois saisonniers et des revenus associés'],['Restaurants, loueurs, hôtels locaux','Maintien de l\'activité touristique et des revenus'],['Association TEPS','Maintenir la station ouverte, reconversion 4 saisons'],['Skieurs habitués','Accessibilité à une station familiale à prix abordable']]}}],
+qs:[
+{n:1,pts:2,q:"À partir du document 2, identifiez les parties prenantes de la station de La Sambuy et qualifiez leurs relations.",rep:"Parties prenantes internes : la commune de Faverges-Seythenex (propriétaire et gestionnaire via sa régie) et les saisonniers (salariés directs). Parties prenantes externes : restaurateurs, loueurs et hôtels locaux (partenaires économiques) ; l'association TEPS (société civile) ; les skieurs (clients). Relations : la commune est la partie prenante centrale qui doit arbitrer entre l'équilibre budgétaire (supprimer le déficit de 500 000 €/an) et les attentes sociales et économiques des autres parties prenantes (emplois, revenus touristiques). Les relations sont à la fois conflictuelles (commune vs emplois saisonniers/restaurants) et coopératives (TEPS cherche une solution acceptable pour tous)."},
+{n:2,pts:3,q:"En quoi le déficit de 500 000 euros remet-il en question l'équilibre budgétaire de la commune et quelles solutions TEPS propose-t-elle ?",rep:"Impact sur la commune : le déficit de 500 000 €/an signifie que la commune doit financer ce manque à gagner sur son budget général, au détriment d'autres dépenses publiques (entretien des routes, services à la population). Cela remet en question la pérennité d'un service public coûteux dont les bénéficiaires directs (skieurs) sont minoritaires dans la commune. Solutions proposées par TEPS : (1) Diversification 4 saisons : proposer en été luge sur rail, VTT, parapente, vols en parapente → réduire la dépendance à la neige et élargir la saison ; (2) Pétition avec 1 910 signatures pour des subventions destinées à un projet de reconversion 'retour à la nature' ; (3) Reconversion du domaine en activités de pleine nature toute l'année pour réduire les coûts tout en maintenant l'attractivité touristique."},
+{n:3,pts:3,q:"Montrez comment la gestion du cycle de vie des produits (PLM) peut s'appliquer à la situation de la station de La Sambuy.",rep:"La station de La Sambuy illustre parfaitement la phase de déclin du cycle de vie : ventes (fréquentation) en baisse à cause du réchauffement climatique, coûts d'exploitation maintenu ou en hausse (remontées mécaniques vieillissantes), déficit structurel de 500 000 €/an. Les enjeux coûts spécifiques à cette phase de déclin sont : maintenir ou réduire les coûts d'exploitation (personnel saisonnier, énergie des remontées, entretien) pendant que les recettes baissent. Selon le PLM, en phase de déclin, l'organisation a 3 options : (1) Arrêt du produit (fermeture des remontées) → la décision du conseil municipal ; (2) Reformulation du produit (reconversion 4 saisons proposée par TEPS) → transformer une activité de déclin en un nouveau produit en phase de lancement ; (3) Réduction des coûts pour maintenir une rentabilité minimale → non viable ici étant donné le niveau du déficit."}]},
+qcm:[
+{q:"Le coût complet comprend…",os:["Uniquement les charges directes","Les charges directes ET les charges indirectes réparties","Uniquement les matières premières","Le coût de vente uniquement"],a:1,e:"Coût complet = charges directes (affectées directement) + quote-part des charges indirectes (réparties selon des clés). Il intègre TOUTES les charges."},
+{q:"Le coût spécifique d'un produit comprend…",os:["Toutes les charges de l'organisation","Uniquement les charges directement affectables à ce produit","Les charges indirectes communes uniquement","Le résultat net"],a:1,e:"Le coût spécifique = charges directement affectables au produit. Il exclut les charges indirectes communes qui bénéficient à plusieurs produits."},
+{q:"En phase de maturité du cycle de vie, l'enjeu principal est…",os:["Lancer des investissements massifs en R&D","Optimiser les coûts et maintenir les marges face à la concurrence","Accepter des pertes importantes","Arrêter immédiatement la production"],a:1,e:"En phase de maturité, les ventes sont stables mais la concurrence est forte. L'enjeu est d'optimiser les coûts de production pour maintenir les marges."},
+{q:"La marge sur coût spécifique permet d'évaluer…",os:["Le bénéfice net de l'organisation","La contribution d'un produit à la couverture des charges communes","Le coût de revient complet","La rentabilité brute de l'exploitation"],a:1,e:"Marge sur coût spécifique = CA − Coût spécifique. Elle mesure la contribution de chaque produit à la couverture des charges communes (indirectes) et au bénéfice."}],
+vf:[
+{q:"Les charges indirectes peuvent être affectées directement à un produit spécifique.",a:false,e:"Les charges INDIRECTES ne peuvent pas être affectées directement → elles doivent être RÉPARTIES entre les produits selon des clés de répartition (surface, heures de travail...)."},
+{q:"Un produit en phase de déclin doit toujours être arrêté immédiatement.",a:false,e:"En phase de déclin, 3 options existent : arrêt, reformulation/reconversion, ou réduction des coûts. Le choix dépend de la viabilité économique et des enjeux stratégiques."},
+{q:"Le coût complet est plus utile que le coût spécifique pour décider d'arrêter un produit.",a:false,e:"Le coût spécifique est souvent plus pertinent pour les décisions d'abandon : si la marge sur coût spécifique est positive, le produit contribue à couvrir les charges communes même si le coût complet génère une perte."},
+{q:"La gestion du cycle de vie des produits (PLM) peut s'appliquer à des services publics.",a:true,e:"Le PLM s'applique à tout produit ou service : un service public peut aussi traverser des phases de croissance, maturité et déclin (ex : La Sambuy en phase de déclin)."}],
+flash:[
+{t:"Coût complet",d:"Ensemble des charges incorporées : charges directes + quote-part des charges indirectes réparties selon des clés. Permet de fixer un prix de vente couvrant tous les coûts."},
+{t:"Coût spécifique",d:"Charges directement affectables à un produit ou segment, sans les charges communes. Permet de calculer la marge de contribution du produit."},
+{t:"Marge sur coût spécifique",d:"CA − Coût spécifique. Mesure la contribution d'un produit à la couverture des charges communes et au résultat de l'organisation."},
+{t:"Cycle de vie des produits (PLM)",d:"Lancement → Croissance → Maturité → Déclin. Chaque phase a des enjeux coûts et des décisions stratégiques différents."},
+{t:"Charges directes vs indirectes",d:"Directes : affectées sans ambiguïté à un produit. Indirectes : communes à plusieurs produits → doivent être réparties selon une clé."}]},
+
+{id:4,n:5,th:1,ic:'🪑',cas:'Fermob / Comcyber',
+title:'Les transformations numériques, une chance pour la production ?',
+tags:['Dématérialisation','Automatisation','Workflow','Cloud computing','IA','Diagramme des flux'],
+cours:{intro:"Le numérique transforme en profondeur les processus de production. Fermob, fabricant de mobilier de jardin, illustre comment une entreprise plus que centenaire s'appuie sur le numérique pour améliorer sa performance et assurer sa pérennité.",
+secs:[
+{t:"Les transformations digitales de la production",tbl:{h:['Transformation','Définition','Exemple'],r:[['Dématérialisation','Remplacement de documents papier par des formats numériques','Commandes clients en ligne, factures électroniques chez Fermob'],['Automatisation','Utilisation de machines et logiciels pour remplacer des tâches humaines répétitives','Robots de peinture et découpe automatisée chez Fermob'],['Workflow (flux de travaux)','Modélisation et automatisation des processus métier (enchainement des tâches)','Suivi automatique des commandes de A à Z'],['IoT (objets connectés)','Capteurs et appareils connectés transmettant des données en temps réel','Machines connectées qui remontent leurs données de production']]}}
+,{t:"Les nouvelles technologies dans la production",pts:[
+"<strong>Cloud computing (informatique en nuage) :</strong> accès à des ressources informatiques (stockage, calcul, logiciels) via internet, sans infrastructure locale. Réduction des coûts IT, flexibilité, accessibilité.",
+"<strong>Intelligence artificielle (IA) :</strong> algorithmes capables d'apprendre et de prendre des décisions. Applications : prédiction de la demande, optimisation des stocks, maintenance prédictive.",
+"<strong>Données ouvertes (open data) :</strong> données publiquement accessibles et réutilisables. Permettent aux organisations d'enrichir leurs analyses (données météo, économiques, démographiques).",
+"<strong>Diagramme des flux :</strong> représentation graphique des flux d'informations et des flux physiques entre les différents acteurs d'un processus (fournisseur → organisation → client)."],fo:{l:"Diagramme de flux",eq:"Fournisseur → [Commande] → Organisation → [Livraison] → Client"}}],
+ret:["Dématérialisation = remplacer le papier par le numérique","Automatisation = confier les tâches répétitives aux machines → libère les humains","Workflow = modélisation et automatisation des processus métier","Cloud = accès distant à des ressources informatiques (flexibilité, économies)","IA = algorithmes qui apprennent et décident (prédiction, optimisation, maintenance prédictive)"]},
+bac:{ent:'Comcyber (Commandement de la Cyberdéfense)',desc:"Le Commandement de la Cyberdéfense (Comcyber) est une organisation militaire française chargée de protéger les systèmes d'information de l'État contre les cyberattaques. Il coordonne la réponse aux incidents cyber et développe les capacités de cyberdéfense.",
+docs:[
+{lbl:"Document 1 — Les missions du Comcyber",txt:"Le Comcyber a pour mission de protéger les systèmes d'information et les réseaux des armées françaises, de détecter et analyser les cyberattaques, et d'organiser la réponse opérationnelle. Il lutte contre les tentatives d'espionnage, de sabotage et d'influence. Face à la multiplication des cybermenaces (ransomwares, phishing, attaques d'État), le Comcyber recrute massivement des spécialistes : hackers éthiques, analystes cyber, ingénieurs en sécurité. Il forme également ses propres experts via l'École de Cyberdéfense."},
+{lbl:"Document 2 — Quelques cybermenaces types",data:{h:['Menace','Définition','Impact sur les organisations'],r:[['Ransomware','Logiciel malveillant qui chiffre les données et exige une rançon','Paralysie de l\'activité, perte de données, paiement de rançon'],['Phishing','Email frauduleux imitant une entité de confiance pour voler des identifiants','Vol de données personnelles, accès non autorisé'],['Attaque DDoS','Saturation d\'un serveur par des milliers de requêtes simultanées','Indisponibilité du site ou service (perte de CA)'],['Espionnage industriel','Vol de données stratégiques (brevets, fichiers clients, plans)','Perte d\'avantage concurrentiel, fuite de données clients']]}}],
+qs:[
+{n:1,pts:2,q:"Identifiez le type d'organisation du Comcyber et justifiez.",rep:"Le Comcyber est une organisation publique militaire : (1) Type : organisation publique relevant du Ministère des Armées → but non lucratif, financement par des fonds publics (budget de la Défense) ; (2) Missions d'intérêt général : protection des systèmes d'information de l'État → mission régalienne (sécurité nationale) ; (3) Statut : commandement militaire, à la différence d'une entreprise privée ou d'une association. Ses acteurs sont des militaires et des civils de la Défense nationale, soumis au statut militaire et au devoir de réserve."},
+{n:2,pts:3,q:"À partir du document 2, expliquez comment les transformations numériques exposent les organisations à de nouvelles menaces.",rep:"Les transformations numériques (dématérialisation, cloud, IoT, automatisation) créent de nouvelles vulnérabilités : (1) Ransomware → la dématérialisation des données et leur stockage en cloud multiplie les cibles potentielles pour les logiciels malveillants → une entreprise entièrement numérisée peut être paralysée totalement (ex : fiche clients chiffrée = arrêt complet du service) ; (2) Phishing → la multiplication des comptes et services numériques (emails, portails RH, ERP) multiplie les points d'entrée pour les attaquants → un seul email frauduleux peut compromettre tout le système d'information ; (3) DDoS → la digitalisation de la relation client (sites e-commerce, portails de services publics) en fait une cible : si le site est inaccessible, l'organisation ne peut plus servir ses clients ; (4) Espionnage → les données stratégiques (brevets, données clients, plans industriels) stockées numériquement sont plus facilement accessibles à distance qu'en version papier."},
+{n:3,pts:3,q:"Comment les organisations peuvent-elles se protéger contre les cybermenaces tout en poursuivant leur transformation numérique ?",rep:"Les organisations peuvent combiner protection et transformation numérique par plusieurs approches : (1) Gouvernance cyber : nommer un RSSI (Responsable Sécurité des Systèmes d'Information), définir une politique de sécurité, réaliser des audits réguliers ; (2) Sécurisation technique : firewalls, antivirus, chiffrement des données, authentification multi-facteurs (MFA), sauvegardes régulières hors ligne ; (3) Formation des utilisateurs : sensibiliser les salariés aux phishing, aux bonnes pratiques (mots de passe forts, mise à jour des systèmes) → le facteur humain reste la principale vulnérabilité ; (4) Plan de continuité d'activité (PCA) : prévoir les procédures à suivre en cas de cyberattaque pour limiter l'impact et reprendre l'activité rapidement ; (5) Partenariats institutionnels : collaboration avec le Comcyber, l'ANSSI (Agence Nationale de Sécurité des SI) pour bénéficier de l'expertise publique. La transformation numérique n'est pas à freiner mais à sécuriser dès la conception (security by design)."}]},
+qcm:[
+{q:"Le cloud computing permet principalement…",os:["De supprimer les serveurs internes définitivement","D'accéder à des ressources informatiques via internet sans infrastructure locale lourde","D'automatiser la production industrielle","De créer des robots industriels"],a:1,e:"Le cloud offre accès flexible à des ressources IT (stockage, calcul, logiciels) via internet. Avantages : économies, scalabilité, accessibilité. Inconvénients : dépendance, sécurité."},
+{q:"L'automatisation de la production permet principalement de…",os:["Supprimer tous les emplois","Libérer les humains des tâches répétitives et améliorer la productivité","Réduire la qualité des produits","Augmenter les délais de production"],a:1,e:"L'automatisation confie les tâches répétitives (découpe, peinture, assemblage) aux machines → libère les humains pour des tâches à plus forte valeur ajoutée et améliore la productivité."},
+{q:"Un ransomware est…",os:["Un logiciel de gestion des ressources humaines","Un logiciel malveillant qui chiffre les données et exige une rançon","Un outil d'automatisation de la production","Un logiciel de veille commerciale"],a:1,e:"Un ransomware ('rançongiciel') est un logiciel malveillant qui chiffre les données de la victime et exige le paiement d'une rançon pour les déchiffrer."},
+{q:"Le diagramme des flux représente…",os:["Les résultats financiers de l'organisation","La circulation des flux physiques et d'informations entre les acteurs d'un processus","L'organigramme hiérarchique","Les compétences des salariés"],a:1,e:"Le diagramme des flux cartographie les flux physiques (marchandises, produits) et d'informations (commandes, factures, données) entre les différents acteurs d'un processus."}],
+vf:[
+{q:"La dématérialisation réduit toujours les risques pour l'organisation.",a:false,e:"La dématérialisation réduit certains risques (perte physique de documents) mais en crée de nouveaux (cyberattaques, panne informatique, piratage de données)."},
+{q:"L'intelligence artificielle peut être utilisée pour prédire les pannes de machines (maintenance prédictive).",a:true,e:"La maintenance prédictive utilise l'IA et les capteurs (IoT) pour analyser les données des machines en temps réel et prédire les pannes avant qu'elles surviennent."},
+{q:"Toutes les organisations sont également concernées par les cybermenaces.",a:false,e:"Les organisations sont concernées à des degrés différents selon leur secteur, leur taille et leur degré de numérisation. Les organisations stratégiques (défense, énergie, santé) sont des cibles prioritaires."},
+{q:"Le workflow permet d'automatiser et de standardiser l'enchaînement des tâches dans un processus.",a:true,e:"Le workflow modélise et automatise les processus métier : qui fait quoi, dans quel ordre, avec quelles informations → réduit les erreurs et les délais."}],
+flash:[
+{t:"Dématérialisation",d:"Remplacement de supports papier par des formats numériques. Réduit les coûts et délais mais crée de nouveaux risques numériques."},
+{t:"Automatisation",d:"Utilisation de machines et logiciels pour remplacer des tâches humaines répétitives. Améliore productivité et qualité, libère les humains pour des tâches à VA."},
+{t:"Cloud computing",d:"Accès à des ressources informatiques (stockage, logiciels) via internet sans infrastructure locale. Flexible et économique mais dépendant d'internet."},
+{t:"Intelligence artificielle (IA)",d:"Algorithmes capables d'apprendre et de décider. Applications en entreprise : prédiction de demande, maintenance prédictive, optimisation logistique."},
+{t:"Diagramme des flux",d:"Représentation graphique de la circulation des flux physiques (produits) et informationnels (commandes, données) entre les acteurs d'un processus."}]},
+
+{id:5,n:6,th:1,ic:'🛍️',cas:'Veepee / Racing Club de Cannes',
+title:'Comment assurer un fonctionnement cohérent des organisations ?',
+tags:['Organisation rigide','Organisation souple','Mécanismes de coordination','Lean management','Centralisation'],
+cours:{intro:"Comment organiser le travail pour atteindre les objectifs de l'organisation ? Veepee, leader européen de la vente événementielle en ligne, a fait le choix d'une organisation souple, à l'opposé d'Amazon qui a opté pour une structure rigide et hiérarchisée.",
+secs:[
+{t:"Organisation rigide vs organisation souple",tbl:{h:['','Organisation rigide','Organisation souple'],r:[['Définition des tâches','Très précise, peu évolutive','Polyvalence, enrichissement des tâches'],['Ligne hiérarchique','Longue, nombreux niveaux','Courte, peu de niveaux'],['Prise de décision','Centralisée en haut de la hiérarchie','Décentralisée, décisions au plus près du terrain'],['Flexibilité','Faible','Élevée, adaptation rapide'],['Exemples','Armée, grandes chaînes de production','Start-ups, Veepee, entreprises libérées']]}},
+{t:"Les mécanismes de coordination du travail",pts:[
+"<strong>Supervision directe :</strong> un responsable coordonne directement le travail de ses subordonnés (ex : chef d'équipe).",
+"<strong>Standardisation des procédés :</strong> les méthodes de travail sont définies à l'avance (procédures, manuels). Ex : procédures d'accueil dans les hôtels.",
+"<strong>Standardisation des résultats :</strong> les objectifs à atteindre sont définis, les acteurs choisissent leurs méthodes. Ex : objectifs commerciaux chiffrés.",
+"<strong>Ajustement mutuel :</strong> coordination informelle par communication directe entre les acteurs (ex : équipes agiles, start-ups)."]},
+{t:"La centralisation / décentralisation du pouvoir",pts:[
+"<strong>Centralisation :</strong> le pouvoir de décision est concentré au sommet de la hiérarchie. Avantage : cohérence des décisions. Inconvénient : lenteur, éloignement du terrain.",
+"<strong>Décentralisation :</strong> délégation de l'autorité aux niveaux inférieurs. Avantage : réactivité, motivation. Inconvénient : risque d'incohérence.",
+"<strong>Lean management :</strong> gestion au plus près du terrain, élimination des gaspillages, implication de tous les acteurs dans l'amélioration continue."]}],
+ret:["Organisation rigide : tâches précises, hiérarchie longue, centralisation | Organisation souple : polyvalence, hiérarchie courte, décentralisation","4 mécanismes de coordination : supervision directe, standardisation des procédés, standardisation des résultats, ajustement mutuel","Centralisation = pouvoir en haut | Décentralisation = délégation vers le bas","Lean management = zéro gaspillage, implication de tous","La forme d'organisation choisie doit être cohérente avec la stratégie et la taille de l'organisation"]},
+bac:{ent:'Racing Club de Cannes Volley',desc:"Le Racing Club de Cannes est un club de volley-ball professionnel féminin qui joue en Ligue A (première division française). C'est l'un des clubs les plus titrés en France et en Europe. Il doit gérer une organisation complexe alliant sportifs professionnels, bénévoles et salariés administratifs.",
+docs:[
+{lbl:"Document 1 — L'organisation du Racing Club de Cannes",txt:"Le RC Cannes emploie 15 salariées sportives professionnelles (joueuses + encadrement), 3 salariés administratifs et s'appuie sur un réseau de 120 bénévoles. Le président assure la direction générale. Un directeur sportif gère l'équipe professionnelle en coordination directe avec l'entraîneur. Le responsable marketing coordonne la communication et les partenariats. Les bénévoles s'organisent eux-mêmes lors des matchs selon leurs missions respectives (accueil, placement, buvette, sécurité)."},
+{lbl:"Document 2 — Les défis de coordination",txt:"La coexistence de salariés professionnels et de bénévoles crée des défis de coordination. Les salariées professionnelles ont des contraintes d'entraînement et de déplacements stricts. Les bénévoles, eux, sont disponibles principalement le soir et le week-end. Le président reconnaît que 'chacun a son rôle mais parfois les priorités divergent'. Une application mobile a été mise en place pour coordonner les bénévoles lors des matchs à domicile."}],
+qs:[
+{n:1,pts:2,q:"À partir du document 1, identifiez les mécanismes de coordination utilisés au RC Cannes.",rep:"Le RC Cannes utilise plusieurs mécanismes de coordination : (1) Supervision directe : le directeur sportif coordonne directement les joueuses et l'entraîneur → relation hiérarchique directe ; (2) Standardisation des procédés : les missions des bénévoles lors des matchs sont définies à l'avance (accueil, placement, buvette, sécurité) → procédures standardisées ; (3) Standardisation des résultats : les joueuses professionnelles ont des objectifs sportifs définis (résultats en championnat, qualification européenne) → chacune gère son entraînement individuel selon ces objectifs ; (4) Ajustement mutuel : les bénévoles s'organisent entre eux informellement pour couvrir les missions → coordination informelle via l'application mobile."},
+{n:2,pts:3,q:"À partir des documents, analysez les avantages et les limites d'une organisation basée sur un mélange de salariés et de bénévoles.",rep:"Avantages : (1) Réduction des coûts : les bénévoles permettent au club de fonctionner avec seulement 3 salariés administratifs et 15 sportifs → masse salariale maîtrisée ; (2) Flexibilité en effectifs : le nombre de bénévoles peut varier selon les besoins (match local vs déplacement) ; (3) Implication et motivation : les bénévoles sont passionnés par le club → engagement fort, bonne ambiance. Limites : (1) Disponibilité aléatoire : les bénévoles ne sont disponibles qu'en soirée et week-end → difficultés pour les événements en semaine ; (2) Coordination complexe : le président reconnaît que 'les priorités divergent' → risque de conflits entre exigences des professionnels et contraintes des bénévoles ; (3) Professionnalisme variable : les bénévoles n'ont pas tous la même formation → qualité de service inégale ; (4) Turn-over élevé : les bénévoles s'engagent librement, peuvent partir → risque de discontinuité."},
+{n:3,pts:3,q:"En quoi la mise en place d'une application mobile de coordination représente-t-elle une transformation numérique bénéfique pour le RC Cannes ?",rep:"L'application mobile est une transformation numérique qui améliore l'organisation à plusieurs niveaux : (1) Mécanisme de coordination digitalisé : remplace les appels téléphoniques et les emails → coordination des 120 bénévoles en temps réel, plus simple et plus fiable ; (2) Standardisation des procédés : les missions (accueil, placement...) peuvent être affectées numériquement avec des protocoles attachés → réduit les erreurs ; (3) Visibilité et traçabilité : le responsable bénévoles peut voir en temps réel les missions couvertes et les manques → peut agir vite ; (4) Engagement des bénévoles : l'application crée un lien entre le club et ses bénévoles (notifications, calendrier des matchs) → fidélisation ; (5) Réduction des coûts de coordination : une seule personne peut gérer 120 bénévoles avec l'outil. C'est une transformation numérique à faible coût pour un bénéfice organisationnel élevé."}]},
+qcm:[
+{q:"Dans une organisation souple, la prise de décision est…",os:["Concentrée au sommet de la hiérarchie","Décentralisée, au plus près du terrain","Uniquement confiée aux actionnaires","Interdite aux salariés"],a:1,e:"Dans une organisation souple, le pouvoir de décision est délégué vers le bas (décentralisation) → réactivité accrue et motivation des acteurs."},
+{q:"La standardisation des résultats consiste à…",os:["Définir précisément les méthodes de travail","Fixer des objectifs à atteindre en laissant les acteurs choisir leurs méthodes","Superviser directement chaque salarié","Automatiser les processus de production"],a:1,e:"Standardisation des résultats = définir les objectifs (le QUOI) sans imposer les méthodes (le COMMENT). Ex : objectifs de vente chiffrés pour les commerciaux."},
+{q:"L'ajustement mutuel est un mécanisme de coordination…",os:["Très formalisé et basé sur des procédures écrites","Informel, basé sur la communication directe entre acteurs","Uniquement utilisé dans les grandes entreprises","Imposé par la direction"],a:1,e:"L'ajustement mutuel est un mécanisme informel : les acteurs se coordonnent directement par communication spontanée, sans passer par la hiérarchie."},
+{q:"Le lean management vise à…",os:["Augmenter le nombre de niveaux hiérarchiques","Éliminer les gaspillages et impliquer tous les acteurs dans l'amélioration","Centraliser toutes les décisions","Standardiser les salaires"],a:1,e:"Le lean management cherche à éliminer les 7 types de gaspillages (surproduction, attentes, défauts, stocks, transports, mouvements, traitements inutiles) en impliquant tous les niveaux de l'organisation."}],
+vf:[
+{q:"Une organisation rigide est toujours moins performante qu'une organisation souple.",a:false,e:"Certaines activités bénéficient d'une organisation rigide : production de masse standardisée, activités réglementées (aéronautique, nucléaire) où les procédures strictes sont essentielles à la sécurité."},
+{q:"La supervision directe est le seul mécanisme de coordination dans les petites organisations.",a:false,e:"Les petites organisations utilisent souvent l'ajustement mutuel (communication directe informelle) en plus de la supervision directe."},
+{q:"La décentralisation favorise la réactivité de l'organisation face aux changements.",a:true,e:"La décentralisation rapproche la décision du terrain → les acteurs locaux peuvent réagir plus vite aux évolutions de leur environnement sans attendre les validations hiérarchiques."},
+{q:"Le lean management s'applique uniquement à la production industrielle.",a:false,e:"Le lean s'applique à tout type d'organisation (services, hôpitaux, collectivités) pour améliorer les processus et éliminer les gaspillages, quels que soient le secteur ou la taille."}],
+flash:[
+{t:"Organisation rigide",d:"Tâches précisément définies, hiérarchie longue, centralisation du pouvoir, spécialisation forte. Avantage : cohérence. Inconvénient : lenteur, rigidité."},
+{t:"Organisation souple",d:"Polyvalence, hiérarchie courte, décentralisation, flexibilité. Avantage : réactivité, motivation. Inconvénient : risque d'incohérence."},
+{t:"Mécanismes de coordination",d:"4 types : supervision directe (hiérarchie), standardisation des procédés (méthodes), standardisation des résultats (objectifs), ajustement mutuel (informel)."},
+{t:"Centralisation vs Décentralisation",d:"Centralisation : pouvoir concentré en haut → cohérence mais lenteur. Décentralisation : délégation vers le bas → réactivité mais risque d'incohérence."},
+{t:"Lean management",d:"Gestion au plus près du terrain, élimination des gaspillages, implication de tous dans l'amélioration continue. Applicable dans tous les types d'organisations."}]},
+{id:6,n:7,th:2,ic:'🏭',cas:'FAVI / Structa',
+title:'Comment fédérer les acteurs de l\'organisation ?',
+tags:['Style de direction','Culture d\'organisation','Motivation','Dynamique de groupe','Coopération','QVT'],
+cours:{intro:"Fédérer les acteurs est l'un des grands défis du management. FAVI, fonderie de métaux qui a supprimé sa hiérarchie au profit du concept de mini-usines autonomes, illustre une approche radicale de la motivation et de la coopération.",
+secs:[
+{t:"Les intérêts et attentes des acteurs",tbl:{h:['Acteur','Intérêts et attentes'],r:[['Dirigeants','Rentabilité, développement, contrôle, réputation'],['Salariés','Rémunération, conditions de travail, reconnaissance, évolution'],['Actionnaires','Dividendes, valorisation de l\'entreprise'],['Clients','Qualité, prix, délais, service'],['Société civile','Emploi local, respect environnement, éthique']]}},
+{t:"La culture d'organisation et les styles de direction",pts:[
+"<strong>Culture d'organisation :</strong> ensemble des valeurs, croyances, normes et comportements partagés par les membres d'une organisation. Elle influence les comportements et la performance.",
+"<strong>Style de direction :</strong> manière dont les dirigeants exercent leur autorité et prennent leurs décisions.",
+"<strong>Style autoritaire :</strong> décisions centralisées, peu de participation des salariés.",
+"<strong>Style participatif :</strong> implication des salariés dans les décisions, délégation d'autorité.",
+"<strong>Style délégatif (entreprise libérée) :</strong> les équipes s'organisent elles-mêmes, le dirigeant est un facilitateur. Ex : FAVI avec ses mini-usines autonomes."]},
+{t:"La motivation et la qualité de vie au travail",pts:[
+"<strong>Facteurs de motivation extrinsèques :</strong> rémunération, primes, avantages → récompenses extérieures au travail lui-même.",
+"<strong>Facteurs de motivation intrinsèques (Herzberg) :</strong> intérêt du travail, responsabilités, autonomie, reconnaissance → satisfaction intrinsèque liée au travail lui-même.",
+"<strong>Qualité de vie au travail (QVT) :</strong> ensemble des conditions permettant aux salariés de travailler dans de bonnes conditions → santé, bien-être, équilibre vie pro/perso.",
+"<strong>Dynamique de groupe :</strong> phénomènes qui se produisent dans un groupe (cohésion, influence, leadership) et qui influencent les comportements individuels."]}],
+ret:["Les acteurs d'une organisation ont des intérêts convergents ET divergents","Culture d'organisation = valeurs, normes et comportements partagés","3 styles de direction : autoritaire, participatif, délégatif (entreprise libérée)","Motivation intrinsèque (intérêt, autonomie) > motivation extrinsèque (salaire) pour la performance durable","QVT = conditions de travail favorisant le bien-être et la performance"]},
+bac:{ent:'Structa',desc:"Structa est une PME spécialisée dans la fabrication de structures métalliques (ateliers industriels, entrepôts, gymnases). Elle emploie 45 salariés et se distingue par son organisation participative et son fort taux de fidélisation des collaborateurs.",
+docs:[
+{lbl:"Document 1 — L'organisation participative chez Structa",txt:"Chez Structa, les équipes de production s'organisent elles-mêmes pour répartir les chantiers. Chaque équipe de 5 ouvriers dispose d'un budget autonome pour ses fournitures et peut proposer des améliorations techniques. La direction organise deux fois par an une réunion plénière où chaque salarié peut soumettre une idée ou un projet. En 2022, 12 idées proposées par les ouvriers ont été mises en œuvre, générant une économie de 85 000 €. Le turn-over est de 4 % (secteur : 18 %)."},
+{lbl:"Document 2 — Les facteurs de motivation chez Structa",data:{h:['Facteur','Type','Description'],r:[['Rémunération (salaire + primes chantier)','Extrinsèque','Salaires 8 % au-dessus de la convention collective + prime sur résultat chantier'],['Autonomie des équipes','Intrinsèque','Chaque équipe s\'organise pour répartir les tâches du chantier'],['Participation aux décisions','Intrinsèque','Réunions plénières biannuelles, idées mises en œuvre'],['Sens du travail','Intrinsèque','Structa fabrique des gymnases et équipements sportifs → fierté des ouvriers'],['Conditions de travail','Extrinsèque','Équipements modernes, 4 jours/semaine proposé en option depuis 2023']]}}],
+qs:[
+{n:1,pts:2,q:"À partir du document 1, montrez comment Structa fédère ses acteurs internes.",rep:"Structa fédère ses acteurs internes par plusieurs mécanismes : (1) Autonomie des équipes : chaque équipe de 5 ouvriers s'organise elle-même et dispose d'un budget autonome → sentiment de responsabilité et d'appartenance ; (2) Participation aux décisions : les réunions plénières biannuelles permettent à TOUS les salariés de proposer des améliorations → co-construction de l'organisation ; (3) Valorisation des idées : 12 idées mises en œuvre en 2022 (85 000 € d'économies) → reconnaissance concrète des contributions des ouvriers ; (4) Résultat : un turn-over de 4 % vs 18 % dans le secteur → les salariés restent car ils se sentent impliqués et reconnus."},
+{n:2,pts:3,q:"À partir du document 2, distinguez les facteurs de motivation extrinsèques et intrinsèques chez Structa et analysez leur complémentarité.",rep:"Facteurs extrinsèques (récompenses extérieures) : rémunération attractive (salaires +8 % + primes chantier) et conditions de travail favorables (équipements modernes, option 4 jours/semaine). Facteurs intrinsèques (satisfaction liée au travail lui-même) : autonomie des équipes (organisation autonome des chantiers), participation aux décisions (réunions plénières, idées mises en œuvre), sens du travail (fabrication de gymnases → fierté de contribuer à des équipements sportifs collectifs). Complémentarité (théorie de Herzberg) : les facteurs extrinsèques (hygiènes) évitent l'insatisfaction mais ne motivent pas durablement. Les facteurs intrinsèques (motivation) génèrent un engagement profond et durable. Structa combine les deux : elle assure d'abord les conditions de base (salaires corrects, bons équipements) puis activate la motivation intrinsèque (autonomie, sens, participation) → ce qui explique le très faible turn-over de 4 %."},
+{n:3,pts:3,q:"La coopération entre les acteurs est-elle naturelle dans une organisation comme Structa ou doit-elle être organisée ?",rep:"La coopération n'est pas naturelle : elle doit être organisée et entretenue. Dans une organisation comme Structa, des mécanismes favorisent la coopération : (1) Organisation en équipes autonomes : chaque équipe de 5 ouvriers doit coopérer pour organiser le chantier → interdépendance organisationnelle force la coopération ; (2) Intérêts convergents : primes sur résultat chantier → les ouvriers ont un intérêt commun à bien travailler ensemble → alignement des incitations ; (3) Culture participative : les réunions plénières créent des espaces de coopération inter-équipes (échange d'idées, d'expériences) → culture de partage. Mais la coopération peut être compromise : (1) Conflits d'équipes : une équipe plus performante pourrait vouloir les meilleurs chantiers → tensions possibles ; (2) Passagers clandestins : dans un groupe, certains peuvent bénéficier du travail des autres sans contribuer équitablement → dilution de la responsabilité. La direction de Structa maintient la coopération par la culture, les incitations collectives et la valorisation publique des contributions."}]},
+qcm:[
+{q:"Le style de direction délégatif (entreprise libérée) se caractérise par…",os:["Des décisions centralisées au sommet","Des équipes qui s'organisent elles-mêmes, le dirigeant en facilitateur","Une hiérarchie très longue","Un contrôle permanent des salariés"],a:1,e:"Dans l'entreprise libérée (style délégatif), les équipes sont autonomes et s'auto-organisent. Le dirigeant abandonne une partie de son autorité formelle pour devenir un facilitateur."},
+{q:"Selon Herzberg, les facteurs d'hygiène (extrinsèques)…",os:["Motivent durablement les salariés","Évitent l'insatisfaction mais ne motivent pas durablement","Sont sans impact sur la performance","Sont uniquement le salaire"],a:1,e:"Herzberg distingue les facteurs d'hygiène (salaire, conditions) qui évitent l'insatisfaction, et les facteurs motivants (autonomie, sens, responsabilités) qui génèrent un engagement durable."},
+{q:"La qualité de vie au travail (QVT) comprend…",os:["Uniquement la rémunération","Les conditions permettant de travailler dans de bonnes conditions : santé, bien-être, équilibre","Uniquement les congés payés","Les primes de performance"],a:1,e:"La QVT intègre : conditions de travail, relations avec les collègues et la hiérarchie, sens du travail, équilibre vie pro/perso, santé et sécurité."},
+{q:"La culture d'organisation influence…",os:["Uniquement les salariés de la direction","Les comportements de TOUS les membres de l'organisation","Uniquement les nouveaux arrivants","Uniquement la communication externe"],a:1,e:"La culture d'organisation (valeurs, normes, comportements partagés) influence les comportements de TOUS les membres, des dirigeants aux opérateurs."}],
+vf:[
+{q:"Les intérêts des acteurs d'une organisation sont toujours convergents.",a:false,e:"Les acteurs ont des intérêts à la fois convergents (pérennité de l'organisation) et divergents (les actionnaires veulent des dividendes élevés, les salariés des salaires élevés → tension)."},
+{q:"Un style de direction autoritaire est adapté à toutes les situations.",a:false,e:"Le style autoritaire peut être adapté en situation de crise ou d'urgence, mais il freine l'initiative et la créativité dans les situations qui nécessitent innovation et engagement."},
+{q:"La motivation intrinsèque génère un engagement plus durable que la motivation extrinsèque.",a:true,e:"Selon Herzberg, les facteurs intrinsèques (autonomie, sens, responsabilités) génèrent un engagement profond et durable, contrairement aux facteurs extrinsèques (salaire) qui créent une satisfaction temporaire."},
+{q:"La dynamique de groupe peut avoir des effets négatifs sur les performances individuelles.",a:true,e:"La dynamique de groupe peut créer des effets négatifs : paresse sociale (certains individus travaillent moins dans un groupe), pensée de groupe (conformisme, prise de risque excessive)."}],
+flash:[
+{t:"Style de direction",d:"Autoritaire (centralisé) / Participatif (implication des salariés) / Délégatif / Entreprise libérée (équipes autonomes). À adapter selon le contexte."},
+{t:"Culture d'organisation",d:"Valeurs, croyances, normes et comportements partagés. Influence les comportements et la performance. Se construit sur le long terme."},
+{t:"Motivation intrinsèque vs extrinsèque",d:"Intrinsèque (autonomie, sens, responsabilités) = engagement durable. Extrinsèque (salaire, primes) = évite l'insatisfaction mais ne motive pas durablement."},
+{t:"Qualité de Vie au Travail (QVT)",d:"Conditions permettant de travailler dans de bonnes conditions : santé, bien-être, relations, équilibre vie pro/perso, sens du travail."},
+{t:"Coopération",d:"Travail collectif où les acteurs mettent leurs ressources en commun. Elle ne va pas de soi : elle doit être organisée et entretenue par la culture et les incitations."}]},
+
+{id:7,n:8,th:2,ic:'🚗',cas:'Getaround / Services Publics+',
+title:'Les transformations numériques et la relation avec les clients',
+tags:['Processus d\'achat','Digitalisation relation client','Traces numériques','Administration électronique','CRM'],
+cours:{intro:"Le numérique transforme en profondeur la relation entre les organisations et leurs clients ou usagers. Getaround, plateforme de partage de voitures, illustre comment le numérique permet de connaître le consommateur, de personnaliser la relation et d'améliorer les services.",
+secs:[
+{t:"Le comportement du consommateur",tbl:{h:['Facteur','Type','Exemple'],r:[['Besoins','Physiologiques, sécurité, appartenance, estime, réalisation (Maslow)','Besoin de mobilité → location de voiture'],['Motivations','Forces psychologiques poussant à l\'achat','Économie (moins cher qu\'un taxi), praticité, engagement environnemental'],['Freins','Obstacles à l\'achat','Peur de dommages, manque de confiance dans un inconnu'],['Attitudes','Prédispositions favorables ou défavorables','\'Je fais confiance aux évaluations des autres utilisateurs\'']]}},
+{t:"La digitalisation de la relation client",pts:[
+"<strong>CRM (Customer Relationship Management) :</strong> outil de gestion de la relation client permettant de centraliser toutes les informations clients, d'analyser leurs comportements et de personnaliser les interactions.",
+"<strong>Traces numériques :</strong> données laissées par les utilisateurs sur internet (clics, historique d'achats, localisation, likes). Permettent aux organisations de mieux connaître leurs clients.",
+"<strong>Marketing personnalisé :</strong> utilisation des données clients pour adapter l'offre, le message et le canal à chaque individu. Ex : recommandations Amazon, suggestions Spotify.",
+"<strong>Réseaux sociaux grand public :</strong> outils de communication et de fidélisation (Facebook, Instagram, TikTok) permettant d'interagir directement avec les clients."]},
+{t:"L'administration électronique",pts:[
+"<strong>Administration électronique (e-administration) :</strong> utilisation des technologies numériques par les services publics pour améliorer la relation avec les usagers.",
+"<strong>Avantages :</strong> disponibilité 24h/24, réduction des délais, dématérialisation des démarches (ameli.fr, impots.gouv.fr), réduction des coûts.",
+"<strong>Défis :</strong> fracture numérique (personnes peu à l'aise avec le numérique), sécurité des données personnelles (RGPD), accessibilité pour les personnes handicapées."]}],
+ret:["Comportement du consommateur : besoins (Maslow) → motivations + freins → attitudes → comportement d'achat","CRM = outil central de la gestion de la relation client numérique","Traces numériques = données laissées en ligne → personnalisation des offres","E-administration = services publics numériques (ameli.fr, impots.gouv.fr)","Digitalisation : avantages (disponibilité, personnalisation) + défis (fracture numérique, RGPD)"]},
+bac:{ent:'Services Publics+',desc:"Services Publics+ est un programme de la Direction interministérielle de la Transformation Publique (DITP) visant à améliorer la qualité des services publics en France. Il s'appuie notamment sur les avis des usagers et la simplification des démarches administratives en ligne.",
+docs:[
+{lbl:"Document 1 — Les Français et leurs démarches administratives",txt:"Selon une enquête de la DITP, environ 78 % des Français interrogés jugent leurs démarches administratives plutôt simples ou très simples. Cependant, un quart des usagers considèrent leurs démarches comme assez ou très compliquées. Ces démarches complexes concernent notamment ceux qui conduisent un véhicule ou sont résidents étrangers non européens. Les démarches liées au handicap et à la préparation de la retraite sont perçues comme de plus en plus complexes. Le site Services Publics+ permet aux usagers et professionnels d'identifier les bonnes démarches et de signaler des erreurs."},
+{lbl:"Document 2 — Le site 'Oups, j'ai fait une erreur' (Services Publics+)",data:{h:['Thème','Particuliers','Professionnels'],r:[['Impôts et taxes','Déclaration revenus, correction TVA','Rectification déclaration professionnelle'],['Retraite et retraite complémentaire','Corrections sur les droits acquis','Régularisation cotisations'],['Permis de conduire','Erreur adresse, perte de points injustifiée','Habilitation transport'],['Déclarations sociales (chômage, maladie)','Correction allocations','Déclaration charges sociales'],['État civil et identité','Correction nom, prénom, date de naissance','Immatriculation société']]}}],
+qs:[
+{n:1,pts:2,q:"Présentez sous forme de tableau les résultats de l'enquête de la DITP sur les difficultés des démarches administratives.",rep:"Tableau récapitulatif des résultats de l'enquête DITP :\n• Démarches jugées simples ou très simples : 78 % des Français\n• Démarches jugées assez ou très compliquées : 25 % des usagers\nDémarches les plus complexes :\n→ Conduite de véhicule / résidents étrangers non-européens : complexité accrue\n→ Démarches liées au handicap : de plus en plus complexes\n→ Préparation à la retraite : perçue comme de plus en plus complexe\nConclusion : Si la majorité des Français trouvent les démarches simples, un quart d'entre eux rencontrent des difficultés significatives, concentrées sur des populations souvent vulnérables."},
+{n:2,pts:3,q:"À partir des documents, expliquez pourquoi le site Services Publics+ améliore la relation entre les administrations et leurs usagers.",rep:"Services Publics+ améliore la relation administration-usagers à plusieurs niveaux : (1) Accessibilité : disponible 24h/24, l'usager peut signaler une erreur ou trouver la bonne démarche à tout moment, sans se déplacer en CPAM ou préfecture ; (2) Personnalisation : le site distingue les problèmes des particuliers et des professionnels (cf. tableau) → offre une réponse adaptée à chaque profil ; (3) Participation : les usagers peuvent signaler des erreurs ou des dysfonctionnements → les administrations s'améliorent grâce aux retours des usagers (co-construction du service public) ; (4) Réduction des erreurs : en permettant de corriger facilement des erreurs (déclaration de revenus, état civil), le site réduit les litiges et les re-traitements coûteux ; (5) Réduction de la fracture numérique : le site pédagogique ('Tout le monde peut se tromper !') réduit l'anxiété face aux erreurs administratives."},
+{n:3,pts:3,q:"Comment les transformations numériques peuvent-elles améliorer la qualité des services publics tout en présentant des risques ?",rep:"Améliorations apportées par le numérique : (1) Disponibilité accrue : guichet virtuel 24h/24, 7j/7 → accessibilité sans contrainte horaire ; (2) Rapidité : traitement automatique des demandes simples (ameli.fr : remboursements en 4-5 jours) → satisfaction usagers améliorée ; (3) Réduction des coûts : automatisation des tâches répétitives → économies sur les effectifs de guichet redistribuées vers les cas complexes ; (4) Personnalisation : l'historique des démarches permet d'anticiper les besoins (ex : pré-remplissage de la déclaration d'impôts). Risques associés : (1) Fracture numérique : 15-20 % des Français peu à l'aise avec internet sont exclus des démarches numériques → risque d'exclusion sociale ; (2) Cybersécurité : données personnelles très sensibles (revenus, santé) → risque de piratage et de vol d'identité ; (3) Déshumanisation : suppression des guichets physiques → difficulté pour les cas complexes nécessitant un accompagnement humain ; (4) Dépendance technologique : une panne du système informatique bloque l'ensemble des démarches."}]},
+qcm:[
+{q:"Le CRM (Customer Relationship Management) est un outil permettant de…",os:["Gérer uniquement la comptabilité clients","Centraliser les informations clients et personnaliser la relation","Automatiser la production","Recruter de nouveaux collaborateurs"],a:1,e:"Le CRM centralise toutes les informations clients (historique d'achats, préférences, réclamations) pour personnaliser la relation et améliorer la fidélisation."},
+{q:"Les traces numériques laissées par les internautes permettent aux organisations de…",os:["Supprimer les données clients","Mieux connaître les comportements clients et personnaliser les offres","Recruter des salariés","Calculer le coût de revient"],a:1,e:"Les traces numériques (clics, historique, localisation, likes) constituent une mine de données pour les organisations qui peuvent ainsi personnaliser les offres et les messages."},
+{q:"La fracture numérique désigne…",os:["La sécurité des données","L'inégalité d'accès et d'usage des technologies numériques","La rapidité des connexions internet","L'automatisation de la production"],a:1,e:"La fracture numérique concerne les inégalités d'accès (équipement, connexion) et d'usage (compétences, pratiques) des technologies numériques selon l'âge, le revenu, le territoire."},
+{q:"L'administration électronique (e-administration) permet principalement de…",os:["Supprimer tous les fonctionnaires","Améliorer la relation avec les usagers via les technologies numériques","Augmenter les impôts","Privatiser les services publics"],a:1,e:"L'e-administration utilise les outils numériques pour simplifier les démarches, améliorer l'accessibilité et réduire les coûts des services publics."}],
+vf:[
+{q:"Les traces numériques appartiennent toujours aux utilisateurs qui peuvent les supprimer facilement.",a:false,e:"Les traces numériques sont souvent collectées et stockées par les plateformes. Le RGPD donne un droit d'accès et de suppression, mais son exercice reste complexe en pratique."},
+{q:"La digitalisation de la relation client peut créer des risques pour la vie privée des consommateurs.",a:true,e:"La collecte massive de données clients (traces numériques, comportements) soulève des enjeux de vie privée → risque d'utilisation abusive, de piratage, de profilage non consenti."},
+{q:"L'e-administration bénéficie à tous les citoyens de la même manière.",a:false,e:"L'e-administration bénéficie principalement aux personnes à l'aise avec le numérique. Les personnes âgées, peu diplômées ou sans connexion subissent la fracture numérique."},
+{q:"Le marketing personnalisé nécessite de collecter des données sur les comportements des clients.",a:true,e:"Sans données sur les comportements, préférences et historiques d'achats, il est impossible de personnaliser les offres et messages marketing."}],
+flash:[
+{t:"CRM",d:"Customer Relationship Management : outil de centralisation des données clients pour personnaliser la relation et améliorer la fidélisation."},
+{t:"Traces numériques",d:"Données laissées par les utilisateurs sur internet (clics, historique, localisation, likes). Permettent aux organisations de personnaliser les offres."},
+{t:"Processus d'achat",d:"Étapes du comportement du consommateur : reconnaissance du besoin → recherche d'informations → évaluation des alternatives → décision d'achat → comportement post-achat."},
+{t:"Administration électronique",d:"Utilisation des technologies numériques par les services publics pour améliorer la relation avec les usagers (ameli.fr, impots.gouv.fr). Avantages : disponibilité, rapidité. Défi : fracture numérique."},
+{t:"Fracture numérique",d:"Inégalité d'accès et d'usage des technologies numériques selon l'âge, le revenu, le territoire. Risque d'exclusion pour les personnes peu à l'aise avec le numérique."}]},
+
+{id:8,n:9,th:2,ic:'🍳',cas:'SEB / EFS',
+title:'Communique-t-on de la même manière avec tous les acteurs ?',
+tags:['Communication interne','Communication externe','E-réputation','Communication financière','Business plan'],
+cours:{intro:"La communication est au cœur du management. SEB, leader mondial du petit électroménager (Tefal, Rowenta, Moulinex...), communique différemment selon ses interlocuteurs : salariés, clients, investisseurs ou médias.",
+secs:[
+{t:"La communication interne",pts:[
+"<strong>Communication interne :</strong> échanges entre les membres de l'organisation pour informer, coordonner et motiver.",
+"<strong>Outils :</strong> intranet, newsletter, réunions d'équipe, affichage, boîte à idées, RSE (Réseau Social d'Entreprise).",
+"<strong>Enjeux :</strong> cohésion interne, adhésion à la stratégie, prévention des conflits, marque employeur (image de l'organisation comme employeur)."]},
+{t:"La communication externe",pts:[
+"<strong>Communication externe :</strong> échanges entre l'organisation et ses parties prenantes extérieures (clients, fournisseurs, médias, grand public).",
+"<strong>Communication globale et intégrée :</strong> cohérence de tous les messages transmis par l'organisation (publicité, réseaux sociaux, packaging, relation presse).",
+"<strong>E-réputation :</strong> image de l'organisation sur internet, construite par les avis clients, les réseaux sociaux et les médias en ligne. Elle influence directement les ventes et les recrutements.",
+"<strong>Identité numérique :</strong> ensemble des informations disponibles en ligne sur l'organisation (site web, réseaux sociaux, avis, articles)."]},
+{t:"La communication financière",pts:[
+"<strong>Communication financière :</strong> information fournie aux partenaires financiers (banques, investisseurs, actionnaires) sur la situation et les perspectives de l'organisation.",
+"<strong>Partenaires internes :</strong> dirigeants et actionnaires → rapports annuels, comptes financiers.",
+"<strong>Partenaires externes :</strong> banques → business plan pour obtenir un financement.",
+"<strong>Business plan :</strong> document présentant le projet d'une organisation, son modèle économique, ses prévisions financières et sa stratégie. Indispensable pour convaincre des investisseurs ou obtenir un prêt."]}],
+ret:["Communication interne : informer + coordonner + motiver les membres de l'organisation","Communication externe : messages cohérents vers tous les partenaires extérieurs","E-réputation = image en ligne → influence les ventes ET les recrutements","Communication financière : business plan pour les banques/investisseurs + rapports annuels pour les actionnaires","Communication globale intégrée = cohérence de tous les messages"]},
+bac:{ent:'EFS (Établissement Français du Sang)',desc:"L'EFS est un établissement public qui assure la collecte, la qualification, la transformation et la distribution des produits sanguins en France. Il dépend entièrement des dons bénévoles et anonymes. Sa communication est fondamentale pour maintenir des stocks suffisants.",
+docs:[
+{lbl:"Document 1 — Enjeux de la communication pour l'EFS",txt:"L'EFS doit en permanence informer, sensibiliser et fidéliser les donneurs de sang. La communication s'adresse à des cibles très variées : les primo-donneurs (jamais donné, 18-70 ans) qui nécessitent de la pédagogie, les donneurs réguliers qui ont besoin d'être reconnus et remerciés, les professionnels de santé (informations médicales), et les pouvoirs publics (rapports d'activité, besoins de financement). L'EFS utilise aussi bien les médias traditionnels (radio, presse) que les réseaux sociaux (campagnes Instagram, TikTok) pour toucher les jeunes."},
+{lbl:"Document 2 — Quelques données de communication EFS 2022",data:{h:['Canal','Objectif','Résultat 2022'],r:[['Campagne nationale radio/TV','Sensibilisation grand public','Notoriété spontanée : 82 %'],['Réseaux sociaux (Instagram, TikTok)','Recruter les 18-30 ans','+ 45 000 primo-donneurs'],['Site don.fr','Prise de RDV en ligne','2,1 millions de RDV (95 % des dons)'],['Emails/SMS personnalisés','Fidélisation donneurs réguliers','Taux de retour : 74 %'],['Relations presse / communicants','Crédibilité institutionnelle','1 200 articles publiés en 2022']]}}],
+qs:[
+{n:1,pts:2,q:"À partir du document 1, identifiez les différentes cibles de communication de l'EFS et adaptez le message à chacune.",rep:"L'EFS s'adresse à 4 cibles avec des messages adaptés : (1) Primo-donneurs (18-70 ans, jamais donné) : message pédagogique et rassurant ('Donner son sang, c'est simple, sûr et gratuit') → vaincre les freins (peur des aiguilles, méconnaissance du processus) ; (2) Donneurs réguliers : message de reconnaissance et de fidélisation ('Merci pour votre fidélité, votre don a sauvé X vies') → valoriser leur contribution ; (3) Professionnels de santé : message scientifique et institutionnel (informations sur les produits sanguins, délais de livraison, protocoles) → crédibilité médicale ; (4) Pouvoirs publics : message institutionnel et financier (rapports d'activité, besoins de financement, statistiques) → légitimer les demandes de budgets publics."},
+{n:2,pts:3,q:"À partir du document 2, analysez la stratégie de communication de l'EFS et évaluez son efficacité.",rep:"Stratégie : l'EFS adopte une communication globale intégrée utilisant plusieurs canaux complémentaires, avec des objectifs différenciés : (1) Notoriété : campagnes national radio/TV → 82 % de notoriété spontanée → objectif atteint ; (2) Recrutement des jeunes : réseaux sociaux (Instagram, TikTok) → +45 000 primo-donneurs → succès notable, adapté à la cible ; (3) Dématérialisation des RDV : site don.fr → 2,1 millions de RDV (95 % des dons pris en ligne) → transformation numérique réussie, facilite les dons ; (4) Fidélisation : emails/SMS personnalisés → 74 % de taux de retour → très bon taux pour du bénévolat récurrent ; (5) Crédibilité : relations presse → 1 200 articles → couverture médiatique importante. Évaluation globale : la stratégie multi-canal et personnalisée est efficace. Le point fort est la dématérialisation (95 % de RDV en ligne). L'axe d'amélioration est le recrutement des plus de 50 ans (peu ciblés par les réseaux sociaux)."},
+{n:3,pts:3,q:"En quoi l'e-réputation est-elle stratégique pour un établissement comme l'EFS ?",rep:"L'e-réputation est vitale pour l'EFS pour plusieurs raisons : (1) Confiance dans l'acte de don : les internautes consultent les avis et témoignages en ligne avant de donner leur sang → une mauvaise expérience (accueil froid, attente longue) partagée sur les réseaux peut décourager des milliers de donneurs potentiels ; (2) Gestion des crises : si une information négative circule (rumeur sur la sécurité des transfusions, incident dans un centre), l'EFS doit réagir rapidement sur les réseaux sociaux pour protéger sa réputation et maintenir la confiance ; (3) Attractivité pour les jeunes donneurs : les 18-30 ans se renseignent sur les réseaux avant de donner → une présence positive sur TikTok/Instagram est essentielle pour les convaincre ; (4) Relations institutionnelles : les pouvoirs publics et les journalistes consultent aussi la réputation en ligne → une bonne e-réputation renforce la légitimité de l'EFS dans ses demandes de financement."}]},
+qcm:[
+{q:"La communication interne vise principalement à…",os:["Vendre des produits","Informer, coordonner et motiver les membres de l'organisation","Améliorer l'image auprès des clients","Attirer des investisseurs"],a:1,e:"La communication interne concerne les échanges ENTRE les membres de l'organisation : informer sur la stratégie, coordonner les actions, motiver et fédérer les équipes."},
+{q:"L'e-réputation d'une organisation est…",os:["Uniquement sa note sur Google","Son image sur internet construite par les avis, réseaux sociaux et médias","Sa performance financière","Son chiffre d'affaires en ligne"],a:1,e:"L'e-réputation intègre tous les éléments disponibles en ligne : avis clients, réseaux sociaux, articles de presse, commentaires sur forums → elle influence les clients, les candidats et les partenaires."},
+{q:"Le business plan est principalement utilisé pour…",os:["Gérer la paie des salariés","Convaincre des investisseurs ou obtenir un prêt bancaire","Communiquer avec les clients","Établir le bilan comptable"],a:1,e:"Le business plan présente le projet, le modèle économique et les prévisions financières → il est indispensable pour convaincre les banques et les investisseurs de financer un projet."},
+{q:"La communication globale intégrée signifie que…",os:["L'organisation communique uniquement via un seul canal","Tous les messages de l'organisation sont cohérents entre eux","L'organisation communique uniquement à l'international","La communication est entièrement automatisée"],a:1,e:"Communication globale intégrée = cohérence de TOUS les messages transmis (publicité, réseaux sociaux, packaging, relation presse) → l'organisation parle d'une seule voix."}],
+vf:[
+{q:"La communication interne et la communication externe sont indépendantes et sans influence l'une sur l'autre.",a:false,e:"Elles sont très liées : une mauvaise ambiance interne (communication interne déficiente) se ressent dans la relation client (communication externe dégradée). Et des salariés engagés deviennent des ambassadeurs de la marque."},
+{q:"Une bonne e-réputation peut favoriser le recrutement des talents.",a:true,e:"Les candidats consultent les avis sur les employeurs (Glassdoor, LinkedIn) avant de postuler. Une bonne e-réputation employeur attire des talents, une mauvaise les décourage."},
+{q:"Le business plan est obligatoire pour toutes les entreprises chaque année.",a:false,e:"Le business plan est principalement utilisé lors d'une création ou d'une levée de fonds. Il n'est pas obligatoire annuellement pour les entreprises existantes."},
+{q:"Les réseaux sociaux grand public peuvent servir à la fois pour la communication interne et externe.",a:true,e:"LinkedIn sert à la communication externe (image de marque employeur, B2B) et peut être utilisé en interne. Des groupes Facebook ou WhatsApp servent parfois de communication interne informelle."}],
+flash:[
+{t:"Communication interne",d:"Échanges entre les membres de l'organisation pour informer, coordonner et motiver. Outils : intranet, RSE, réunions, newsletter interne."},
+{t:"E-réputation",d:"Image de l'organisation sur internet, construite par les avis clients, réseaux sociaux et médias en ligne. Influence ventes, recrutements et partenariats."},
+{t:"Communication globale intégrée",d:"Cohérence de tous les messages transmis par l'organisation (publicité, réseaux, packaging, relation presse). L'organisation parle d'une seule voix."},
+{t:"Business plan",d:"Document présentant un projet, son modèle économique et ses prévisions financières. Indispensable pour convaincre banques et investisseurs."},
+{t:"Identité numérique",d:"Ensemble des informations disponibles en ligne sur l'organisation (site web, réseaux sociaux, avis). Partie de l'e-réputation à soigner activement."}]},
+
+{id:9,n:10,th:3,ic:'🌿',cas:"L'Oréal / Google",
+title:"Les organisations peuvent-elles s'affranchir des questions de société ?",
+tags:['Éthique','Déontologie','Transparence','Discrimination','Égalité H/F','Organisation civique'],
+cours:{intro:"Dans un monde où les parties prenantes sont de plus en plus vigilantes, les organisations ne peuvent plus ignorer les questions éthiques, déontologiques et civiques. L'Oréal et Google illustrent les enjeux et les contradictions de l'engagement sociétal des grandes entreprises.",
+secs:[
+{t:"L'éthique et la déontologie",tbl:{h:['Notion','Définition','Exemples'],r:[['Éthique','Réflexion sur les valeurs morales qui guident les comportements de l\'organisation','L\'Oréal s\'engage pour l\'universalisation de la beauté, Danone pour la santé'],['Déontologie','Ensemble de règles professionnelles définissant les devoirs et comportements attendus dans un métier','Code de déontologie des médecins, chartes de journalistes'],['Transparence','Obligation de communiquer de manière honnête sur ses pratiques et performances','Publication du rapport RSE, reporting extra-financier (DPEF)']]}},
+{t:"La lutte contre les discriminations et l'égalité",pts:[
+"<strong>Discrimination :</strong> traitement différencié d'une personne ou d'un groupe basé sur des critères illicites (genre, âge, origine, religion, handicap).",
+"<strong>Égalité hommes-femmes :</strong> obligation légale d'égalité salariale et professionnelle. Index d'égalité H/F obligatoire depuis 2019 pour les entreprises de +50 salariés.",
+"<strong>Diversité et inclusion :</strong> intégration de personnes différentes (âge, origine, genre, handicap) pour enrichir l'organisation.",
+"La lutte contre les discriminations est à la fois une obligation légale ET un enjeu de performance (innovation, créativité, image)."]},
+{t:"L'organisation civique et la RSE",pts:[
+"<strong>RSE (Responsabilité Sociétale des Entreprises) :</strong> intégration volontaire des préoccupations sociales et environnementales dans les activités de l'organisation.",
+"<strong>Organisation civique :</strong> implication de l'organisation dans la vie de la société au-delà de ses activités économiques (mécénat, engagements locaux, participation au débat public).",
+"<strong>DPEF (Déclaration de Performance Extra-Financière) :</strong> rapport annuel obligatoire pour les grandes entreprises (>500 salariés, >100 M€ de CA) sur les performances sociales et environnementales."]}],
+ret:["Éthique = réflexion sur les valeurs morales | Déontologie = règles professionnelles du métier","Discrimination = traitement illicite basé sur genre, âge, origine, religion, handicap","Index égalité H/F obligatoire pour les entreprises de +50 salariés depuis 2019","RSE = intégration volontaire des préoccupations sociales et environnementales","DPEF obligatoire pour les grandes entreprises (+500 sal, +100 M€ CA)"]},
+bac:{ent:'Google',desc:"Google (Alphabet) est le leader mondial des moteurs de recherche avec 90 % de parts de marché. Sa filiale DeepMind développe des IA médicales révolutionnaires. Mais l'entreprise fait face à des accusations de pratiques monopolistiques et de contradictions éthiques liées à l'IA.",
+docs:[
+{lbl:"Document 1 — Google et l'IA : opportunités et contradictions éthiques",txt:"Sundar Pichai a placé l'IA au cœur de la stratégie de Google : traduction en temps réel, reconnaissance d'images, assistance médicale. L'objectif est de 'rendre l'information universellement accessible'. Mais Google fait face à un dilemme éthique fondamental : son modèle économique repose sur l'exploitation des données personnelles de ses utilisateurs, alors que ceux-ci veulent protéger leur vie privée. De plus, la justice américaine accuse Google de pratiques monopolistiques. DeepMind (filiale de Google) développe des IA médicales pour découvrir de nouveaux médicaments, ce qui pourrait transformer la médecine mais soulève des questions de propriété intellectuelle et d'accès aux traitements."},
+{lbl:"Document 2 — Les contradictions éthiques de Google",data:{h:['Domaine','Engagement affiché','Contradiction observée'],r:[['Vie privée','\'Google ne vend pas vos données\'','Le modèle économique repose sur la publicité ciblée basée sur les données'],['Concurrence','\'Organiser l\'information pour tous\'','Accusations de pratiques monopolistiques (Chrome, Android, Search)'],['IA médicale','\'Accélérer la découverte de médicaments\'','Questions sur l\'accès aux traitements et la propriété intellectuelle'],['Énergie','Engagement neutralité carbone 2030','Data centers très énergivores (consommation en hausse)'],['Diversité','Programme de diversité interne','Polémiques sur les biais dans les algorithmes de recrutement']]}}],
+qs:[
+{n:1,pts:2,q:"À partir du document 1, expliquez pourquoi l'intelligence artificielle présente des opportunités pour Google tout en soulevant des questions éthiques.",rep:"Opportunités : (1) Compétitivité : l'IA renforce la position de Google dans tous ses services (recherche plus pertinente, traduction en temps réel, photos reconnues) → barrière à l'entrée pour les concurrents ; (2) Nouveaux marchés : DeepMind ouvre un marché de l'IA médicale potentiellement révolutionnaire (découverte de médicaments) → diversification du groupe Alphabet ; (3) Accomplissement de la mission : 'rendre l'information universellement accessible' + 'améliorer la santé mondiale' → légitimité accrue. Questions éthiques : (1) Conflit entre modèle économique (données personnelles) et droits des utilisateurs (vie privée) → tension fondamentale ; (2) Concentration des pouvoirs : si Google détient l'IA médicale la plus avancée, qui contrôle l'accès aux traitements ? → enjeu d'équité dans l'accès à la santé ; (3) Opacité des algorithmes : comment les utilisateurs peuvent-ils savoir que l'IA prend des décisions équitables ?"},
+{n:2,pts:4,q:"À partir du document 2, montrez comment les contradictions éthiques de Google illustrent les limites de la RSE volontaire.",rep:"Le tableau des contradictions illustre un écart systématique entre les engagements affichés et les pratiques réelles de Google : (1) Vie privée : Google déclare 'ne pas vendre les données' mais son modèle économique repose entièrement sur la publicité ciblée (exploitation des données) → la RSE est instrumentalisée pour rassurer sans changer le modèle ; (2) Concurrence : Google prétend 'organiser l'information pour tous' mais est accusé de pratiques monopolistiques (bundling Chrome/Android/Search) → l'engagement civique coexiste avec des pratiques anti-concurrentielles ; (3) Énergie : engagement neutralité carbone 2030 mais data centers de plus en plus énergivores → la réalité technique contredit l'engagement RSE ; (4) Diversité : programmes de diversité affichés mais algorithmes de recrutement présentant des biais → la RSE formelle masque des discriminations systémiques. Cela illustre les limites de la RSE volontaire : sans obligation légale, les entreprises peuvent afficher des engagements sans les tenir. C'est pourquoi la DPEF et l'index H/F sont devenus obligatoires."},
+{n:3,pts:2,q:"Comment les parties prenantes peuvent-elles exercer une pression sur les organisations pour les pousser à respecter leurs engagements éthiques ?",rep:"Les parties prenantes disposent de plusieurs leviers : (1) Consommateurs : boycotts, bad buzz sur les réseaux sociaux (ex : campagnes contre les GAFAM), préférence pour les marques éthiques → pression économique directe sur le CA ; (2) Salariés : refus de travailler sur des projets éthiquement problématiques (ex : des ingénieurs Google ont refusé de travailler sur des contrats militaires), grèves → pression interne ; (3) Actionnaires activistes : résolutions lors des AG pour forcer des engagements (ex : exiger un rapport sur les données personnelles) → pression des propriétaires ; (4) État et régulateurs : sanctions financières (CNIL en France, FTC aux États-Unis), obligations légales (DPEF, index H/F) → pression réglementaire ; (5) Société civile : ONG, associations, médias qui surveillent et dénoncent publiquement les pratiques → pression réputationnelle."}]},
+qcm:[
+{q:"L'éthique dans une organisation concerne…",os:["Uniquement la comptabilité","La réflexion sur les valeurs morales guidant les comportements","Uniquement la communication externe","Les seuls dirigeants"],a:1,e:"L'éthique guide les comportements de TOUTE l'organisation (dirigeants, salariés, partenaires) selon des valeurs morales : honnêteté, respect, équité, responsabilité."},
+{q:"L'index d'égalité hommes-femmes est obligatoire pour les entreprises de…",os:["+ 10 salariés","+ 50 salariés","+ 250 salariés","Toutes les entreprises"],a:1,e:"L'index H/F est obligatoire depuis 2019 pour les entreprises de +50 salariés. Il mesure les écarts de rémunération, d'augmentation et de promotion entre H/F."},
+{q:"La DPEF (Déclaration de Performance Extra-Financière) est obligatoire pour…",os:["Toutes les organisations","Les entreprises de +500 salariés et +100 M€ de CA","Les associations uniquement","Les entreprises cotées en bourse uniquement"],a:1,e:"La DPEF est obligatoire pour les grandes entreprises (+500 salariés ET +100 M€ de CA). Elle publie les indicateurs sociaux, environnementaux et de gouvernance."},
+{q:"La déontologie dans une organisation correspond à…",os:["La réflexion morale générale","L'ensemble des règles professionnelles définissant les devoirs et comportements d'un métier","La politique de communication","La stratégie de l'entreprise"],a:1,e:"La déontologie = règles spécifiques à un métier ou une profession (médecins, avocats, journalistes) définissant les comportements obligatoires et les interdictions."}],
+vf:[
+{q:"La RSE est toujours une démarche volontaire pour toutes les organisations.",a:false,e:"La RSE est principalement volontaire MAIS certaines obligations légales existent : DPEF pour les grandes entreprises, index H/F, bilan carbone obligatoire pour certaines organisations."},
+{q:"Lutter contre les discriminations est à la fois une obligation légale ET un enjeu de performance.",a:true,e:"Légalement (Code du travail, loi Égalité) et économiquement (la diversité favorise l'innovation, améliore l'image et attire les talents) : les deux dimensions sont complémentaires."},
+{q:"L'éthique et la rentabilité sont toujours contradictoires.",a:false,e:"Des études montrent que les organisations éthiques et responsables sont souvent plus performantes à long terme (fidélité clients, attractivité talents, réduction des risques réputationnels)."},
+{q:"Les consommateurs peuvent exercer une pression sur les organisations via les réseaux sociaux.",a:true,e:"Le 'bad buzz' sur les réseaux sociaux peut avoir des effets économiques réels (boycotts, perte de clients, chute du cours de bourse). Les consommateurs connectés ont un pouvoir d'influence accru."}],
+flash:[
+{t:"Éthique",d:"Réflexion sur les valeurs morales qui guident les comportements de l'organisation (honnêteté, respect, équité, responsabilité)."},
+{t:"RSE",d:"Responsabilité Sociétale des Entreprises : intégration volontaire des préoccupations sociales et environnementales dans les activités de l'organisation."},
+{t:"Index d'égalité H/F",d:"Indicateur obligatoire depuis 2019 pour les +50 salariés mesurant les écarts entre hommes et femmes en termes de rémunération, promotion et augmentation."},
+{t:"DPEF",d:"Déclaration de Performance Extra-Financière : rapport obligatoire pour les grandes entreprises (+500 sal, +100 M€ CA) sur les performances sociales, environnementales et de gouvernance."},
+{t:"Discrimination",d:"Traitement différencié basé sur des critères illicites (genre, âge, origine, religion, handicap). Interdite légalement, elle génère aussi des inefficacités économiques."}]},
+
+{id:10,n:11,th:3,ic:'🏔️',cas:'Patagonia / Too Good To Go',
+title:"Les changements de modes de vie s'imposent-ils aux organisations ?",
+tags:['Modes de consommation','Rapport au travail','Télétravail','Économie circulaire','Consommation responsable'],
+cours:{intro:"Les modes de vie évoluent rapidement : télétravail, consommation responsable, économie circulaire, quête de sens au travail. Les organisations qui ignorent ces transformations risquent d'être dépassées. Patagonia illustre comment une entreprise peut faire de ces tendances un avantage compétitif.",
+secs:[
+{t:"Les transformations des modes de consommation",tbl:{h:['Tendance','Description','Impact sur les organisations'],r:[['Consommation responsable','Prise en compte de l\'impact environnemental et social dans les achats','Obligation d\'afficher bilan carbone, matériaux durables, traçabilité'],['Économie de la fonctionnalité','Payer l\'usage plutôt que posséder (location, abonnement)','Nouveau modèle économique : services plutôt que ventes'],['Anti-gaspi / économie circulaire','Réduction des déchets, seconde main, réparation','Lancement de lignes de produits reconditionnés, services de réparation'],['Hyperconnectivité','Consommation de contenu numérique et interaction via smartphone','Présence digitale obligatoire, adaptation aux plateformes']]}},
+{t:"L'évolution du rapport au travail",pts:[
+"<strong>Télétravail :</strong> généralisation accélérée par le COVID-19. Avantages : flexibilité, économie de transports. Inconvénients : isolement, frontières vie pro/perso floues.",
+"<strong>Quête de sens :</strong> les travailleurs, notamment les jeunes générations, recherchent un travail aligné avec leurs valeurs (utilité sociale, impact environnemental, éthique de l'organisation).",
+"<strong>Nouvelles formes de travail :</strong> freelance, auto-entrepreneuriat, travail en coworking, portage salarial. Flexibilité accrue mais protection sociale réduite.",
+"<strong>Rapport au temps :</strong> semaine de 4 jours, droit à la déconnexion, flex-time → nouvelles attentes des salariés."]}],
+ret:["Consommation responsable = impact environnemental et social dans les décisions d'achat","Économie circulaire = réduction déchets + seconde main + réparation (ex : Patagonia Worn Wear)","Quête de sens = travailleurs cherchent un travail aligné avec leurs valeurs","Télétravail généralisé : flexibilité + risques (isolement, vie pro/perso confondues)","Les organisations qui s'adaptent à ces tendances créent un avantage compétitif"]},
+bac:{ent:'Too Good To Go',desc:"Too Good To Go est une application mobile créée en 2016 qui permet aux consommateurs d'acheter à prix réduit des invendus alimentaires de restaurants, boulangeries et supermarchés. Son modèle économique lutte contre le gaspillage alimentaire.",
+docs:[
+{lbl:"Document 1 — Le modèle de Too Good To Go",txt:"Too Good To Go est une marketplace B2C qui met en relation les commerces alimentaires avec des consommateurs via son application. Les commerçants proposent des 'paniers surprise' à prix réduit (entre 2 et 6 €) contenant leurs invendus de la journée. L'application compte plus de 80 millions d'utilisateurs dans 17 pays (2023). Le modèle économique repose sur une commission prélevée sur chaque transaction. En France, Too Good To Go a permis de sauver plus de 200 millions de repas depuis sa création. Le concept répond à une tendance forte : 73 % des Français déclarent se soucier du gaspillage alimentaire selon l'ADEME."},
+{lbl:"Document 2 — L'adaptation des organisations partenaires",txt:"Pour les boulangeries et restaurateurs partenaires, Too Good To Go représente à la fois une opportunité et un changement organisationnel. Opportunité : générer un revenu supplémentaire sur des produits qui auraient été jetés, fidéliser de nouveaux clients, améliorer l'image de marque (engagement anti-gaspi). Changement organisationnel : adapter les horaires pour préparer les paniers surprise (fin de service), former les salariés à utiliser l'interface Too Good To Go, gérer les pics de demande liés aux notifications de l'application. Certains restaurants ont dû revoir leur organisation du travail pour intégrer cette nouvelle activité."}],
+qs:[
+{n:1,pts:2,q:"À partir du document 1, identifiez comment Too Good To Go répond aux nouveaux modes de consommation.",rep:"Too Good To Go répond à plusieurs tendances de consommation : (1) Consommation responsable et anti-gaspi : le modèle est entièrement basé sur la lutte contre le gaspillage alimentaire (200 millions de repas sauvés) → répond à la préoccupation de 73 % des Français sensibles à ce sujet ; (2) Économie de la fonctionnalité : les consommateurs achètent l'accès à de la nourriture à prix réduit plutôt que des produits spécifiques → le panier surprise = usage et découverte plutôt que possession planifiée ; (3) Hyperconnectivité : l'application mobile permet une interaction instantanée entre commerçants et consommateurs → adapté aux comportements numériques des consommateurs actuels ; (4) Économie circulaire : les invendus sont valorisés plutôt que jetés → modèle économique circulaire intégré."},
+{n:2,pts:3,q:"À partir du document 2, analysez les changements organisationnels que Too Good To Go impose à ses partenaires.",rep:"Too Good To Go impose des changements organisationnels significatifs à ses partenaires : (1) Gestion du temps de travail : les salariés doivent préparer les paniers surprise en fin de service → modification des plannings, possibles heures supplémentaires, nécessité de maintenir du personnel jusqu'à la fermeture des commandes ; (2) Formation des salariés : maîtrise de l'interface numérique de Too Good To Go (notifications, acceptation des commandes, clôture) → investissement en formation ; (3) Gestion de la demande : les notifications de l'application créent des pics de fréquentation imprévisibles (clients venant récupérer leur panier à des horaires précis) → nécessité d'adapter l'accueil ; (4) Modification des stocks : les commerçants doivent prévoir à l'avance les invendus potentiels pour optimiser les paniers → meilleure gestion des quantités produites. En contrepartie : revenus supplémentaires, fidélisation de nouveaux clients et amélioration de l'image de marque."},
+{n:3,pts:3,q:"Patagonia et Too Good To Go représentent deux approches différentes de l'adaptation aux changements de modes de vie. Comparez-les.",rep:"Patagonia (entreprise B) a fait le choix radical de placer la durabilité et l'anti-consommation au cœur de sa stratégie : programme 'Worn Wear' (réparation et seconde main), appel à ses clients à ne pas acheter de nouvelles vestes s'ils n'en ont pas besoin, don de 100 % de l'entreprise à un trust environnemental. C'est une transformation profonde du modèle économique (cannibalisation des ventes de neuf au profit de la réparation). Too Good To Go, en revanche, n'a pas transformé son modèle économique mais a CRÉE un nouveau modèle basé sur une externalité négative existante (le gaspillage). Elle ne demande pas aux commerçants de produire moins, mais de valoriser leurs invendus. Comparaison : Patagonia = transformation radicale interne ('changer l'organisation de l'intérieur'), Too Good To Go = capitaliser sur une tendance sans transformer les organisations partenaires en profondeur. Les deux approches sont complémentaires : Patagonia agit sur la production, Too Good To Go sur la distribution."}]},
+qcm:[
+{q:"L'économie circulaire vise principalement à…",os:["Augmenter la production","Réduire les déchets et allonger la durée de vie des produits","Privatiser les services publics","Augmenter les prix de vente"],a:1,e:"L'économie circulaire s'oppose au modèle linéaire 'extraire-produire-jeter' : elle vise à réduire les déchets, réutiliser, réparer et recycler pour allonger la durée de vie des matières et produits."},
+{q:"La quête de sens au travail se manifeste principalement par…",os:["La recherche du salaire le plus élevé","La recherche d'un travail aligné avec ses valeurs personnelles","La préférence pour les grandes entreprises","Le refus du travail en équipe"],a:1,e:"La quête de sens concerne notamment les jeunes générations qui recherchent un travail utile, éthique, et en accord avec leurs valeurs (impact environnemental, utilité sociale)."},
+{q:"Le modèle économique de Too Good To Go repose sur…",os:["La vente directe de produits alimentaires","Une commission sur chaque transaction entre commerçants et consommateurs","Des abonnements mensuels uniquement","Des subventions publiques anti-gaspi"],a:1,e:"Too Good To Go prélève une commission sur chaque panier surprise vendu via son application → modèle de marketplace (intermédiaire entre commerçants et consommateurs)."},
+{q:"Le télétravail généralisé présente comme principal inconvénient…",os:["Une meilleure productivité","L'isolement et la confusion des frontières vie pro/perso","Une réduction des coûts de transport","Un meilleur équilibre vie pro/perso"],a:1,e:"Le télétravail intensif peut créer un isolement des salariés (perte de liens sociaux) et brouiller les frontières entre vie professionnelle et vie personnelle (difficultés à 'déconnecter')."}],
+vf:[
+{q:"Patagonia a adapté son modèle économique pour s'aligner avec les tendances de consommation responsable.",a:true,e:"Patagonia a radicalement transformé son modèle : programme Worn Wear (réparation), appel à ne pas acheter de nouvelles vestes, don de l'entreprise à un trust environnemental. C'est une cohérence totale entre valeurs et modèle économique."},
+{q:"Les nouvelles formes de travail (freelance, auto-entrepreneur) offrent la même protection sociale que le salariat.",a:false,e:"Les travailleurs indépendants (freelances, auto-entrepreneurs) bénéficient d'une protection sociale INFÉRIEURE au salariat : pas d'assurance chômage, retraite plus faible, pas de congés payés garantis."},
+{q:"L'adaptation aux nouveaux modes de consommation peut représenter un avantage compétitif pour les organisations.",a:true,e:"Les organisations qui anticipent et s'adaptent aux nouvelles tendances (consommation responsable, digital, économie circulaire) peuvent transformer ces défis en avantages concurrentiels (différenciation, fidélisation)."},
+{q:"Le gaspillage alimentaire ne concerne que les consommateurs finaux.",a:false,e:"Le gaspillage alimentaire se produit à toutes les étapes de la chaîne : production agricole (invendus), transformation industrielle, distribution (invendus des magasins) et consommation finale."}],
+flash:[
+{t:"Consommation responsable",d:"Prise en compte de l'impact environnemental et social dans les décisions d'achat. Tendance forte : 73 % des Français sensibles au gaspillage alimentaire (ADEME)."},
+{t:"Économie circulaire",d:"Modèle économique basé sur la réduction des déchets : réutilisation, réparation, recyclage. S'oppose au modèle linéaire 'extraire-produire-jeter'."},
+{t:"Quête de sens au travail",d:"Recherche d'un travail aligné avec ses valeurs (utilité sociale, impact environnemental). Tendance forte notamment chez les jeunes générations."},
+{t:"Patagonia — Worn Wear",d:"Programme de réparation et de seconde main illustrant l'alignement total entre valeurs de l'entreprise et modèle économique. La Terre comme unique actionnaire."},
+{t:"Too Good To Go",d:"Application marketplace anti-gaspi : paniers surprise d'invendus à prix réduits. Commission sur les transactions. 80 M d'utilisateurs, 200 M de repas sauvés en France."}]},
+
+{id:11,n:12,th:3,ic:'🎮',cas:'Twitch / Spotify',
+title:'Les transformations numériques, de nouvelles responsabilités ?',
+tags:['Protection des données','Transparence des algorithmes','Blockchain','RGPD','Cybersécurité','Souveraineté numérique'],
+cours:{intro:"Les transformations numériques créent de nouvelles responsabilités pour les organisations. Twitch et Spotify illustrent comment les plateformes numériques doivent gérer la protection des données, la transparence algorithmique et leurs impacts sur la société.",
+secs:[
+{t:"La protection des données personnelles et stratégiques",pts:[
+"<strong>RGPD (Règlement Général sur la Protection des Données) :</strong> réglementation européenne depuis 2018 encadrant la collecte et le traitement des données personnelles. Principes : consentement, finalité, minimisation, sécurité, droit à l'oubli.",
+"<strong>Données stratégiques :</strong> informations confidentielles de l'organisation (brevets, fichiers clients, plans industriels) dont la fuite peut compromettre la compétitivité.",
+"<strong>CNIL (Commission Nationale de l'Informatique et des Libertés) :</strong> autorité française de contrôle du RGPD. Peut infliger des amendes jusqu'à 4 % du CA mondial.",
+"<strong>Cybersécurité :</strong> ensemble des pratiques et technologies visant à protéger les systèmes informatiques et les données contre les attaques."]},
+{t:"La transparence des algorithmes",pts:[
+"<strong>Algorithme :</strong> suite d'instructions permettant de traiter des données pour produire un résultat. Utilisés pour recommander du contenu, modérer les réseaux sociaux, cibler la publicité.",
+"<strong>Enjeux de transparence :</strong> les algorithmes de recommandation peuvent créer des 'bulles de filtre' (exposition uniquement à des contenus similaires), amplifier des biais discriminatoires, ou manipuler les comportements.",
+"<strong>Droit à l'explication :</strong> le RGPD prévoit un droit à ne pas faire l'objet d'une décision exclusivement automatisée et un droit à l'explication de la logique algorithmique."]},
+{t:"La blockchain",pts:[
+"<strong>Blockchain (chaîne de blocs) :</strong> technologie de registre distribué, décentralisé et infalsifiable où les transactions sont enregistrées de façon permanente et transparente.",
+"<strong>Applications :</strong> cryptomonnaies (Bitcoin), traçabilité alimentaire (vérification de l'origine des produits), smart contracts (contrats automatiques), certification de documents.",
+"<strong>Avantages :</strong> transparence, sécurité, décentralisation (pas d'intermédiaire). Inconvénients : consommation énergétique élevée, complexité technique."]}],
+ret:["RGPD = consentement, finalité, minimisation, sécurité, droit à l'oubli. Contrôle : CNIL","Algorithmes : recommandations + risque de bulles de filtre + biais discriminatoires","Droit à l'explication des décisions algorithmiques (RGPD)","Blockchain = registre distribué, infalsifiable, transparent","Cybersécurité = protection des données et systèmes contre les attaques"]},
+bac:{ent:'Spotify',desc:"Spotify est la plateforme de streaming musical leader mondial (205 millions d'abonnés payants, CA de 11,7 milliards d'euros en 2022). Son algorithme de recommandation est au cœur de son succès mais soulève des questions de transparence.",
+docs:[
+{lbl:"Document 1 — L'algorithme de recommandation de Spotify",txt:"L'algorithme de recommandation de Spotify constitue son principal avantage concurrentiel. Il analyse les habitudes d'écoute de chaque utilisateur (titres écoutés, durée, fréquence, likes, skips) pour proposer de nouvelles musiques et playlists personnalisées. Mais l'algorithme a été critiqué pour son manque de transparence : les artistes dénoncent une rémunération opaque (0,003 à 0,005 € par stream) et certains accusent Spotify de favoriser certains styles musicaux dans ses recommandations. En 2023, Spotify a été condamné en France pour des CGU (Conditions Générales d'Utilisation) jugées abusives concernant la collecte des données personnelles."},
+{lbl:"Document 2 — Spotify et la protection des données",data:{h:['Donnée collectée','Utilisation déclarée','Risque potentiel'],r:[['Historique d\'écoute complet','Personnalisation des recommandations','Profilage psychologique non consenti'],['Localisation GPS (optionnel)','Suggestions de concerts locaux','Suivi des déplacements'],['Contacts téléphoniques (optionnel)','Suggestions de playlists partagées','Accès non nécessaire aux contacts personnels'],['Données biométriques (voix)','Commandes vocales','Identification et stockage des voix'],['Comportement sur l\'app (clics, durées)','Amélioration UX et publicité ciblée','Manipulation comportementale']]}}],
+qs:[
+{n:1,pts:2,q:"À partir du document 1, identifiez les ressources de Spotify qui lui permettent de développer son activité.",rep:"Ressources tangibles matérielles : serveurs et infrastructure informatique (stockage de 70 millions de titres), data centers, équipements technologiques. Ressources tangibles financières : CA de 11,7 milliards € (2022), capitaux levés lors de l'introduction en bourse en 2018. Ressources intangibles : algorithme de recommandation (technologie propriétaire, principal avantage concurrentiel) ; catalogue musical de 70 millions de titres (accords avec les maisons de disques) ; marque Spotify (notoriété mondiale) ; données des 205 millions d'abonnés (actif stratégique permettant l'amélioration continue de l'algorithme) ; expertise data science et développement logiciel."},
+{n:2,pts:3,q:"À partir du document 2, expliquez comment Spotify peut enfreindre le RGPD dans sa collecte de données.",rep:"Spotify peut enfreindre le RGPD sur plusieurs points : (1) Principe de minimisation : le RGPD exige de ne collecter que les données NÉCESSAIRES à la finalité déclarée → collecter les contacts téléphoniques et les données biométriques (voix) pour 'suggérer des playlists' ou 'des commandes vocales' semble disproportionné par rapport à la finalité ; (2) Consentement éclairé : des CGU complexes et longues empêchent les utilisateurs de comprendre ce qu'ils acceptent vraiment → la condamnation française porte précisément sur des CGU jugées abusives ; (3) Finalité : les données d'écoute collectées pour 'personnaliser' peuvent être utilisées pour la publicité ciblée ou cédées à des tiers → dérive par rapport à la finalité déclarée ; (4) Droits des personnes : si l'utilisateur ne peut pas facilement accéder à ses données ou les supprimer, cela viole les droits RGPD (droit d'accès, droit à l'oubli)."},
+{n:3,pts:3,q:"Comment Spotify pourrait-il améliorer la transparence de son algorithme de recommandation tout en préservant son avantage concurrentiel ?",rep:"Spotify fait face à un dilemme : révéler les mécanismes de l'algorithme risque de le faire copier par Apple Music ou YouTube Music. Des pistes de transparence sans dévoiler le secret commercial : (1) Transparence sur les critères généraux : expliquer aux utilisateurs quels types de données influencent les recommandations (écoutes passées, popularité, style musical) sans révéler le code source → réduit le sentiment de manipulation ; (2) Rapport de recommandations individuel : chaque utilisateur pourrait voir pourquoi une chanson lui est recommandée ('recommandé car vous écoutez souvent X' → transparence des décisions individuelles sans exposer l'algorithme global) ; (3) Outils de contrôle utilisateur : permettre à l'utilisateur de peser plus les critères (ex : 'recommander plus de découvertes', 'plus de favoris') → sentiment d'autonomie et de confiance ; (4) Rapport sur les biais : audits annuels indépendants sur les éventuels biais de l'algorithme (genres musicaux favorisés, discrimination des artistes émergents) et publication des résultats."}]},
+qcm:[
+{q:"Le RGPD impose aux organisations collectant des données personnelles de…",os:["Partager toutes les données avec les autorités","Obtenir le consentement, respecter la finalité, minimiser et sécuriser les données","Supprimer toutes les données après un an","Stocker les données uniquement en France"],a:1,e:"RGPD = Règlement Général sur la Protection des Données. Il impose : consentement, finalité précise, minimisation (seulement le nécessaire), sécurité et droits des personnes (accès, suppression)."},
+{q:"La blockchain est caractérisée par…",os:["Un registre centralisé contrôlé par une banque","Un registre distribué, décentralisé et infalsifiable","Un système de cryptage des emails","Un algorithme de recommandation"],a:1,e:"La blockchain = registre distribué (copié sur de nombreux nœuds), décentralisé (pas d'autorité centrale) et infalsifiable (modification impossible sans consensus du réseau)."},
+{q:"Une 'bulle de filtre' créée par un algorithme de recommandation consiste à…",os:["Filtrer les spams dans les emails","Exposer l'utilisateur uniquement à des contenus similaires à ses préférences passées","Sécuriser les données personnelles","Bloquer les publicités indésirables"],a:1,e:"La bulle de filtre = l'algorithme recommande uniquement ce qui correspond aux goûts passés → l'utilisateur est enfermé dans sa zone de confort, ne découvrant plus de contenus différents."},
+{q:"La CNIL peut infliger des amendes allant jusqu'à…",os:["100 000 €","1 million €","4 % du chiffre d'affaires mondial annuel","20 000 €"],a:2,e:"La CNIL (et toutes les autorités de protection des données de l'UE) peut imposer des amendes jusqu'à 4 % du CA mondial annuel ou 20 millions d'euros (le montant le plus élevé s'applique)."}],
+vf:[
+{q:"Le RGPD s'applique uniquement aux entreprises françaises.",a:false,e:"Le RGPD s'applique à TOUTE organisation (quelle que soit sa nationalité) qui traite des données personnelles de résidents de l'Union Européenne."},
+{q:"La blockchain permet de garantir l'authenticité et la traçabilité d'une transaction.",a:true,e:"La blockchain enregistre chaque transaction de façon permanente, transparente et infalsifiable → permet de garantir l'authenticité des informations (traçabilité alimentaire, certification de documents)."},
+{q:"La collecte de données personnelles est toujours légale si l'utilisateur crée un compte.",a:false,e:"Créer un compte ne suffit pas : le RGPD exige un consentement éclairé pour chaque type de données collectées, une finalité précise et la possibilité de retirer son consentement."},
+{q:"Les algorithmes de recommandation peuvent reproduire et amplifier des biais discriminatoires.",a:true,e:"Si les données d'entraînement de l'algorithme contiennent des biais (historiques discriminatoires), l'algorithme va les reproduire et les amplifier à grande échelle."}],
+flash:[
+{t:"RGPD",d:"Règlement Général sur la Protection des Données (EU, 2018). Principes : consentement, finalité, minimisation, sécurité, droits des personnes. Contrôle : CNIL (amendes jusqu'à 4 % du CA mondial)."},
+{t:"Algorithme de recommandation",d:"Outil numérique analysant les comportements des utilisateurs pour suggérer du contenu personnalisé. Risques : bulle de filtre, biais discriminatoires, manque de transparence."},
+{t:"Blockchain",d:"Registre distribué, décentralisé et infalsifiable. Applications : cryptomonnaies, traçabilité, smart contracts. Avantage : sécurité et transparence."},
+{t:"Bulle de filtre",d:"Phénomène créé par les algorithmes de recommandation qui enferment l'utilisateur dans ses préférences passées en l'exposant uniquement à des contenus similaires."},
+{t:"Cybersécurité",d:"Ensemble des pratiques et technologies protégeant les systèmes informatiques et les données contre les attaques. Enjeu croissant avec la transformation numérique."}]},
+
+{id:12,n:13,th:3,ic:'🔬',cas:'Pôle Véhicule du Futur / Chamatex',
+title:"Quelles relations entre les organisations et leur écosystème ?",
+tags:['Stratégie d\'implantation','Écosystème d\'affaires','Cluster','Pôle de compétitivité','Territoire','Innovation'],
+cours:{intro:"Les organisations n'évoluent pas de manière isolée : elles font partie d'un écosystème territorial et sectoriel. Le Pôle Véhicule du Futur (Bourgogne-Franche-Comté / Grand Est) illustre comment la coopération entre organisations d'un même écosystème renforce leur compétitivité.",
+secs:[
+{t:"La stratégie d'implantation",tbl:{h:['Stratégie','Définition','Avantages'],r:[['Concentration géographique','Installation dans une zone où se concentrent acteurs du même secteur','Accès aux fournisseurs, talents, sous-traitants ; effets de réseau'],['Dispersion géographique','Implantations dans plusieurs régions ou pays','Accès à différents marchés, réduction des risques'],['Délocalisation','Transfert de la production vers un pays à coûts plus faibles','Réduction des coûts de production'],['Relocalisation','Retour de la production dans le pays d\'origine','Image \'made in France\', qualité, réactivité, emplois locaux']]}},
+{t:"L'écosystème d'affaires et les clusters",pts:[
+"<strong>Écosystème d'affaires :</strong> réseau d'organisations interdépendantes (entreprises, fournisseurs, clients, institutions, universités) qui co-évoluent et créent de la valeur ensemble.",
+"<strong>Cluster (grappe d'entreprises) :</strong> concentration géographique d'entreprises d'un même secteur et de leurs sous-traitants, fournisseurs et institutions de soutien. Ex : la Silicon Valley (tech), le cluster textile de Millau (gants), le Pôle Véhicule du Futur.",
+"<strong>Pôle de compétitivité :</strong> forme institutionnalisée de cluster, soutenu par l'État, réunissant entreprises, laboratoires de recherche et organismes de formation sur un territoire pour développer des projets innovants."]},
+{t:"Les effets des organisations sur les territoires",pts:[
+"<strong>Effets positifs :</strong> création d'emplois, développement des compétences locales, attractivité du territoire, contribution fiscale (impôts locaux), développement de l'économie locale.",
+"<strong>Effets négatifs :</strong> congestion, pollution, pression sur le marché immobilier, risque de monoculture économique (si le secteur décline, tout le territoire en souffre).",
+"<strong>Urbanloop :</strong> exemple d'innovation territoriale née du Pôle Véhicule du Futur : capsule autonome sur rail pour le transport urbain, développée à Nancy."]}],
+ret:["Écosystème d'affaires = réseau d'organisations interdépendantes qui co-évoluent","Cluster = concentration géographique d'entreprises du même secteur + fournisseurs + institutions","Pôle de compétitivité = cluster institutionnalisé soutenu par l'État","Effets positifs : emplois, attractivité, compétences | Effets négatifs : pollution, monoculture","La coopération dans un écosystème renforce la compétitivité de chaque organisation"]},
+bac:{ent:'Chamatex',desc:"Chamatex est une PME textile française spécialisée dans les tissus techniques pour chaussures de sport (running, randonnée). Implantée à Ardoix (Ardèche) dans le Pôle Européen de la Chaussure de Montée, elle développe des matériaux innovants en collaboration avec ses partenaires de l'écosystème.",
+docs:[
+{lbl:"Document 1 — Chamatex et son écosystème",txt:"Chamatex est une PME de 60 salariés qui fabrique des tissus techniques pour des marques comme Salomon, Lafuma et Millet. Elle s'appuie sur son appartenance au Pôle Européen de la Chaussure de Montée (Romans-sur-Isère) pour accéder aux dernières innovations textiles, partager des équipements de R&D coûteux avec d'autres PME de la filière, et bénéficier de formations spécialisées. Elle collabore avec l'ENSISA (École Nationale Supérieure des Industries du Textile et des Vêtements) pour recruter des ingénieurs spécialisés. Chamatex a développé une fibre recyclée à partir de bouteilles en plastique, devenue un argument commercial fort auprès des marques outdoor engagées dans la RSE."},
+{lbl:"Document 2 — Les bénéfices de l'écosystème pour Chamatex",data:{h:['Ressource de l\'écosystème','Apport pour Chamatex','Organisation apportant la ressource'],r:[['Laboratoire R&D partagé','Accès à des équipements de test à un coût divisé par 5','Pôle Européen de la Chaussure'],['Ingénieurs textiles formés','Recrutement de profils spécialisés introuvables ailleurs','ENSISA (école d\'ingénieurs)'],['Sous-traitants spécialisés','Approvisionnement en composants techniques de qualité','10 PME du pôle'],['Accès aux marchés internationaux','Missions commerciales collectives export','CCI Drôme-Ardèche'],['Veille réglementaire textile','Anticipation des nouvelles normes (REACH, PFAS)','Pôle + syndicats sectoriels']]}}],
+qs:[
+{n:1,pts:2,q:"À partir du document 1, identifiez le type d'organisation du Pôle Véhicule du Futur (ou du Pôle Européen de la Chaussure) et justifiez.",rep:"Le Pôle Européen de la Chaussure de Montée est un pôle de compétitivité, forme institutionnalisée de cluster : (1) Type d'organisation : association loi 1901 (but non lucratif) réunissant des entreprises, des laboratoires de recherche et des organismes de formation ; (2) Finalité : non lucrative, d'intérêt collectif → renforcer la compétitivité de la filière chaussure de montée sur les marchés internationaux en favorisant l'innovation collaborative ; (3) Financement : fonds publics (État, Région) et cotisations des membres privés → partenariat public-privé ; (4) Gouvernance : dirigeant Bruno Grandjean (cf. Pôle Véhicule du Futur), avec un conseil d'administration représentant les différentes catégories de membres."},
+{n:2,pts:3,q:"À partir du document 2, expliquez en quoi l'appartenance à l'écosystème du pôle constitue un avantage compétitif pour Chamatex.",rep:"L'appartenance au pôle procure à Chamatex des avantages que la PME seule ne pourrait pas obtenir : (1) Accès à des ressources coûteuses : le laboratoire R&D partagé → coût divisé par 5 → une PME de 60 salariés ne peut pas financer seule un tel équipement ; (2) Capital humain spécialisé : recrutement d'ingénieurs ENSISA formés spécifiquement aux textiles techniques → compétences introuvables ailleurs, avantage technologique ; (3) Réseau de sous-traitants : 10 PME du pôle fournissant des composants spécialisés → qualité et réactivité de l'approvisionnement ; (4) Accès aux marchés internationaux : missions commerciales collectives → réduit les coûts d'entrée sur les marchés export pour une PME ; (5) Veille réglementaire collective : anticipation des nouvelles normes (REACH, PFAS) → éviter des investissements non conformes. Ces avantages créent des effets de réseau : plus il y a de membres qualifiés dans le pôle, plus chaque membre bénéficie."},
+{n:3,pts:3,q:"Comment la collaboration au sein d'un cluster peut-elle créer de la valeur pour l'ensemble des acteurs de l'écosystème, tout en soulevant des tensions ?",rep:"Création de valeur collective : (1) Innovation partagée : les laboratoires communs génèrent des innovations que chaque entreprise peut exploiter individuellement → la fibre recyclée de Chamatex est un exemple d'innovation issue de collaborations R&D collectives ; (2) Réduction des coûts d'accès aux ressources : partage d'équipements coûteux, formation mutualisée → économies pour chaque PME ; (3) Attractivité territoriale : le cluster attire de nouveaux talents et investisseurs → bénéfice pour toutes les entreprises du territoire ; (4) Compétitivité sectorielle : un cluster concentré est plus visible et crédible sur les marchés internationaux qu'une PME isolée. Tensions potentielles : (1) Coopétition : les entreprises du cluster sont parfois concurrentes sur certains marchés → risque de partager des informations stratégiques avec des concurrents ; (2) Inégalités de bénéfices : les grandes entreprises du cluster peuvent capter plus de valeur que les PME (plus de ressources pour exploiter les innovations) ; (3) Dépendance : si le cluster est dominé par un seul grand donneur d'ordres et qu'il délocalise, tout l'écosystème peut s'effondrer (risque de monoculture)."}]},
+qcm:[
+{q:"Un cluster (grappe d'entreprises) est…",os:["Une entreprise multinationale","Une concentration géographique d'entreprises d'un même secteur + fournisseurs + institutions","Une forme de fusion-acquisition","Un réseau d'entreprises à l'échelle mondiale"],a:1,e:"Un cluster est une concentration géographique d'entreprises d'un même secteur avec leurs fournisseurs, sous-traitants et institutions de soutien (universités, centres de R&D) sur un territoire."},
+{q:"Un pôle de compétitivité est…",os:["Un simple parc d'activités","Un cluster institutionnalisé soutenu par l'État pour développer des projets innovants","Une grande entreprise leader de son marché","Un organisme de formation professionnelle"],a:1,e:"Un pôle de compétitivité = cluster institutionnalisé et labellisé par l'État, réunissant entreprises + laboratoires de recherche + organismes de formation pour développer des projets innovants collaboratifs."},
+{q:"La relocalisation d'une activité de production consiste à…",os:["S'implanter dans un pays étranger à faibles coûts","Ramener la production dans le pays d'origine après une délocalisation","Créer une filiale à l'étranger","Sous-traiter la production"],a:1,e:"La relocalisation = retour de la production dans le pays d'origine (après délocalisation). Motivations : image 'made in France', qualité, réactivité, emplois locaux, réduction des risques logistiques."},
+{q:"Les effets positifs d'un cluster sur le territoire comprennent…",os:["Uniquement des effets négatifs (pollution, congestion)","Création d'emplois, attractivité du territoire, développement des compétences locales","Uniquement des bénéfices pour les grandes entreprises","La privatisation des services publics"],a:1,e:"Un cluster crée des effets positifs pour le territoire : emplois qualifiés, attractivité pour de nouveaux talents et investisseurs, développement des compétences spécialisées, contribution fiscale."}],
+vf:[
+{q:"Les entreprises d'un même cluster sont uniquement coopérantes et jamais concurrentes.",a:false,e:"Les entreprises d'un cluster sont à la fois coopérantes (R&D partagée, formation commune) et concurrentes sur certains marchés → concept de 'coopétition' : coopération + compétition."},
+{q:"Un écosystème d'affaires ne comprend que des entreprises privées.",a:false,e:"Un écosystème d'affaires comprend : entreprises privées, institutions publiques (collectivités), laboratoires de recherche, universités, associations, organismes de formation → toutes les parties prenantes qui co-évoluent."},
+{q:"Un territoire peut souffrir si son économie dépend trop d'un seul cluster ou secteur.",a:true,e:"La monoculture économique est un risque : si le secteur dominant d'un territoire décline (ex : industrie charbonnière, automobile), l'ensemble du tissu économique local en souffre (chômage massif, désinvestissement)."},
+{q:"La coopération entre concurrents dans un cluster est toujours illégale.",a:false,e:"La coopération entre concurrents (partage de R&D, formations communes) est légale si elle ne conduit pas à des ententes illicites sur les prix ou le partage de marchés. Les pôles de compétitivité sont légaux et encouragés par l'État."}],
+flash:[
+{t:"Cluster",d:"Concentration géographique d'entreprises d'un même secteur + fournisseurs + institutions. Génère des effets de réseau : accès aux ressources, innovation, compétitivité collective."},
+{t:"Pôle de compétitivité",d:"Cluster institutionnalisé et labellisé par l'État, réunissant entreprises, laboratoires et organismes de formation pour développer des projets innovants collaboratifs."},
+{t:"Écosystème d'affaires",d:"Réseau d'organisations interdépendantes (entreprises, institutions, universités) qui co-évoluent et créent de la valeur ensemble sur un territoire."},
+{t:"Coopétition",d:"Stratégie alliant coopération et compétition entre entreprises d'un même secteur. Permet de partager des coûts (R&D, formation) tout en restant concurrents sur le marché."},
+{t:"Effets sur le territoire",d:"Positifs : emplois, attractivité, compétences. Négatifs : pollution, congestion, risque de monoculture. Les organisations créent et subissent les effets de leur territoire."}]}
+];
+/* ══ ÉTAT ══ */
+const SK='msdgn_s';
+let ST=JSON.parse(localStorage.getItem(SK)||'{}');
+let CUR=0,FI=0;
+function saveAct(id,type,val){if(!ST[id])ST[id]={};ST[id][type]=val;localStorage.setItem(SK,JSON.stringify(ST));updProg();}
+function getAct(id,type,def){return ST[id]&&ST[id][type]!==undefined?ST[id][type]:def;}
+function updProg(){
+  const done=CH.filter(c=>ST[c.id]&&ST[c.id].done).length;
+  const pct=Math.round(done/CH.length*100);
+  ['hfill','sfill'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.width=pct+'%';});
+  ['hpct','spct'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=pct+'%';});
+  const sd=document.getElementById('sdone');if(sd)sd.textContent=done;
+  const ns=document.getElementById('nsc');if(ns)ns.textContent=done+' / '+CH.length;
+}
+function renderCat(filter){
+  const cat=document.getElementById('cat');cat.innerHTML='';
+  const groups={};
+  CH.forEach(c=>{if(filter&&c.th!==filter)return;if(!groups[c.th])groups[c.th]=[];groups[c.th].push(c);});
+  Object.keys(groups).forEach(th=>{
+    const t=TH[th];
+    const band=document.createElement('div');
+    band.className='tbd';
+    band.style.cssText='background:'+t.bg+';border:1px solid '+t.c+'33;cursor:default;';
+    band.innerHTML='<div class="tstr" style="color:'+t.c+'"></div><div class="tico" style="background:'+t.c+'22;border:1px solid '+t.c+'44"><span style="color:'+t.c+';font-size:14px;font-weight:800;">'+(th==1?'①':th==2?'②':'③')+'</span></div><div class="tinf"><div class="ttg" style="color:'+t.c+'">Thème '+th+'</div><div class="tnm">'+t.n+'</div><div class="tmt">'+groups[th].length+' chapitre'+(groups[th].length>1?'s':'')+'</div></div><div class="tpw"><div class="tpn" style="color:'+t.c+'">'+groups[th].length+'</div><div class="tpl">chapitres</div></div>';
+    cat.appendChild(band);
+    const grid=document.createElement('div');grid.className='cg';
+    groups[th].forEach(c=>{
+      const done=ST[c.id]&&ST[c.id].done;
+      const prog=ST[c.id]&&ST[c.id].prog||0;
+      const card=document.createElement('div');card.className='cc';card.onclick=()=>openC(c.id);
+      const bg='linear-gradient(135deg,'+t.c+'22,'+t.c+'08)';
+      card.innerHTML='<div class="cth" style="background:'+bg+'"><span class="ctic">'+c.ic+'</span><div class="cov" style="background:rgba(0,0,0,.5)"><span style="font-size:28px">▶</span></div><div class="cst '+(done?'std':prog>0?'stw':'stn')+'">'+(done?'✓':prog>0?'…':'○')+'</div></div><div class="cb"><div class="cn">Chapitre '+c.n+' · Thème '+c.th+'</div><div class="ct">'+c.title+'</div><div class="cf"><span class="ctg" style="background:'+t.c+'22;color:'+t.c+';border:1px solid '+t.c+'44">'+c.cas.split('/')[0].trim()+'</span></div><div class="mp" style="margin-top:7px"><div class="mb"><div class="mf" style="width:'+prog+'%;background:'+t.c+'"></div></div><span class="mp2">'+prog+'%</span></div></div>';
+      grid.appendChild(card);
+    });
+    cat.appendChild(grid);
+  });
+}
+function fAll(btn){document.querySelectorAll('.nfil .nb').forEach(b=>b.classList.remove('ac'));btn.classList.add('ac');renderCat(null);}
+function fTh(th,btn){document.querySelectorAll('.nfil .nb').forEach(b=>b.classList.remove('ac'));btn.classList.add('ac');renderCat(th);}
+function goTop(){window.scrollTo({top:0,behavior:'smooth'});renderCat(null);}
+function openC(id){
+  CUR=id;const c=CH[id];const t=TH[c.th];
+  document.getElementById('mIc').innerHTML='<span style="font-size:16px">'+c.ic+'</span>';
+  document.getElementById('mIc').style.background=t.c+'22';
+  document.getElementById('mLb').textContent='Chapitre '+c.n+' · '+t.n;
+  document.getElementById('mLb').style.color=t.c;
+  document.getElementById('mTi').textContent=c.title;
+  document.getElementById('mCa').textContent='Situation : '+c.cas;
+  const tg=document.getElementById('mTg');
+  tg.innerHTML=c.tags.map(tg=>'<span class="mt2">'+tg+'</span>').join('');
+  const tabs=['📖 Cours','📋 Cas BAC','✅ QCM','🔀 Vrai/Faux','🃏 Flashcards'];
+  const tbar=document.getElementById('tbar');
+  tbar.innerHTML=tabs.map((tb,i)=>`<button class="tb${i===0?' ac':''}" onclick="swTab(${id},${i},this)" style="border-bottom-color:${i===0?t.c:'transparent'}">${tb}</button>`).join('');
+  swTab(id,0,tbar.querySelector('.tb'));
+  document.getElementById('mbd').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeM(){document.getElementById('mbd').classList.remove('open');document.body.style.overflow='';renderCat();}
+function hdBd(e){if(e.target===document.getElementById('mbd'))closeM();}
+function swTab(id,idx,btn){
+  document.querySelectorAll('#tbar .tb').forEach((b,i)=>{
+    const t=TH[CH[id].th];
+    b.classList.toggle('ac',i===idx);
+    b.style.borderBottomColor=i===idx?t.c:'transparent';
+  });
+  if(idx===0)renderCours(id);
+  else if(idx===1)renderBac(id);
+  else if(idx===2)renderQcm(id);
+  else if(idx===3)renderVf(id);
+  else renderFlash(id);
+}
+function renderCours(id){
+  const c=CH[id];const t=TH[c.th];const cr=c.cours;
+  let h='<div class="cop"><div class="ci">'+cr.intro+'</div>';
+  cr.secs.forEach(s=>{
+    h+='<div class="cs"><div class="cst2">'+s.t+'</div>';
+    if(s.tbl){h+='<table class="ctb"><tr>'+s.tbl.h.map(x=>'<th>'+x+'</th>').join('')+'</tr>';s.tbl.r.forEach(row=>{h+='<tr>'+row.map(x=>'<td>'+x+'</td>').join('')+'</tr>';});h+='</table>';}
+    if(s.pts){s.pts.forEach(p=>{h+='<div class="cp"><span class="bl">▸</span><span>'+p+'</span></div>';});}
+    if(s.fo){h+='<div class="cfo"><div class="cfol">'+s.fo.l+'</div><div class="cfoq">'+s.fo.eq+'</div></div>';}
+    h+='</div>';
+  });
+  h+='<div class="cre"><div class="crel">À retenir</div>'+cr.ret.map(r=>'<div class="cri">'+r+'</div>').join('')+'</div>';
+  h+='</div>';
+  document.getElementById('tc').innerHTML=h;
+}
+function renderBac(id){
+  const c=CH[id];const t=TH[c.th];const b=c.bac;
+  let h='<div class="bop"><div class="bhd"><div class="bhl">Cas BAC · Situation</div><div class="ben">'+b.ent+'</div><div class="bds">'+b.desc+'</div></div>';
+  b.docs.forEach((d,i)=>{
+    h+='<div class="bdo"><div class="bdol">'+d.lbl+'</div>';
+    if(d.txt)h+='<div class="bdot">'+d.txt.replace(/\n/g,'<br>')+'</div>';
+    if(d.data){h+='<table class="bdt"><tr>'+d.data.h.map(x=>'<th>'+x+'</th>').join('')+'</tr>';d.data.r.forEach(row=>{h+='<tr>'+row.map(x=>'<td>'+x+'</td>').join('')+'</tr>';});h+='</table>';}
+    h+='</div>';
+  });
+  h+='<div class="bqt">📝 Questions</div>';
+  b.qs.forEach(q=>{
+    h+=`<div class="bq"><div class="bqh"><div class="bqn" style="background:${t.c}22;color:${t.c};border:1px solid ${t.c}44">${q.n}</div><div class="bqq">${q.q}</div></div><div class="bqp">${q.pts} point${q.pts>1?'s':''}</div><button class="bbtn" onclick="tgCor('bq${id}_${q.n}',this)">Voir la correction</button><div class="bcor" id="bq${id}_${q.n}"><div class="bcl">Correction</div>${q.rep}</div></div>`;
+  });
+  h+='</div>';
+  document.getElementById('tc').innerHTML=h;
+}
+function tgCor(id,btn){const el=document.getElementById(id);el.classList.toggle('show');btn.textContent=el.classList.contains('show')?'Masquer la correction':'Voir la correction';}
+function renderQcm(id){
+  const c=CH[id];const t=TH[c.th];
+  let sc=getAct(id,'qsc',0);
+  let h=`<div class="aop"><div class="ati"><span>✅</span>QCM<span class="abd" style="background:${t.c}22;color:${t.c}">${c.qcm.length} questions</span></div><div class="ade">Sélectionnez la bonne réponse pour chaque question.</div>`;
+  c.qcm.forEach((q,qi)=>{
+    const ans=getAct(id,'q'+qi,-1);
+    h+=`<div class="qc"><div class="qq">${qi+1}. ${q.q}</div><div class="qos">`;
+    q.os.forEach((o,oi)=>{let cls='qo';if(ans>=0){cls+=(oi===q.a?' ok':(oi===ans?' ko':''));}h+=`<button class="${cls}"${ans>=0?' disabled':''} onclick="ansQ(${id},${qi},${oi},this)">${o}</button>`;});
+    h+='</div>';
+    if(ans>=0)h+=`<div class="qe show">${q.e}</div>`;
+    h+='</div>';
+  });
+  h+=`<div class="sw${sc>=0?' show':''}" id="qsw${id}" style="background:rgba(22,163,74,.08);border-color:rgba(22,163,74,.3)"><div class="sc" style="border-color:${t.c}"><div class="sp2" style="color:${t.c}">${sc}</div><div style="font-size:8px;color:var(--mu)">/ ${c.qcm.length}</div></div><div><div class="sm">Score QCM</div><div class="sd2">${sc}/${c.qcm.length} bonne${sc>1?'s':''} réponse${sc>1?'s':''}</div></div></div>`;
+  h+=`<button style="background:rgba(255,255,255,.05);border:1px solid var(--b1);border-radius:6px;padding:7px 14px;font-size:10px;font-weight:600;color:var(--mu);cursor:pointer;margin-top:10px" onclick="resetQ(${id})">🔄 Recommencer</button>`;
+  h+='</div>';
+  document.getElementById('tc').innerHTML=h;
+}
+function ansQ(id,qi,oi,btn){
+  const c=CH[id];const q=c.qcm[qi];
+  saveAct(id,'q'+qi,oi);
+  const par=btn.parentElement;
+  par.querySelectorAll('.qo').forEach((b,i)=>{b.disabled=true;if(i===q.a)b.classList.add('ok');else if(i===oi)b.classList.add('ko');});
+  const exp=par.nextElementSibling;
+  if(exp&&exp.classList.contains('qe')){exp.classList.add('show');exp.textContent=q.e;}
+  const allDone=c.qcm.every((_,i)=>getAct(id,'q'+i,-1)>=0);
+  if(allDone){
+    const sc=c.qcm.filter((_,i)=>getAct(id,'q'+i,-1)===_.a).length;
+    saveAct(id,'qsc',sc);
+    const sw=document.getElementById('qsw'+id);
+    if(sw){const t=TH[c.th];sw.querySelector('.sp2').textContent=sc;sw.querySelector('.sp2').style.color=t.c;sw.querySelector('.sd2').textContent=sc+'/'+c.qcm.length+' bonne'+(sc>1?'s':'')+' réponse'+(sc>1?'s':'');sw.classList.add('show');}
+    if(sc>=c.qcm.length*0.75)saveAct(id,'prog',Math.max(getAct(id,'prog',0),50));
+  }
+}
+function resetQ(id){const c=CH[id];c.qcm.forEach((_,i)=>{if(ST[id])delete ST[id]['q'+i];});if(ST[id])delete ST[id].qsc;localStorage.setItem(SK,JSON.stringify(ST));renderQcm(id);}
+function renderVf(id){
+  const c=CH[id];const t=TH[c.th];
+  let h=`<div class="aop"><div class="ati"><span>🔀</span>Vrai / Faux<span class="abd" style="background:${t.c}22;color:${t.c}">${c.vf.length} assertions</span></div><div class="ade">Pour chaque affirmation, indiquez si elle est vraie ou fausse.</div>`;
+  c.vf.forEach((v,vi)=>{
+    const ans=getAct(id,'v'+vi,'');
+    const corr=ans===''?'':((ans==='V')===v.a?'ok':'ko');
+    h+=`<div><div class="vb"><div class="vq">${vi+1}. ${v.q}</div><div class="vbs"><button class="vbn vrai${corr&&ans==='V'?' '+corr:''}"${ans!==''?' disabled':''} onclick="ansVF(${id},${vi},'V',this)">V</button><button class="vbn faux${corr&&ans==='F'?' '+corr:''}"${ans!==''?' disabled':''} onclick="ansVF(${id},${vi},'F',this)">F</button></div></div>`;
+    if(ans!=='')h+=`<div class="ve show">${v.a?'✓ Vrai':'✗ Faux'} — ${v.e}</div>`;
+    h+='</div>';
+  });
+  h+='</div>';
+  document.getElementById('tc').innerHTML=h;
+}
+function ansVF(id,vi,ans,btn){
+  const c=CH[id];const v=c.vf[vi];
+  saveAct(id,'v'+vi,ans);
+  const par=btn.closest('.vb');
+  par.querySelectorAll('.vbn').forEach(b=>b.disabled=true);
+  const correct=(ans==='V')===v.a;
+  btn.classList.add(correct?'ok':'ko');
+  if(!correct){par.querySelector(v.a?'.vrai':'.faux').classList.add('ok');}
+  const exp=par.closest('div').querySelector('.ve');
+  if(exp){exp.classList.add('show');exp.innerHTML=(v.a?'✓ Vrai':'✗ Faux')+' — '+v.e;}
+  const allDone=c.vf.every((_,i)=>getAct(id,'v'+i,'')!=='');
+  if(allDone){const sc=c.vf.filter((_,i)=>{const a=getAct(id,'v'+i,'');return(a==='V')===_.a;}).length;if(sc>=c.vf.length*0.75)saveAct(id,'prog',Math.max(getAct(id,'prog',0),75));}
+}
+function renderFlash(id){
+  const c=CH[id];const t=TH[c.th];
+  FI=getAct(id,'fi',0);
+  function build(){
+    const f=c.flash[FI];
+    const seen=getAct(id,'fse','');
+    const seenSet=new Set(seen.split(',').filter(x=>x!=='').map(Number));
+    let h=`<div class="aop"><div class="ati"><span>🃏</span>Flashcards<span class="abd" style="background:${t.c}22;color:${t.c}">${c.flash.length} cartes</span></div><div class="ade">Cliquez sur la carte pour la retourner.</div>`;
+    h+=`<div class="fn"><button class="fnb" onclick="navF(${id},-1)">←</button><span class="fc">${FI+1} / ${c.flash.length}</span><button class="fnb" onclick="navF(${id},1)">→</button></div>`;
+    h+=`<div class="fwp"><div class="fca" id="fc${id}" onclick="flipF(this)"><div class="ffa ffr"><div class="ffl">Terme</div><div class="fft" style="color:${t.c}">${f.t}</div></div><div class="ffa fbk"><div class="fbl">Définition</div><div class="fbd">${f.d}</div></div></div></div>`;
+    h+=`<div class="fh">Cliquez pour retourner</div>`;
+    h+=`<div class="fp">${c.flash.map((x,i)=>`<div class="fd${seenSet.has(i)?' se':''}${i===FI?' cu':''}" onclick="gotoF(${id},${i})"></div>`).join('')}</div>`;
+    if(seenSet.size===c.flash.length){saveAct(id,'prog',100);saveAct(id,'done',true);h+=`<div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:8px;padding:10px 14px;margin-top:12px;text-align:center;font-size:12px;color:#86efac">🎉 Toutes les cartes vues — Chapitre validé !</div>`;}
+    h+='</div>';
+    document.getElementById('tc').innerHTML=h;
+    const seen2=getAct(id,'fse','');
+    const seenSet2=new Set(seen2.split(',').filter(x=>x!=='').map(Number));
+    seenSet2.add(FI);
+    saveAct(id,'fse',Array.from(seenSet2).join(','));
+  }
+  build();
+}
+function flipF(el){el.classList.toggle('fl');}
+function navF(id,d){FI=(FI+d+CH[id].flash.length)%CH[id].flash.length;saveAct(id,'fi',FI);renderFlash(id);}
+function gotoF(id,i){FI=i;saveAct(id,'fi',FI);renderFlash(id);}
+renderCat();
+updProg();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  const swCode = atob('CmNvbnN0IENBQ0hFID0gJ2xscC1tc2Rnbl90ZXJtaW5hbGVfc3RtZ19kZWxhZ3JhdmVfbGxwX3YxJzsKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdpbnN0YWxsJywgZSA9PiB7CiAgZS53YWl0VW50aWwoCiAgICBjYWNoZXMub3BlbihDQUNIRSkudGhlbihjID0+IGMuYWRkQWxsKFsnLi8nXSkpCiAgICAgIC50aGVuKCgpID0+IHNlbGYuc2tpcFdhaXRpbmcoKSkKICApOwp9KTsKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdhY3RpdmF0ZScsIGUgPT4gewogIGUud2FpdFVudGlsKAogICAgY2FjaGVzLmtleXMoKS50aGVuKGtleXMgPT4gUHJvbWlzZS5hbGwoCiAgICAgIGtleXMuZmlsdGVyKGsgPT4gayAhPT0gQ0FDSEUpLm1hcChrID0+IGNhY2hlcy5kZWxldGUoaykpCiAgICApKS50aGVuKCgpID0+IHNlbGYuY2xpZW50cy5jbGFpbSgpKQogICk7Cn0pOwpzZWxmLmFkZEV2ZW50TGlzdGVuZXIoJ2ZldGNoJywgZSA9PiB7CiAgZS5yZXNwb25kV2l0aCgKICAgIGNhY2hlcy5tYXRjaChlLnJlcXVlc3QpLnRoZW4ociA9PiByIHx8IGZldGNoKGUucmVxdWVzdCkudGhlbihyZXMgPT4gewogICAgICBjb25zdCBjbG9uZSA9IHJlcy5jbG9uZSgpOwogICAgICBjYWNoZXMub3BlbihDQUNIRSkudGhlbihjID0+IGMucHV0KGUucmVxdWVzdCwgY2xvbmUpKTsKICAgICAgcmV0dXJuIHJlczsKICAgIH0pKS5jYXRjaCgoKSA9PiBjYWNoZXMubWF0Y2goJy4vJykpCiAgKTsKfSk7Cg==');
+  const blob = new Blob([swCode], {type: 'application/javascript'});
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl, {scope: '.'})
+    .then(r => console.log('SW registered'))
+    .catch(e => console.log('SW error:', e));
+}
+</script>
+</body></html>

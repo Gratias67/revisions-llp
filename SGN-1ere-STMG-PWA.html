@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- PWA -->
+  <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjogIlNHTiAxw6hyZSBTVE1HIiwgInNob3J0X25hbWUiOiAiU0dOIDHDqHJlIiwgImRlc2NyaXB0aW9uIjogIlLDqXZpc2lvbnMgQkFDIFNjaWVuY2VzIGRlIEdlc3Rpb24gJiBOdW3DqXJpcXVlIDHDqHJlIFNUTUcg4oCUIEx5Y8OpZSBMb3VpcyBQYXN0ZXVyIiwgInN0YXJ0X3VybCI6ICIuIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsICJ0aGVtZV9jb2xvciI6ICIjZjk3MzE2IiwgImJhY2tncm91bmRfY29sb3IiOiAiI2ZkZjhmMCIsICJjYXRlZ29yaWVzIjogWyJlZHVjYXRpb24iXSwgImxhbmciOiAiZnIiLCAiaWNvbnMiOiBbeyJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhkcFpIUm9QU0l4T1RJaUlHaGxhV2RvZEQwaU1Ua3lJaUIyYVdWM1FtOTRQU0l3SURBZ01Ua3lJREU1TWlJK0NpQWdQSEpsWTNRZ2QybGtkR2c5SWpFNU1pSWdhR1ZwWjJoMFBTSXhPVElpSUhKNFBTSXlOQ0lnWm1sc2JEMGlJMlk1TnpNeE5pSXZQZ29nSUR4eVpXTjBJSGc5SWpFeUlpQjVQU0l4TWlJZ2QybGtkR2c5SWpFMk9TSWdhR1ZwWjJoMFBTSXhOamtpSUhKNFBTSXhPU0lnWm1sc2JEMGljbWRpWVNneU5UVXNNalUxTERJMU5Td3dMakV5S1NJdlBnb2dJRHgwWlhoMElIZzlJamsySWlCNVBTSXhNRGdpSUdadmJuUXRabUZ0YVd4NVBTSkJjbWxoYkNCQ2JHRmpheXh6WVc1ekxYTmxjbWxtSWlCbWIyNTBMWGRsYVdkb2REMGlPVEF3SWlCbWIyNTBMWE5wZW1VOUlqZ3hJaUJtYVd4c1BTSjNhR2wwWlNJZ2RHVjRkQzFoYm1Ob2IzSTlJbTFwWkdSc1pTSWdaRzl0YVc1aGJuUXRZbUZ6Wld4cGJtVTlJbTFwWkdSc1pTSStVend2ZEdWNGRENEtJQ0E4ZEdWNGRDQjRQU0k1TmlJZ2VUMGlNVFUzSWlCbWIyNTBMV1poYldsc2VUMGlRWEpwWVd3c2MyRnVjeTF6WlhKcFppSWdabTl1ZEMxM1pXbG5hSFE5SWpjd01DSWdabTl1ZEMxemFYcGxQU0l5TlNJZ1ptbHNiRDBpY21kaVlTZ3lOVFVzTWpVMUxESTFOU3d3TGpnMUtTSWdkR1Y0ZEMxaGJtTm9iM0k5SW0xcFpHUnNaU0krTVhKbFBDOTBaWGgwUGdvOEwzTjJaejQ9IiwgInNpemVzIjogIjE5MngxOTIiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIn0sIHsic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIZHBaSFJvUFNJMU1USWlJR2hsYVdkb2REMGlOVEV5SWlCMmFXVjNRbTk0UFNJd0lEQWdOVEV5SURVeE1pSStDaUFnUEhKbFkzUWdkMmxrZEdnOUlqVXhNaUlnYUdWcFoyaDBQU0kxTVRJaUlISjRQU0kyTkNJZ1ptbHNiRDBpSTJZNU56TXhOaUl2UGdvZ0lEeHlaV04wSUhnOUlqTXhJaUI1UFNJek1TSWdkMmxrZEdnOUlqUTFNU0lnYUdWcFoyaDBQU0kwTlRFaUlISjRQU0kxTVNJZ1ptbHNiRDBpY21kaVlTZ3lOVFVzTWpVMUxESTFOU3d3TGpFeUtTSXZQZ29nSUR4MFpYaDBJSGc5SWpJMU5pSWdlVDBpTWpnM0lpQm1iMjUwTFdaaGJXbHNlVDBpUVhKcFlXd2dRbXhoWTJzc2MyRnVjeTF6WlhKcFppSWdabTl1ZEMxM1pXbG5hSFE5SWprd01DSWdabTl1ZEMxemFYcGxQU0l5TVRVaUlHWnBiR3c5SW5kb2FYUmxJaUIwWlhoMExXRnVZMmh2Y2owaWJXbGtaR3hsSWlCa2IyMXBibUZ1ZEMxaVlYTmxiR2x1WlQwaWJXbGtaR3hsSWo1VFBDOTBaWGgwUGdvZ0lEeDBaWGgwSUhnOUlqSTFOaUlnZVQwaU5ESXdJaUJtYjI1MExXWmhiV2xzZVQwaVFYSnBZV3dzYzJGdWN5MXpaWEpwWmlJZ1ptOXVkQzEzWldsbmFIUTlJamN3TUNJZ1ptOXVkQzF6YVhwbFBTSTJOeUlnWm1sc2JEMGljbWRpWVNneU5UVXNNalUxTERJMU5Td3dMamcxS1NJZ2RHVjRkQzFoYm1Ob2IzSTlJbTFwWkdSc1pTSStNWEpsUEM5MFpYaDBQZ284TDNOMlp6ND0iLCAic2l6ZXMiOiAiNTEyeDUxMiIsICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiLCAicHVycG9zZSI6ICJhbnkgbWFza2FibGUifV19">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="SGN 1ère">
+  <meta name="theme-color" content="#f97316">
+  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiB2aWV3Qm94PSIwIDAgMTkyIDE5MiI+CiAgPHJlY3Qgd2lkdGg9IjE5MiIgaGVpZ2h0PSIxOTIiIHJ4PSIyNCIgZmlsbD0iI2Y5NzMxNiIvPgogIDxyZWN0IHg9IjEyIiB5PSIxMiIgd2lkdGg9IjE2OSIgaGVpZ2h0PSIxNjkiIHJ4PSIxOSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEyKSIvPgogIDx0ZXh0IHg9Ijk2IiB5PSIxMDgiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjgxIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+UzwvdGV4dD4KICA8dGV4dCB4PSI5NiIgeT0iMTU3IiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyNSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg1KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MXJlPC90ZXh0Pgo8L3N2Zz4=">
+  <!-- /PWA -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGN 1ère STMG — Delagrave · Lycée Louis Pasteur</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fdf8f0;--s1:#f5efe4;--s2:#ede5d8;--card:#fffdf9;
+--b1:#e2d8c8;--b2:#cfc3b0;
+--o:#f97316;--o2:#ea6800;--t:#0891b2;--g:#16a34a;--v:#8b5cf6;--a:#d97706;
+--tx:#1c1410;--mu:#6b5e50;--di:#c5b89a;--fh:'Syne',sans-serif;--fb:'DM Sans',sans-serif;}
+html{scroll-behavior:smooth}body{background:var(--bg);color:var(--tx);font-family:var(--fb);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--b2)}::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px}
+button,input{font-family:var(--fb)}
+@keyframes fU{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes fI{from{opacity:0}to{opacity:1}}
+@keyframes sI{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes co{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(160px) rotate(720deg);opacity:0}}
+.au{animation:fU .42s ease both}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:52px;display:flex;align-items:center;padding:0 20px;gap:10px;background:rgba(253,248,240,.97);border-bottom:1px solid rgba(180,160,120,.2);backdrop-filter:blur(16px)}
+.nlogo{font-family:var(--fh);font-weight:800;font-size:15px;color:var(--o2);cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0}
+.nbdg{background:rgba(249,115,22,.2);border:1px solid rgba(249,115,22,.35);border-radius:4px;padding:2px 6px;font-size:8px;font-weight:700;letter-spacing:1px}
+.nfil{display:flex;gap:2px;flex:1}.nb{background:none;border:none;color:var(--mu);padding:4px 9px;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap}
+.nb:hover{color:var(--tx);background:rgba(255,255,255,.06)}.nb.ac{color:var(--tx);background:rgba(255,255,255,.09)}
+.nsco{margin-left:auto;background:rgba(249,115,22,.10);border:1px solid rgba(249,115,22,.28);border-radius:16px;padding:3px 10px;font-size:10px;font-weight:700;color:var(--o2);display:flex;align-items:center;gap:4px;white-space:nowrap}
+.ndot{width:5px;height:5px;border-radius:50%;background:var(--o);animation:pu 2s infinite}
+#hero{min-height:50vh;position:relative;display:flex;align-items:flex-end;padding:70px 38px 44px;overflow:hidden}
+.hb{position:absolute;inset:0;background:linear-gradient(135deg,#fdf8f0,#f5ede0 60%,#fdf6ee)}
+.hg1{position:absolute;inset:0;background:radial-gradient(ellipse 55% 40% at 54% 32%,rgba(249,115,22,.10) 0%,transparent 64%)}
+.hg2{position:absolute;inset:0;background:radial-gradient(ellipse 26% 20% at 7% 78%,rgba(8,145,178,.07) 0%,transparent 54%)}
+.hgr{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(rgba(140,100,60,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(140,100,60,.3) 1px,transparent 1px);background-size:44px 44px}
+.hc{position:relative;z-index:2;max-width:680px}
+.hbdg{display:inline-flex;align-items:center;gap:6px;background:rgba(249,115,22,.10);border:1px solid rgba(249,115,22,.3);border-radius:5px;padding:4px 11px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--o2);margin-bottom:14px}
+.ht{font-family:var(--fh);font-weight:800;font-size:clamp(26px,4.5vw,52px);line-height:1.05;margin-bottom:10px;letter-spacing:-1px}
+.ht .ao{color:var(--o2)}.ht .at{color:var(--t)}.ht .sub{color:var(--mu);font-weight:600;font-size:.54em;display:block;margin-top:3px}
+.hd{font-size:12px;color:var(--mu);line-height:1.78;margin-bottom:20px;max-width:520px}
+.hp{margin-bottom:22px;max-width:400px}.hpl{display:flex;justify-content:space-between;font-size:10px;color:var(--mu);margin-bottom:5px}
+.hpl span:last-child{color:var(--a);font-weight:700}.pt{height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+.pf{height:100%;background:linear-gradient(90deg,var(--o),var(--t));border-radius:2px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.hbts{display:flex;gap:8px;flex-wrap:wrap}
+.bo{background:var(--o);color:#fff;border:none;border-radius:7px;padding:10px 20px;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 4px 18px rgba(249,115,22,.4);transition:all .2s}
+.bo:hover{background:#ea6800;transform:translateY(-2px)}
+.bg{background:rgba(255,255,255,.05);color:var(--tx);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:10px 20px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.bg:hover{background:rgba(255,255,255,.09);transform:translateY(-2px)}
+#ss{background:var(--s2);border-top:1px solid var(--b1);border-bottom:1px solid var(--b2);padding:11px 38px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.si{display:flex;flex-direction:column;gap:1px}.sn{font-family:var(--fh);font-weight:800;font-size:22px;line-height:1}
+.sl{font-size:9px;color:var(--di);letter-spacing:1.5px;text-transform:uppercase}.sp{flex:1;min-width:160px;margin-left:auto}
+.spl{display:flex;justify-content:space-between;font-size:10px;color:var(--mu);margin-bottom:5px}.spl span:last-child{color:var(--a);font-weight:700}
+#cat{padding:22px 38px 56px}
+.tbd{border-radius:10px;padding:12px 17px;display:flex;align-items:center;gap:12px;margin-bottom:16px;position:relative;overflow:hidden;cursor:pointer;transition:transform .17s}
+.tbd:hover{transform:translateY(-1px)}.tstr{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(55deg,currentColor 0,currentColor 1px,transparent 0,transparent 18px)}
+.tico{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.tinf{flex:1}.ttg{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.8;margin-bottom:2px}
+.tnm{font-size:13px;font-weight:700;margin-bottom:1px}.tmt{font-size:10px;color:var(--mu)}
+.tpw{text-align:right;flex-shrink:0}.tpn{font-family:var(--fh);font-weight:800;font-size:24px;line-height:1}.tpl{font-size:9px;color:var(--mu)}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:11px;margin-bottom:36px}
+.cc{background:var(--card);border:1px solid var(--b1);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.cc:hover{transform:translateY(-4px) scale(1.012);box-shadow:0 10px 40px rgba(140,100,40,.15)}
+.cth{height:90px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ctic{font-size:34px;position:relative;z-index:1}.cov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;opacity:0;transition:opacity .16s;z-index:3}
+.cc:hover .cov{opacity:1}.cst{position:absolute;top:7px;right:7px;z-index:4;width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700}
+.stn{background:rgba(255,255,255,.07);border:1px solid var(--b1);color:var(--di)}.stw{background:#f59e0b;color:#000}.std{background:#22c55e;color:#fff}
+.cb{padding:10px 12px}.cn{font-size:9px;color:var(--di);font-weight:600;margin-bottom:2px;letter-spacing:.5px}
+.ct{font-size:11px;font-weight:700;line-height:1.38;margin-bottom:7px;min-height:28px}.cf{display:flex;align-items:center;justify-content:space-between;gap:4px}
+.ctg{font-size:8px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:2px 6px;border-radius:3px}
+.ccas{font-size:8px;color:var(--mu);font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100px}
+.mp{display:flex;align-items:center;gap:4px}.mb{width:32px;height:2px;background:var(--b2);border-radius:1px;overflow:hidden}
+.mf{height:100%;border-radius:1px;transition:width .5s}.mp2{font-size:8px;color:var(--mu)}
+#mbd{display:none;position:fixed;inset:0;z-index:600;background:rgba(200,180,140,.45);backdrop-filter:blur(20px);overflow-y:auto;padding:22px 12px}
+#mbd.open{display:flex;align-items:flex-start;justify-content:center}
+#mbox{background:var(--s2);border:1px solid var(--b2);border-radius:14px;width:100%;max-width:820px;overflow:hidden;animation:sI .24s ease;box-shadow:0 20px 60px rgba(100,70,20,.18)}
+.mhd{padding:17px 22px 13px;border-bottom:1px solid var(--b2);position:relative}
+.mcl{position:absolute;top:10px;right:10px;background:rgba(140,100,40,.08);border:none;color:var(--mu);width:25px;height:25px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .17s}
+.mcl:hover{background:rgba(140,100,40,.15);color:var(--tx)}
+.mmt{display:flex;align-items:center;gap:9px;margin-bottom:6px}.mic{width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.mlb{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1px}.mti{font-family:var(--fh);font-weight:800;font-size:17px;line-height:1.2}
+.mca{font-size:10px;color:var(--mu);margin-top:2px;font-style:italic}.mtg2{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.mt2{font-size:9px;padding:2px 7px;border-radius:12px;background:var(--s2);border:1px solid var(--b2);color:var(--mu)}
+.tbar{display:flex;border-bottom:1px solid var(--b2);background:var(--s2);overflow-x:auto}
+.tb{padding:9px 13px;font-size:11px;font-weight:600;color:var(--mu);border:none;background:none;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .16s}
+.tb:hover{color:var(--tx)}.tb.ac{color:var(--tx)}
+.cop{padding:18px 22px}
+.ci{border-radius:8px;padding:12px 15px;margin-bottom:18px;font-size:12px;line-height:1.78;border-left:3px solid var(--o);background:rgba(249,115,22,.09);border-top:1px solid rgba(249,115,22,.18);border-right:1px solid rgba(249,115,22,.18);border-bottom:1px solid rgba(249,115,22,.18)}
+.cs{margin-bottom:20px}.cst2{font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--a);display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.cst2::after{content:'';flex:1;height:1px;background:var(--b2)}
+.cp{display:flex;gap:8px;align-items:flex-start;padding:7px 11px;background:rgba(140,100,40,.03);border-radius:6px;margin-bottom:5px;font-size:11px;line-height:1.75;color:var(--mu);transition:background .18s}
+.cp:hover{background:rgba(140,100,40,.06)}.cp .bl{flex-shrink:0;margin-top:2px;font-size:9px;opacity:.5}
+.cdf{border-radius:8px;padding:10px 14px;margin-bottom:7px;background:rgba(249,115,22,.09);border:1px solid rgba(249,115,22,.22)}
+.cdft{font-size:10px;font-weight:700;color:var(--o2);letter-spacing:.5px;margin-bottom:3px;text-transform:uppercase}
+.cdfd{font-size:11px;line-height:1.65;color:var(--mu)}
+.ctb{width:100%;border-collapse:collapse;margin-bottom:10px;font-size:11px}
+.ctb th{background:rgba(255,255,255,.06);padding:6px 10px;text-align:left;font-weight:700;font-size:10px;border:1px solid var(--b2);color:var(--tx)}
+.ctb td{padding:6px 10px;border:1px solid var(--b1);color:var(--mu);line-height:1.5;vertical-align:top}
+.ctb tr:nth-child(even) td{background:rgba(140,100,40,.05)}
+.cfo{background:rgba(6,182,212,.07);border:1px solid rgba(6,182,212,.2);border-radius:8px;padding:10px 15px;margin-bottom:9px;text-align:center}
+.cfol{font-size:9px;color:var(--t);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}.cfoq{font-family:var(--fh);font-size:15px;font-weight:700}
+.ctip{background:rgba(217,119,6,.08);border:1px solid rgba(217,119,6,.25);border-radius:8px;padding:9px 12px;margin-bottom:7px;font-size:11px;line-height:1.65;color:#92400e}
+.ctip::before{content:'💡 '}
+.cre{background:rgba(22,163,74,.07);border:1px solid rgba(22,163,74,.25);border-radius:8px;padding:12px 15px;margin-top:14px}
+.crel{font-size:9px;font-weight:700;color:var(--g);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:7px}
+.cri{display:flex;gap:6px;align-items:flex-start;font-size:11px;color:#15803d;margin-bottom:4px;line-height:1.55}
+.cri::before{content:'✓';color:var(--g);font-weight:700;flex-shrink:0;margin-top:1px}
+.bop{padding:18px 22px}
+.bhd{border-radius:10px;padding:13px 17px;margin-bottom:16px;background:linear-gradient(135deg,rgba(249,115,22,.12),rgba(8,145,178,.08));border:1px solid rgba(249,115,22,.3)}
+.bhl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--o2);margin-bottom:4px}.ben{font-family:var(--fh);font-size:15px;font-weight:800;margin-bottom:3px}
+.bds{font-size:11px;color:var(--mu);line-height:1.65}.bdo{background:#fffdf9;border:1px solid var(--b1);border-radius:8px;padding:11px 15px;margin-bottom:10px}
+.bdol{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--t);margin-bottom:5px}.bdot{font-size:11px;line-height:1.78;color:var(--mu)}
+.bdt{width:100%;border-collapse:collapse;margin-top:7px;font-size:10px}.bdt th{background:rgba(255,255,255,.07);padding:5px 8px;text-align:left;font-weight:700;border:1px solid var(--b2);color:var(--tx)}
+.bdt td{padding:5px 8px;border:1px solid var(--b1);color:var(--mu)}
+.bqt{font-family:var(--fh);font-size:12px;font-weight:700;color:var(--a);margin:14px 0 9px;display:flex;align-items:center;gap:5px}
+.bq{background:#fffdf9;border:1px solid var(--b1);border-radius:8px;padding:11px 14px;margin-bottom:8px}
+.bqh{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px}.bqn{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0;margin-top:1px}
+.bqq{font-size:11px;line-height:1.62;flex:1}.bqp{font-size:9px;color:var(--mu);margin-bottom:6px;padding-left:28px}
+.bbtn{background:rgba(255,255,255,.05);border:1px solid var(--b1);border-radius:5px;padding:5px 11px;font-size:10px;font-weight:600;color:var(--mu);cursor:pointer;transition:all .16s;margin-left:28px}
+.bbtn:hover{background:rgba(255,255,255,.09);color:var(--tx)}
+.bcor{background:rgba(22,163,74,.07);border:1px solid rgba(22,163,74,.25);border-radius:7px;padding:10px 13px;margin:6px 0 0 28px;font-size:11px;line-height:1.78;color:#15803d;display:none;white-space:pre-line}
+.bcor.show{display:block;animation:fI .26s ease}.bcl{font-size:9px;font-weight:700;color:var(--g);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.aop{padding:18px 22px}.ati{font-family:var(--fh);font-size:15px;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:7px}
+.abd{font-size:9px;font-weight:700;letter-spacing:1.5px;padding:2px 6px;border-radius:3px}.ade{font-size:11px;color:var(--mu);margin-bottom:15px}
+.qc{background:#fffdf9;border:1px solid var(--b1);border-radius:8px;padding:11px 15px;margin-bottom:10px}
+.qq{font-size:12px;font-weight:600;margin-bottom:9px;line-height:1.5}.qos{display:flex;flex-direction:column;gap:5px}
+.qo{padding:7px 11px;border:1px solid var(--b1);border-radius:6px;font-size:11px;cursor:pointer;transition:all .15s;background:rgba(255,255,255,.8);color:var(--tx);text-align:left}
+.qo:hover:not(:disabled){border-color:var(--b2);background:rgba(140,100,40,.06)}.qo:disabled{cursor:default}
+.qo.ok{background:rgba(22,163,74,.12);border-color:#16a34a;color:#166534}.qo.ko{background:rgba(220,38,38,.08);border-color:#dc2626;color:#991b1b}
+.qe{font-size:10px;color:var(--mu);margin-top:5px;padding:5px 9px;background:rgba(140,100,40,.05);border-radius:5px;display:none;line-height:1.55}
+.qe.show{display:block;animation:fI .2s ease}
+.sw{margin-top:14px;padding:12px 16px;border-radius:9px;border:1px solid;display:none}.sw.show{display:flex;align-items:center;gap:12px}
+.sc{width:46px;height:46px;border-radius:50%;border:3px solid;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.sp2{font-family:var(--fh);font-weight:800;font-size:13px;line-height:1}.sm{font-size:12px;font-weight:700}.sd2{font-size:10px;color:var(--mu)}
+.vb{display:flex;align-items:flex-start;gap:9px;padding:10px 13px;background:rgba(255,255,255,.022);border-radius:8px;border:1px solid var(--b1);margin-bottom:7px}
+.vq{flex:1;font-size:11px;line-height:1.55;color:var(--mu)}.vbs{display:flex;gap:5px;flex-shrink:0}
+.vbn{width:30px;height:30px;border-radius:6px;border:1px solid var(--b1);background:rgba(255,255,255,.05);cursor:pointer;font-size:11px;font-weight:700;transition:all .15s;color:var(--mu)}
+.vbn:hover:not(:disabled){transform:scale(1.07)}.vbn:disabled{cursor:default;opacity:.7}
+.vbn.vrai.ok,.vbn.faux.ok{background:rgba(22,163,74,.15);border-color:#16a34a;color:#166534}
+.vbn.vrai.ko,.vbn.faux.ko{background:rgba(220,38,38,.12);border-color:#dc2626;color:#991b1b}
+.ve{font-size:10px;color:var(--mu);margin-top:4px;line-height:1.55;display:none}.ve.show{display:block;animation:fI .18s ease}
+.fwp{perspective:1100px;margin-bottom:15px}
+.fca{width:100%;height:155px;position:relative;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1);cursor:pointer;border-radius:11px}
+.fca.fl{transform:rotateY(180deg)}.ffa{position:absolute;inset:0;border-radius:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;backface-visibility:hidden;border:1px solid var(--b1);text-align:center}
+.ffr{background:#fffdf9;border-color:var(--b1)}.fbk{background:rgba(22,163,74,.08);border-color:rgba(22,163,74,.3);transform:rotateY(180deg)}
+.ffl{font-size:9px;color:var(--mu);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}.fft{font-family:var(--fh);font-size:16px;font-weight:800}
+.fbl{font-size:9px;color:var(--g);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}.fbd{font-size:11px;line-height:1.65;color:#15803d}
+.fn{display:flex;align-items:center;gap:9px;justify-content:center;margin-bottom:12px}
+.fnb{background:rgba(255,255,255,.07);border:none;color:var(--tx);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:13px;transition:all .16s}
+.fnb:hover{background:rgba(255,255,255,.12)}.fc{font-size:11px;color:var(--mu);font-weight:600}.fh{text-align:center;font-size:9px;color:var(--di);margin-top:5px}
+.fp{display:flex;gap:3px;justify-content:center;flex-wrap:wrap;margin-top:9px}
+.fd{width:6px;height:6px;border-radius:50%;background:var(--b2);transition:background .22s;cursor:pointer}.fd.se{background:var(--a)}.fd.cu{background:var(--tx);transform:scale(1.22)}
+.biop{padding:18px 22px}.bicw{display:flex;justify-content:center;margin-bottom:18px}
+.bic{width:88px;height:88px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:4px solid}
+.bip{font-family:var(--fh);font-weight:800;font-size:22px;line-height:1}.bil{font-size:9px;color:var(--mu);letter-spacing:1px;text-transform:uppercase}
+.bibs{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}.bibr{display:flex;align-items:center;gap:8px}
+.bibl{font-size:10px;color:var(--mu);width:82px;flex-shrink:0;text-align:right}.bibt{flex:1;height:4px;background:var(--b2);border-radius:2px;overflow:hidden}
+.bibf{height:100%;border-radius:2px;transition:width .7s}.bibv{font-size:10px;font-weight:700;width:28px;flex-shrink:0}
+.bim{text-align:center;padding:12px;background:rgba(255,255,255,.022);border-radius:8px;border:1px solid var(--b1);font-size:12px;font-weight:600;line-height:1.5}
+footer{background:var(--s2);border-top:1px solid var(--b1);padding:18px 38px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.fb{font-family:var(--fh);font-size:13px;font-weight:800}.fb .fo{color:var(--o2)}.fb .ft{color:var(--t)}
+.fb span{color:var(--mu);font-family:var(--fb);font-weight:400;font-size:10px;display:block;margin-top:1px}
+.fs{font-size:11px;color:var(--mu);text-align:right;line-height:1.85}.fs strong{color:var(--o2)}.fs em{color:var(--t);font-style:normal;font-weight:600}
+.cp2{position:fixed;width:7px;height:7px;border-radius:2px;pointer-events:none;z-index:9999;animation:co .92s ease forwards}
+@media(max-width:600px){#cat,#ss,#hero,footer{padding-left:13px;padding-right:13px}.ht{font-size:24px}.cg{grid-template-columns:1fr 1fr}.nfil{display:none}.tb{padding:8px 9px;font-size:10px}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nlogo" onclick="goTop()">SGN <span class="nbdg">1ère STMG</span></a>
+  <div class="nfil">
+    <button class="nb ac" onclick="fAll(this)">Tous</button>
+    <button class="nb" onclick="fTh(1,this)">Thème 1</button>
+    <button class="nb" onclick="fTh(2,this)">Thème 2</button>
+    <button class="nb" onclick="fTh(3,this)">Thème 3</button>
+    <button class="nb" onclick="fTh(4,this)">Thème 4</button>
+  </div>
+  <div class="nsco"><div class="ndot"></div><span id="nsc">0 / 19</span></div>
+</nav>
+<section id="hero" style="padding-top:70px">
+  <div class="hb"></div><div class="hg1"></div><div class="hg2"></div><div class="hgr"></div>
+  <div class="hc au">
+    <div class="hbdg">▶ Révision Interactive · Delagrave 2025 · Lycée Louis Pasteur · Strasbourg</div>
+    <h1 class="ht"><span class="ao">Sciences de Gestion</span> &amp; <span class="at">Numérique</span><span class="sub">1ère STMG · 19 chapitres · Cours · Cas BAC corrigés · QCM · Flashcards</span></h1>
+    <p class="hd">19 chapitres fidèles au manuel Delagrave 2025 "C'est Clair !" — 4 thèmes. Contextes : Marché Bio de Pierre, OT Avignon, Hôtel Ibis, Pôle Emploi, Boutique Orange, CIC, Pressoir du Gapençais, Haribo, McDonald's, Castorama, Danone, LaitUp Bio, Decathlon.</p>
+    <div class="hp"><div class="hpl"><span>Progression globale</span><span id="hpct">0%</span></div><div class="pt"><div class="pf" id="hfill" style="width:0%"></div></div></div>
+    <div class="hbts"><button class="bo" onclick="openC(0)">▶ Commencer Ch.1</button><button class="bg" onclick="document.getElementById('cat').scrollIntoView({behavior:'smooth'})">📚 Catalogue</button></div>
+  </div>
+</section>
+<div id="ss">
+  <div class="si"><div class="sn">19</div><div class="sl">Chapitres</div></div>
+  <div class="si"><div class="sn">4</div><div class="sl">Thèmes</div></div>
+  <div class="si"><div class="sn" id="sdone">0</div><div class="sl">Validés</div></div>
+  <div class="si"><div class="sn">4</div><div class="sl">Activités</div></div>
+  <div class="sp"><div class="spl"><span>Avancement</span><span id="spct">0%</span></div><div class="pt"><div class="pf" id="sfill" style="width:0%"></div></div></div>
+</div>
+<main id="cat"></main>
+<div id="mbd" onclick="hdBd(event)">
+  <div id="mbox">
+    <div class="mhd">
+      <button class="mcl" onclick="closeM()">✕</button>
+      <div class="mmt"><div class="mic" id="mIc"></div><div><div class="mlb" id="mLb"></div><div class="mti" id="mTi"></div><div class="mca" id="mCa"></div></div></div>
+      <div class="mtg2" id="mTg"></div>
+    </div>
+    <div class="tbar" id="tbar"></div>
+    <div id="tc"></div>
+  </div>
+</div>
+<footer>
+  <div><div class="fb"><span class="fo">Révisions BAC</span><span>Sciences de Gestion &amp; Numérique · 1ère STMG</span></div></div>
+  <div class="fs"><strong>Lycée Louis Pasteur</strong> · Strasbourg<br><em>Économie-Gestion · STMG</em></div>
+</footer>
+<script>
+const TH={
+  1:{c:'#f97316',bg:'rgba(249,115,22,.13)',n:"De l'individu à l'acteur"},
+  2:{c:'#06b6d4',bg:'rgba(6,182,212,.13)',n:'Numérique et intelligence collective'},
+  3:{c:'#22c55e',bg:'rgba(34,197,94,.13)',n:'Création de valeur et performance'},
+  4:{c:'#a78bfa',bg:'rgba(167,139,250,.13)',n:'Temps et risque'}
+};
+const CH=[
+{id:0,n:1,th:1,ic:'🏪',cas:'Le Marché Bio de Pierre',title:"Les différents types d'organisation",
+tags:['Action collective','Gouvernance','Structure de propriété','Culture'],
+cours:{intro:"En SGN, on s'intéresse à la gouvernance des organisations : comment sont-elles dirigées, contrôlées, et à qui appartiennent-elles ? C'est la base de l'analyse des organisations.",
+secs:[{t:"Types d'organisations",tbl:{h:['Type','Propriété','Contrôle','Buts'],r:[['Entreprise privée','Actionnaires privés','CA, AG actionnaires','Profit + RSE'],['Organisation publique','État / collectivité','Tutelle, Cour des comptes','Intérêt général'],['Association loi 1901','Membres/adhérents','Bureau, AG membres','But non lucratif'],['Coopérative (Scop)','Associés coopérateurs','Vote démocratique (1 pers=1 voix)','Intérêt collectif']]}},
+{t:"Action collective et gouvernance",pts:["<strong>Action collective organisée :</strong> groupe structuré avec objectif commun, répartition des tâches et coordination. Ex : Le Marché Bio de Pierre (SARL) — Pierre supervise, Jean prépare les paniers, Christine gère les commandes, Julien le stock, Anne assiste.","<strong>Gouvernance :</strong> règles et mécanismes encadrant la prise de décision et le contrôle dans une organisation.","<strong>Culture organisationnelle :</strong> valeurs, normes, codes, rituels partagés. Influence les comportements. <strong>Identité numérique :</strong> traces en ligne à gérer professionnellement."]}],
+ret:["3 types : entreprise privée, organisation publique, association","Gouvernance = règles de décision et de contrôle","Action collective = objectif commun + répartition des tâches + coordination","Culture organisationnelle = valeurs, normes, rituels partagés","Identité numérique = à soigner pour la vie professionnelle"]},
+bac:{ent:"Le Marché Bio de Pierre",desc:"SARL de distribution de paniers bio (Aix-en-Provence). Pierre fondateur, 4 collaborateurs. En développement.",
+docs:[{lbl:"Document 1 — Répartition des tâches",data:{h:['Acteur','Rôle'],r:[['Pierre (fondateur)','Supervision, négociations fournisseurs, prospection clientèle'],['Jean (père)','Préparation des paniers'],['Christine (assistante)','Commandes, facturation, règlement fournisseurs'],['Julien (manutentionnaire)','Gestion du stock, qualité des produits'],['Anne (apprentie CFA)','Assistance Christine et Julien']]}},
+{lbl:"Document 2 — Développement de l'entreprise",txt:"Pierre envisage d'ouvrir un point de vente physique et de recruter deux nouveaux salariés. Son succès repose sur la demande croissante pour les produits bio locaux et sur son site internet. Ses partenaires : particuliers, producteurs bio locaux, comités d'entreprises."}],
+qs:[{n:1,pts:3,q:"À partir du document 1, montrez que Le Marché Bio de Pierre est une action collective organisée.",rep:"Le Marché Bio de Pierre est une action collective organisée car : (1) Objectif commun partagé : distribuer des paniers bio de qualité aux clients ; (2) Répartition des tâches entre les 5 acteurs (chacun a un rôle défini et spécialisé) ; (3) Coordination des actions : les tâches s'articulent pour aboutir au produit livré au client. Sans cette organisation, Pierre seul ne pourrait pas assurer l'ensemble des activités."},
+{n:2,pts:3,q:"À partir du document 2, identifiez les parties prenantes et leurs intérêts.",rep:"PP internes : Pierre (développer l'entreprise, dégager un résultat), salariés (rémunération, conditions de travail). PP externes : clients (produits bio frais, livraison fiable), producteurs bio partenaires (débouchés commerciaux), comités d'entreprises (régularité et qualité), banque (remboursement des emprunts). L'ouverture d'un point de vente + 2 recrutements nécessitera d'articuler ces intérêts multiples."},
+{n:3,pts:2,q:"En quoi ce projet modifie-t-il la gouvernance du Marché Bio de Pierre ?",rep:"Passage de 5 à 7 personnes + point de vente modifie la gouvernance : (1) Organisation : nouvelle répartition des tâches, fiches de poste nécessaires ; (2) Contrôle : Pierre ne peut plus superviser tout le monde directement → délégation + outils de suivi (tableaux de bord) ; (3) Culture : transmettre les valeurs bio/local aux nouveaux. Le point de vente crée une interface client directe avec de nouvelles exigences."}]},
+qcm:[{q:"Le Marché Bio de Pierre est une…",os:["Association loi 1901","Organisation publique","SARL (entreprise privée)","Coopérative (Scop)"],a:2,e:"Le Marché Bio de Pierre est une SARL depuis novembre 2016 : entreprise privée à responsabilité limitée."},
+{q:"La gouvernance concerne…",os:["Uniquement la comptabilité","Les règles de prise de décision et de contrôle","Le recrutement des salariés","La stratégie commerciale"],a:1,e:"La gouvernance encadre QUI décide, COMMENT et avec quels mécanismes de contrôle dans l'organisation."},
+{q:"Dans une Scop, le principe démocratique est…",os:["1 action = 1 voix","1 personne = 1 voix","Le dirigeant décide seul","L'État contrôle les décisions"],a:1,e:"Dans une Scop, chaque personne dispose d'une voix, quelle que soit sa part de capital détenue."},
+{q:"L'identité numérique regroupe…",os:["Uniquement le profil LinkedIn","L'ensemble des traces laissées sur internet","Les données comptables","Les brevets et marques"],a:1,e:"Identité numérique = toutes les informations disponibles en ligne (profils, publications, commentaires, photos taggées)."}],
+vf:[{q:"La culture organisationnelle influence les comportements des membres.",a:true,e:"La culture (valeurs, normes, rituels) conditionne fortement les comportements au travail."},
+{q:"Dans une association, la propriété appartient aux actionnaires.",a:false,e:"Dans une association, la propriété appartient aux MEMBRES/adhérents qui votent en AG."},
+{q:"L'action collective organisée implique une répartition des tâches.",a:true,e:"L'efficacité repose sur la spécialisation (chacun fait ce qu'il fait le mieux) et la coordination vers l'objectif commun."},
+{q:"Une mauvaise gestion de l'identité numérique peut avoir des conséquences professionnelles.",a:true,e:"Les recruteurs consultent les profils en ligne. Des publications inappropriées nuisent à la candidature."}],
+flash:[{t:"Gouvernance",d:"Règles et mécanismes encadrant la prise de décision et le contrôle dans une organisation."},
+{t:"Action collective organisée",d:"Groupe structuré avec objectif commun, répartition des tâches et coordination → plus grande efficacité."},
+{t:"Culture organisationnelle",d:"Valeurs, normes, codes et rituels partagés qui influencent les comportements au sein de l'organisation."},
+{t:"Identité numérique",d:"Ensemble des traces laissées sur internet. À soigner pour la vie professionnelle."},
+{t:"Scop",d:"Société Coopérative de Production : vote démocratique (1 personne = 1 voix), salariés = propriétaires."}]},
+
+{id:1,n:2,th:1,ic:'👤',cas:"Office de Tourisme d'Avignon",title:"L'individu acteur au sein de l'organisation",
+tags:['Personnalité','Émotions','Attitudes','Compétences','Identité numérique'],
+cours:{intro:"L'individu devient acteur en mobilisant sa personnalité, ses compétences et sa capacité à communiquer. L'organisation lui confère un rôle qui cadre ses interactions.",
+secs:[{t:"Caractéristiques individuelles",tbl:{h:['Notion','Définition'],r:[['Personnalité','Traits stables et durables (introversion/extraversion, stabilité émotionnelle)'],['Émotions','Réactions affectives passagères (joie, peur, colère, tristesse, dégoût, surprise)'],['Attitudes','Dispositions mentales stables favorables ou défavorables vis-à-vis de personnes/situations'],['Comportement','Actions observables résultant de personnalité, émotions et perceptions'],['Perception','Processus de sélection et d\'interprétation des informations reçues']]}},
+{t:"Compétences et rôle",pts:["<strong>Compétences :</strong> savoirs (connaissances), savoir-faire (techniques), savoir-être (comportements). La <strong>fiche de poste</strong> formalise les compétences attendues.","<strong>Contrôle de soi :</strong> capacité à réguler ses émotions selon le contexte professionnel. Clé de l'efficacité.","<strong>Identité numérique professionnelle :</strong> profil LinkedIn, publications. Enjeu de recrutement majeur."]}],
+ret:["Personnalité = traits stables | Émotions = réactions passagères | Comportement = actions observables","Compétences = savoirs + savoir-faire + savoir-être","Fiche de poste = rôle formel et compétences attendues","Contrôle de soi = réguler ses émotions selon le contexte","Identité numérique professionnelle = à soigner (LinkedIn, réseaux)"]},
+bac:{ent:"Office de Tourisme d'Avignon",desc:"L'OT emploie une quinzaine de collaborateurs permanents + saisonniers pour accueillir les touristes et gérer le Festival d'Avignon.",
+docs:[{lbl:"Document 1 — Fiche de poste chargé(e) d'accueil OT Avignon",data:{h:['Compétence','Type'],r:[['Maîtrise anglais + 1 langue étrangère','Savoirs'],['Connaissance des sites touristiques d\'Avignon','Savoirs'],['Gestion billetterie logiciel Tixly','Savoir-faire'],['Accueil et orientation des visiteurs','Savoir-faire'],['Aisance relationnelle, empathique, souriant(e)','Savoir-être'],['Résistance au stress (affluence Festival)','Savoir-être'],['Profil LinkedIn à jour','Identité numérique']]}},
+{lbl:"Document 2 — Témoignage de Camille, chargée d'accueil",txt:"'Au pic du Festival en juillet, on reçoit 500 visiteurs par jour. Il faut gérer les files, répondre en plusieurs langues, et rester souriant même sous pression. Ce qui m'aide : contrôler mes émotions. Quand un visiteur est agressif, je prends une grande inspiration et reste calme. Mon extraversion est un atout. En revanche, j'ai dû apprendre le logiciel Tixly — ça ne venait pas naturellement.'"}],
+qs:[{n:1,pts:3,q:"À partir du document 1, distinguez savoirs, savoir-faire et savoir-être attendus d'un chargé d'accueil.",rep:"Savoirs : maîtrise de l'anglais + langue étrangère, connaissance des sites touristiques → connaissances théoriques et linguistiques. Savoir-faire : gestion du logiciel Tixly, accueil et orientation → capacités techniques mises en œuvre. Savoir-être : aisance relationnelle, empathie, sourire, résistance au stress → comportements et traits de personnalité adaptés au contexte professionnel."},
+{n:2,pts:3,q:"À partir du document 2, analysez comment Camille mobilise personnalité et compétences pour être efficace.",rep:"Camille mobilise : (1) Personnalité : extraversion naturelle facilite les contacts avec les inconnus ; (2) Contrôle de soi : régule ses émotions face aux visiteurs agressifs (inspiration, calme) → savoir-être essentiel ; (3) Savoir-faire acquis : maîtrise du logiciel Tixly (appris par formation, pas naturel) ; (4) Savoir-être : sourire maintenu malgré la pression. L'efficacité résulte de l'articulation entre traits stables (extraversion) et compétences acquises."},
+{n:3,pts:2,q:"En quoi le profil LinkedIn demandé illustre-t-il l'importance de l'identité numérique ?",rep:"Le profil LinkedIn est devenu un critère de recrutement : il permet de vérifier les compétences linguistiques, l'expérience, le réseau et la présentation de soi. Un profil absent, incohérent ou avec des publications inappropriées peut éliminer un candidat pourtant qualifié. L'identité numérique est désormais un actif professionnel à construire et à entretenir soigneusement."}]},
+qcm:[{q:"Les compétences au travail comprennent…",os:["Uniquement les diplômes","Savoirs, savoir-faire ET savoir-être","Uniquement l'expérience","L'ancienneté dans l'entreprise"],a:1,e:"3 dimensions : savoirs (connaissances), savoir-faire (techniques), savoir-être (comportements et attitudes)."},
+{q:"Le contrôle de soi consiste à…",os:["Supprimer toutes ses émotions","Réguler ses émotions selon le contexte professionnel","Ignorer ses collègues","Obéir toujours à la hiérarchie"],a:1,e:"Contrôle de soi = réguler (pas supprimer) ses émotions pour adopter un comportement adapté au contexte."},
+{q:"La fiche de poste définit…",os:["Le salaire uniquement","Rôle, responsabilités et compétences attendues","Les objectifs stratégiques","L'identité numérique du salarié"],a:1,e:"La fiche de poste décrit : intitulé du poste, missions, responsabilités, compétences requises, positionnement hiérarchique."},
+{q:"La personnalité d'un individu est…",os:["Entièrement modifiable par la formation","L'ensemble de ses traits stables et durables","Uniquement ses qualités positives","Déterminée par son niveau scolaire"],a:1,e:"La personnalité regroupe les traits STABLES et durables. Elle évolue très lentement."}],
+vf:[{q:"Les émotions n'ont aucun impact sur le comportement professionnel.",a:false,e:"Les émotions influencent fortement le comportement : anxiété → éviter les risques ; enthousiasme → plus de créativité."},
+{q:"Le savoir-être est plus difficile à développer que les savoirs théoriques.",a:true,e:"Le savoir-être (ancré dans la personnalité) est plus long à transformer que l'acquisition de connaissances théoriques."},
+{q:"L'identité numérique peut influencer une candidature professionnelle.",a:true,e:"Les recruteurs consultent LinkedIn et les réseaux sociaux. Un profil soigné renforce la candidature."},
+{q:"La perception est identique pour tous face à une même situation.",a:false,e:"La perception dépend de la personnalité, des expériences et des émotions : deux personnes perçoivent des choses différentes."}],
+flash:[{t:"Personnalité",d:"Traits stables et durables (introversion/extraversion, stabilité émotionnelle). Influence le comportement au travail."},
+{t:"Savoir-être",d:"Compétences comportementales : attitudes, traits de personnalité et capacités relationnelles adaptés au contexte professionnel."},
+{t:"Contrôle de soi",d:"Capacité à réguler ses émotions et comportements selon le contexte. Compétence clé de l'acteur efficace."},
+{t:"Fiche de poste",d:"Document décrivant le rôle, les missions, les responsabilités et les compétences d'un poste."},
+{t:"Identité numérique professionnelle",d:"Image en ligne (LinkedIn, réseaux). Composante de la candidature professionnelle. À construire et entretenir."}]},
+
+{id:2,n:3,th:1,ic:'👫',cas:"Office de Tourisme d'Avignon",title:"Les interactions des individus au sein d'un groupe",
+tags:['Groupes formels','Groupes informels','Leadership','Communication interpersonnelle','Statut'],
+cours:{intro:"Les individus s'inscrivent dans des groupes qui influencent leurs comportements. Comprendre la dynamique des groupes est essentiel pour être un acteur efficace.",
+secs:[{t:"Types de groupes",tbl:{h:['Type','Définition','Exemples'],r:[['Groupe formel','Créé délibérément par l\'organisation avec objectif défini','Équipe projet, service, comité'],['Groupe informel','Émerge spontanément des affinités entre membres','Amis du déjeuner, groupe WhatsApp'],['Groupe d\'appartenance','Groupe dont l\'individu est membre réel','Son équipe de travail actuelle'],['Groupe de référence','Groupe auquel l\'individu s\'identifie sans en faire partie','Profession admirée, communauté valorisée']]}},
+{t:"Statut, rôle et communication",pts:["<strong>Statut :</strong> position dans le groupe → droits et devoirs. <strong>Rôle :</strong> comportements attendus selon le statut (formel vs informel réellement joué).","<strong>Leadership informel :</strong> capacité d'influencer les autres au-delà de l'autorité formelle. Un leader informel peut avoir plus d'influence que son supérieur hiérarchique.","<strong>Communication interpersonnelle :</strong> verbale (mots), para-verbale (ton, débit, intonation), non verbale (gestes, posture, regard)."]}],
+ret:["Groupes formels (organisés) vs informels (spontanés)","Statut = position dans le groupe | Rôle = comportements attendus","Leadership informel = influence au-delà de l'autorité formelle","Communication : verbale + para-verbale + non verbale","Groupes informels coexistent avec les formels et les influencent"]},
+bac:{ent:"Office de Tourisme d'Avignon",desc:"Julie, directrice, a constitué un groupe de travail de 15 collaborateurs pour améliorer l'accueil des festivaliers. Réunions 2h/semaine de janvier à février.",
+docs:[{lbl:"Document 1 — Dynamique du groupe de travail",txt:"Le groupe réunit guides, chargés d'accueil et responsables boutique. Julie préside mais laisse de la place aux propositions. Lors de la 3ème séance, Marc (chargé d'accueil depuis 8 ans) est spontanément devenu le porte-parole de l'équipe accueil : ses collègues lui soumettent leurs idées avant la réunion plénière, même s'il n'a pas de statut hiérarchique sur eux."},
+{lbl:"Document 2 — Tensions et groupes informels",txt:"Des tensions apparaissent entre guides (proposent des visites guidées payantes supplémentaires) et chargés d'accueil (craignent une surcharge). Hors réunions, certains membres se retrouvent au café pour discuter informellement, générant des idées non exprimées en séance. Julie change la disposition des sièges pour favoriser les échanges entre les deux sous-groupes."}],
+qs:[{n:1,pts:3,q:"À partir des documents, distinguez les groupes formels et informels et expliquez comment ils coexistent.",rep:"Groupe formel : groupe de travail de 15 créé délibérément par Julie (objectif défini, réunions hebdomadaires structurées). Groupes informels : (1) sous-groupe Marc + collègues accueil (concertation informelle avant les réunions) ; (2) groupe du café (discussions post-réunion). Coexistence : les groupes informels alimentent le groupe formel — les idées émergent informellement avant d'être portées en séance. Julie a compris cette dynamique en modifiant la disposition spatiale pour casser les clivages."},
+{n:2,pts:3,q:"En quoi Marc est-il un leader informel ? Quel est son rôle dans le groupe ?",rep:"Marc est un leader informel : il exerce une influence qui dépasse son statut formel (pas d'autorité hiérarchique sur ses collègues, mais 8 ans d'expérience = légitimité d'expertise). Ses collègues le consultent spontanément. Son rôle : filtre et relais entre les contributions informelles des collègues et la séance plénière formelle → il améliore la qualité des apports du sous-groupe en les structurant."},
+{n:3,pts:2,q:"Comment Julie peut-elle gérer les tensions en s'appuyant sur la communication interpersonnelle ?",rep:"Julie agit sur 3 dimensions : (1) Verbale : reformuler les propositions dans un langage commun, recentrer sur l'objectif partagé (améliorer l'accueil des festivaliers) ; (2) Para-verbale : ton calme pour désamorcer les tensions, plus énergique pour relancer la créativité ; (3) Non verbale : changer la disposition des sièges (déjà décidé) pour briser les clivages spatiaux et forcer les interactions croisées entre guides et chargés d'accueil."}]},
+qcm:[{q:"Un groupe informel se caractérise par…",os:["Un objectif fixé par la direction","Une constitution spontanée basée sur les affinités","Un organigramme officiel","Des réunions planifiées par la hiérarchie"],a:1,e:"Le groupe informel émerge spontanément des affinités, sans création délibérée par l'organisation."},
+{q:"Le leadership informel est basé sur…",os:["Le statut officiel dans l'organigramme","La capacité d'influencer au-delà du statut","Le salaire du manager","Les sanctions disciplinaires"],a:1,e:"Le leadership informel = influence qui va au-delà de l'autorité conférée par la position hiérarchique officielle."},
+{q:"La communication para-verbale concerne…",os:["Les mots utilisés","Le ton, le débit et l'intonation de la voix","Les gestes et la posture","Les messages écrits"],a:1,e:"Para-verbale = FORME de la communication orale : ton, débit, intensité, pauses. Transmet des émotions indépendamment des mots."},
+{q:"Le statut dans un groupe détermine…",os:["La personnalité","Ses droits et devoirs dans le groupe","Ses émotions","Son identité numérique"],a:1,e:"Le statut est la position dans le groupe → il définit les droits et devoirs de chaque membre."}],
+vf:[{q:"Groupes formels et informels coexistent dans toute organisation.",a:true,e:"Les deux types coexistent systématiquement. Les groupes informels influencent les groupes formels."},
+{q:"Le rôle joué est toujours identique au statut officiel.",a:false,e:"Le rôle réellement joué peut différer du statut officiel : un leader informel exerce un rôle d'influence sans statut hiérarchique."},
+{q:"La communication non verbale représente une part importante des échanges.",a:true,e:"La non verbale (gestes, posture, regard, expressions) représente jusqu'à 55 % de l'impact d'un message."},
+{q:"Un groupe de référence est un groupe dont l'individu fait nécessairement partie.",a:false,e:"Un groupe de référence est un groupe auquel l'individu S'IDENTIFIE sans forcément en faire partie."}],
+flash:[{t:"Groupe formel",d:"Créé délibérément par l'organisation avec un objectif défini (équipe projet, comité, service)."},
+{t:"Groupe informel",d:"Émerge spontanément des affinités entre membres, sans création officielle."},
+{t:"Leadership informel",d:"Capacité à influencer et fédérer les autres vers un objectif, au-delà de l'autorité formelle."},
+{t:"Communication interpersonnelle",d:"Verbale (mots) + para-verbale (ton, débit) + non verbale (gestes, posture, regard)."},
+{t:"Statut et rôle",d:"Statut = position dans le groupe → droits et devoirs. Rôle = comportements attendus (formel vs informel joué réellement)."}]},
+
+{id:3,n:4,th:1,ic:'🏨',cas:"Hôtel Ibis",title:"Les interactions des individus au sein d'une organisation",
+tags:['Normes explicites','Codes implicites','Stéréotypes','Hiérarchie','RSE numérique'],
+cours:{intro:"Au sein d'une organisation, les individus interagissent dans un cadre structuré par une culture, des normes explicites, des codes implicites et une hiérarchie. Ces éléments influencent comportements et cohésion.",
+secs:[{t:"Culture, normes et codes",pts:["<strong>Normes explicites :</strong> règles formelles écrites (règlement intérieur, charte qualité). Ex : protocole d'accueil Ibis, uniforme.","<strong>Codes implicites :</strong> règles non écrites mais attendues (tutoiement entre collègues, consultation naturelle des seniors). Difficiles à décoder pour un nouvel entrant.","<strong>Rituels :</strong> pratiques récurrentes qui renforcent la cohésion (blague en fin de briefing, célébrations)."]},
+{t:"Stéréotypes, hiérarchie et RSE numérique",pts:["<strong>Stéréotypes :</strong> généralisations sur un groupe (genre, âge, origine) → biaisent les interactions, peuvent mener à des discriminations.","<strong>Hiérarchie :</strong> structure formelle d'autorité et de délégation.","<strong>RSE numérique (Réseau Social d'Entreprise) :</strong> plateforme interne (Teams, Slack) facilitant communication et coopération. ⚠️ RSE numérique ≠ RSE (Responsabilité Sociétale)."]}],
+ret:["Culture = valeurs + normes explicites + codes implicites + rituels","Normes explicites = règles écrites | Codes implicites = règles non écrites","Stéréotypes = biais qui perturbent les interactions équitables","RSE numérique = réseau interne (Teams, Slack) ≠ RSE responsabilité sociétale","Une culture forte peut être excluante pour ceux qui ne la maîtrisent pas"]},
+bac:{ent:"Hôtel Ibis (groupe Accor)",desc:"Élodie, étudiante BTS Tourisme, réalise un stage de 2 mois chez Ibis. Elle doit décoder rapidement la culture pour s'intégrer.",
+docs:[{lbl:"Document 1 — La culture Ibis",txt:"La chaîne Ibis repose sur une culture forte : mêmes protocoles d'accueil dans tous les hôtels ('Bienvenue chez Ibis !', sourire, proposition d'upgrade), codes vestimentaires (uniforme), indicateurs qualité (enquêtes Guest Experience). Les nouveaux collaborateurs suivent obligatoirement une formation 'Ibis Academy' de 2 jours."},
+{lbl:"Document 2 — Premier jour d'Élodie",txt:"Élodie remarque : tous les collaborateurs se tutoient (code implicite non écrit) mais vouvoient les clients (norme explicite de la charte). Les collaborateurs plus âgés sont consultés naturellement sur les cas difficiles. Les briefings se terminent toujours par une blague du chef de réception — rituel informel de cohésion. Élodie doit décoder ces codes rapidement pour s'intégrer."}],
+qs:[{n:1,pts:3,q:"À partir des documents, distinguez les normes explicites et les codes implicites chez Ibis.",rep:"Normes explicites (règles formelles écrites) : protocoles d'accueil standardisés, code vestimentaire (uniforme), enquêtes qualité Guest Experience, formation Ibis Academy obligatoire. Codes implicites (règles non écrites) : tutoiement entre collègues, consultation naturelle des seniors (hiérarchie informelle d'expertise), blague du chef en fin de briefing (rituel de cohésion). Les normes explicites sont connues de tous ; les codes implicites sont difficiles à décoder pour Élodie."},
+{n:2,pts:3,q:"Comment la culture forte d'Ibis facilite-t-elle l'intégration d'Élodie tout en pouvant la contraindre ?",rep:"Facilitation : la culture forte donne des repères clairs (protocoles, uniforme, formation) qui réduisent l'incertitude du premier jour. La cohésion (rituel de la blague) crée une ambiance accueillante. Contraintes : la standardisation réduit l'initiative personnelle. Les codes implicites (tutoiement, hiérarchie informelle) sont difficiles à décoder → risque d'erreurs relationnelles. Une culture forte peut être excluante si on ne la comprend pas rapidement."},
+{n:3,pts:2,q:"En quoi un RSE numérique pourrait-il faciliter l'intégration d'Élodie ?",rep:"Un RSE (Teams, Slack) aiderait Élodie à : (1) accéder aux informations pratiques sans déranger ses collègues → autonomie ; (2) créer des liens informels via des canaux dédiés → intégration sociale accélérée ; (3) poser des questions discrètement → réduction de l'anxiété ; (4) accéder à la formation Ibis Academy en ligne à son rythme. Le RSE complète les interactions formelles par des échanges informels numériques."}]},
+qcm:[{q:"Les normes explicites sont…",os:["Des règles informelles non écrites","Des règles formelles écrites (règlement, charte, procédures)","Des habitudes spontanées","Des émotions collectives"],a:1,e:"Normes explicites = formalisées par écrit : règlement intérieur, procédures, charte qualité."},
+{q:"Un stéréotype est…",os:["Une compétence distinctive","Une généralisation sur un groupe pouvant mener à des discriminations","Un indicateur de performance","Un code vestimentaire"],a:1,e:"Les stéréotypes (genre, âge, origine) biaisent la perception et les interactions → discriminations possibles."},
+{q:"Un RSE numérique (Réseau Social d'Entreprise) est…",os:["La Responsabilité Sociétale","Une plateforme interne facilitant communication et coopération","Un réseau social externe","Un outil de recrutement"],a:1,e:"RSE numérique = plateforme interne (Teams, Slack, Yammer) pour les échanges entre membres. ≠ RSE (responsabilité sociétale)."},
+{q:"La hiérarchie définit…",os:["Les groupes informels","Les codes vestimentaires","Les relations formelles d'autorité et de délégation","Les émotions collectives"],a:2,e:"La hiérarchie structure les relations formelles d'autorité : qui décide, qui rend compte, quelles délégations."}],
+vf:[{q:"Les codes implicites sont faciles à décoder pour un nouvel entrant.",a:false,e:"Les codes implicites sont précisément difficiles à identifier car ils ne sont pas formalisés par écrit."},
+{q:"Une culture organisationnelle forte peut être excluante.",a:true,e:"Une culture forte peut exclure ceux qui ne la maîtrisent pas rapidement ou qui ont des valeurs différentes."},
+{q:"Les rituels organisationnels contribuent à la cohésion du groupe.",a:true,e:"Les rituels (cérémonies, blagues récurrentes) créent des moments partagés renforçant le sentiment d'appartenance."},
+{q:"La hiérarchie formelle correspond toujours à l'influence réelle.",a:false,e:"Des leaders informels exercent parfois plus d'influence que leur supérieur hiérarchique officiel."}],
+flash:[{t:"Normes explicites",d:"Règles formelles écrites : règlement intérieur, procédures, charte qualité. Connues de tous les membres."},
+{t:"Codes implicites",d:"Règles non écrites mais attendues (tutoiement, dress code informel). Difficiles à décoder pour un nouvel entrant."},
+{t:"Stéréotypes",d:"Généralisations sur un groupe (genre, âge, origine) qui biaisent les perceptions → discriminations possibles."},
+{t:"RSE numérique",d:"Réseau Social d'Entreprise (Teams, Slack) facilitant communication et coopération interne. ≠ RSE responsabilité sociétale."},
+{t:"Culture forte",d:"Valeurs et codes très marqués. Avantage : cohésion. Risque : exclusion de ceux qui ne la maîtrisent pas."}]},
+
+{id:4,n:5,th:1,ic:'🤲',cas:"Pôle Emploi / France Travail",title:"Les phénomènes relationnels",
+tags:['Valeurs','Normes implicites','Coopération','Conflits','Médiation','Négociation'],
+cours:{intro:"Les interactions produisent des phénomènes relationnels complexes : partage de valeurs, coopération, tensions et conflits. Savoir les identifier et les gérer est essentiel pour tout acteur dans une organisation.",
+secs:[{t:"Valeurs, normes et coopération",pts:["<strong>Valeurs :</strong> principes guidant les comportements. Peuvent être des <em>représentations</em> (idées sur ce qui est juste) ou des <em>conduites à adopter</em> (comportements attendus).","<strong>Coopération :</strong> travail collectif où les acteurs mettent leurs ressources en commun vers un objectif partagé. Favorisée par le partage d'informations et les RSE numériques."]},
+{t:"Conflits et modes de résolution",tbl:{h:['Mode','Principe'],r:[['Arbitrage','Un tiers impose une solution aux deux parties'],['Médiation','Un tiers neutre facilite le dialogue pour que les parties construisent elles-mêmes l\'accord'],['Négociation','Les parties discutent directement pour trouver un compromis'],['Évitement','Ignorer le conflit (risque d\'aggravation à long terme)']]}}],
+ret:["Valeurs = représentations (idées) OU conduites à adopter (comportements)","Normes implicites ≠ normes explicites (les deux régissent les interactions)","Coopération = ressources en commun vers un objectif partagé","Conflits : constructifs (révèlent des problèmes) vs destructeurs (paralysent)","4 modes : arbitrage, médiation, négociation, évitement"]},
+bac:{ent:"France Travail (ex-Pôle Emploi)",desc:"France Travail accompagne les demandeurs d'emploi. Ses conseillers doivent gérer des situations relationnelles complexes entre collègues et avec les demandeurs.",
+docs:[{lbl:"Document 1 — Valeurs et normes chez France Travail",data:{h:['Valeur','Type','Norme associée'],r:[['Équité de traitement','Représentation','Même accompagnement pour tous sans discrimination'],['Sens du service public','Conduite à adopter','Accueillir chaque demandeur avec bienveillance'],['Efficacité','Conduite à adopter','Traiter X dossiers par jour (objectif quantitatif)'],['Solidarité entre collègues','Représentation','S\'entraider sur les cas difficiles (norme implicite)']]}},
+{lbl:"Document 2 — Un conflit dans l'équipe",txt:"Des tensions apparaissent à l'agence de Montpellier Nord. La directrice a annoncé une hausse des objectifs quantitatifs. Les conseillers expérimentés estiment que la qualité va en pâtir ('on ne peut pas vraiment aider les gens si on les traite à la chaîne'). Les conseillers récemment recrutés sont davantage centrés sur les objectifs chiffrés (conditions de leur période d'essai). Un conflit émerge : qualité vs quantité."}],
+qs:[{n:1,pts:2,q:"À partir du document 1, distinguez les valeurs qui sont des représentations de celles qui sont des conduites à adopter.",rep:"Représentations (idées sur ce qui est juste) : équité de traitement et solidarité entre collègues. Conduites à adopter (comportements attendus) : sens du service public (accueillir avec bienveillance → action active) et efficacité (traiter X dossiers → action concrète mesurable). Les représentations orientent la vision ; les conduites guident les actions quotidiennes."},
+{n:2,pts:4,q:"À partir du document 2, analysez le conflit et proposez un mode de résolution adapté.",rep:"Nature : conflit de valeurs ET d'intérêts. Expérimentés : valorisent la qualité (valeur service public profond), en CDI sans pression d'évaluation. Juniors : centrés sur les objectifs quantitatifs (valider la période d'essai). Conflit potentiellement constructif : révèle une tension réelle qualité/quantité à résoudre. Mode recommandé : la médiation, avec la directrice en facilitatrice neutre. Elle crée un espace de dialogue structuré pour co-construire des indicateurs mixtes (quantitatif + qualitatif) acceptables par tous. L'arbitrage (imposer les objectifs) risquerait de démotiver les expérimentés."},
+{n:3,pts:2,q:"En quoi la solidarité entre collègues est-elle une norme implicite importante dans ce contexte ?",rep:"La solidarité est une norme implicite (non écrite mais attendue) qui joue le rôle d'amortisseur des tensions. Dans ce conflit, elle pourrait : (1) encourager les expérimentés à aider les juniors sur les cas complexes → réduire la pression sur les objectifs ; (2) permettre d'exprimer le désaccord sans menacer la cohésion d'équipe ; (3) faire émerger des solutions informelles. Si cette norme est fragilisée par le conflit, l'équipe perd un mécanisme de régulation spontanée précieux."}]},
+qcm:[{q:"Les normes implicites sont…",os:["Des règles écrites dans le règlement","Des procédures imposées par la direction","Des règles non écrites mais attendues par les membres","Des obligations légales"],a:2,e:"Normes implicites = règles non écrites mais socialement attendues (solidarité, tutoiement dans certains services)."},
+{q:"La médiation est…",os:["Un tiers qui impose une solution","Les parties qui s'ignorent","Un tiers neutre aidant les parties à construire elles-mêmes un accord","La direction qui arbitre unilatéralement"],a:2,e:"La médiation fait intervenir un tiers neutre qui facilite le dialogue SANS imposer de solution."},
+{q:"Un conflit constructif est…",os:["Un conflit qui détruit la cohésion","Un conflit révélant des tensions utiles à traiter","Un conflit qu'on ignore","Un conflit avec les syndicats uniquement"],a:1,e:"Un conflit bien géré peut révéler des problèmes sous-jacents et stimuler des solutions innovantes."},
+{q:"La coopération est favorisée par…",os:["La concurrence interne","Le partage d'informations et d'objectifs communs","Des normes implicites conflictuelles","La hiérarchie rigide"],a:1,e:"La coopération repose sur le partage d'informations, de ressources et un objectif commun."}],
+vf:[{q:"Les valeurs peuvent être des représentations OU des conduites à adopter.",a:true,e:"Deux dimensions : représentations (idées sur ce qui est bien) et conduites à adopter (comportements attendus)."},
+{q:"L'évitement est la meilleure façon de gérer un conflit à long terme.",a:false,e:"L'évitement peut AGGRAVER le conflit en laissant les tensions s'accumuler sans les résoudre."},
+{q:"Coopération et conflits peuvent coexister dans une même équipe.",a:true,e:"Des équipes peuvent coopérer sur certains projets et avoir des conflits sur d'autres points — non mutuellement exclusifs."},
+{q:"L'arbitrage prend en compte l'avis des deux parties pour un accord mutuel.",a:false,e:"L'arbitrage IMPOSE une solution. La médiation et la négociation visent un accord mutuel construit par les parties."}],
+flash:[{t:"Valeurs organisationnelles",d:"Principes guidant les comportements : représentations (idées) ou conduites à adopter (comportements attendus)."},
+{t:"Normes implicites",d:"Règles non écrites mais socialement attendues dans un groupe (solidarité, tutoiement). Difficiles à identifier."},
+{t:"Médiation",d:"Mode de résolution des conflits où un tiers neutre facilite le dialogue pour que les parties construisent elles-mêmes un accord."},
+{t:"Conflit constructif",d:"Tension qui, bien gérée, révèle des problèmes sous-jacents et stimule des solutions innovantes."},
+{t:"Coopération",d:"Travail collectif où les acteurs mettent leurs ressources en commun vers un objectif partagé."}]},
+
+{id:5,n:6,th:1,ic:'💼',cas:"Boutique Orange",title:"L'activité de travail, son évaluation, sa rétribution",
+tags:['Conditions de travail','Productivité','Salaire brut','Salaire net','Charges patronales'],
+cours:{intro:"Le travail est au cœur des organisations. Comprendre comment il est évalué (indicateurs, tableaux de bord) et rétribué (salaire brut, net, charges patronales) est fondamental en SGN.",
+secs:[{t:"Conditions de travail et évaluation",tbl:{h:['Dimension','Exemples','Indicateur'],r:[['Physiques','Bruit, température, équipements, postures','Taux d\'accidents du travail'],['Psychologiques','Stress, charge mentale, reconnaissance','Taux d\'absentéisme'],['Sociales','Ambiance, conflits, appartenance','Turnover'],['Organisationnelles','Horaires, autonomie, télétravail','Satisfaction au travail']]}},
+{t:"La rétribution",pts:["<strong>Salaire brut :</strong> rémunération totale AVANT déduction des cotisations salariales.","<strong>Cotisations salariales (≈ 22-25 %) :</strong> prélevées sur le salaire brut → protection sociale.","<strong>Salaire net :</strong> ce que perçoit le salarié = salaire brut − cotisations salariales.","<strong>Charges patronales (≈ 40-45 %) :</strong> payées par l'EMPLOYEUR EN PLUS du salaire brut. Coût total employeur = salaire brut + charges patronales."]}],
+ret:["4 dimensions conditions travail : physiques, psychologiques, sociales, organisationnelles","Productivité horaire = quantité produite / heure | Coût horaire = coût total / heure","Salaire brut − cotisations salariales = salaire net","Charges patronales payées par l'employeur EN PLUS du salaire brut","Coût total employeur = salaire brut + charges patronales"]},
+bac:{ent:"Boutique Orange",desc:"8 conseillers + 1 responsable. Vente de contrats, gestion des problèmes techniques et SAV.",
+docs:[{lbl:"Document 1 — Tableau de bord RH Boutique Orange",data:{h:['Indicateur','Valeur M','Objectif','Écart'],r:[['Contrats signés','142','150','−8'],['Satisfaction client','88 %','90 %','−2 pts'],['Taux d\'absentéisme','3,2 %','< 3 %','+0,2 pt'],['Formations suivies','4','6','−2'],['Turnover annualisé','18 %','< 15 %','+3 pts']]}},
+{lbl:"Document 2 — Fiche de paie simplifiée : Mathieu, conseiller",data:{h:['Élément','Montant'],r:[['Salaire de base','1 980 €'],['Prime sur objectifs','+ 210 €'],['SALAIRE BRUT','2 190 €'],['Cotisations salariales (23 %)','− 504 €'],['SALAIRE NET','1 686 €'],['Charges patronales (42 % du brut)','+ 920 €'],['COÛT TOTAL EMPLOYEUR','3 110 €']]}}],
+qs:[{n:1,pts:3,q:"À partir du document 1, analysez la performance RH et identifiez les domaines prioritaires d'action.",rep:"Analyse : (1) Contrats signés : 142/150 (−8) → légèrement en dessous ; (2) Satisfaction client : 88 %/90 % (−2 pts) ; (3) Absentéisme : 3,2 % > 3 % → signal sur conditions de travail/motivation ; (4) Formations : 4/6 (−2) → retard de compétences ; (5) Turnover : 18 % > 15 % → problème majeur. Priorité : le turnover élevé (18 %) car il génère des coûts de recrutement/formation élevés et dégrade la satisfaction client."},
+{n:2,pts:3,q:"À partir du document 2, distinguez salaire net, brut et coût total employeur pour Mathieu.",rep:"Salaire brut (2 190 €) : rémunération totale = base (1 980 €) + prime (210 €). Base de calcul des cotisations. Cotisations salariales (504 €) : prélevées sur le brut (23 %) → protection sociale de Mathieu. Salaire net (1 686 €) : ce que Mathieu perçoit réellement = 2 190 − 504 €. Charges patronales (920 €) : payées PAR Orange EN PLUS du brut (42 % × 2 190 €). Coût total employeur (3 110 €) : ce qu'Orange dépense réellement = 2 190 + 920 €. Mathieu perçoit 1 686 € mais coûte 3 110 € à Orange."},
+{n:3,pts:2,q:"En quoi le turnover élevé (18 %) représente-t-il un coût pour la boutique Orange ?",rep:"Turnover 18 % ≈ 1,5 conseiller qui quitte/an. Coûts générés : (1) Recrutement : annonces, entretiens, sélection ; (2) Formation : chaque nouveau doit apprendre les produits Orange et les outils (temps + budget) ; (3) Perte de productivité : montée en compétences progressive → CA et qualité inférieurs pendant plusieurs mois ; (4) Coût managérial : le responsable consacre du temps à l'intégration au détriment du management des équipes en place."}]},
+qcm:[{q:"Le salaire net est…",os:["Le salaire avant toutes déductions","Salaire brut + charges patronales","Salaire brut − cotisations salariales","Les cotisations patronales uniquement"],a:2,e:"Salaire net = salaire brut − cotisations SALARIALES. C'est ce que le salarié perçoit effectivement sur son compte."},
+{q:"Les charges patronales sont payées par…",os:["Le salarié sur son salaire brut","L'employeur EN PLUS du salaire brut","L'État uniquement","Le salarié sur son salaire net"],a:1,e:"Les charges patronales sont payées PAR L'EMPLOYEUR, en plus du salaire brut. Elles s'ajoutent au coût total."},
+{q:"La productivité horaire mesure…",os:["Le coût total du travail","La quantité produite par heure travaillée","Le salaire horaire","Les charges sociales par heure"],a:1,e:"Productivité horaire = quantité produite / heures travaillées. Mesure l'efficacité de l'utilisation du facteur travail."},
+{q:"Le coût total employeur =…",os:["Salaire brut uniquement","Salaire net + cotisations salariales","Salaire brut + charges patronales","Salaire net uniquement"],a:2,e:"Coût total employeur = salaire brut + charges patronales. C'est ce que l'organisation dépense réellement pour un salarié."}],
+vf:[{q:"Le salaire brut est toujours supérieur au salaire net.",a:true,e:"Salaire net = salaire brut − cotisations salariales → le net est toujours inférieur au brut."},
+{q:"Les charges patronales sont déduites du salaire du salarié.",a:false,e:"Les charges patronales sont payées PAR l'employeur EN PLUS du salaire brut. Non déduites du salaire."},
+{q:"Un fort taux d'absentéisme peut indiquer des problèmes de conditions de travail.",a:true,e:"L'absentéisme est souvent un signal d'alerte : conditions physiques difficiles, stress, conflits, manque de motivation."},
+{q:"Le tableau de bord RH contient uniquement des indicateurs financiers.",a:false,e:"Le tableau de bord RH intègre des indicateurs sociaux variés : absentéisme, turnover, accidents, formation, satisfaction."}],
+flash:[{t:"Salaire brut",d:"Rémunération totale avant déduction des cotisations salariales. Base de calcul des charges sociales."},
+{t:"Salaire net",d:"Ce que le salarié perçoit = salaire brut − cotisations salariales (≈ 22-25 % du brut)."},
+{t:"Charges patronales",d:"Cotisations payées par l'EMPLOYEUR en plus du salaire brut (≈ 40-45 %). S'ajoutent au coût total employeur."},
+{t:"Coût total employeur",d:"Coût réel d'un salarié = salaire brut + charges patronales."},
+{t:"Turnover",d:"Taux de rotation des salariés : départs / effectif moyen × 100. Signal d'alerte si élevé."}]},
+
+{id:6,n:7,th:1,ic:'🔄',cas:"Boutique Orange / ComEven",title:"Les nouveaux liens de travail",
+tags:['Télétravail','Auto-entrepreneur','Portage salarial','Plateforme numérique','Compétences PIX'],
+cours:{intro:"La révolution numérique a transformé les liens de travail. De nouvelles formes d'emploi se développent offrant plus de flexibilité mais souvent moins de protection sociale.",
+secs:[{t:"Nouvelles formes d'emploi",tbl:{h:['Forme','Définition','Avantages','Risques'],r:[['Télétravail','Travail à distance accordé par l\'employeur','Flexibilité, moins de transports','Isolement, vie perso/pro floue'],['Auto-entrepreneur','Statut simplifié pour activité indépendante','Liberté, simplicité admin.','Protection sociale incomplète'],['Portage salarial','Salarié d\'une société de portage qui facture ses missions','Protection sociale + liberté freelance','Commission société de portage'],['Plateforme numérique','Missions via Malt, Deliveroo, Uber...','Flexibilité des horaires','Pas de salariat, protection réduite']]}},
+{t:"Numérique et organisation du travail",pts:["Le numérique crée de l'<strong>agilité</strong> : réactivité, travail collaboratif à distance, outils partagés (cloud).","Il peut aussi créer de la <strong>rigidité</strong> : dépendance aux systèmes, surcharge informationnelle.","<strong>Compétences PIX :</strong> compétences numériques de base (tableur, email, sécurité) devenues indispensables dans tous les métiers."]}],
+ret:["Nouvelles formes : télétravail, auto-entrepreneur, portage salarial, plateforme","Télétravail : flexibilité + risque isolement et frontière vie perso/pro floue","Portage salarial : protection sociale salarié + liberté freelance − commission","Numérique crée agilité (flexibilité) ET rigidité (dépendance)","Compétences PIX = compétences numériques de base désormais indispensables"]},
+bac:{ent:"ComEven (événementiel)",desc:"Julien a quitté son CDI pour créer ComEven en micro-entreprise. Il organise des événements en freelance et fait appel à des prestataires indépendants selon les projets.",
+docs:[{lbl:"Document 1 — Témoignage de Julien",txt:"'J'ai quitté mon CDI il y a 2 ans. Ce que j'ai gagné : liberté de choisir mes missions et horaires, travail depuis chez moi (3 enfants). Ce que j'ai perdu : sécurité du salaire fixe (certains mois difficiles), congés payés, mutuelle. J'utilise aussi le portage salarial pour certaines grandes missions : protection sociale de salarié mais la société de portage prend 8 % de ma rémunération.'"},
+{lbl:"Document 2 — Les collaborateurs de ComEven",txt:"Pour organiser un salon de 500 personnes, Julien a fait appel à : une graphiste freelance (auto-entrepreneur), deux techniciens son/lumière via la plateforme Malt, un traiteur (SARL) et une hôtesse via une agence d'intérim. Aucun n'est salarié de ComEven → aucune charge fixe permanente, mais coordination entièrement numérique nécessaire."}],
+qs:[{n:1,pts:3,q:"À partir du document 1, analysez les avantages et inconvénients de la micro-entreprise et du portage salarial pour Julien.",rep:"Micro-entrepreneur : Avantages → liberté des missions/horaires, flexibilité géographique (télétravail), simplicité administrative. Inconvénients → revenus variables (mois difficiles), pas de congés payés ni de mutuelle, protection sociale réduite. Portage salarial : Avantages → protection sociale salarié (mutuelle, retraite) + liberté du freelance (choix des missions). Inconvénients → coûteux (8 % de la rémunération à la société de portage). Julien combine les deux selon les missions pour optimiser protection et liberté."},
+{n:2,pts:3,q:"À partir du document 2, montrez que ComEven illustre une organisation rendue possible par le numérique.",rep:"ComEven illustre plusieurs mutations numériques : (1) Coordination à distance : organisation d'un salon de 500 personnes sans salarié permanent → coordination par outils numériques (email, gestion de projet, visioconférence) ; (2) Plateforme de travail : techniciens recrutés via Malt → le numérique fluidifie l'accès aux compétences à la demande ; (3) Réseau de compétences flexible : chaque prestataire apporte sa spécialité → organisation modulaire permise par la coordination numérique."},
+{n:3,pts:2,q:"Quelles sont les limites de ce modèle d'organisation pour ComEven ?",rep:"Limites : (1) Risques de coordination : sans salarié permanent, risques de malentendus ou de défaillances d'un intervenant ; (2) Absence de culture commune : prestataires avec méthodes différentes → manque de cohérence ; (3) Dépendance aux plateformes : si Malt change ses conditions, Julien n'a pas d'alternative immédiate ; (4) Risque juridique : si les prestataires sont considérés comme salariés déguisés (lien de subordination), Julien s'expose à une requalification en contrat de travail."}]},
+qcm:[{q:"Le portage salarial offre…",os:["La liberté totale sans protection","Protection sociale salarié + liberté de choisir ses missions","Un CDI dans une grande entreprise","L'obligation de créer une société"],a:1,e:"Le portage salarial combine protection sociale (statut salarié) et liberté du freelance (choix des missions). Commission de 5-15 %."},
+{q:"Le télétravail peut créer comme risque…",os:["Une trop grande productivité","Un isolement et frontière vie perso/pro floue","Une surqualification","Une réduction des charges patronales"],a:1,e:"Le télétravail peut isoler les salariés et brouiller la frontière entre vie professionnelle et vie personnelle."},
+{q:"Le numérique crée dans les organisations…",os:["Uniquement de l'agilité","Uniquement de la rigidité","À la fois de l'agilité et de la rigidité","Aucune modification"],a:2,e:"Double tranchant : agilité (flexibilité, réactivité) ET rigidité (dépendance aux SI, surcharge informationnelle)."},
+{q:"Les compétences PIX concernent…",os:["Uniquement la programmation","Les compétences numériques de base indispensables dans tous les métiers","Les diplômes informatiques","La cybersécurité uniquement"],a:1,e:"PIX référence les compétences numériques de base (tableur, email, sécurité) devenues indispensables dans tous les secteurs."}],
+vf:[{q:"L'auto-entrepreneur bénéficie de la même protection sociale qu'un salarié.",a:false,e:"L'auto-entrepreneur a une protection sociale RÉDUITE : retraite calculée sur un CA souvent faible, pas de chômage classique."},
+{q:"Le télétravail est un droit absolu pour tout salarié.",a:false,e:"Le télétravail n'est pas un droit absolu : il est accordé par l'employeur, souvent sur accord d'entreprise ou de branche."},
+{q:"Les compétences PIX sont devenues indispensables dans la plupart des métiers.",a:true,e:"La transformation numérique a rendu les compétences informatiques de base indispensables dans pratiquement tous les secteurs."},
+{q:"Le portage salarial est plus coûteux que la micro-entreprise.",a:true,e:"La société de portage prélève 5 à 15 % de la rémunération en échange de la gestion administrative et de la protection sociale."}],
+flash:[{t:"Télétravail",d:"Travail à distance accordé par l'employeur. Avantage : flexibilité. Risques : isolement, frontière vie perso/pro floue."},
+{t:"Auto-entrepreneur",d:"Statut simplifié pour activité indépendante. Liberté + simplicité. Mais protection sociale incomplète et revenus variables."},
+{t:"Portage salarial",d:"Statut hybride : protection sociale salarié + liberté freelance. La société de portage facture et prend une commission (5-15 %)."},
+{t:"Plateforme numérique de travail",d:"Malt, Deliveroo, Uber : grande flexibilité mais statut indépendant sans protection salariale complète."},
+{t:"Compétences PIX",d:"Référentiel de compétences numériques de base (tableur, email, sécurité) devenues indispensables dans tous les métiers."}]},
+
+{id:7,n:8,th:2,ic:'💾',cas:"Agence bancaire CIC",title:"La transformation de l'information en ressource",
+tags:['Données','Information','Système d\'information','Big data','RGPD','ERP'],
+cours:{intro:"Dans l'économie numérique, l'information est devenue une ressource stratégique. Sa collecte, son traitement et son partage permettent de prendre de meilleures décisions et de créer de la valeur.",
+secs:[{t:"De la donnée à l'information-ressource",tbl:{h:['Concept','Définition','Exemple CIC'],r:[['Donnée brute','Fait non traité','Solde compte client : 1 234,56 €'],['Information','Donnée traitée et mise en contexte','\'Ce client est à découvert depuis 3 mois\''],['Information-ressource','Information exploitée stratégiquement','Proposer un crédit adapté au bon moment']]}},
+{t:"Valeur de l'information, SI et RGPD",pts:["Qualité d'une information : <strong>fiable + pertinente + disponible + actualisée + complète</strong>.","<strong>Big data :</strong> volumes massifs de données (3V : Volume, Vitesse, Variété) pour détecter des tendances et personnaliser.","<strong>RGPD :</strong> consentement, finalité, durée de conservation, sécurité des données. Contrôlé par la CNIL (sanctions jusqu'à 4 % du CA mondial).","<strong>ERP/PGI :</strong> logiciel centralisant toutes les informations de l'organisation dans une base de données commune."]}],
+ret:["Données → traitées → informations → exploitées → ressources stratégiques","5 critères qualité : fiable + pertinente + disponible + actualisée + complète","Big data : 3V (Volume, Vitesse, Variété)","RGPD : consentement, finalité, durée, sécurité. CNIL contrôle et sanctionne","ERP/PGI = base de données commune à tous les services"]},
+bac:{ent:"Agence bancaire CIC",desc:"12 conseillers + 1 directeur. ERP centralisé pour gérer les comptes clients, crédits et placements.",
+docs:[{lbl:"Document 1 — Le SI de l'agence CIC",txt:"L'agence utilise un ERP centralisant : historique des opérations, profils de risque, contrats (crédits, assurances, placements), alertes automatiques (découverts prolongés, échéances). Chaque conseiller accède aux données en temps réel depuis son poste ou smartphone. L'ERP génère des tableaux de bord quotidiens pour le directeur."},
+{lbl:"Document 2 — Qualité des données et RGPD",txt:"La qualité des données est régulièrement auditée : informations manquantes ou erronées (téléphone incorrect, adresse obsolète) génèrent des doublons et des erreurs de communication client. Le CIC doit respecter le RGPD : les clients ont droit d'accéder, corriger ou supprimer leurs données. En 2022, le CIC a été sanctionné par la CNIL pour avoir conservé des données client au-delà de la durée légale de 5 ans après la clôture du compte."}],
+qs:[{n:1,pts:3,q:"À partir du document 1, montrez comment le SI du CIC transforme les données brutes en information-ressource.",rep:"Le SI réalise la transformation en 3 étapes : (1) Collecte des données brutes : historique des opérations, soldes, contrats → données isolées sans sens immédiat ; (2) Traitement en informations : l'ERP contextualise ('ce client est à découvert depuis 3 mois', 'ce crédit arrive à échéance') → données transformées en informations exploitables ; (3) Transformation en ressource stratégique : les alertes automatiques permettent au conseiller d'agir au bon moment (proposer un rachat de crédit, contacter avant les agios) → l'information devient un levier commercial."},
+{n:2,pts:3,q:"À partir du document 2, expliquez les enjeux de la qualité des données et du RGPD pour le CIC.",rep:"Qualité des données : données erronées (téléphone, adresse) génèrent des erreurs de communication, des doublons et dégradent la relation client. La qualité conditionne directement la qualité des décisions et du service. RGPD : la sanction CNIL illustre les enjeux légaux (amendes jusqu'à 4 % du CA mondial), réputationnels (perte de confiance client) et organisationnels (processus d'effacement automatique à mettre en place). Le RGPD bien appliqué renforce la confiance client."},
+{n:3,pts:2,q:"En quoi le big data pourrait être utilisé par le CIC ? Quelles limites éthiques ?",rep:"Usages potentiels : (1) Scoring de crédit amélioré (données comportementales → évaluation du risque plus précise) ; (2) Offres personnalisées au bon moment ; (3) Détection de fraude en temps réel. Limites éthiques : (1) Vie privée : collecter des données comportementales sans consentement → violation RGPD ; (2) Discrimination : scoring basé sur le lieu de résidence → discriminations illégales ; (3) Opacité : algorithmes 'boîtes noires' → droit d'explication du client compromis."}]},
+qcm:[{q:"Une information de qualité doit être…",os:["Très volumineuse et ancienne","Fiable, pertinente, disponible, actualisée et complète","Uniquement financière","Publiquement accessible"],a:1,e:"5 critères de qualité : fiable (exacte), pertinente (utile à la décision), disponible (accessible), actualisée (récente), complète."},
+{q:"Le RGPD s'applique à…",os:["Uniquement aux grandes entreprises","Toute organisation collectant des données personnelles de résidents européens","Uniquement les banques","Uniquement les plateformes numériques"],a:1,e:"Le RGPD s'applique à TOUTE organisation (quelle que soit sa taille) collectant des données personnelles de résidents de l'UE."},
+{q:"Un ERP/PGI est…",os:["Un outil de communication externe","Un logiciel centralisant toutes les informations dans une base de données commune","Un réseau social d'entreprise","Un outil de facturation uniquement"],a:1,e:"L'ERP intègre tous les processus de l'organisation dans une base de données partagée en temps réel."},
+{q:"Le big data permet de…",os:["Réduire les effectifs","Analyser des volumes massifs pour détecter des tendances et personnaliser","Supprimer les données obsolètes","Remplacer les SI traditionnels"],a:1,e:"Big data = analyser des volumes massifs et variés de données pour identifier des tendances, personnaliser et prédire."}],
+vf:[{q:"Une donnée brute est immédiatement exploitable comme ressource stratégique.",a:false,e:"Une donnée brute doit être TRAITÉE et mise en contexte pour devenir une information, puis exploitée stratégiquement."},
+{q:"La CNIL peut sanctionner les organisations qui ne respectent pas le RGPD.",a:true,e:"La CNIL peut infliger des amendes allant jusqu'à 4 % du CA mondial annuel."},
+{q:"La qualité de l'information inclut sa fiabilité et son actualité.",a:true,e:"5 critères : fiabilité + pertinence + disponibilité + actualité + complétude."},
+{q:"L'utilisation du big data est sans limite éthique.",a:false,e:"Le big data soulève des enjeux éthiques : vie privée, discrimination algorithmique, opacité des décisions."}],
+flash:[{t:"Information-ressource",d:"Information traitée et exploitée stratégiquement pour créer de la valeur et améliorer les décisions."},
+{t:"RGPD",d:"Règlement Général sur la Protection des Données : consentement, finalité, durée limitée, sécurité. Contrôlé par la CNIL."},
+{t:"ERP / PGI",d:"Progiciel de Gestion Intégré : logiciel centralisant toutes les informations dans une base de données commune."},
+{t:"Big data (3V)",d:"Volume + Vitesse + Variété. Traitement de volumes massifs pour détecter des tendances et personnaliser."},
+{t:"Qualité de l'information",d:"Fiable + pertinente + disponible + actualisée + complète. Conditionne la qualité des décisions."}]},
+
+{id:8,n:9,th:2,ic:'🌐',cas:"Agence bancaire CIC",title:"L'environnement numérique au service du partage de l'information",
+tags:['Cloud','Outils collaboratifs','Intelligence collective','Open data','Surcharge informationnelle'],
+cours:{intro:"Le numérique permet un partage de l'information à grande échelle, favorisant l'émergence d'une intelligence collective. Cloud, outils collaboratifs et open data transforment les modes de travail.",
+secs:[{t:"Cloud et outils collaboratifs",pts:["<strong>Cloud computing :</strong> accès via internet à des ressources informatiques sans infrastructure locale. Avantages : flexibilité, accès de n'importe où. Risques : cybersécurité, dépendance au prestataire.","<strong>Outils collaboratifs :</strong> Teams, Slack, Google Workspace. Travail commun à distance, partage de documents, coordination."]},
+{t:"Intelligence collective et open data",pts:["<strong>Intelligence collective :</strong> capacité d'un groupe à résoudre des problèmes complexes en combinant les savoirs individuels via le partage. Favorisée par les RSE numériques.","<strong>Open data :</strong> données publiquement accessibles et réutilisables (data.gouv.fr, INSEE).","<strong>Surcharge informationnelle (infobésité) :</strong> trop de notifications et d'informations nuisent à la productivité et au bien-être."]}],
+ret:["Cloud = accès ressources IT via internet (flexibilité mais risque cybersécurité)","Outils collaboratifs = Teams, Slack → travail commun à distance","Intelligence collective = synergies des savoirs individuels via le partage","Open data = données publiques librement réutilisables","Surcharge informationnelle = risque des outils collaboratifs intensifs"]},
+bac:{ent:"Agence bancaire CIC",desc:"Microsoft 365 déployé pour les 12 conseillers : Teams, OneDrive, Planner. Gain de productivité de 12 % mais certains seniors se plaignent de 50 notifications/jour.",
+docs:[{lbl:"Document 1 — Outils collaboratifs CIC",txt:"Depuis 2021 : Teams (réunions), OneDrive (stockage partagé), Planner (tâches). Productivité +12 % grâce à moins de déplacements (réunions en visio) et partage simplifié. Certains seniors se plaignent : '50 notifications/jour sur Teams, je ne sais plus quoi traiter en priorité.'"},
+{lbl:"Document 2 — CIC Connect, plateforme d'intelligence collective",txt:"Le groupe CIC utilise CIC Connect : chaque conseiller publie des cas clients résolus de façon originale, des modèles de lettres ou des explications simplifiées. En 2022 : 340 fiches pratiques publiées par 120 contributeurs différents, consultées 5 000 fois/mois sur l'ensemble du réseau CIC France."}],
+qs:[{n:1,pts:3,q:"À partir du document 1, analysez avantages et limites des outils collaboratifs déployés par le CIC.",rep:"Avantages : gain de productivité de 12 % (moins de déplacements pour réunions inter-agences), partage simplifié des dossiers (OneDrive → accès de partout), coordination facilitée (Planner → suivi des tâches en temps réel), travail asynchrone possible. Limites : surcharge informationnelle (50 notifications/jour → épuisement numérique pour les seniors), risque de dépendance à Microsoft, besoin de formation des moins à l'aise, frontière vie pro/vie perso floue (Teams accessible depuis le smartphone personnel)."},
+{n:2,pts:3,q:"À partir du document 2, montrez que CIC Connect illustre le concept d'intelligence collective.",rep:"CIC Connect illustre l'intelligence collective : (1) capitalise les savoirs individuels (340 fiches par 120 contributeurs → diversité des apports) ; (2) les rend accessibles au collectif (5 000 consultations/mois) ; (3) crée une valeur supérieure à la somme des contributions (les solutions d'un conseiller de Bordeaux bénéficient à Strasbourg) ; (4) est alimentée volontairement (120 contributeurs → engagement). Efficacité : 5 000 consultations / 340 fiches ≈ 15 consultations/fiche → taux d'utilisation significatif."},
+{n:3,pts:2,q:"En quoi l'open data pourrait-il enrichir l'intelligence collective du CIC ?",rep:"L'open data enrichit les données internes avec des informations externes : (1) Données INSEE (démographie, revenus par zone) → adapter les produits aux caractéristiques économiques locales ; (2) Données Banque de France (taux d'endettement, risques sectoriels) → affiner le scoring de crédit ; (3) Données cadastrales (prix immobilier) → améliorer les simulations de crédit immobilier. L'open data apporte le contexte externe que les données internes CIC seules ne peuvent pas fournir."}]},
+qcm:[{q:"Le cloud computing permet…",os:["Stocker uniquement en local","Accéder à des ressources informatiques via internet sans infrastructure locale","Automatiser la production industrielle","Créer des réseaux sociaux"],a:1,e:"Le cloud offre accès à des ressources IT (stockage, logiciels, calcul) via internet, sans posséder ses propres serveurs."},
+{q:"L'intelligence collective désigne…",os:["La performance d'un seul expert","La capacité d'un groupe à résoudre des problèmes en combinant les savoirs via le partage","L'utilisation de l'IA uniquement","Un réseau de supercalculateurs"],a:1,e:"Intelligence collective = synergies des savoirs combinés via le partage → résultats supérieurs à la somme des contributions."},
+{q:"L'open data désigne…",os:["Des données confidentielles d'entreprises","Des données publiquement accessibles et réutilisables","Des données dans le cloud","Des données personnelles protégées"],a:1,e:"Open data = données publiées par des institutions (État, collectivités) et librement réutilisables par tous."},
+{q:"La surcharge informationnelle est un risque lié à…",os:["Les formations professionnelles","L'utilisation intensive des outils collaboratifs numériques","L'open data","Le RGPD"],a:1,e:"L'infobésité : trop de notifications nuisent à la productivité et au bien-être."}],
+vf:[{q:"Le cloud présente des risques de cybersécurité et de dépendance.",a:true,e:"Le cloud expose à des risques : cyberattaques (données hébergées chez un tiers), dépendance au prestataire."},
+{q:"L'intelligence collective nécessite la confiance entre membres.",a:true,e:"La confiance est une condition : sans elle, les membres ne partagent pas leurs savoirs (peur de la concurrence interne)."},
+{q:"Open data et big data sont des synonymes.",a:false,e:"Open data = données publiques librement accessibles. Big data = traitement de volumes massifs de données de toutes origines."},
+{q:"Les outils collaboratifs remplacent complètement les réunions en présentiel.",a:false,e:"Ils COMPLÈTENT les réunions en présentiel sans les remplacer totalement : certains sujets nécessitent le présentiel."}],
+flash:[{t:"Cloud computing",d:"Accès à des ressources informatiques via internet sans infrastructure locale. Flexibilité mais risques de cybersécurité."},
+{t:"Outils collaboratifs",d:"Applications permettant le travail commun à distance (Teams, Slack, Google Workspace). Favorisent partage et coordination."},
+{t:"Intelligence collective",d:"Capacité d'un groupe à résoudre des problèmes complexes en combinant les savoirs individuels via le partage."},
+{t:"Open data",d:"Données publiquement accessibles et réutilisables publiées par des institutions (data.gouv.fr, INSEE...)."},
+{t:"Surcharge informationnelle",d:"Effet négatif des outils numériques : trop de notifications nuisent à la productivité et au bien-être (infobésité)."}]},
+
+{id:9,n:10,th:2,ic:'🔃',cas:"Agence bancaire CIC",title:"L'impact du numérique sur l'organisation du travail",
+tags:['Agilité','Rigidité','Automatisation','IA','RGPD art.22','Emploi'],
+cours:{intro:"Le numérique transforme l'organisation du travail : il crée de l'agilité mais aussi de la rigidité. Les organisations doivent gérer ces tensions et anticiper l'impact sur les compétences et l'emploi.",
+secs:[{t:"Agilité vs rigidité numérique",tbl:{h:['Dimension','Agilité créée','Rigidité créée'],r:[['Organisation','Flexibilité horaire, télétravail, travail asynchrone','Standardisation, perte d\'autonomie décisionnelle'],['Processus','Adaptation rapide aux demandes','Dépendance aux SI (panne = blocage total)'],['Communication','Réactivité immédiate','Surcharge informationnelle'],['Compétences','Formation en ligne accessible','Obsolescence rapide → formation continue']]}},
+{t:"Automatisation, IA et impact emploi",pts:["<strong>Automatisation :</strong> tâches répétitives confiées aux machines → libère du temps pour des tâches à valeur ajoutée. Ex : chatbot CIC traite 68 % des questions courantes.","<strong>IA :</strong> algorithmes apprenant et décidant (chatbots, scoring de crédit, détection de fraude). Risque : décisions opaques ('boîtes noires').","<strong>RGPD art. 22 :</strong> droit à ne pas faire l'objet d'une décision entièrement automatisée sans explication possible.","<strong>Impact emploi :</strong> certains métiers disparaissent (guichetiers), d'autres émergent (data scientists, gestionnaires de cyberrisques)."]}],
+ret:["Numérique → agilité (flexibilité) ET rigidité (dépendance, standardisation)","Automatisation = tâches répétitives aux machines → libère pour tâches à VA","IA = algorithmes apprenant et décidant → risque opacité ('boîtes noires')","RGPD art. 22 : droit à l'explication pour les décisions automatisées","Compétences numériques s'obsolèscent vite → formation continue indispensable"]},
+bac:{ent:"Agence bancaire CIC",desc:"Le CIC a déployé un chatbot (Filbanque Bot) répondant à 68 % des questions courantes et une IA de scoring de crédit analysant 47 critères en 3 secondes.",
+docs:[{lbl:"Document 1 — Chatbot et IA de scoring CIC",txt:"Le chatbot répond automatiquement à 68 % des questions courantes (soldes, virements, horaires, déplafonnement). Les 32 % de demandes complexes sont transférées à un conseiller humain. L'IA de scoring analyse 47 critères en < 3 secondes pour émettre un avis (accord, refus, dossier à examiner). Les conseillers valident les cas limites mais n'analysent plus les dossiers courants."},
+{lbl:"Document 2 — Réactions des conseillers",txt:"Marie (senior) : 'J'avais peur d'être remplacée. Finalement, je gère des cas de plus en plus complexes et intéressants. Je passe moins de temps aux questions basiques.' Thomas (junior) : 'Je ne comprends pas toujours pourquoi l'IA refuse un crédit. Le client me demande des explications et je ne peux pas lui donner les détails de l'algorithme. C'est frustrant pour lui et pour moi.'"}],
+qs:[{n:1,pts:3,q:"À partir du document 1, montrez que le numérique crée à la fois agilité et rigidité dans l'organisation du travail du CIC.",rep:"Agilité : chatbot disponible 24h/24 (service client hors horaires d'ouverture) ; IA de scoring en 3 secondes vs plusieurs jours auparavant ; conseillers libérés des tâches répétitives (68 % des demandes automatisées) → plus de temps pour les tâches à VA. Rigidité : si le chatbot tombe en panne, 68 % des demandes ne sont plus traitées → vulnérabilité ; l'IA de scoring est une 'boîte noire' → les conseillers ne maîtrisent plus le processus de décision → perte d'autonomie décisionnelle."},
+{n:2,pts:3,q:"À partir du document 2, analysez l'impact de l'automatisation sur les missions et compétences des conseillers CIC.",rep:"Impact sur les missions : Marie voit son travail revalorisé → elle traite des cas complexes (les simples étant automatisés) → concentration sur l'accompagnement relationnel à haute VA. Thomas rencontre une difficulté nouvelle → il ne peut pas expliquer les décisions de l'IA → problème de transparence algorithmique. Impact sur les compétences : nouvelles compétences nécessaires (cas complexes, explication des refus IA, interface outils numériques) ; certaines compétences anciennes disparaissent. Formation continue indispensable."},
+{n:3,pts:2,q:"Thomas signale un problème d'opacité de l'IA. Quels enjeux éthiques et légaux pour le CIC ?",rep:"Enjeu éthique : si l'IA refuse un crédit sans explication, le client se sent injustement traité → perte de confiance. Si l'algorithme reproduit des biais (discrimination par adresse ou origine), des injustices systémiques se créent. Enjeu légal : le RGPD (art. 22) prévoit un droit à ne pas faire l'objet d'une décision automatisée significative sans explication. Si le CIC ne peut pas expliquer ses décisions d'IA → risque de sanction CNIL. Le CIC doit utiliser des IA interprétables."}]},
+qcm:[{q:"L'automatisation permet principalement de…",os:["Supprimer tous les emplois","Libérer les humains des tâches répétitives pour des tâches à valeur ajoutée","Réduire la qualité","Augmenter les coûts"],a:1,e:"L'automatisation confie les tâches répétitives aux machines → libère du temps pour des activités à plus forte valeur ajoutée."},
+{q:"L'IA de scoring présente comme limite…",os:["D'être trop lente","D'être une 'boîte noire' difficile à expliquer","De coûter trop cher","D'être accessible à tous"],a:1,e:"Les algorithmes d'IA sont souvent opaques : décisions par corrélations complexes difficiles à expliquer aux clients."},
+{q:"La rigidité numérique se manifeste par…",os:["Une plus grande flexibilité horaire","Une dépendance aux SI (panne = blocage)","Une réduction des coûts","Une meilleure satisfaction client"],a:1,e:"La dépendance aux systèmes numériques est une rigidité : une panne du SI peut paralyser entièrement l'activité."},
+{q:"Le RGPD art. 22 prévoit le droit de ne pas faire l'objet d'une…",os:["Formation obligatoire","Décision entièrement automatisée sans explication","Promotion automatique","Mutation géographique"],a:1,e:"Le RGPD protège les individus contre les décisions automatisées significatives sans intervention humaine ni explication."}],
+vf:[{q:"Le numérique crée uniquement de l'agilité dans les organisations.",a:false,e:"Le numérique crée à la fois agilité (flexibilité, réactivité) ET rigidité (dépendance aux SI, standardisation)."},
+{q:"L'automatisation peut conduire à la disparition de certains métiers.",a:true,e:"L'automatisation transforme le marché du travail : certains métiers disparaissent (guichetiers), d'autres émergent (data scientists)."},
+{q:"Un conseiller bancaire doit pouvoir expliquer les décisions d'une IA selon le RGPD.",a:true,e:"RGPD art. 22 : droit à l'explication pour les décisions automatisées significatives → les banques doivent utiliser des IA interprétables."},
+{q:"La formation continue n'est plus nécessaire car les outils numériques sont stables.",a:false,e:"Les compétences numériques s'obsolèscent rapidement → la formation continue est PLUS nécessaire que jamais."}],
+flash:[{t:"Automatisation",d:"Remplacement de tâches répétitives par des machines. Libère les humains pour des tâches à plus forte valeur ajoutée."},
+{t:"IA (Intelligence Artificielle)",d:"Algorithmes apprenant et décidant (chatbots, scoring, détection fraude). Risque : opacité des décisions ('boîte noire')."},
+{t:"Agilité numérique",d:"Flexibilité et réactivité apportées par le numérique : télétravail, réponse immédiate, adaptation rapide."},
+{t:"Rigidité numérique",d:"Dépendance aux systèmes : une panne peut paralyser l'activité. Standardisation réduisant l'autonomie."},
+{t:"Droit à l'explication (RGPD art. 22)",d:"Droit à une explication sur les décisions automatisées significatives (crédit, emploi, assurance)."}]},
+{id:10,n:11,th:3,ic:'💎',cas:"Pressoir du Gapençais",title:"La contribution des acteurs à la création de valeur",
+tags:['Valeur ajoutée','Valeur perçue','Valeur partenariale','Répartition de la VA'],
+cours:{intro:"La création de valeur est au cœur de toute organisation. La valeur est multidimensionnelle : financière (VA), perçue (client), partenariale (parties prenantes). Tous les acteurs y contribuent.",
+secs:[{t:"Les formes de valeur",tbl:{h:['Type','Définition','Exemple Pressoir'],r:[['Valeur ajoutée','CA − Consommations intermédiaires','VA = CA − achats matières premières + services'],['Valeur perçue','Appréciation subjective du client (qualité, image, expérience)','Appréciation pour les produits bio artisanaux'],['Valeur actionnariale','Part reversée aux actionnaires (dividendes)','Bénéfice distribué aux 3 associés fondateurs'],['Valeur partenariale','Valeur créée pour les parties prenantes (fournisseurs, communauté)','Emplois locaux, partenariats producteurs bio locaux']]}},
+{t:"Calcul et répartition de la VA",pts:["<strong>VA = CA − Consommations intermédiaires</strong> (achats + services achetés).","<strong>Taux de VA = VA / CA × 100.</strong> Mesure la capacité à créer de la valeur.","<strong>Répartition de la VA :</strong> salariés (salaires + charges) + État (impôts) + prêteurs (intérêts) + actionnaires (dividendes) + entreprise (autofinancement)."]}],
+ret:["VA = CA − Consommations intermédiaires","Taux de VA = VA / CA × 100","4 formes : VA (financière), perçue (client), actionnariale, partenariale","Répartition VA : salariés + État + prêteurs + actionnaires + entreprise","La valeur est multidimensionnelle : financière ET non financière"]},
+bac:{ent:"Pressoir du Gapençais",desc:"SARL artisanale (Hautes-Alpes) transformant des fruits et légumes bio invendables en jus, confitures, compotes et soupes. Créée en 2012 par 3 amis. Label ESUS.",
+docs:[{lbl:"Document 1 — Compte de résultat simplifié (en €)",data:{h:['Poste','Montant €'],r:[['Chiffre d\'affaires','285 000'],['Achats matières premières bio','68 000'],['Autres consommations intermédiaires (énergie, emballages, services)','42 000'],['VALEUR AJOUTÉE','?'],['Charges de personnel','89 000'],['Impôts et taxes','18 000'],['Dotations aux amortissements','22 000'],['Intérêts des emprunts','8 000'],['RÉSULTAT NET','?']]}},
+{lbl:"Document 2 — Valeur partenariale du Pressoir",txt:"Le Pressoir crée de la valeur multidimensionnelle : 85 tonnes de fruits et légumes valorisés au lieu d'être jetés (valeur environnementale), 6 salariés locaux (valeur sociale), partenariats avec 12 producteurs bio locaux (valeur partenariale), sensibilisation clients à l'anti-gaspillage (valeur éducative). Label ESUS (Entreprise Solidaire d'Utilité Sociale)."}],
+qs:[{n:1,pts:3,q:"À partir du document 1, calculez la valeur ajoutée et le résultat net. Commentez.",rep:"VA = CA − CI = 285 000 − (68 000 + 42 000) = 285 000 − 110 000 = 175 000 €.\nTaux de VA = 175 000 / 285 000 × 100 = 61,4 % → taux élevé, cohérent avec une activité artisanale de transformation intégrant beaucoup de valeur manuelle.\nRésultat net = VA − Charges personnel − Impôts − Amortissements − Intérêts = 175 000 − 89 000 − 18 000 − 22 000 − 8 000 = 38 000 €.\nCommentaire : Le Pressoir est rentable (38 000 € de résultat net pour 285 000 € de CA = 13,3 % de rentabilité nette)."},
+{n:2,pts:3,q:"À partir du document 2, montrez que la valeur créée est multidimensionnelle.",rep:"(1) Valeur financière (VA) : 175 000 € → viabilité économique ; (2) Valeur environnementale : 85 tonnes de fruits valorisés au lieu d'être jetés → économie circulaire ; (3) Valeur sociale : 6 emplois locaux dans les Hautes-Alpes ; (4) Valeur partenariale : 12 producteurs bio ont un débouché pour leurs invendus → valeur créée pour des parties prenantes non clientes ; (5) Valeur éducative : sensibilisation à l'anti-gaspillage. La performance ne se résume pas au résultat net."},
+{n:3,pts:2,q:"Répartissez la valeur ajoutée (175 000 €) entre les parties prenantes.",rep:"Répartition de la VA = 175 000 € :\n• Salariés (charges personnel) : 89 000 € = 50,9 %\n• État (impôts et taxes) : 18 000 € = 10,3 %\n• Prêteurs (intérêts) : 8 000 € = 4,6 %\n• Entreprise (amortissements + résultat net) : 22 000 + 38 000 = 60 000 € = 34,3 %\nTotal : 175 000 €. Principale bénéficiaire : les salariés (50,9 %)."}]},
+qcm:[{q:"La valeur ajoutée se calcule par…",os:["CA − Charges de personnel","CA − Consommations intermédiaires","Résultat net − Impôts","CA − Total des charges"],a:1,e:"VA = CA − Consommations intermédiaires (achats de matières premières + services achetés à l'extérieur)."},
+{q:"La valeur perçue est…",os:["Le résultat net","L'appréciation subjective du client sur les bénéfices reçus","Les dividendes versés aux actionnaires","Les emplois créés"],a:1,e:"La valeur perçue est SUBJECTIVE : c'est la valeur que le CLIENT attribue au produit (qualité ressentie, image, satisfaction)."},
+{q:"La répartition de la VA bénéficie à…",os:["Uniquement les actionnaires","Uniquement les salariés","Salariés + État + prêteurs + actionnaires + entreprise","Uniquement l'État"],a:2,e:"La VA est répartie entre : salariés (salaires), État (impôts), prêteurs (intérêts), actionnaires (dividendes), entreprise (autofinancement)."},
+{q:"Un taux de VA élevé indique…",os:["Une rentabilité faible","Une forte capacité de transformation","Des charges de personnel élevées","Un résultat net négatif"],a:1,e:"Taux de VA élevé = l'organisation crée beaucoup de valeur à partir de ses achats → forte transformation artisanale ou intégration."}],
+vf:[{q:"La valeur ajoutée est toujours égale au résultat net.",a:false,e:"VA ≠ résultat net. La VA est calculée AVANT les charges de personnel, impôts, amortissements. Le résultat net est ce qui reste après tout."},
+{q:"La valeur créée peut être non financière.",a:true,e:"Valeur multidimensionnelle : environnementale, sociale, partenariale, éducative → au-delà du financier."},
+{q:"Les consommations intermédiaires sont des achats revendus tels quels.",a:false,e:"Les CI sont des achats INCORPORÉS dans la production (matières premières transformées, énergie). Ils sont consommés dans le processus."},
+{q:"Un taux de VA élevé indique une forte capacité de transformation.",a:true,e:"Taux de VA élevé = l'organisation crée beaucoup de valeur à partir de ses achats → transformation importante."}],
+flash:[{t:"Valeur ajoutée (VA)",d:"VA = CA − Consommations intermédiaires. Mesure la richesse créée par l'organisation à partir de ses achats."},
+{t:"Taux de VA",d:"VA / CA × 100. Mesure la capacité à créer de la valeur. Plus il est élevé, plus la transformation est importante."},
+{t:"Répartition de la VA",d:"Salariés (salaires) + État (impôts) + prêteurs (intérêts) + actionnaires (dividendes) + entreprise (autofinancement)."},
+{t:"Valeur perçue",d:"Appréciation subjective du client sur les bénéfices reçus (qualité, image, expérience) par rapport aux sacrifices consentis."},
+{t:"Valeur partenariale",d:"Valeur créée pour les parties prenantes (fournisseurs, communauté) au-delà des actionnaires et salariés."}]},
+
+{id:11,n:12,th:3,ic:'💰',cas:"Pressoir du Gapençais",title:"La relation entre le prix, le coût et les marges",
+tags:['Coût de revient','Marge commerciale','Taux de marge','Taux de marque','TVA'],
+cours:{intro:"Fixer un prix de vente nécessite de comprendre les relations entre coût de revient, prix de vente et marges. Ces notions sont fondamentales pour assurer la rentabilité.",
+secs:[{t:"Coût, prix et marges — formules clés",pts:["<strong>Coût de revient :</strong> charges directes + quote-part charges indirectes engagées pour produire une unité.","<strong>Marge commerciale = PV HT − Coût d'achat HT.</strong> Ce que l'org gagne sur chaque vente.","<strong>Taux de marge = Marge / Coût d'achat × 100</strong> → exprime la marge par rapport au coût.","<strong>Taux de marque = Marge / PV HT × 100</strong> → exprime la marge par rapport au prix de vente.","⚠️ <strong>Taux de marge TOUJOURS > taux de marque</strong> (car Coût < PV HT → dénominateur plus petit → résultat plus grand)."]},
+{t:"TVA et prix TTC",pts:["<strong>PV TTC = PV HT × (1 + taux de TVA).</strong>","Taux en France : 20 % (normal), 10 % (restauration, transports), 5,5 % (alimentation, livres), 2,1 % (médicaments).","La TVA est collectée par l'entreprise pour le compte de l'État."]}],
+ret:["Coût de revient = charges directes + quote-part charges indirectes","Marge commerciale = PV HT − Coût d'achat HT","Taux de marge = Marge / Coût d'achat × 100 (toujours > taux de marque)","Taux de marque = Marge / PV HT × 100","PV TTC = PV HT × (1 + taux TVA)"]},
+bac:{ent:"Pressoir du Gapençais",desc:"La bouteille de jus de pomme (75 cl) est le produit phare. Analyse de rentabilité par canal.",
+docs:[{lbl:"Document 1 — Éléments de coût — jus de pomme 75 cl",data:{h:['Élément','Montant unitaire'],r:[['Pommes bio (charge directe)','0,68 €'],['Énergie pressage (charge directe)','0,12 €'],['Bouteille + bouchon + étiquette (charge directe)','0,35 €'],['Quote-part charges indirectes','0,45 €'],['COÛT DE REVIENT TOTAL','?']]}},
+{lbl:"Document 2 — Politique tarifaire par canal",data:{h:['Canal','PV TTC','Taux TVA'],r:[['Vente directe (marché)','3,50 €','5,5 %'],['Épiceries bio partenaires','4,20 €','5,5 %'],['Commande en ligne','4,80 €','5,5 %']]}}],
+qs:[{n:1,pts:2,q:"Calculez le coût de revient total et commentez sa composition.",rep:"Coût de revient = 0,68 + 0,12 + 0,35 + 0,45 = 1,60 €.\nComposition : charges directes = 1,15 € (72 % du coût) → matières premières + emballage. Charges indirectes = 0,45 € (28 %). La part élevée des charges directes (72 %) reflète la qualité de la matière première (pommes bio) et l'emballage premium → cohérent avec le positionnement artisanal du Pressoir."},
+{n:2,pts:4,q:"Pour chaque canal, calculez : PV HT, marge, taux de marge, taux de marque.",rep:"TVA 5,5 % → PV HT = PV TTC / 1,055\nVente directe : PV HT = 3,50/1,055 = 3,32 € | Marge = 3,32−1,60 = 1,72 € | Taux marge = 1,72/1,60×100 = 107,5 % | Taux marque = 1,72/3,32×100 = 51,8 %\nÉpiceries bio : PV HT = 4,20/1,055 = 3,98 € | Marge = 3,98−1,60 = 2,38 € | Taux marge = 2,38/1,60×100 = 148,8 % | Taux marque = 2,38/3,98×100 = 59,8 %\nEn ligne : PV HT = 4,80/1,055 = 4,55 € | Marge = 4,55−1,60 = 2,95 € | Taux marge = 2,95/1,60×100 = 184,4 % | Taux marque = 2,95/4,55×100 = 64,8 %"},
+{n:3,pts:2,q:"Quel canal est le plus rentable ? Quels autres facteurs prendre en compte ?",rep:"Canal le plus rentable en marge et taux : vente en ligne (2,95 €/bouteille, taux marge 184,4 %). Autres facteurs : (1) Volume : la vente directe sur marché peut représenter un volume supérieur → résultat total potentiellement meilleur malgré marge unitaire plus faible ; (2) Coûts cachés en ligne : logistique, emballage, frais de port non inclus dans le coût unitaire calculé ; (3) Mission : la vente directe au marché est cohérente avec la mission de circuit court et lien avec les consommateurs locaux."}]},
+qcm:[{q:"La marge commerciale se calcule par…",os:["CA − Total des charges","PV HT − Coût d'achat HT","PV TTC − Coût de revient","Résultat net"],a:1,e:"Marge commerciale = PV HT − Coût d'achat HT. Ce que l'organisation gagne sur chaque vente."},
+{q:"Le taux de marque exprime la marge…",os:["Par rapport au coût d'achat","Par rapport au prix de vente HT","Par rapport au CA total","Par rapport aux charges fixes"],a:1,e:"Taux de marque = Marge / PV HT × 100. La marge en % du prix de vente."},
+{q:"Le taux de TVA alimentaire est de…",os:["20 %","10 %","5,5 %","2,1 %"],a:2,e:"Le taux de TVA réduit de 5,5 % s'applique aux produits alimentaires, livres et certains spectacles."},
+{q:"PV TTC = PV HT ×…",os:["Taux de TVA","(1 − taux de TVA)","(1 + taux de TVA)","Taux de marge"],a:2,e:"PV TTC = PV HT × (1 + taux de TVA). Ex : PV HT = 10 € avec TVA 20 % → PV TTC = 12 €."}],
+vf:[{q:"Le taux de marge est toujours supérieur au taux de marque.",a:true,e:"Taux de marge (Marge/Coût) > taux de marque (Marge/PV HT) car Coût < PV HT → dénominateur plus petit → résultat plus grand."},
+{q:"Les charges indirectes ne sont pas incluses dans le coût de revient.",a:false,e:"Le coût de revient inclut charges DIRECTES + quote-part des charges INDIRECTES réparties selon une clé."},
+{q:"La TVA est collectée par l'entreprise pour l'État.",a:true,e:"L'entreprise collecte la TVA sur ses ventes puis la reverse à l'État, après déduction de la TVA payée sur ses achats."},
+{q:"Un PV TTC élevé signifie toujours une meilleure marge.",a:false,e:"Un PV TTC élevé ne garantit pas une meilleure marge si les coûts sont également élevés (coûts logistiques en ligne)."}],
+flash:[{t:"Coût de revient",d:"Charges directes + quote-part des indirectes pour produire une unité. Base de calcul de la marge."},
+{t:"Marge commerciale",d:"PV HT − Coût d'achat HT. Ce que l'organisation gagne sur chaque vente."},
+{t:"Taux de marge",d:"Marge / Coût d'achat × 100. En % du coût. Toujours supérieur au taux de marque."},
+{t:"Taux de marque",d:"Marge / PV HT × 100. En % du prix de vente. Toujours inférieur au taux de marge."},
+{t:"PV TTC",d:"PV HT × (1 + taux TVA). La TVA est collectée par l'entreprise pour l'État."}]},
+
+{id:12,n:13,th:3,ic:'⭐',cas:"Pressoir du Gapençais",title:"La contribution des acteurs à la valeur perçue",
+tags:['Valeur perçue','E-réputation','NPS','Satisfaction client','Fidélisation'],
+cours:{intro:"La valeur perçue est l'appréciation subjective du client. Tous les acteurs (dirigeants, salariés, fournisseurs, clients eux-mêmes) contribuent à la construire.",
+secs:[{t:"Déterminants de la valeur perçue",pts:["<strong>Valeur perçue :</strong> qualité du produit, image de marque, rapport qualité/prix perçu, expérience d'achat, avis des autres clients.","<strong>4 acteurs créateurs :</strong> dirigeants (stratégie qualité), salariés (interface client), fournisseurs (qualité des matières), clients eux-mêmes (avis, bouche-à-oreille)."]},
+{t:"E-réputation et indicateurs de satisfaction",pts:["<strong>E-réputation :</strong> image en ligne construite par les avis (Google, TripAdvisor), réseaux sociaux. Influence la valeur perçue AVANT l'achat.","<strong>NPS (Net Promoter Score) = % promoteurs (9-10) − % détracteurs (0-6).</strong> Mesure fidélité et propension à recommander. > +50 = excellent.","<strong>Taux de réachat :</strong> % de clients qui rachètent. Indicateur clé de fidélisation.","Répondre aux avis négatifs améliore la valeur perçue des futurs clients."]}],
+ret:["Valeur perçue = bénéfices ressentis / sacrifices consentis (prix, effort)","4 acteurs créateurs : dirigeants, salariés, fournisseurs, clients","E-réputation = image en ligne → influence la valeur perçue AVANT l'achat","NPS = % promoteurs − % détracteurs. > +50 = excellent","Taux de réachat = indicateur clé de fidélisation"]},
+bac:{ent:"Pressoir du Gapençais",desc:"Le Pressoir vend ses produits sur les marchés locaux, épiceries bio et en ligne. Sa marque artisanale et locale est au cœur de sa stratégie.",
+docs:[{lbl:"Document 1 — Avis clients Google (extraits)",txt:"★★★★★ 'Les jus sont incroyables, fait avec soin. Le contact avec les producteurs au marché fait la différence !' — Marine K.\n★★★★☆ 'Très bon produit, un peu cher mais on comprend pourquoi. Label ESUS rassurant.' — Julien P.\n★★☆☆☆ 'Commande en ligne non reçue à la date promise, 5 jours sans nouvelles. Déçu par la logistique même si le produit est bon.' — Ahmed B.\n★★★★★ 'J'offre ces jus à mes amis pour les fêtes, ils adorent et cherchent toujours où s'en procurer.' — Claire M."},
+{lbl:"Document 2 — Indicateurs de satisfaction 2022",data:{h:['Indicateur','Valeur'],r:[['Note moyenne Google','4,3/5 (142 avis)'],['NPS','+62'],['Taux de réachat clients directs','74 %'],['Part des achats sur recommandation','38 %'],['Délai moyen livraison en ligne','5,2 jours (objectif : 3 jours)']]}}],
+qs:[{n:1,pts:3,q:"À partir du document 1, identifiez les éléments créant une valeur perçue positive et ceux qui la dégradent.",rep:"Valeur perçue POSITIVE : (1) Qualité du produit ('incroyables', 'le meilleur cadeau bio') → contribution des fournisseurs (fruits bio) et salariés ; (2) Contact humain au marché ('le contact avec les producteurs fait la différence') → valeur relationnelle ; (3) Label ESUS ('rassurant') → valeur de confiance construite par les dirigeants ; (4) Recommandation spontanée (Claire M.) → clients devenus ambassadeurs. DÉGRADATION : logistique défaillante ('5 jours sans nouvelles') → mauvaise expérience en ligne qui neutralise la qualité du produit (note ★★☆☆☆ d'Ahmed)."},
+{n:2,pts:3,q:"À partir du document 2, analysez la performance de satisfaction et identifiez le principal axe d'amélioration.",rep:"Points forts : note Google 4,3/5 (bonne e-réputation) ; NPS +62 (excellent, >+50) ; taux de réachat 74 % (forte fidélisation) ; 38 % des achats sur recommandation (bouche-à-oreille très actif). Principal axe d'amélioration : délai de livraison 5,2 jours pour objectif 3 jours (+2,2 jours). Seul indicateur en dessous de l'objectif → correspond directement à la mauvaise expérience d'Ahmed. Un délai non maîtrisé dégrade l'e-réputation car les avis négatifs logistiques sont très visibles sur Google."},
+{n:3,pts:2,q:"Comment le Pressoir peut-il améliorer sa logistique de livraison pour préserver sa valeur perçue ?",rep:"Actions : (1) Partenariat avec un transporteur spécialisé en livraison alimentaire sous 48h (ex: Chronofresh) → réduire le délai de 5,2 à <3 jours ; (2) Communication proactive : email/SMS de suivi automatique dès l'expédition → même si délai long, l'information réduit la frustration ; (3) Transparence sur le site : afficher le délai réel (5 jours) → gérer les attentes = clé de la satisfaction ; (4) Répondre aux avis négatifs (comme celui d'Ahmed) → montrer la réactivité. Ces actions préservent la valeur perçue sans augmenter le coût du produit."}]},
+qcm:[{q:"La valeur perçue est…",os:["Le coût de production","L'appréciation subjective du client sur les bénéfices reçus vs les sacrifices consentis","Le résultat net","La note d'un organisme de certification"],a:1,e:"Valeur perçue = SUBJECTIVE : varie d'un client à l'autre selon qualité ressentie, image, prix et expérience."},
+{q:"L'e-réputation d'une organisation est…",os:["Sa réputation interne","Son image en ligne construite par les avis et réseaux sociaux","Son résultat financier","Sa part de marché"],a:1,e:"E-réputation = image numérique construite par les avis (Google, TripAdvisor), réseaux sociaux et forums."},
+{q:"Le NPS mesure…",os:["Le chiffre d'affaires","La probabilité qu'un client recommande l'organisation","Le taux d'absentéisme","Le coût de revient"],a:1,e:"NPS = % promoteurs (9-10) − % détracteurs (0-6). Mesure fidélité et propension à recommander."},
+{q:"Les clients contribuent à la valeur perçue des autres en…",os:["Achetant plus de produits","Laissant des avis et en recommandant (bouche-à-oreille)","Négociant les prix","Visitant l'usine"],a:1,e:"Les clients eux-mêmes contribuent via leurs avis en ligne et recommandations → ambassadeurs ou détracteurs."}],
+vf:[{q:"La valeur perçue est identique pour tous les clients.",a:false,e:"La valeur perçue est SUBJECTIVE et personnelle : varie selon les attentes, l'expérience et les valeurs de chaque client."},
+{q:"Une mauvaise e-réputation peut nuire aux ventes même si le produit est bon.",a:true,e:"Les clients consultent les avis avant d'acheter. Des avis négatifs (même sur des aspects secondaires) peuvent dissuader."},
+{q:"Répondre aux avis négatifs est inutile pour l'e-réputation.",a:false,e:"Répondre montre la réactivité et l'engagement qualité → améliore la perception des futurs clients."},
+{q:"Le taux de réachat est un indicateur de fidélisation.",a:true,e:"Taux de réachat élevé = clients satisfaits qui reviennent → indicateur de fidélisation et de valeur perçue positive."}],
+flash:[{t:"Valeur perçue",d:"Appréciation subjective du client sur les bénéfices reçus (qualité, image, expérience) par rapport aux sacrifices (prix, effort)."},
+{t:"E-réputation",d:"Image en ligne construite par les avis (Google, TripAdvisor), réseaux sociaux et forums. Influence la valeur perçue avant l'achat."},
+{t:"NPS (Net Promoter Score)",d:"% promoteurs (9-10) − % détracteurs (0-6). Mesure fidélité et propension à recommander. > +50 = excellent."},
+{t:"Taux de réachat",d:"% de clients qui achètent à nouveau. Indicateur clé de fidélisation et de valeur perçue positive."},
+{t:"Clients ambassadeurs",d:"Clients très satisfaits qui recommandent spontanément → contribuent à la valeur perçue des autres clients."}]},
+
+{id:13,n:14,th:3,ic:'📈',cas:"Haribo",title:"La performance commerciale",
+tags:['CA','Part de marché','Efficacité','Efficience','Indicateurs commerciaux','Fidélité'],
+cours:{intro:"La performance commerciale mesure la capacité à atteindre les objectifs de ventes, de parts de marché et de fidélisation. Elle s'évalue par des indicateurs quantitatifs et qualitatifs.",
+secs:[{t:"Indicateurs de performance commerciale",tbl:{h:['Indicateur','Formule','Signification'],r:[['CA','Σ (PV HT × quantités vendues)','Volume total des ventes'],['Part de marché en valeur','CA org / CA marché × 100','Position concurrentielle en %'],['Taux de fidélité','Clients fidèles / Total clients × 100','% de clients qui reviennent'],['Panier moyen','CA / Nombre de transactions','Montant moyen par achat'],['Taux de conversion','Achats / Visites × 100','% de visiteurs devenus acheteurs']]}},
+{t:"Efficacité et efficience",pts:["<strong>Efficacité :</strong> atteindre les objectifs fixés (faire les bonnes choses). Ex : atteindre la part de marché cible.","<strong>Efficience :</strong> atteindre les objectifs avec un minimum de ressources (bien faire les choses). Ex : même part de marché avec budget réduit.","On peut être efficace SANS être efficient (atteindre l'objectif mais en dépensant trop)."]}],
+ret:["CA + part de marché + fidélisation + rentabilité = performance commerciale","Part de marché en valeur = CA org / CA marché × 100","Efficacité = atteindre les objectifs | Efficience = les atteindre avec minimum de ressources","Fidélité = taux de réachat + NPS + durée de la relation","Indicateurs : quantitatifs ET qualitatifs"]},
+bac:{ent:"Haribo",desc:"Leader mondial de la confiserie (1920), 100+ pays, 7 000 salariés, 16 sites de production. Gamme : Ours d'Or, Dragibus, Réglisses...",
+docs:[{lbl:"Document 1 — Indicateurs commerciaux Haribo France 2023",data:{h:['Indicateur','2022','2023','Évolution'],r:[['CA France (M€)','312','338','+8,3 %'],['Part de marché confiserie France','18,2 %','19,4 %','+1,2 pt'],['Taux de fidélité clients','61 %','65 %','+4 pts'],['Panier moyen GMS','4,20 €','4,50 €','+7,1 %'],['Part des ventes en ligne','8 %','12 %','+4 pts']]}},
+{lbl:"Document 2 — Stratégie commerciale Haribo",txt:"Haribo adapte ses produits aux goûts locaux (versions halal pour certains marchés) tout en conservant ses gammes historiques. Elle a investi 25 M€ dans une nouvelle ligne de production automatisée permettant de produire 15 % de plus avec les mêmes effectifs. Sa communication s'appuie sur 'Haribo c'est beau la vie' — message transgénérationnel maintenu depuis des décennies."}],
+qs:[{n:1,pts:3,q:"À partir du document 1, analysez la performance commerciale de Haribo France en 2023.",rep:"Performance excellente sur tous les indicateurs : (1) CA +8,3 % (312→338 M€) → croissance supérieure à l'inflation ; (2) Part de marché +1,2 pt (à 19,4 %) → Haribo gagne des parts sur ses concurrents ; (3) Taux de fidélité +4 pts (65 %) → les clients reviennent davantage ; (4) Panier moyen +7,1 % (4,50 €) → les clients achètent plus par transaction ; (5) Ventes en ligne +4 pts (12 %) → diversification des canaux réussie. Tous les indicateurs en progression → performance commerciale globale très solide."},
+{n:2,pts:3,q:"À partir du document 2, distinguez efficacité et efficience chez Haribo et illustrez.",rep:"Efficacité (atteindre les objectifs) : Haribo atteint ses objectifs commerciaux (CA +8,3 %, part de marché +1,2 pt). L'adaptation aux marchés locaux (halal) est efficace à conquérir de nouveaux segments. Efficience (objectifs avec minimum de ressources) : 25 M€ investis dans la nouvelle ligne automatisée → +15 % de production avec les MÊMES effectifs → efficience industrielle améliorée (moins de coût par unité produite)."},
+{n:3,pts:2,q:"La progression des ventes en ligne (+4 pts à 12 %) représente quel enjeu stratégique ?",rep:"Enjeux au-delà de l'indicateur commercial : (1) Données clients : vente directe génère des données comportementales inexistantes en grande surface → intelligence commerciale ; (2) Marges : vente directe (D2C) supprime l'intermédiaire GMS → marges potentiellement supérieures ; (3) Fidélisation : programmes de fidélité personnalisés possibles en ligne. Mais aussi un risque : si la GMS représente 88 % du CA, une croissance trop rapide du direct peut fragiliser les relations avec les grandes enseignes."}]},
+qcm:[{q:"La part de marché en valeur =…",os:["Nb produits vendus / Total marché","CA organisation / CA total marché × 100","Résultat net / CA organisation","Clients fidèles / Total clients"],a:1,e:"Part de marché en valeur = CA de l'organisation / CA total du marché × 100."},
+{q:"L'efficience consiste à…",os:["Atteindre les objectifs quel que soit le coût","Atteindre les objectifs avec un minimum de ressources","Fixer des objectifs ambitieux","Mesurer uniquement les résultats financiers"],a:1,e:"Efficience = faire les choses bien (avec le minimum de ressources). Efficacité = faire les bonnes choses (atteindre les objectifs)."},
+{q:"Le taux de conversion mesure…",os:["Le CA en % du marché","La fidélité des clients","Le % de visiteurs qui deviennent acheteurs","La part des ventes en ligne"],a:2,e:"Taux de conversion = Achats / Visites × 100. Efficacité à transformer un visiteur/prospect en acheteur."},
+{q:"Un NPS de +62 indique…",os:["Une performance médiocre","Une très bonne performance : beaucoup plus de promoteurs que de détracteurs","Un résultat négatif","Un NPS nul"],a:1,e:"Un NPS > +50 est considéré excellent. +62 = les clients sont très enclins à recommander l'organisation."}],
+vf:[{q:"Une entreprise peut être efficace sans être efficiente.",a:true,e:"On peut atteindre ses objectifs (efficacité) en dépensant trop de ressources (inefficience). L'idéal est d'être EFFICACE et EFFICIENT."},
+{q:"La part de marché en volume est toujours identique à la part en valeur.",a:false,e:"PM en volume = quantités / quantités totales marché. En valeur = CA / CA total marché. Elles diffèrent si les prix varient selon les acteurs."},
+{q:"Une forte fidélité client réduit les coûts d'acquisition.",a:true,e:"Acquérir un nouveau client coûte 5 à 7 fois plus cher que fidéliser un client existant → fidélité élevée = coûts marketing réduits."},
+{q:"La performance commerciale se mesure uniquement par le CA.",a:false,e:"Performance commerciale multidimensionnelle : CA + part de marché + fidélisation + taux de conversion + satisfaction."}],
+flash:[{t:"Part de marché en valeur",d:"CA organisation / CA total marché × 100. Mesure la position concurrentielle."},
+{t:"Efficacité",d:"Atteindre les objectifs fixés (faire les bonnes choses). Ne dit rien sur les ressources utilisées."},
+{t:"Efficience",d:"Atteindre les objectifs avec minimum de ressources (bien faire les choses)."},
+{t:"Taux de fidélité",d:"Clients fidèles / Total clients × 100. Indicateur de satisfaction et de qualité de la relation client."},
+{t:"Taux de conversion",d:"Achats / Visites × 100. Efficacité à transformer un prospect ou visiteur en acheteur."}]},
+
+{id:14,n:15,th:3,ic:'💵',cas:"McDonald's France",title:"La performance financière",
+tags:['Résultat net','EBE','Seuil de rentabilité','MCV','Marge de sécurité'],
+cours:{intro:"La performance financière mesure la capacité à dégager un résultat et à assurer l'équilibre financier. Elle s'analyse via les soldes intermédiaires de gestion et le seuil de rentabilité.",
+secs:[{t:"Soldes intermédiaires de gestion",tbl:{h:['Solde','Calcul'],r:[['Marge commerciale','PV HT − Coût d\'achat HT'],['Valeur ajoutée','CA − Consommations intermédiaires'],['EBE','VA − Charges de personnel − Impôts et taxes'],['Résultat d\'exploitation','EBE − Amortissements'],['Résultat net','Résultat exploitation − Impôt sur sociétés (25 %)']]}},
+{t:"Seuil de rentabilité et marge de sécurité",pts:["<strong>MCV = CA − Charges variables.</strong> Taux de MCV = MCV / CA × 100.","<strong>Seuil de rentabilité (SR) = Charges fixes / Taux de MCV.</strong> CA pour lequel le résultat est nul.","<strong>Marge de sécurité = CA réel − SR.</strong> De combien le CA peut baisser avant la perte.","Au-dessus du SR : bénéfice. En dessous : perte."]}],
+ret:["EBE = VA − Charges personnel − Impôts et taxes","Résultat net = Résultat exploitation − IS (25 %)","SR = Charges fixes / Taux de MCV","Marge de sécurité = CA réel − SR (plus elle est élevée, plus l'org est solide)","Au-dessus du SR : bénéfice | En dessous : perte"]},
+bac:{ent:"McDonald's France",desc:"1 500+ restaurants, 75 000 emplois. Données d'un restaurant McDonald's moyen en France.",
+docs:[{lbl:"Document 1 — Compte de résultat simplifié d'un restaurant moyen (K€/an)",data:{h:['Poste','K€'],r:[['Chiffre d\'affaires HT','2 850'],['Coût d\'achat matières','855'],['MARGE COMMERCIALE','1 995'],['Autres consommations intermédiaires','285'],['VALEUR AJOUTÉE','?'],['Charges de personnel','712'],['Impôts et taxes','71'],['EBE','?'],['Amortissements','180'],['Résultat d\'exploitation','?'],['IS (25 %)','?'],['RÉSULTAT NET','?']]}},
+{lbl:"Document 2 — Données seuil de rentabilité",data:{h:['Donnée','Montant K€'],r:[['Charges variables (matières + personnel variable)','1 140'],['Charges fixes (loyer, amortissements, personnel permanent)','1 290'],['CA HT annuel','2 850']]}}],
+qs:[{n:1,pts:4,q:"Calculez VA, EBE, résultat d'exploitation, IS et résultat net.",rep:"VA = Marge commerciale − Autres CI = 1 995 − 285 = 1 710 K€\nEBE = VA − Charges personnel − Impôts taxes = 1 710 − 712 − 71 = 927 K€\nRésultat exploitation = EBE − Amortissements = 927 − 180 = 747 K€\nIS = 747 × 25 % = 187 K€ (arrondi)\nRésultat net = 747 − 187 = 560 K€\nCommentaire : rentabilité nette de 19,6 % → très performant. La VA est principalement répartie aux salariés (712/1710 = 41,6 %)."},
+{n:2,pts:3,q:"Calculez le seuil de rentabilité et la marge de sécurité. Commentez.",rep:"MCV = CA − Charges variables = 2 850 − 1 140 = 1 710 K€\nTaux MCV = 1 710 / 2 850 = 0,60 = 60 %\nSR = Charges fixes / Taux MCV = 1 290 / 0,60 = 2 150 K€\nMarge de sécurité = CA − SR = 2 850 − 2 150 = 700 K€\nCommentaire : le restaurant atteint son SR à 2 150 K€ (75 % de son CA réel). Marge de sécurité de 700 K€ (25 % du CA) → les ventes pourraient baisser de 25 % avant d'atteindre la zone de perte → situation financière solide."},
+{n:3,pts:1,q:"Si les charges fixes augmentent de 10 %, quel est le nouveau SR ?",rep:"Nouvelles charges fixes = 1 290 × 1,10 = 1 419 K€\nNouveau SR = 1 419 / 0,60 = 2 365 K€\nNouvelle marge de sécurité = 2 850 − 2 365 = 485 K€ (−215 K€ vs avant).\nLe restaurant reste rentable mais sa marge de sécurité se réduit significativement."}]},
+qcm:[{q:"Le résultat net est…",os:["Le CA après déduction des charges variables","Ce qui reste après toutes les charges y compris l'IS","La valeur ajoutée","L'EBE"],a:1,e:"Résultat net = résultat d'exploitation − impôt sur les sociétés (25 %). Ce qui reste après toutes les déductions."},
+{q:"Le seuil de rentabilité est le CA pour lequel…",os:["Le CA est maximal","Le résultat est nul : ni perte ni bénéfice","Les charges variables sont nulles","Les charges fixes sont couvertes"],a:1,e:"Le SR est le CA pour lequel le résultat = 0. En dessous : perte. Au-dessus : bénéfice."},
+{q:"La marge de sécurité est…",os:["Le résultat net","CA réel − Seuil de rentabilité","Charges fixes / Taux MCV","Le taux de MCV"],a:1,e:"Marge de sécurité = CA réel − SR. De combien le CA peut baisser avant la zone de perte."},
+{q:"L'EBE mesure…",os:["Le résultat après impôts","Le résultat opérationnel brut avant financement et investissement","La valeur ajoutée","La marge commerciale"],a:1,e:"EBE = VA − Charges de personnel − Impôts et taxes. Résultat AVANT les choix de financement et d'investissement."}],
+vf:[{q:"Au-dessus du seuil de rentabilité, l'organisation dégage un bénéfice.",a:true,e:"Au-dessus du SR : MCV > charges fixes → résultat positif. En dessous : MCV < charges fixes → perte."},
+{q:"La VA est toujours inférieure au résultat net.",a:false,e:"C'est l'inverse : VA > EBE > Résultat exploitation > Résultat net."},
+{q:"Le taux de MCV est constant quelle que soit l'activité.",a:true,e:"Les charges variables évoluent proportionnellement au CA → le taux de MCV (= 1 − taux de CV) est CONSTANT."},
+{q:"Une marge de sécurité élevée signifie que l'organisation est très vulnérable.",a:false,e:"Marge de sécurité élevée = l'organisation peut absorber une forte baisse du CA avant la zone de perte → SOLIDE financièrement."}],
+flash:[{t:"EBE (Excédent Brut d'Exploitation)",d:"VA − Charges de personnel − Impôts. Résultat opérationnel brut avant financement et investissement."},
+{t:"Seuil de rentabilité (SR)",d:"CA pour lequel le résultat est nul. SR = Charges fixes / Taux de MCV."},
+{t:"MCV (Marge sur Coût Variable)",d:"CA − Charges variables. La MCV couvre les charges fixes, puis génère le bénéfice."},
+{t:"Marge de sécurité",d:"CA réel − SR. De combien le CA peut baisser avant la perte. Plus elle est élevée, plus l'organisation est solide."},
+{t:"Résultat net",d:"Ce qui reste après toutes les charges y compris l'IS (25 %). Peut être distribué ou conservé en autofinancement."}]},
+
+{id:15,n:16,th:3,ic:'🌱',cas:"Castorama France",title:"Les performances sociale et environnementale",
+tags:['RSE','Index égalité H/F','DPEF','Bilan carbone','Économie circulaire'],
+cours:{intro:"La performance des organisations ne se limite plus au financier. Les performances sociale et environnementale sont des enjeux stratégiques majeurs, de plus en plus encadrés par la loi.",
+secs:[{t:"Performance sociale — indicateurs clés",tbl:{h:['Dimension','Indicateurs'],r:[['Emploi','Effectifs, taux de CDD, turnover'],['Conditions de travail','Taux d\'accidents, absentéisme, QVT'],['Égalité H/F','Index égalité (obligatoire >50 sal), écart de salaires'],['Formation','Investissement formation/salarié'],['Relations sociales','Dialogue social, accords collectifs']]}},
+{t:"Performance environnementale et DPEF",pts:["<strong>Bilan carbone :</strong> mesure des émissions de GES (en tonnes CO₂ éq). Obligatoire pour les grandes entreprises.","<strong>Économie circulaire :</strong> réutilisation, réparation, recyclage. Indicateurs : taux de recyclage, emballages recyclables.","<strong>DPEF (Déclaration de Performance Extra-Financière) :</strong> rapport annuel obligatoire pour entreprises >500 salariés et >100 M€ de CA."]}],
+ret:["Index égalité H/F obligatoire pour les entreprises de plus de 50 salariés","DPEF obligatoire pour les entreprises >500 salariés et >100 M€ de CA","Bilan carbone mesure les émissions de GES (en tonnes CO₂ équivalent)","Économie circulaire = prolonger la vie des produits (réutilisation, recyclage)","RSE = démarche volontaire | DPEF = obligation légale pour les grandes organisations"]},
+bac:{ent:"Castorama France",desc:"Enseigne de bricolage (groupe Kingfisher), 100 magasins, 22 000 collaborateurs. Démarche RSE 'Castorama, le bricolage utile'.",
+docs:[{lbl:"Document 1 — Indicateurs RSE Castorama 2022",data:{h:['Indicateur','Objectif 2025','Réalisé 2022','Écart'],r:[['Index égalité H/F (/100)','90/100','84/100','−6 pts'],['Taux accidents du travail (‰)','< 20','23,4','hors objectif'],['Investissement formation (M€)','40 M€','31 M€','−9 M€'],['Émissions CO₂ (−% vs 2016)','−50 %','−33 %','retard'],['Emballages recyclables','100 %','87 %','−13 pts'],['Taux recyclage déchets magasins','90 %','82 %','−8 pts']]}},
+{lbl:"Document 2 — Actions RSE Castorama",txt:"Castorama a lancé le programme 'Seconde vie' : reprise des produits usagés (outillage, matériaux), reconditionnement et revente à prix réduit. En 2022 : 145 000 produits reconditionnés = 82 tonnes de déchets évités. Réduction de 40 % des emballages plastique depuis 2019. Un accord de télétravail (2j/semaine) a été signé avec les syndicats pour les fonctions support."}],
+qs:[{n:1,pts:3,q:"À partir du document 1, analysez la performance RSE de Castorama en 2022.",rep:"Aucun indicateur n'atteint son objectif 2025 mais avec des niveaux variés. Relativement proches : émissions CO₂ à −33 % (objectif −50 %) → dans la bonne direction ; emballages recyclables 87 % (objectif 100 %). Domaines en retard significatif : index H/F 84/100 (objectif 90, −6 pts) ; taux d'accidents 23,4 ‰ > 20 objectif → problème de sécurité préoccupant dans un secteur avec des risques physiques réels ; investissement formation 31/40 M€ (−22 %). Priorité : sécurité au travail (objectif dépassé) et index H/F."},
+{n:2,pts:3,q:"À partir du document 2, montrez comment les actions Castorama illustrent les deux dimensions extra-financières.",rep:"Performance environnementale : programme 'Seconde vie' (145 000 produits reconditionnés = 82 tonnes de déchets évités → économie circulaire concrète) ; réduction emballages plastique −40 % → réduction de l'empreinte environnementale. Performance sociale : accord de télétravail signé avec les syndicats (amélioration conditions de travail des fonctions support + dialogue social) ; programme 'Seconde vie' = dimension sociale indirecte (produits reconditionnés moins chers → accessibles aux ménages contraints)."},
+{n:3,pts:2,q:"En quoi la DPEF est-elle un outil de transparence et de pression pour Castorama ?",rep:"La DPEF (obligatoire pour Castorama >500 sal, >100 M€ CA) exerce une double pression : (1) Transparence externe : en publiant ses indicateurs (index H/F 84/100, accidents 23,4 ‰), Castorama s'expose au jugement des investisseurs ESG, clients et ONG → pression à l'amélioration ; (2) Pression interne : la nécessité de publier force les équipes à mettre en place des processus de mesure fiables → discipline organisationnelle RSE. La DPEF transforme les intentions en engagements mesurables et publics."}]},
+qcm:[{q:"L'index d'égalité H/F est obligatoire pour les entreprises de plus de…",os:["10 salariés","50 salariés","250 salariés","500 salariés"],a:1,e:"L'index H/F est obligatoire pour les entreprises de plus de 50 salariés."},
+{q:"La DPEF est obligatoire pour les entreprises de plus de…",os:["10 salariés","50 salariés","250 salariés","500 salariés ET 100 M€ de CA"],a:3,e:"La DPEF est obligatoire pour les entreprises >500 salariés ET >100 M€ de CA."},
+{q:"Le bilan carbone mesure…",os:["Les résultats financiers nets","Les émissions de GES en CO₂ équivalent","Le taux d'accidents","Les écarts de salaires H/F"],a:1,e:"Le bilan carbone mesure les émissions de GES de l'organisation en tonnes équivalent CO₂."},
+{q:"Le programme 'Seconde vie' de Castorama illustre…",os:["Une augmentation de la production","L'économie circulaire","Une restructuration sociale","La digitalisation"],a:1,e:"'Seconde vie' : reprise → reconditionnement → revente → économie circulaire : prolonger la vie des produits."}],
+vf:[{q:"La RSE est uniquement une obligation légale pour toutes les organisations.",a:false,e:"La RSE est d'abord une démarche VOLONTAIRE. Seules certaines obligations (DPEF, bilan carbone, index H/F) sont légales pour les grandes org."},
+{q:"Un index H/F de 84/100 signifie qu'il reste des progrès à faire.",a:true,e:"L'index H/F est noté sur 100. 84 signifie qu'il existe encore des écarts à corriger entre hommes et femmes."},
+{q:"Performance environnementale et financière sont toujours contradictoires.",a:false,e:"Les investissements environnementaux peuvent améliorer la performance financière (économies d'énergie, fidélisation clients sensibles au développement durable)."},
+{q:"La DPEF transforme les intentions RSE en engagements publics mesurables.",a:true,e:"En publiant ses indicateurs, l'organisation s'expose au jugement des parties prenantes → mécanisme de responsabilisation."}],
+flash:[{t:"Index égalité H/F",d:"Indicateur obligatoire (>50 sal) sur 100 points selon les écarts de rémunération et d'évolution de carrière entre hommes et femmes."},
+{t:"DPEF",d:"Déclaration de Performance Extra-Financière : rapport annuel obligatoire (>500 sal, >100 M€ CA) sur les indicateurs sociaux, environnementaux et de gouvernance."},
+{t:"Bilan carbone",d:"Mesure des émissions de GES (tonnes CO₂ éq). Obligatoire pour les grandes entreprises."},
+{t:"Économie circulaire",d:"Prolonger la durée de vie des produits : réutilisation, réparation, reconditionnement, recyclage. S'oppose au modèle 'extraire-produire-jeter'."},
+{t:"Performance extra-financière",d:"Sociale + environnementale + gouvernance. Mesurée par des indicateurs non financiers (index H/F, CO₂, accidents...)."}]},
+
+{id:16,n:17,th:4,ic:'⏰',cas:"Danone",title:"Le temps dans la gestion de l'activité",
+tags:['Horizon temporel','Prévision','Planification','Veille informationnelle','Budget prévisionnel'],
+cours:{intro:"Le temps est une dimension structurante du management. Toute organisation doit articuler différents horizons temporels et mettre en place des outils de prévision et de planification.",
+secs:[{t:"Les horizons temporels",tbl:{h:['Horizon','Durée','Décisions types','Exemple Danone'],r:[['Court terme','< 1 an','Décisions opérationnelles quotidiennes','Gestion stocks, planning production hebdomadaire'],['Moyen terme','1 à 3 ans','Plans d\'action, investissements intermédiaires','Lancement nouvelle gamme, recrutement'],['Long terme','> 3 ans','Stratégie, investissements majeurs','Objectifs Danone 2030, acquisition filiale']]}},
+{t:"Prévision, planification et veille",pts:["<strong>Prévision :</strong> estimation des évolutions futures à partir des données historiques et des tendances. Plus l'horizon est loin, plus l'incertitude est grande.","<strong>Planification :</strong> traduction de la stratégie en objectifs chiffrés avec échéances et ressources définies.","<strong>Veille informationnelle :</strong> surveillance permanente de l'environnement pour alimenter les prévisions et détecter les signaux faibles.","<strong>Budget prévisionnel :</strong> document chiffrant les prévisions de recettes et dépenses sur un exercice futur."]}],
+ret:["3 horizons : court terme (<1 an), moyen (1-3 ans), long terme (>3 ans)","Plus l'horizon est lointain, plus l'incertitude est grande","Prévision = estimer les évolutions futures | Planification = traduire en plans d'action","Veille = surveiller l'environnement pour anticiper et alimenter les prévisions","Budget prévisionnel = outil central de la gestion prévisionnelle"]},
+bac:{ent:"Danone",desc:"Danone (CA 24,3 Mds€, 100 000 sal, 60 pays) a lancé ses 'Objectifs Danone 2030' : engagements sociaux, économiques et environnementaux à long terme.",
+docs:[{lbl:"Document 1 — Les Objectifs Danone 2030",txt:"Danone a défini ses Objectifs 2030 sur 3 piliers : (1) Santé : 50 % du CA sur des produits à forte valeur nutritionnelle ; (2) Nature : neutralité carbone 2050, −50 % d'émissions CO₂ d'ici 2030 ; (3) Humain : index H/F à 100/100, 0 accident mortel. Ces objectifs LT sont déclinés en plans d'action annuels par région et par marque. En 2021, un activisme actionnarial a conduit au départ du PDG, illustrant les tensions entre vision LT et résultats CT."},
+{lbl:"Document 2 — Prévisions et incertitudes",txt:"Danone gère des prévisions sur horizons différents : (1) CT : prévisions ventes hebdomadaires → ajustement production (ex : vague de chaleur imprévue → hausse demande en eaux = réajustement immédiat) ; (2) MT : budget prévisionnel 2024-2026 pour les investissements en nouvelles lignes de production ; (3) LT : Objectifs 2030-2050. L'incertitude croît avec l'horizon : une vague de chaleur prévue à 5 jours, un changement alimentaire sur 10 ans est bien plus incertain."}],
+qs:[{n:1,pts:2,q:"À partir du document 1, qualifiez l'horizon des Objectifs Danone 2030 et expliquez les risques associés.",rep:"Horizon long terme (7 à 27 ans selon les engagements). Risques : (1) Incertitude élevée : conditions économiques, réglementaires et technologiques peuvent changer radicalement → objectifs actuels peuvent devenir inadaptés ; (2) Tensions CT/LT : l'épisode 2021 l'illustre → des actionnaires impatients ont évincé le PDG car les investissements LT (RSE) réduisaient la rentabilité CT → conflit entre horizon stratégique (2030) et horizon financier court (trimestre)."},
+{n:2,pts:3,q:"À partir des deux documents, montrez comment Danone articule différents horizons temporels.",rep:"Danone articule 3 horizons simultanément : (1) Court terme : prévisions ventes hebdomadaires (réajustement production immédiat à une vague de chaleur) → décisions opérationnelles ; (2) Moyen terme : budget prévisionnel 2024-2026 pour les investissements en nouvelles lignes → planification des ressources sur 3 ans ; (3) Long terme : Objectifs 2030 (−50 % CO₂) et 2050 (neutralité carbone) → engagement stratégique décennal décliné en plans annuels. Cette articulation est indispensable : les décisions CT doivent être cohérentes avec les engagements LT."},
+{n:3,pts:3,q:"En quoi la veille informationnelle est-elle indispensable à tous les horizons pour Danone ?",rep:"La veille alimente chaque horizon : (1) CT : veille météorologique (anticiper les vagues de chaleur → augmenter la production d'eau) + veille promotionnelle concurrents ; (2) MT : veille sur les tendances alimentaires émergentes (végétalisme, sans-lactose) → orienter R&D et lancements sur 2-3 ans ; (3) LT : veille réglementaire (normes carbone européennes) + veille technologique → ajuster les Objectifs 2030. Sans veille permanente, Danone piloterait en aveugle."}]},
+qcm:[{q:"Une décision stratégique se situe sur un horizon…",os:["De quelques jours","De quelques semaines","De 1 à 3 mois","Supérieur à 3 ans"],a:3,e:"Les décisions stratégiques se situent sur un horizon long terme (>3 ans)."},
+{q:"Plus l'horizon de prévision est lointain…",os:["Plus la prévision est précise","Plus l'incertitude est faible","Plus l'incertitude est grande","Moins la veille est nécessaire"],a:2,e:"L'incertitude augmente avec l'horizon : une prévision à 1 semaine est bien plus fiable qu'une prévision à 10 ans."},
+{q:"Un budget prévisionnel est…",os:["Un bilan comptable passé","Un document chiffrant les prévisions de recettes et dépenses pour une période future","Un tableau de bord mensuel","Un compte de résultat annuel"],a:1,e:"Le budget prévisionnel projette dans le futur : recettes et dépenses attendues pour une période à venir."},
+{q:"La veille informationnelle consiste à…",os:["Stocker des données historiques","Surveiller en permanence l'environnement pour détecter les signaux faibles","Gérer uniquement les données internes","Publier des rapports annuels"],a:1,e:"La veille surveille en continu l'environnement externe pour anticiper et alimenter les prévisions et décisions."}],
+vf:[{q:"Le court terme est généralement inférieur à 1 an.",a:true,e:"Le court terme couvre les décisions sur moins d'un an (décisions quotidiennes, budget mensuel, prévisions hebdomadaires)."},
+{q:"Les Objectifs Danone 2030 sont uniquement à court terme.",a:false,e:"Les Objectifs Danone 2030 sont à long terme (7 à 27 ans). Ils sont déclinés en plans d'action à MT et CT."},
+{q:"La planification transforme la stratégie en objectifs chiffrés avec des échéances.",a:true,e:"La planification traduit les orientations stratégiques en plans d'action concrets : objectifs chiffrés, ressources, délais."},
+{q:"L'incertitude est nulle pour les prévisions à court terme.",a:false,e:"L'incertitude est faible mais non nulle à CT : des événements imprévus peuvent toujours survenir."}],
+flash:[{t:"Horizons temporels",d:"Court terme (<1 an) : opérationnel. Moyen terme (1-3 ans) : planification. Long terme (>3 ans) : stratégique."},
+{t:"Prévision",d:"Estimation des évolutions futures à partir des données historiques et des tendances. Incertitude croissante avec l'horizon."},
+{t:"Planification",d:"Traduction de la stratégie en objectifs chiffrés, plans d'action, délais et ressources alloués."},
+{t:"Veille informationnelle",d:"Surveillance permanente de l'environnement pour détecter les signaux faibles et alimenter les prévisions."},
+{t:"Budget prévisionnel",d:"Document chiffrant les prévisions de recettes et dépenses pour une période future. Outil central de la gestion prévisionnelle."}]},
+
+{id:17,n:18,th:4,ic:'📅',cas:"LaitUp Bio",title:"La prise en compte du temps dans la gestion financière",
+tags:['BFR','Cycle d\'exploitation','Délais de paiement','Escompte','Affacturage','Trésorerie'],
+cours:{intro:"Le temps est au cœur de la gestion financière : les décalages entre encaissements et décaissements créent des besoins de financement. Anticiper ces décalages est essentiel pour éviter les tensions de trésorerie.",
+secs:[{t:"BFR et cycle d'exploitation",pts:["<strong>Cycle d'exploitation :</strong> achat → stockage → production → vente → encaissement. Il crée des décalages entre dépenses et recettes.","<strong>BFR = Stocks + Créances clients − Dettes fournisseurs.</strong>","BFR élevé = besoin de financement à court terme important. Plus le cycle est long, plus le BFR est élevé."]},
+{t:"Délais de paiement et outils de gestion",pts:["<strong>Délais fournisseurs :</strong> ressource de trésorerie (retardent les sorties d'argent). <strong>Délais clients :</strong> besoin de trésorerie (retardent les entrées d'argent).","<strong>Escompte :</strong> céder à la banque des créances clients avant échéance contre une avance d'argent (commission bancaire 2-4 %).","<strong>Affacturage :</strong> vendre ses créances clients à un factor qui avance les fonds et gère le recouvrement. Plus coûteux que l'escompte (commission 1-3 % + honoraires).","<strong>Optimiser le BFR :</strong> délais clients ↓ + délais fournisseurs ↑ + stocks ↓ (JAT)."]}],
+ret:["BFR = stocks + créances clients − dettes fournisseurs","Délais fournisseurs = ressource | Délais clients = besoin de trésorerie","Escompte et affacturage = outils de financement des créances clients","JAT (Juste À Temps) = réduire les stocks pour diminuer le BFR","Optimiser le BFR : délais clients ↓ + délais fournisseurs ↑ + stocks ↓"]},
+bac:{ent:"LaitUp Bio",desc:"PME de fromages artisanaux bio (15 sal). Vente à des épiceries locales (paiement 30 jours) et un supermarché régional (paiement 60 jours). Achats matières premières à des éleveurs locaux (paiement 30 jours).",
+docs:[{lbl:"Document 1 — Données financières LaitUp Bio (K€)",data:{h:['Poste','Montant K€'],r:[['Stocks (MP + encours + PF)','42'],['Créances clients','68'],['Dettes fournisseurs','28'],['BFR','?'],['Trésorerie disponible','15'],['Découvert bancaire autorisé','30']]}},
+{lbl:"Document 2 — Tensions de trésorerie",txt:"LaitUp Bio connaît des tensions récurrentes en décembre-janvier : la demande explose (fêtes) mais le supermarché paie avec 60 jours de délai. LaitUp doit avancer les achats de lait et la masse salariale sans avoir encaissé les ventes. En décembre 2022, la trésorerie est tombée à −8 K€, dépassant le découvert autorisé. Le directeur envisage : (A) demander un escompte à la banque sur ses créances clients, (B) souscrire un contrat d'affacturage."}],
+qs:[{n:1,pts:2,q:"À partir du document 1, calculez le BFR de LaitUp Bio et analysez sa situation.",rep:"BFR = Stocks + Créances clients − Dettes fournisseurs = 42 + 68 − 28 = 82 K€.\nBFR positif et élevé (82 K€) par rapport à la trésorerie disponible (15 K€) → LaitUp doit financer 82 K€ de besoins courants avec seulement 15 K€ de trésorerie + 30 K€ de découvert = 45 K€ de ressources. Manque structurel de 82 − 45 = 37 K€ → risque de tension de trésorerie dès que les ventes augmentent sans encaissement immédiat (comme en décembre avec le supermarché à 60 jours)."},
+{n:2,pts:3,q:"À partir du document 2, comparez escompte et affacturage et recommandez.",rep:"Escompte : LaitUp remet ses factures à la banque avant l'échéance → la banque avance les fonds moins sa commission (2-4 %). Avantages : rapide, souple (on choisit les factures), moins coûteux. Limites : la banque peut refuser certains clients risqués ; LaitUp gère toujours le recouvrement. Affacturage : vente des créances à un factor → avance immédiate + gestion du recouvrement externalisée. Avantages : recouvrement pris en charge, assurance-crédit possible. Limites : plus coûteux (commission + honoraires), perte de contrôle sur la relation client. Recommandation : l'escompte est préférable pour LaitUp car (1) moins coûteux, (2) relations clients directes préservées, (3) adapté aux besoins ponctuels saisonniers (décembre-janvier)."},
+{n:3,pts:3,q:"Proposez 3 actions pour réduire structurellement le BFR de LaitUp Bio.",rep:"Action 1 — Réduire les délais clients : négocier un paiement à 30 jours (au lieu de 60 jours) avec le supermarché → créances clients passent de 68 à environ 34 K€ → BFR divisé par presque 2. Action 2 — Allonger les délais fournisseurs : négocier avec les éleveurs locaux un passage de 30 à 45 jours → dettes fournisseurs augmentent de 28 à 42 K€ → BFR réduit de 14 K€. Action 3 — Réduire les stocks (JAT partiel) : optimiser la gestion des stocks de fromages en cours pour réduire les stocks de 42 à 30 K€ → BFR réduit de 12 K€, à condition de maintenir la qualité de l'affinage."}]},
+qcm:[{q:"Le BFR =…",os:["Stocks + créances clients + dettes fournisseurs","Stocks + créances clients − dettes fournisseurs","CA − Charges variables","Résultat net − Amortissements"],a:1,e:"BFR = Stocks + Créances clients − Dettes fournisseurs. Mesure le besoin de financement du cycle d'exploitation."},
+{q:"Les délais fournisseurs représentent…",os:["Un besoin de financement","Une ressource de trésorerie (retardent les sorties d'argent)","Un risque financier","Un coût supplémentaire"],a:1,e:"Délais fournisseurs = RESSOURCE : plus le délai est long, plus l'entreprise profite de l'argent des fournisseurs avant de les payer."},
+{q:"L'affacturage consiste à…",os:["Emprunter à la banque sur ses actifs","Vendre ses créances clients à un factor qui avance les fonds","Négocier des délais fournisseurs","Réduire les stocks agressivement"],a:1,e:"Affacturage = vente des créances clients à un factor (société spécialisée) qui avance immédiatement les fonds et gère le recouvrement."},
+{q:"Pour réduire son BFR, une entreprise doit…",os:["Augmenter ses stocks","Allonger ses délais clients","Réduire ses délais fournisseurs","Réduire les délais clients ET allonger les délais fournisseurs"],a:3,e:"BFR ↓ = délais clients ↓ (créances clients ↓) + délais fournisseurs ↑ (dettes fournisseurs ↑) + stocks ↓."}],
+vf:[{q:"Un BFR élevé crée un besoin de financement à court terme.",a:true,e:"BFR élevé = décalage important entre dépenses (achats, salaires) et encaissements (paiements clients) → besoin de financement."},
+{q:"L'escompte est généralement moins coûteux que l'affacturage.",a:true,e:"L'escompte bancaire coûte 2-4 % par an ; l'affacturage coûte 1-3 % de commission + honoraires → l'affacturage est plus coûteux."},
+{q:"Allonger les délais fournisseurs augmente le BFR.",a:false,e:"Allonger les délais fournisseurs AUGMENTE les dettes fournisseurs (passif circulant) → BFR DIMINUE."},
+{q:"Le Juste À Temps (JAT) permet de réduire le BFR.",a:true,e:"JAT = production à la demande → zéro stock → actif circulant (stocks) ↓ → BFR ↓. Libère de la trésorerie."}],
+flash:[{t:"BFR",d:"Besoin en Fonds de Roulement = Stocks + Créances clients − Dettes fournisseurs. Mesure le besoin de financement du cycle d'exploitation."},
+{t:"Cycle d'exploitation",d:"Achat → stockage → production → vente → encaissement. Crée des décalages entre dépenses et recettes."},
+{t:"Escompte",d:"Cession à la banque de créances clients avant échéance en échange d'une avance d'argent. Commission bancaire 2-4 %."},
+{t:"Affacturage (factoring)",d:"Vente des créances clients à un factor qui avance les fonds et gère le recouvrement. Plus coûteux que l'escompte."},
+{t:"JAT (Juste À Temps)",d:"Production à la demande → stock zéro → BFR réduit. Libère de la trésorerie mais exige une supply chain fiable."}]},
+
+{id:18,n:19,th:4,ic:'⚠️',cas:"Decathlon",title:"Les facteurs de risque externes et internes",
+tags:['Risques externes','Risques internes','Cycle de vie','Rupture technologique','Gestion des risques'],
+cours:{intro:"Toute organisation fait face à des risques internes et externes menaçant sa performance. Les identifier, évaluer et anticiper est essentiel pour améliorer la performance de manière durable.",
+secs:[{t:"Risques externes",tbl:{h:['Facteur','Définition','Exemple Decathlon'],r:[['Cycle de vie','Évolution du cycle de vie des produits (introduction, croissance, maturité, déclin)','Risque d\'obsolescence des vélos classiques face aux VAE'],['Obsolescence technologique','Rupture technologique rendant produits ou processus obsolètes','Nouvelles technologies de batterie révolutionnant le VAE'],['Évolution de la demande','Changement des préférences et comportements consommateurs','Tendance trail/outdoor réduisant la demande vélos de ville'],['Risques approvisionnement','Dépendance aux fournisseurs, ruptures de chaîne logistique','Pénurie de composants électroniques (Taïwan)'],['Empreinte environnementale','Réglementations environnementales + attentes consommateurs','Normes sur les transports actifs']]}},
+{t:"Risques internes et gestion des risques",pts:["<strong>Risques internes :</strong> liés aux décisions de l'organisation (investissements mal orientés, recrutements inadaptés, erreurs de stratégie).","<strong>Gestion des risques :</strong> identifier → évaluer (probabilité × impact) → prévenir (réduire la probabilité) → couvrir (assurances, plans B) → surveiller.","Un risque peut être une <strong>menace</strong> (impact négatif) mais aussi une <strong>opportunité</strong> (risque de ne pas saisir une tendance)."]}],
+ret:["Risques externes : cycle de vie, obsolescence technologique, évolution demande, approvisionnement, environnement","Risques internes : liés aux décisions et choix de l'organisation","Gestion des risques : identifier → évaluer → prévenir → couvrir → surveiller","Un risque non géré peut devenir une menace existentielle","La gestion des risques est une condition de l'amélioration durable de la performance"]},
+bac:{ent:"Decathlon",desc:"Leader de la distribution sport (324 points de vente France, 1 700+ international). Spécialiste du vélo avec son usine BTWIN Village près de Lille.",
+docs:[{lbl:"Document 1 — Les risques du secteur vélo chez Decathlon",txt:"Decathlon est le leader français du vélo accessible. Mais son secteur connaît des mutations rapides : (1) Le marché du VAE (vélo à assistance électrique) a explosé (+35 %/an depuis 2018) mais se fragmente : des acteurs spécialisés (Riese & Müller, Gazelle) grignotent les parts premium. (2) Une pénurie mondiale de composants électroniques en 2021-2022 a désorganisé la chaîne d'approvisionnement. (3) Les nouvelles normes de sécurité européennes (EN 15194 rev) imposent des mises à conformité coûteuses. (4) L'offre de location et d'occasion explose (Decathlon Seconde Vie)."},
+{lbl:"Document 2 — Réponses stratégiques de Decathlon",data:{h:['Risque identifié','Réponse de Decathlon'],r:[['Pénurie composants électroniques','Diversification des fournisseurs + constitution de stocks stratégiques'],['Obsolescence technologique VAE','Investissement R&D + partenariats technologiques (Bosch, Shimano)'],['Nouvelles normes européennes','Intégration anticipée dans la R&D des gammes 2024-2025'],['Montée de l\'occasion','Lancement du programme Decathlon Seconde Vie (reconditionnement)'],['Fragmentation marché premium','Positionnement clair sur le rapport qualité/prix (niche accessible)']]}}],
+qs:[{n:1,pts:3,q:"À partir du document 1, identifiez et classez les risques auxquels Decathlon est confronté.",rep:"Risques externes : (1) Évolution de la demande et fragmentation du marché (concurrents spécialisés sur le premium → pression sur les parts de marché) → risque commercial ; (2) Risque d'approvisionnement : pénurie composants électroniques 2021-2022 → rupture de la chaîne logistique → risque opérationnel ; (3) Risque légal/réglementaire : nouvelles normes EN 15194 → coûts de mise à conformité → risque juridique et financier ; (4) Risque via l'économie circulaire : montée de l'occasion (Seconde Vie) → cannibalisation possible des ventes de neuf → risque commercial/stratégique."},
+{n:2,pts:3,q:"À partir du document 2, montrez que Decathlon adopte une démarche structurée de gestion des risques.",rep:"Decathlon applique une démarche structurée : (1) Identification des risques : chaque risque est clairement nommé (pénurie, obsolescence, normes, occasion, fragmentation) ; (2) Prévention : diversification fournisseurs (pénurie), intégration anticipée des normes (légal), R&D et partenariats Bosch/Shimano (technologique) ; (3) Retournement des risques en opportunités : le programme Seconde Vie transforme le risque de montée de l'occasion en nouvelle source de revenus → Decathlon ne subit pas les risques, il les anticipe et les exploite."},
+{n:3,pts:2,q:"Decathlon a lancé Decathlon Seconde Vie. En quoi cela illustre-t-il la transformation d'un risque en opportunité ?",rep:"La montée de l'occasion vélo est initialement un risque : les clients pourraient acheter d'occasion sur Vinted plutôt que du neuf chez Decathlon → perte de CA. Decathlon transforme ce risque en opportunité : (1) capte la valeur de l'occasion au lieu de la laisser à des tiers (Vinted, LeBonCoin) ; (2) fidélise le client (il revient chez Decathlon pour revendre + acheter reconditionné) ; (3) répond aux attentes RSE (économie circulaire) ; (4) crée une nouvelle source de revenus. La gestion proactive transforme une menace en levier de croissance."}]},
+qcm:[{q:"Un risque externe pour une organisation est…",os:["Un mauvais recrutement","Une rupture d'approvisionnement due à une pénurie mondiale","Un investissement mal orienté","Une erreur de stratégie interne"],a:1,e:"Les risques externes viennent de l'environnement : pénurie, nouvelles réglementations, évolution de la demande."},
+{q:"L'obsolescence technologique est un risque…",os:["Interne lié aux décisions","Externe lié aux ruptures technologiques de l'environnement","Social lié aux conditions de travail","Financier lié aux taux d'intérêt"],a:1,e:"L'obsolescence technologique est un risque EXTERNE : une innovation de rupture dans l'environnement peut rendre les produits ou processus obsolètes."},
+{q:"La gestion des risques consiste à…",os:["Ignorer les risques pour se concentrer sur les opportunités","Identifier → évaluer → prévenir → couvrir → surveiller","Assurer tous les risques auprès d'une compagnie","Déléguer la gestion à des consultants"],a:1,e:"La gestion des risques suit un processus : identifier → évaluer (probabilité × impact) → prévenir → couvrir → surveiller."},
+{q:"Transformer un risque en opportunité signifie…",os:["Ignorer le risque","Créer de la valeur à partir d'une menace potentielle (comme Decathlon Seconde Vie)","Externaliser le risque","Assurer le risque à 100 %"],a:1,e:"Decathlon illustre : la montée de l'occasion (risque) est transformée en nouvelle source de revenus via Seconde Vie (opportunité)."}],
+vf:[{q:"Les risques internes sont liés aux décisions de l'organisation.",a:true,e:"Les risques internes proviennent des choix de l'organisation : investissements mal orientés, recrutements inadaptés, erreurs de stratégie."},
+{q:"Un risque identifié est toujours une menace pour l'organisation.",a:false,e:"Un risque peut aussi être une OPPORTUNITÉ : Decathlon Seconde Vie transforme une menace en levier de croissance."},
+{q:"La pénurie mondiale de composants électroniques est un risque externe pour Decathlon.",a:true,e:"C'est un risque d'approvisionnement externe, lié à l'environnement international (dépendance aux chaînes logistiques mondiales)."},
+{q:"Ignorer les risques est une stratégie efficace.",a:false,e:"Ignorer les risques peut conduire à des crises majeures (ex : Kodak a ignoré la rupture technologique du numérique → faillite en 2012)."}],
+flash:[{t:"Risques externes",d:"Risques venant de l'environnement : cycle de vie, obsolescence technologique, évolution demande, approvisionnement, réglementation."},
+{t:"Risques internes",d:"Risques liés aux décisions de l'organisation : investissements mal orientés, recrutements inadaptés, erreurs stratégiques."},
+{t:"Gestion des risques",d:"Processus : identifier → évaluer (probabilité × impact) → prévenir → couvrir → surveiller."},
+{t:"Obsolescence technologique",d:"Risque externe : une rupture technologique rend les produits ou processus existants obsolètes."},
+{t:"Risque comme opportunité",d:"Un risque bien géré peut se transformer en avantage : Decathlon Seconde Vie transforme la menace de l'occasion en nouvelle source de revenus."}]}
+];
+
+/* ══ ÉTAT ══ */
+const SK='sgn1_s';
+let ST=JSON.parse(localStorage.getItem(SK)||'{}');
+let CUR=0,FI=0;
+
+function saveAct(id,type,val){
+  if(!ST[id])ST[id]={};
+  ST[id][type]=val;
+  localStorage.setItem(SK,JSON.stringify(ST));
+  updProg();
+}
+function getAct(id,type,def){return ST[id]&&ST[id][type]!==undefined?ST[id][type]:def;}
+
+function updProg(){
+  const done=CH.filter(c=>ST[c.id]&&ST[c.id].done).length;
+  const pct=Math.round(done/CH.length*100);
+  ['hfill','sfill'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.width=pct+'%';});
+  ['hpct','spct'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=pct+'%';});
+  const sd=document.getElementById('sdone');if(sd)sd.textContent=done;
+  const ns=document.getElementById('nsc');if(ns)ns.textContent=done+' / '+CH.length;
+}
+
+/* ══ CATALOGUE ══ */
+function renderCat(filter){
+  const cat=document.getElementById('cat');
+  cat.innerHTML='';
+  const groups={};
+  CH.forEach(c=>{
+    if(filter&&c.th!==filter)return;
+    if(!groups[c.th])groups[c.th]=[];
+    groups[c.th].push(c);
+  });
+  Object.keys(groups).forEach(th=>{
+    const t=TH[th];
+    const band=document.createElement('div');
+    band.className='tbd';
+    band.style.cssText='background:'+t.bg+';border:1px solid '+t.c+'33;cursor:default;';
+    band.innerHTML='<div class="tstr" style="color:'+t.c+'"></div><div class="tico" style="background:'+t.c+'22;border:1px solid '+t.c+'44"><span style="color:'+t.c+';font-size:14px;font-weight:800;">'+(th===1?'①':th===2?'②':th===3?'③':'④')+'</span></div><div class="tinf"><div class="ttg" style="color:'+t.c+'">Thème '+th+'</div><div class="tnm">'+t.n+'</div><div class="tmt">'+groups[th].length+' chapitre'+(groups[th].length>1?'s':'')+'</div></div><div class="tpw"><div class="tpn" style="color:'+t.c+'">'+groups[th].length+'</div><div class="tpl">chapitres</div></div>';
+    cat.appendChild(band);
+    const grid=document.createElement('div');
+    grid.className='cg';
+    groups[th].forEach(c=>{
+      const done=ST[c.id]&&ST[c.id].done;
+      const prog=ST[c.id]&&ST[c.id].prog||0;
+      const card=document.createElement('div');
+      card.className='cc';
+      card.onclick=()=>openC(c.id);
+      const bg='linear-gradient(135deg,'+t.c+'22,'+t.c+'08)';
+      card.innerHTML='<div class="cth" style="background:'+bg+'"><span class="ctic">'+c.ic+'</span><div class="cov" style="background:rgba(0,0,0,.5)"><span style="font-size:28px">▶</span></div><div class="cst '+(done?'std':prog>0?'stw':'stn')+'">'+(done?'✓':prog>0?'…':'○')+'</div></div><div class="cb"><div class="cn">Chapitre '+c.n+' · Thème '+c.th+'</div><div class="ct">'+c.title+'</div><div class="cf"><span class="ctag" style="background:'+t.c+'22;color:'+t.c+';border:1px solid '+t.c+'44">'+t.n.split(' ')[0]+'...</span><span class="ccas">'+c.cas+'</span></div><div class="mp" style="margin-top:7px"><div class="mb"><div class="mf" style="width:'+prog+'%;background:'+t.c+'"></div></div><span class="mp2">'+prog+'%</span></div></div>';
+      grid.appendChild(card);
+    });
+    cat.appendChild(grid);
+  });
+}
+
+function fAll(btn){document.querySelectorAll('.nfil .nb').forEach(b=>b.classList.remove('ac'));btn.classList.add('ac');renderCat(null);}
+function fTh(th,btn){document.querySelectorAll('.nfil .nb').forEach(b=>b.classList.remove('ac'));btn.classList.add('ac');renderCat(th);}
+function goTop(){window.scrollTo({top:0,behavior:'smooth'});renderCat(null);}
+
+/* ══ MODAL ══ */
+function openC(id){
+  CUR=id;
+  const c=CH[id];
+  const t=TH[c.th];
+  document.getElementById('mIc').innerHTML='<span style="font-size:16px">'+c.ic+'</span>';
+  document.getElementById('mIc').style.background=t.c+'22';
+  document.getElementById('mLb').textContent='Chapitre '+c.n+' · '+t.n;
+  document.getElementById('mLb').style.color=t.c;
+  document.getElementById('mTi').textContent=c.title;
+  document.getElementById('mCa').textContent='Contexte : '+c.cas;
+  const tg=document.getElementById('mTg');
+  tg.innerHTML=c.tags.map(t=>'<span class="mt2">'+t+'</span>').join('');
+  const tabs=['📖 Cours','📋 Cas BAC','✅ QCM','🔀 Vrai/Faux','🃏 Flashcards'];
+  const tbar=document.getElementById('tbar');
+  tbar.innerHTML=tabs.map((tb,i)=>`<button class="tb${i===0?' ac':''}" onclick="swTab(${id},${i},this)" style="border-bottom-color:${i===0?t.c:'transparent'}">${tb}</button>`).join('');
+  swTab(id,0,tbar.querySelector('.tb'));
+  document.getElementById('mbd').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeM(){document.getElementById('mbd').classList.remove('open');document.body.style.overflow='';renderCat();}
+function hdBd(e){if(e.target===document.getElementById('mbd'))closeM();}
+
+function swTab(id,idx,btn){
+  document.querySelectorAll('#tbar .tb').forEach((b,i)=>{
+    const t=TH[CH[id].th];
+    b.classList.toggle('ac',i===idx);
+    b.style.borderBottomColor=i===idx?t.c:'transparent';
+  });
+  const tc=document.getElementById('tc');
+  if(idx===0)renderCours(id);
+  else if(idx===1)renderBac(id);
+  else if(idx===2)renderQcm(id);
+  else if(idx===3)renderVf(id);
+  else renderFlash(id);
+}
+
+/* ══ COURS ══ */
+function renderCours(id){
+  const c=CH[id];const t=TH[c.th];const cr=c.cours;
+  let h='<div class="cop"><div class="ci">'+cr.intro+'</div>';
+  cr.secs.forEach(s=>{
+    h+='<div class="cs"><div class="cst2">'+s.t+'</div>';
+    if(s.tbl){
+      h+='<table class="ctb"><tr>'+s.tbl.h.map(x=>'<th>'+x+'</th>').join('')+'</tr>';
+      s.tbl.r.forEach(row=>{h+='<tr>'+row.map(x=>'<td>'+x+'</td>').join('')+'</tr>';});
+      h+='</table>';
+    }
+    if(s.pts){
+      s.pts.forEach(p=>{h+='<div class="cp"><span class="bl">▸</span><span>'+p+'</span></div>';});
+    }
+    if(s.fo){h+='<div class="cfo"><div class="cfol">'+s.fo.l+'</div><div class="cfoq">'+s.fo.eq+'</div></div>';}
+    if(s.tip){h+='<div class="ctip">'+s.tip+'</div>';}
+    if(s.df){s.df.forEach(d=>{h+='<div class="cdf"><div class="cdft">'+d.t+'</div><div class="cdfd">'+d.d+'</div></div>';});}
+    h+='</div>';
+  });
+  h+='<div class="cre"><div class="crel">À retenir</div>'+cr.ret.map(r=>'<div class="cri">'+r+'</div>').join('')+'</div>';
+  h+='</div>';
+  document.getElementById('tc').innerHTML=h;
+}
+
+/* ══ CAS BAC ══ */
+function renderBac(id){
+  const c=CH[id];const t=TH[c.th];const b=c.bac;
+  let h='<div class="bop"><div class="bhd"><div class="bhl">Cas BAC · Contexte</div><div class="ben">'+b.ent+'</div><div class="bds">'+b.desc+'</div></div>';
+  b.docs.forEach((d,i)=>{
+    h+='<div class="bdo"><div class="bdol">Document '+(i+1)+' — '+d.lbl+'</div>';
+    if(d.txt)h+='<div class="bdot">'+d.txt.replace(/\n/g,'<br>')+'</div>';
+    if(d.data){
+      h+='<table class="bdt"><tr>'+d.data.h.map(x=>'<th>'+x+'</th>').join('')+'</tr>';
+      d.data.r.forEach(row=>{h+='<tr>'+row.map(x=>'<td>'+x+'</td>').join('')+'</tr>';});
+      h+='</table>';
+    }
+    h+='</div>';
+  });
+  h+='<div class="bqt">📝 Questions</div>';
+  b.qs.forEach(q=>{
+    h+=`<div class="bq"><div class="bqh"><div class="bqn" style="background:${t.c}22;color:${t.c};border:1px solid ${t.c}44">${q.n}</div><div class="bqq">${q.q}</div></div><div class="bqp">${q.pts} point${q.pts>1?'s':''}</div><button class="bbtn" onclick="tgCor('bq${id}_${q.n}',this)">Voir la correction</button><div class="bcor" id="bq${id}_${q.n}"><div class="bcl">Correction</div>${q.rep}</div></div>`;
+  });
+  h+='</div>';
+  document.getElementById('tc').innerHTML=h;
+}
+function tgCor(id,btn){
+  const el=document.getElementById(id);
+  el.classList.toggle('show');
+  btn.textContent=el.classList.contains('show')?'Masquer la correction':'Voir la correction';
+}
+
+/* ══ QCM ══ */
+function renderQcm(id){
+  const c=CH[id];const t=TH[c.th];
+  let sc=getAct(id,'qsc',0);
+  let h=`<div class="aop"><div class="ati"><span>✅</span>QCM<span class="abd" style="background:${t.c}22;color:${t.c}">${c.qcm.length} questions</span></div><div class="ade">Sélectionnez la bonne réponse pour chaque question.</div>`;
+  c.qcm.forEach((q,qi)=>{
+    const ans=getAct(id,'q'+qi,-1);
+    h+=`<div class="qc"><div class="qq">${qi+1}. ${q.q}</div><div class="qos">`;
+    q.os.forEach((o,oi)=>{
+      let cls='qo';
+      if(ans>=0){cls+=(oi===q.a?' ok':(oi===ans?' ko':''));};
+      h+=`<button class="${cls}"${ans>=0?' disabled':''} onclick="ansQ(${id},${qi},${oi},this)">${o}</button>`;
+    });
+    h+='</div>';
+    if(ans>=0)h+=`<div class="qe show">${q.e}</div>`;
+    h+='</div>';
+  });
+  h+=`<div class="sw${sc>=0?' show':''}" id="qsw${id}" style="background:rgba(22,163,74,.08);border-color:rgba(22,163,74,.3)"><div class="sc" style="border-color:${t.c}"><div class="sp2" style="color:${t.c}">${sc}</div><div style="font-size:8px;color:var(--mu)">/ ${c.qcm.length}</div></div><div><div class="sm">Score QCM</div><div class="sd2">${sc}/${c.qcm.length} bonne${sc>1?'s':''} réponse${sc>1?'s':''}</div></div></div>`;
+  h+=`<button style="background:rgba(255,255,255,.05);border:1px solid var(--b1);border-radius:6px;padding:7px 14px;font-size:10px;font-weight:600;color:var(--mu);cursor:pointer;margin-top:10px" onclick="resetQ(${id})">🔄 Recommencer</button>`;
+  h+='</div>';
+  document.getElementById('tc').innerHTML=h;
+}
+
+function ansQ(id,qi,oi,btn){
+  const c=CH[id];const q=c.qcm[qi];
+  saveAct(id,'q'+qi,oi);
+  const par=btn.parentElement;
+  par.querySelectorAll('.qo').forEach((b,i)=>{
+    b.disabled=true;
+    if(i===q.a)b.classList.add('ok');
+    else if(i===oi)b.classList.add('ko');
+  });
+  const exp=par.nextElementSibling;
+  if(exp&&exp.classList.contains('qe')){exp.classList.add('show');exp.textContent=q.e;}
+  const allDone=c.qcm.every((_,i)=>getAct(id,'q'+i,-1)>=0);
+  if(allDone){
+    const sc=c.qcm.filter((_,i)=>getAct(id,'q'+i,-1)===_.a).length;
+    saveAct(id,'qsc',sc);
+    const sw=document.getElementById('qsw'+id);
+    if(sw){const t=TH[c.th];sw.querySelector('.sp2').textContent=sc;sw.querySelector('.sp2').style.color=t.c;sw.querySelector('.sd2').textContent=sc+'/'+c.qcm.length+' bonne'+(sc>1?'s':'')+' réponse'+(sc>1?'s':'');sw.classList.add('show');}
+    if(sc>=c.qcm.length*0.75){saveAct(id,'prog',Math.max(getAct(id,'prog',0),50));}
+  }
+}
+function resetQ(id){
+  const c=CH[id];
+  c.qcm.forEach((_,i)=>{if(ST[id])delete ST[id]['q'+i];});
+  if(ST[id])delete ST[id].qsc;
+  localStorage.setItem(SK,JSON.stringify(ST));
+  renderQcm(id);
+}
+
+/* ══ VF ══ */
+function renderVf(id){
+  const c=CH[id];const t=TH[c.th];
+  let h=`<div class="aop"><div class="ati"><span>🔀</span>Vrai / Faux<span class="abd" style="background:${t.c}22;color:${t.c}">${c.vf.length} assertions</span></div><div class="ade">Pour chaque affirmation, indiquez si elle est vraie ou fausse.</div>`;
+  c.vf.forEach((v,vi)=>{
+    const ans=getAct(id,'v'+vi,'');
+    const corr=ans===''?'':((ans==='V')===v.a?'ok':'ko');
+    h+=`<div><div class="vb"><div class="vq">${vi+1}. ${v.q}</div><div class="vbs"><button class="vbn vrai${corr&&ans==='V'?' '+corr:''}"${ans!==''?' disabled':''} onclick="ansVF(${id},${vi},'V',this)">V</button><button class="vbn faux${corr&&ans==='F'?' '+corr:''}"${ans!==''?' disabled':''} onclick="ansVF(${id},${vi},'F',this)">F</button></div></div>`;
+    if(ans!=='')h+=`<div class="ve show">${v.a?'✓ Vrai':'✗ Faux'} — ${v.e}</div>`;
+    h+='</div>';
+  });
+  h+='</div>';
+  document.getElementById('tc').innerHTML=h;
+}
+function ansVF(id,vi,ans,btn){
+  const c=CH[id];const v=c.vf[vi];
+  saveAct(id,'v'+vi,ans);
+  const par=btn.closest('.vb');
+  par.querySelectorAll('.vbn').forEach(b=>b.disabled=true);
+  const correct=(ans==='V')===v.a;
+  btn.classList.add(correct?'ok':'ko');
+  if(!correct){par.querySelector(v.a?'.vrai':'.faux').classList.add('ok');}
+  const exp=par.closest('div').querySelector('.ve');
+  if(exp){exp.classList.add('show');exp.innerHTML=(v.a?'✓ Vrai':'✗ Faux')+' — '+v.e;}
+  const allDone=c.vf.every((_,i)=>getAct(id,'v'+i,'')!=='');
+  if(allDone){
+    const sc=c.vf.filter((_,i)=>{const a=getAct(id,'v'+i,'');return(a==='V')===_.a;}).length;
+    if(sc>=c.vf.length*0.75){saveAct(id,'prog',Math.max(getAct(id,'prog',0),75));}
+  }
+}
+
+/* ══ FLASHCARDS ══ */
+function renderFlash(id){
+  const c=CH[id];const t=TH[c.th];
+  FI=getAct(id,'fi',0);
+  function build(){
+    const f=c.flash[FI];
+    const seen=getAct(id,'fse','');
+    const seenSet=new Set(seen.split(',').filter(x=>x!=='').map(Number));
+    let h=`<div class="aop"><div class="ati"><span>🃏</span>Flashcards<span class="abd" style="background:${t.c}22;color:${t.c}">${c.flash.length} cartes</span></div><div class="ade">Cliquez sur la carte pour la retourner.</div>`;
+    h+=`<div class="fn"><button class="fnb" onclick="navF(${id},-1)">←</button><span class="fc">${FI+1} / ${c.flash.length}</span><button class="fnb" onclick="navF(${id},1)">→</button></div>`;
+    h+=`<div class="fwp"><div class="fca" id="fc${id}" onclick="flipF(this)"><div class="ffa ffr"><div class="ffl">Terme</div><div class="fft" style="color:${t.c}">${f.t}</div></div><div class="ffa fbk"><div class="fbl">Définition</div><div class="fbd">${f.d}</div></div></div></div>`;
+    h+=`<div class="fh">Cliquez pour retourner</div>`;
+    h+=`<div class="fp">${c.flash.map((x,i)=>`<div class="fd${seenSet.has(i)?' se':''}${i===FI?' cu':''}" onclick="gotoF(${id},${i})"></div>`).join('')}</div>`;
+    if(seenSet.size===c.flash.length){
+      saveAct(id,'prog',100);saveAct(id,'done',true);
+      h+=`<div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:8px;padding:10px 14px;margin-top:12px;text-align:center;font-size:12px;color:#86efac">🎉 Toutes les cartes vues — Chapitre validé !</div>`;
+    }
+    h+='</div>';
+    document.getElementById('tc').innerHTML=h;
+    const seen2=getAct(id,'fse','');
+    const seenSet2=new Set(seen2.split(',').filter(x=>x!=='').map(Number));
+    seenSet2.add(FI);
+    saveAct(id,'fse',Array.from(seenSet2).join(','));
+  }
+  build();
+}
+function flipF(el){el.classList.toggle('fl');}
+function navF(id,d){FI=(FI+d+CH[id].flash.length)%CH[id].flash.length;saveAct(id,'fi',FI);renderFlash(id);}
+function gotoF(id,i){FI=i;saveAct(id,'fi',FI);renderFlash(id);}
+
+/* ══ CONFETTI ══ */
+function confetti(){
+  const cols=['#f97316','#06b6d4','#22c55e','#a78bfa','#f59e0b'];
+  for(let i=0;i<18;i++){
+    const el=document.createElement('div');
+    el.className='cp2';
+    el.style.cssText=`left:${Math.random()*100}vw;top:${Math.random()*40+20}vh;background:${cols[Math.floor(Math.random()*cols.length)]};animation-delay:${Math.random()*0.5}s`;
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),1200);
+  }
+}
+
+/* ══ INIT ══ */
+renderCat();
+updProg();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  const swCode = atob('CmNvbnN0IENBQ0hFID0gJ2xscC1zZ25fMWVyZV9zdG1nX2RlbGFncmF2ZV9sbHBfdjEnOwpzZWxmLmFkZEV2ZW50TGlzdGVuZXIoJ2luc3RhbGwnLCBlID0+IHsKICBlLndhaXRVbnRpbCgKICAgIGNhY2hlcy5vcGVuKENBQ0hFKS50aGVuKGMgPT4gYy5hZGRBbGwoWycuLyddKSkKICAgICAgLnRoZW4oKCkgPT4gc2VsZi5za2lwV2FpdGluZygpKQogICk7Cn0pOwpzZWxmLmFkZEV2ZW50TGlzdGVuZXIoJ2FjdGl2YXRlJywgZSA9PiB7CiAgZS53YWl0VW50aWwoCiAgICBjYWNoZXMua2V5cygpLnRoZW4oa2V5cyA9PiBQcm9taXNlLmFsbCgKICAgICAga2V5cy5maWx0ZXIoayA9PiBrICE9PSBDQUNIRSkubWFwKGsgPT4gY2FjaGVzLmRlbGV0ZShrKSkKICAgICkpLnRoZW4oKCkgPT4gc2VsZi5jbGllbnRzLmNsYWltKCkpCiAgKTsKfSk7CnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignZmV0Y2gnLCBlID0+IHsKICBlLnJlc3BvbmRXaXRoKAogICAgY2FjaGVzLm1hdGNoKGUucmVxdWVzdCkudGhlbihyID0+IHIgfHwgZmV0Y2goZS5yZXF1ZXN0KS50aGVuKHJlcyA9PiB7CiAgICAgIGNvbnN0IGNsb25lID0gcmVzLmNsb25lKCk7CiAgICAgIGNhY2hlcy5vcGVuKENBQ0hFKS50aGVuKGMgPT4gYy5wdXQoZS5yZXF1ZXN0LCBjbG9uZSkpOwogICAgICByZXR1cm4gcmVzOwogICAgfSkpLmNhdGNoKCgpID0+IGNhY2hlcy5tYXRjaCgnLi8nKSkKICApOwp9KTsK');
+  const blob = new Blob([swCode], {type: 'application/javascript'});
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl, {scope: '.'})
+    .then(r => console.log('SW registered'))
+    .catch(e => console.log('SW error:', e));
+}
+</script>
+</body></html>

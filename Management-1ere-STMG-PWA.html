@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- PWA -->
+  <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjogIk1hbmFnZW1lbnQgMcOocmUgU1RNRyIsICJzaG9ydF9uYW1lIjogIk1HVCAxw6hyZSIsICJkZXNjcmlwdGlvbiI6ICJSw6l2aXNpb25zIEJBQyBNYW5hZ2VtZW50IDHDqHJlIFNUTUcg4oCUIEx5Y8OpZSBMb3VpcyBQYXN0ZXVyIFN0cmFzYm91cmciLCAic3RhcnRfdXJsIjogIi4iLCAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwgIm9yaWVudGF0aW9uIjogInBvcnRyYWl0IiwgInRoZW1lX2NvbG9yIjogIiM3YzNhZWQiLCAiYmFja2dyb3VuZF9jb2xvciI6ICIjZmRmOGYwIiwgImNhdGVnb3JpZXMiOiBbImVkdWNhdGlvbiJdLCAibGFuZyI6ICJmciIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSGRwWkhSb1BTSXhPVElpSUdobGFXZG9kRDBpTVRreUlpQjJhV1YzUW05NFBTSXdJREFnTVRreUlERTVNaUkrQ2lBZ1BISmxZM1FnZDJsa2RHZzlJakU1TWlJZ2FHVnBaMmgwUFNJeE9USWlJSEo0UFNJeU5DSWdabWxzYkQwaUl6ZGpNMkZsWkNJdlBnb2dJRHh5WldOMElIZzlJakV5SWlCNVBTSXhNaUlnZDJsa2RHZzlJakUyT1NJZ2FHVnBaMmgwUFNJeE5qa2lJSEo0UFNJeE9TSWdabWxzYkQwaWNtZGlZU2d5TlRVc01qVTFMREkxTlN3d0xqRXlLU0l2UGdvZ0lEeDBaWGgwSUhnOUlqazJJaUI1UFNJeE1EZ2lJR1p2Ym5RdFptRnRhV3g1UFNKQmNtbGhiQ0JDYkdGamF5eHpZVzV6TFhObGNtbG1JaUJtYjI1MExYZGxhV2RvZEQwaU9UQXdJaUJtYjI1MExYTnBlbVU5SWpneElpQm1hV3hzUFNKM2FHbDBaU0lnZEdWNGRDMWhibU5vYjNJOUltMXBaR1JzWlNJZ1pHOXRhVzVoYm5RdFltRnpaV3hwYm1VOUltMXBaR1JzWlNJK1RUd3ZkR1Y0ZEQ0S0lDQThkR1Y0ZENCNFBTSTVOaUlnZVQwaU1UVTNJaUJtYjI1MExXWmhiV2xzZVQwaVFYSnBZV3dzYzJGdWN5MXpaWEpwWmlJZ1ptOXVkQzEzWldsbmFIUTlJamN3TUNJZ1ptOXVkQzF6YVhwbFBTSXlOU0lnWm1sc2JEMGljbWRpWVNneU5UVXNNalUxTERJMU5Td3dMamcxS1NJZ2RHVjRkQzFoYm1Ob2IzSTlJbTFwWkdSc1pTSStNWEpsUEM5MFpYaDBQZ284TDNOMlp6ND0iLCAic2l6ZXMiOiAiMTkyeDE5MiIsICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiLCAicHVycG9zZSI6ICJhbnkgbWFza2FibGUifSwgeyJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhkcFpIUm9QU0kxTVRJaUlHaGxhV2RvZEQwaU5URXlJaUIyYVdWM1FtOTRQU0l3SURBZ05URXlJRFV4TWlJK0NpQWdQSEpsWTNRZ2QybGtkR2c5SWpVeE1pSWdhR1ZwWjJoMFBTSTFNVElpSUhKNFBTSTJOQ0lnWm1sc2JEMGlJemRqTTJGbFpDSXZQZ29nSUR4eVpXTjBJSGc5SWpNeElpQjVQU0l6TVNJZ2QybGtkR2c5SWpRMU1TSWdhR1ZwWjJoMFBTSTBOVEVpSUhKNFBTSTFNU0lnWm1sc2JEMGljbWRpWVNneU5UVXNNalUxTERJMU5Td3dMakV5S1NJdlBnb2dJRHgwWlhoMElIZzlJakkxTmlJZ2VUMGlNamczSWlCbWIyNTBMV1poYldsc2VUMGlRWEpwWVd3Z1FteGhZMnNzYzJGdWN5MXpaWEpwWmlJZ1ptOXVkQzEzWldsbmFIUTlJamt3TUNJZ1ptOXVkQzF6YVhwbFBTSXlNVFVpSUdacGJHdzlJbmRvYVhSbElpQjBaWGgwTFdGdVkyaHZjajBpYldsa1pHeGxJaUJrYjIxcGJtRnVkQzFpWVhObGJHbHVaVDBpYldsa1pHeGxJajVOUEM5MFpYaDBQZ29nSUR4MFpYaDBJSGc5SWpJMU5pSWdlVDBpTkRJd0lpQm1iMjUwTFdaaGJXbHNlVDBpUVhKcFlXd3NjMkZ1Y3kxelpYSnBaaUlnWm05dWRDMTNaV2xuYUhROUlqY3dNQ0lnWm05dWRDMXphWHBsUFNJMk55SWdabWxzYkQwaWNtZGlZU2d5TlRVc01qVTFMREkxTlN3d0xqZzFLU0lnZEdWNGRDMWhibU5vYjNJOUltMXBaR1JzWlNJK01YSmxQQzkwWlhoMFBnbzhMM04yWno0PSIsICJzaXplcyI6ICI1MTJ4NTEyIiwgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIsICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSJ9XX0=">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="MGT 1ère">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiB2aWV3Qm94PSIwIDAgMTkyIDE5MiI+CiAgPHJlY3Qgd2lkdGg9IjE5MiIgaGVpZ2h0PSIxOTIiIHJ4PSIyNCIgZmlsbD0iIzdjM2FlZCIvPgogIDxyZWN0IHg9IjEyIiB5PSIxMiIgd2lkdGg9IjE2OSIgaGVpZ2h0PSIxNjkiIHJ4PSIxOSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEyKSIvPgogIDx0ZXh0IHg9Ijk2IiB5PSIxMDgiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjgxIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+TTwvdGV4dD4KICA8dGV4dCB4PSI5NiIgeT0iMTU3IiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyNSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg1KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MXJlPC90ZXh0Pgo8L3N2Zz4=">
+  <!-- /PWA -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Management 1ère STMG — Delagrave · Lycée Louis Pasteur</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fdf8f0;--s1:#f5efe4;--s2:#ede5d8;--card:#fffdf9;
+  --b1:#e2d8c8;--b2:#cfc3b0;
+  --v:#7c3aed;--v2:#8b5cf6;--v3:#a78bfa;
+  --o:#f97316;--o2:#ea6800;
+  --t:#0891b2;--g:#16a34a;--r:#dc2626;--a:#d97706;
+  --tx:#1c1410;--mu:#6b5e50;--di:#c5b89a;--go:#b45309;
+  --fh:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:var(--fb);min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--b2)}::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px}
+button,input{font-family:var(--fb)}
+@keyframes fU{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes fI{from{opacity:0}to{opacity:1}}
+@keyframes sI{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes co{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(160px) rotate(720deg);opacity:0}}
+.au{animation:fU .42s ease both}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:52px;display:flex;align-items:center;padding:0 20px;gap:10px;background:rgba(253,248,240,.97);border-bottom:1px solid rgba(180,160,120,.2);backdrop-filter:blur(16px)}
+.nlogo{font-family:var(--fh);font-weight:800;font-size:15px;color:var(--v2);cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0}
+.nbadge{background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.35);border-radius:4px;padding:2px 6px;font-size:8px;font-weight:700;letter-spacing:1px}
+.nfil{display:flex;gap:2px;flex:1}
+.nb{background:none;border:none;color:var(--mu);padding:4px 9px;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap}
+.nb:hover{color:var(--tx);background:rgba(255,255,255,.06)}
+.nb.ac{color:var(--tx);background:rgba(255,255,255,.09)}
+.nsco{margin-left:auto;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.28);border-radius:16px;padding:3px 10px;font-size:10px;font-weight:700;color:var(--v2);display:flex;align-items:center;gap:4px;white-space:nowrap}
+.ndot{width:5px;height:5px;border-radius:50%;background:var(--v2);animation:pu 2s infinite}
+
+/* HERO */
+#hero{min-height:50vh;position:relative;display:flex;align-items:flex-end;padding:70px 38px 44px;overflow:hidden}
+.hb{position:absolute;inset:0;background:linear-gradient(135deg,#08070f,#0c0b1a 60%,#090816)}
+.hg1{position:absolute;inset:0;background:radial-gradient(ellipse 55% 40% at 54% 32%,rgba(124,58,237,.10) 0%,transparent 64%)}
+.hg2{position:absolute;inset:0;background:radial-gradient(ellipse 26% 20% at 6% 77%,rgba(249,115,22,.09) 0%,transparent 54%)}
+.hgr{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(rgba(140,100,60,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(140,100,60,.3) 1px,transparent 1px);background-size:44px 44px}
+.hc{position:relative;z-index:2;max-width:680px}
+.hbadge{display:inline-flex;align-items:center;gap:6px;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.3);border-radius:5px;padding:4px 11px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--v2);margin-bottom:14px}
+.ht{font-family:var(--fh);font-weight:800;font-size:clamp(26px,4.5vw,52px);line-height:1.05;margin-bottom:10px;letter-spacing:-1px}
+.ht .av{color:var(--v2)}.ht .ao{color:var(--o)}.ht .sub{color:var(--mu);font-weight:600;font-size:.54em;display:block;margin-top:3px}
+.hd{font-size:12px;color:var(--mu);line-height:1.78;margin-bottom:20px;max-width:520px}
+.hp{margin-bottom:22px;max-width:400px}
+.hpl{display:flex;justify-content:space-between;font-size:10px;color:var(--mu);margin-bottom:5px}
+.hpl span:last-child{color:var(--go);font-weight:700}
+.pt{height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+.pf{height:100%;background:linear-gradient(90deg,var(--v),var(--o));border-radius:2px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.hbts{display:flex;gap:8px;flex-wrap:wrap}
+.bv{background:var(--v);color:#fff;border:none;border-radius:7px;padding:10px 20px;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 4px 18px rgba(124,58,237,.4);transition:all .2s;display:flex;align-items:center;gap:6px}
+.bv:hover{background:#6d28d9;transform:translateY(-2px)}
+.bg{background:rgba(255,255,255,.05);color:var(--tx);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:10px 20px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.bg:hover{background:rgba(255,255,255,.09);transform:translateY(-2px)}
+
+/* STATS */
+#ss{background:var(--s2);border-top:1px solid var(--b1);border-bottom:1px solid var(--b2);padding:11px 38px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.si{display:flex;flex-direction:column;gap:1px}
+.sn{font-family:var(--fh);font-weight:800;font-size:22px;line-height:1}
+.sl{font-size:9px;color:var(--di);letter-spacing:1.5px;text-transform:uppercase}
+.sp{flex:1;min-width:160px;margin-left:auto}
+.spl{display:flex;justify-content:space-between;font-size:10px;color:var(--mu);margin-bottom:5px}
+.spl span:last-child{color:var(--go);font-weight:700}
+
+/* CATALOGUE */
+#cat{padding:22px 38px 56px}
+.tband{border-radius:10px;padding:12px 17px;display:flex;align-items:center;gap:12px;margin-bottom:16px;position:relative;overflow:hidden;cursor:pointer;transition:transform .17s}
+.tband:hover{transform:translateY(-1px)}
+.tstr{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(55deg,currentColor 0,currentColor 1px,transparent 0,transparent 18px)}
+.ticon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;position:relative}
+.tinfo{position:relative;flex:1}
+.ttag{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.8;margin-bottom:2px}
+.tname{font-size:13px;font-weight:700;margin-bottom:1px}
+.tmeta{font-size:10px;color:var(--mu)}
+.tpw{text-align:right;flex-shrink:0}
+.tpn{font-family:var(--fh);font-weight:800;font-size:24px;line-height:1}
+.tpl{font-size:9px;color:var(--mu)}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:11px;margin-bottom:36px}
+.cc{background:var(--card);border:1px solid var(--b1);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.cc:hover{transform:translateY(-4px) scale(1.012);box-shadow:0 10px 40px rgba(140,100,40,.15)}
+.cth{height:96px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ctic{font-size:36px;position:relative;z-index:1;filter:drop-shadow(0 3px 7px rgba(0,0,0,.4))}
+.cov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;opacity:0;transition:opacity .16s;z-index:3}
+.cc:hover .cov{opacity:1}
+.cst{position:absolute;top:7px;right:7px;z-index:4;width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700}
+.sn2{background:rgba(255,255,255,.07);border:1px solid var(--b1);color:var(--di)}
+.sw{background:#f59e0b;color:#000}.sd{background:#22c55e;color:#fff}
+.cb{padding:10px 12px}
+.cn{font-size:9px;color:var(--di);font-weight:600;margin-bottom:2px;letter-spacing:.5px}
+.ct{font-size:11px;font-weight:700;line-height:1.38;margin-bottom:7px;min-height:28px}
+.cf{display:flex;align-items:center;justify-content:space-between;gap:4px}
+.ctag{font-size:8px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:2px 6px;border-radius:3px}
+.ccas{font-size:8px;color:var(--mu);font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100px}
+.mp{display:flex;align-items:center;gap:4px}
+.mb{width:32px;height:2px;background:var(--b2);border-radius:1px;overflow:hidden}
+.mf{height:100%;border-radius:1px;transition:width .5s}
+.mp2{font-size:8px;color:var(--mu)}
+
+/* MODAL */
+#mbd{display:none;position:fixed;inset:0;z-index:600;background:rgba(200,180,140,.45);backdrop-filter:blur(20px);overflow-y:auto;padding:22px 12px}
+#mbd.open{display:flex;align-items:flex-start;justify-content:center}
+#mbox{background:var(--s2);border:1px solid var(--b2);border-radius:14px;width:100%;max-width:820px;overflow:hidden;animation:sI .24s ease;box-shadow:0 20px 60px rgba(100,70,20,.18)}
+.mhd{padding:17px 22px 13px;border-bottom:1px solid var(--b2);position:relative}
+.mcl{position:absolute;top:10px;right:10px;background:rgba(140,100,40,.08);border:none;color:var(--mu);width:25px;height:25px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .17s}
+.mcl:hover{background:rgba(140,100,40,.15);color:var(--tx)}
+.mmt{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.mic{width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.mlb{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1px}
+.mti{font-family:var(--fh);font-weight:800;font-size:17px;line-height:1.2}
+.mca{font-size:10px;color:var(--mu);margin-top:2px;font-style:italic}
+.mtg{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.mt{font-size:9px;padding:2px 7px;border-radius:12px;background:var(--s2);border:1px solid var(--b2);color:var(--mu)}
+.tbar{display:flex;border-bottom:1px solid var(--b2);background:var(--s2);overflow-x:auto}
+.tb{padding:9px 13px;font-size:11px;font-weight:600;color:var(--mu);border:none;background:none;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .16s}
+.tb:hover{color:var(--tx)}.tb.ac{color:var(--tx)}
+#tc{}
+
+/* COURS */
+.cop{padding:18px 22px}
+.ci{border-radius:8px;padding:12px 15px;margin-bottom:18px;font-size:12px;line-height:1.78;border-left:3px solid var(--v);background:rgba(124,58,237,.07);border-color:rgba(124,58,237,.2)}
+.cs{margin-bottom:20px}
+.cst2{font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--a);display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.cst2::after{content:'';flex:1;height:1px;background:var(--b2)}
+.cp{display:flex;gap:8px;align-items:flex-start;padding:7px 11px;background:rgba(140,100,40,.03);border-radius:6px;margin-bottom:5px;font-size:11px;line-height:1.75;color:var(--mu)}
+.cp:hover{background:rgba(140,100,40,.06)}
+.cp .bl{flex-shrink:0;margin-top:2px;font-size:9px;opacity:.5}
+.cdf{border-radius:8px;padding:10px 14px;margin-bottom:7px;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.22)}
+.cdft{font-size:10px;font-weight:700;color:var(--v2);letter-spacing:.5px;margin-bottom:3px;text-transform:uppercase}
+.cdfd{font-size:11px;line-height:1.65;color:var(--mu)}
+.ctb{width:100%;border-collapse:collapse;margin-bottom:10px;font-size:11px}
+.ctb th{background:rgba(255,255,255,.06);padding:6px 10px;text-align:left;font-weight:700;font-size:10px;letter-spacing:.4px;border:1px solid var(--b2)}
+.ctb td{padding:6px 10px;border:1px solid var(--b1);color:var(--mu);line-height:1.5;vertical-align:top}
+.ctb tr:nth-child(even) td{background:rgba(140,100,40,.05)}
+.cfo{background:rgba(6,182,212,.07);border:1px solid rgba(6,182,212,.2);border-radius:8px;padding:10px 15px;margin-bottom:9px;text-align:center}
+.cfol{font-size:9px;color:var(--t);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
+.cfoq{font-family:var(--fh);font-size:15px;font-weight:700}
+.ctip{background:rgba(217,119,6,.08);border:1px solid rgba(217,119,6,.25);border-radius:8px;padding:9px 12px;margin-bottom:7px;font-size:11px;line-height:1.65;color:#92400e}
+.ctip::before{content:'💡 '}
+.cre{background:rgba(22,163,74,.07);border:1px solid rgba(22,163,74,.25);border-radius:8px;padding:12px 15px;margin-top:14px}
+.crel{font-size:9px;font-weight:700;color:var(--g);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:7px}
+.cri{display:flex;gap:6px;align-items:flex-start;font-size:11px;color:#15803d;margin-bottom:4px;line-height:1.55}
+.cri::before{content:'✓';color:var(--g);font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* CAS BAC */
+.bop{padding:18px 22px}
+.bhd{border-radius:10px;padding:13px 17px;margin-bottom:16px;background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(249,115,22,.09));border:1px solid rgba(124,58,237,.3)}
+.bhl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--v2);margin-bottom:4px}
+.ben{font-family:var(--fh);font-size:15px;font-weight:800;margin-bottom:3px}
+.bds{font-size:11px;color:var(--mu);line-height:1.65}
+.bdo{background:#fffdf9;border:1px solid var(--b1);border-radius:8px;padding:11px 15px;margin-bottom:10px}
+.bdol{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--t);margin-bottom:5px}
+.bdot{font-size:11px;line-height:1.78;color:var(--mu)}
+.bdt{width:100%;border-collapse:collapse;margin-top:7px;font-size:10px}
+.bdt th{background:rgba(255,255,255,.07);padding:5px 8px;text-align:left;font-weight:700;border:1px solid var(--b2)}
+.bdt td{padding:5px 8px;border:1px solid var(--b1);color:var(--mu)}
+.bqt{font-family:var(--fh);font-size:12px;font-weight:700;color:var(--a);margin:14px 0 9px;display:flex;align-items:center;gap:5px}
+.bq{background:#fffdf9;border:1px solid var(--b1);border-radius:8px;padding:11px 14px;margin-bottom:8px}
+.bqh{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px}
+.bqn{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0;margin-top:1px}
+.bqq{font-size:11px;line-height:1.62;flex:1}
+.bqp{font-size:9px;color:var(--mu);margin-bottom:6px;padding-left:28px}
+.bbtn{background:rgba(255,255,255,.05);border:1px solid var(--b1);border-radius:5px;padding:5px 11px;font-size:10px;font-weight:600;color:var(--mu);cursor:pointer;transition:all .16s;margin-left:28px}
+.bbtn:hover{background:rgba(255,255,255,.09);color:var(--tx)}
+.bcor{background:rgba(22,163,74,.07);border:1px solid rgba(22,163,74,.25);border-radius:7px;padding:10px 13px;margin:6px 0 0 28px;font-size:11px;line-height:1.78;color:#15803d;display:none;white-space:pre-line}
+.bcor.show{display:block;animation:fI .26s ease}
+.bcl{font-size:9px;font-weight:700;color:var(--g);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+
+/* QCM */
+.aop{padding:18px 22px}
+.ati{font-family:var(--fh);font-size:15px;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:7px}
+.abd{font-size:9px;font-weight:700;letter-spacing:1.5px;padding:2px 6px;border-radius:3px}
+.ade{font-size:11px;color:var(--mu);margin-bottom:15px}
+.qc{background:#fffdf9;border:1px solid var(--b1);border-radius:8px;padding:11px 15px;margin-bottom:10px}
+.qq{font-size:12px;font-weight:600;margin-bottom:9px;line-height:1.5}
+.qos{display:flex;flex-direction:column;gap:5px}
+.qo{padding:7px 11px;border:1px solid var(--b1);border-radius:6px;font-size:11px;cursor:pointer;transition:all .15s;background:rgba(255,255,255,.8);color:var(--tx);text-align:left}
+.qo:hover:not(:disabled){border-color:var(--b2);background:rgba(140,100,40,.06)}
+.qo:disabled{cursor:default}
+.qo.ok{background:rgba(22,163,74,.12);border-color:#16a34a;color:#166534}
+.qo.ko{background:rgba(220,38,38,.08);border-color:#dc2626;color:#991b1b}
+.qe{font-size:10px;color:var(--mu);margin-top:5px;padding:5px 9px;background:rgba(140,100,40,.05);border-radius:5px;display:none;line-height:1.55}
+.qe.show{display:block;animation:fI .2s ease}
+.sw{margin-top:14px;padding:12px 16px;border-radius:9px;border:1px solid;display:none}
+.sw.show{display:flex;align-items:center;gap:12px}
+.sc{width:46px;height:46px;border-radius:50%;border:3px solid;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.sp2{font-family:var(--fh);font-weight:800;font-size:13px;line-height:1}
+.sm{font-size:12px;font-weight:700}.sd2{font-size:10px;color:var(--mu)}
+
+/* VF */
+.vb{display:flex;align-items:flex-start;gap:9px;padding:10px 13px;background:rgba(255,255,255,.022);border-radius:8px;border:1px solid var(--b1);margin-bottom:7px}
+.vq{flex:1;font-size:11px;line-height:1.55;color:var(--mu)}
+.vbs{display:flex;gap:5px;flex-shrink:0}
+.vbn{width:30px;height:30px;border-radius:6px;border:1px solid var(--b1);background:rgba(255,255,255,.05);cursor:pointer;font-size:11px;font-weight:700;transition:all .15s;color:var(--mu)}
+.vbn:hover:not(:disabled){transform:scale(1.07)}
+.vbn:disabled{cursor:default;opacity:.7}
+.vbn.vrai.ok,.vbn.faux.ok{background:rgba(22,163,74,.15);border-color:#16a34a;color:#166534}
+.vbn.vrai.ko,.vbn.faux.ko{background:rgba(220,38,38,.12);border-color:#dc2626;color:#991b1b}
+.ve{font-size:10px;color:var(--mu);margin-top:4px;line-height:1.55;display:none}
+.ve.show{display:block;animation:fI .18s ease}
+
+/* FLASH */
+.fwp{perspective:1100px;margin-bottom:15px}
+.fca{width:100%;height:155px;position:relative;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1);cursor:pointer;border-radius:11px}
+.fca.fl{transform:rotateY(180deg)}
+.ffa{position:absolute;inset:0;border-radius:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;backface-visibility:hidden;border:1px solid var(--b1);text-align:center}
+.ffr{background:#fffdf9;border-color:var(--b1)}.fbk{background:rgba(22,163,74,.08);border-color:rgba(22,163,74,.3);transform:rotateY(180deg)}
+.ffl{font-size:9px;color:var(--mu);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}
+.fft{font-family:var(--fh);font-size:16px;font-weight:800}
+.fbl{font-size:9px;color:var(--g);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}
+.fbd{font-size:11px;line-height:1.65;color:#15803d}
+.fn{display:flex;align-items:center;gap:9px;justify-content:center;margin-bottom:12px}
+.fnb{background:rgba(255,255,255,.07);border:none;color:var(--tx);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:13px;transition:all .16s}
+.fnb:hover{background:rgba(255,255,255,.12)}
+.fc{font-size:11px;color:var(--mu);font-weight:600}
+.fh{text-align:center;font-size:9px;color:var(--di);margin-top:5px}
+.fp{display:flex;gap:3px;justify-content:center;flex-wrap:wrap;margin-top:9px}
+.fd{width:6px;height:6px;border-radius:50%;background:var(--b2);transition:background .22s;cursor:pointer}
+.fd.se{background:var(--a)}.fd.cu{background:var(--tx);transform:scale(1.22)}
+
+/* BILAN */
+.biop{padding:18px 22px}
+.bicw{display:flex;justify-content:center;margin-bottom:18px}
+.bic{width:88px;height:88px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:4px solid}
+.bip{font-family:var(--fh);font-weight:800;font-size:22px;line-height:1}
+.bil{font-size:9px;color:var(--mu);letter-spacing:1px;text-transform:uppercase}
+.bibs{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.bibr{display:flex;align-items:center;gap:8px}
+.bibl{font-size:10px;color:var(--mu);width:82px;flex-shrink:0;text-align:right}
+.bibt{flex:1;height:4px;background:var(--b2);border-radius:2px;overflow:hidden}
+.bibf{height:100%;border-radius:2px;transition:width .7s}
+.bibv{font-size:10px;font-weight:700;width:28px;flex-shrink:0}
+.bim{text-align:center;padding:12px;background:rgba(255,255,255,.022);border-radius:8px;border:1px solid var(--b1);font-size:12px;font-weight:600;line-height:1.5}
+
+/* FOOTER */
+footer{background:var(--s2);border-top:1px solid var(--b1);padding:18px 38px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.fb{font-family:var(--fh);font-size:13px;font-weight:800}
+.fb .fv{color:var(--v2)}.fb span{color:var(--mu);font-family:var(--fb);font-weight:400;font-size:10px;display:block;margin-top:1px}
+.fs{font-size:11px;color:var(--mu);text-align:right;line-height:1.85}
+.fs strong{color:var(--v2)}.fs em{color:var(--o2);font-style:normal;font-weight:600}
+.cp{position:fixed;width:7px;height:7px;border-radius:2px;pointer-events:none;z-index:9999;animation:co .92s ease forwards}
+
+@media(max-width:600px){
+  #cat,#ss,#hero,footer{padding-left:13px;padding-right:13px}
+  .ht{font-size:24px}.cg{grid-template-columns:1fr 1fr}
+  .nfil{display:none}.tb{padding:8px 9px;font-size:10px}
+}
+.fb .fo{color:var(--o)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nlogo" onclick="goTop()">Management <span class="nbadge">1ère STMG</span></a>
+  <div class="nfil">
+    <button class="nb ac" onclick="fAll(this)">Tous</button>
+    <button class="nb" onclick="fTh(1,this)">Thème 1</button>
+    <button class="nb" onclick="fTh(2,this)">Thème 2</button>
+    <button class="nb" onclick="fTh(3,this)">Thème 3</button>
+  </div>
+  <div class="nsco"><div class="ndot"></div><span id="nsc">0 / 13</span></div>
+</nav>
+
+<section id="hero" style="padding-top:70px">
+  <div class="hb"></div><div class="hg1"></div><div class="hg2"></div><div class="hgr"></div>
+  <div class="hc au">
+    <div class="hbadge">▶ Révision Interactive · Delagrave 2025 · Lycée Louis Pasteur · Strasbourg</div>
+    <h1 class="ht">
+      <span class="av">Management</span>
+      <span class="sub">1ère STMG · 13 chapitres · Cours · Cas BAC corrigés · QCM · Flashcards</span>
+    </h1>
+    <p class="hd">13 chapitres fidèles au manuel Delagrave 2025 — 3 thèmes, cas d'entreprises réels (Mistral AI, Cabaïa, Europa-Park, Haribo, Renault, Adidas, Nintendo/Sony, Kiabi, Sanofi, Inditex, DK'Bus, Afuté…), cours synthétique + cas BAC (2 docs, 3 questions corrigées) + QCM + Vrai/Faux + Flashcards.</p>
+    <div class="hp">
+      <div class="hpl"><span>Progression globale</span><span id="hpct">0%</span></div>
+      <div class="pt"><div class="pf" id="hfill" style="width:0%"></div></div>
+    </div>
+    <div class="hbts">
+      <button class="bv" onclick="openC(0)">▶ Commencer Ch.1</button>
+      <button class="bg" onclick="document.getElementById('cat').scrollIntoView({behavior:'smooth'})">📚 Catalogue</button>
+    </div>
+  </div>
+</section>
+
+<div id="ss">
+  <div class="si"><div class="sn">13</div><div class="sl">Chapitres</div></div>
+  <div class="si"><div class="sn">3</div><div class="sl">Thèmes</div></div>
+  <div class="si"><div class="sn" id="sdone">0</div><div class="sl">Validés</div></div>
+  <div class="si"><div class="sn">4</div><div class="sl">Activités</div></div>
+  <div class="sp">
+    <div class="spl"><span>Avancement</span><span id="spct">0%</span></div>
+    <div class="pt"><div class="pf" id="sfill" style="width:0%"></div></div>
+  </div>
+</div>
+
+<main id="cat"></main>
+
+<div id="mbd" onclick="hdBd(event)">
+  <div id="mbox">
+    <div class="mhd">
+      <button class="mcl" onclick="closeM()">✕</button>
+      <div class="mmt">
+        <div class="mic" id="mIc"></div>
+        <div>
+          <div class="mlb" id="mLb"></div>
+          <div class="mti" id="mTi"></div>
+          <div class="mca" id="mCa"></div>
+        </div>
+      </div>
+      <div class="mtg" id="mTg"></div>
+    </div>
+    <div class="tbar" id="tbar"></div>
+    <div id="tc"></div>
+  </div>
+</div>
+
+<footer>
+  <div><div class="fb"><span class="fo">Révisions BAC</span><span>Management · 1ère STMG</span></div></div>
+  <div class="fs"><strong>Lycée Louis Pasteur</strong> · Strasbourg<br><em>Économie-Gestion · STMG</em></div>
+</footer>
+
+<script>
+/* ══ THÈMES ══ */
+const TH={
+  1:{c:'#7c3aed',bg:'rgba(124,58,237,.13)',n:'À la rencontre du management des organisations'},
+  2:{c:'#f97316',bg:'rgba(249,115,22,.13)',n:'Le management stratégique, du diagnostic à la fixation des objectifs'},
+  3:{c:'#06b6d4',bg:'rgba(6,182,212,.13)',n:'Les choix stratégiques des organisations'}
+};
+
+/* ══ DONNÉES ══ */
+const CH=[
+
+{id:0,n:1,th:1,ic:'🤝',cas:'Mistral AI / Duralex (Scop)',
+title:"Pourquoi est-il nécessaire d'organiser l'action collective ?",
+tags:['Action collective','Organisation','Ressources','Cadre juridique','Pérennité'],
+cours:{
+  intro:"Toute organisation naît d'une nécessité : agir collectivement est plus efficace qu'agir seul. Mais pour qu'un groupe devienne une organisation, il faut un objectif commun, une structure, un cadre juridique et des ressources.",
+  secs:[
+    {t:"Action individuelle vs action collective",pts:[
+      "<strong>Action individuelle :</strong> démarche personnelle, moyens propres, sans engagement envers autrui.",
+      "<strong>Action collective organisée :</strong> groupe structuré, objectif commun, spécialisation des tâches, coordination → plus grande efficacité. Condition : convergence des intérêts individuels et collectifs.",
+      "Exemple : <strong>Mistral AI</strong> — 3 chercheurs unissent leurs compétences pour créer une IA compétitive. Seuls, aucun n'y serait parvenu. <strong>Duralex (Scop)</strong> — les salariés détiennent 65 % des droits de vote → convergence intérêts individuels/collectifs.",
+    ]},
+    {t:"Du groupe à l'organisation",pts:[
+      "Organisation = action collective + <strong>structure hiérarchique</strong> + <strong>cadre juridique</strong> (statuts, lois) + <strong>ressources mobilisées</strong>.",
+      "L'organisation est un <strong>système dynamique</strong> : elle évolue, fixe des règles, assure la circulation de l'information et gère ses ressources pour garantir sa <strong>pérennité</strong>.",
+    ]},
+    {t:"Les 5 types de ressources",tbl:{h:['Type','Exemples'],r:[['Humaines','Salariés, compétences, bénévoles'],['Financières','Capital, emprunts, CA, subventions'],['Matérielles','Locaux, machines, équipements'],['Immatérielles','Marque, brevet, savoir-faire, réputation'],['Technologiques','Logiciels, ERP, IA, automatisation']]}},
+  ],
+  ret:["Action collective > action individuelle (spécialisation + coordination)","Organisation = action collective + structure + cadre juridique","5 types de ressources : humaines, financières, matérielles, immatérielles, technologiques","La pérennité est un objectif central du management","La convergence des intérêts individuels et collectifs conditionne l'efficacité"],
+},
+bac:{
+  ent:"Greenpeace France",desc:"Greenpeace France (asso. loi 1901) : 150 salariés CDI, réseau international de 30 bureaux, campagnes environnementales. Budget 2023 : 18,3 M€ financé à 68 % par dons individuels.",
+  docs:[
+    {lbl:"Document 1 — Structure et tensions internes",txt:"Greenpeace France repose sur une structure hiérarchique (directeur général + conseil d'administration) qui contrôle les campagnes locales dans le cadre des stratégies définies par Greenpeace International (GPI). Mais des tensions apparaissent : surcharge de travail, conflits entre pôles, questionnement sur la gouvernance. DG Jean-François Julliard : 'Si on ne change pas les choses à différents niveaux, on va dans le mur.'"},
+    {lbl:"Document 2 — Ressources financières Greenpeace 2023",data:{h:['Source','Montant (K€)','Part'],r:[['Dons individuels','12 400','68 %'],['Fondations','3 200','17 %'],['Legs et assurances vie','2 748','15 %'],['Total','18 348','100 %']]}},
+  ],
+  qs:[
+    {n:1,pts:3,q:"À partir du document 1, identifiez les éléments constitutifs de l'organisation Greenpeace France.",rep:"Greenpeace France est une organisation car elle réunit les 5 éléments constitutifs :\n• Objectif commun partagé : défense de l'environnement ;\n• Structure hiérarchique : directeur général + conseil d'administration ;\n• Cadre juridique : association loi 1901 ;\n• Ressources mobilisées : 150 salariés CDI, bénévoles, financement par dons (18,3 M€) ;\n• Coordination des actions : stratégies définies par GPI et déclinées localement.\nCes 5 éléments font de Greenpeace France une organisation au sens managérial."},
+    {n:2,pts:3,q:"À partir des deux documents, expliquez pourquoi les intérêts individuels des salariés peuvent entrer en conflit avec les intérêts collectifs, et quelles en sont les conséquences.",rep:"Les intérêts individuels des 150 salariés CDI (conditions de travail, charge équilibrée, sentiment de sens et équité) peuvent diverger des intérêts collectifs de l'organisation (mener un maximum de campagnes avec des ressources limitées, respecter les contraintes budgétaires de 18,3 M€).\nConséquences : surcharge de travail, conflits entre pôles, remise en question de la gouvernance, risque de turnover. La DG reconnaît ces tensions comme une menace pour la pérennité de l'organisation. Le management doit réaligner intérêts individuels et collectifs, par exemple en révisant l'organisation du travail ou en renforçant la gouvernance démocratique (propre aux associations)."},
+    {n:3,pts:2,q:"À partir du document 2, caractérisez les ressources financières de Greenpeace France.",rep:"Les ressources financières de Greenpeace France sont de 18 348 K€ en 2023. Ce sont des ressources non marchandes (absence de vente de biens ou services) : elles proviennent principalement de la générosité publique (dons individuels : 68 %, fondations : 17 %, legs : 15 %). Cette structure de financement présente un risque de dépendance : si la confiance des donateurs diminue (scandale, perte d'efficacité perçue), les ressources pourraient se tarir. D'où l'importance de la transparence financière et de la publication d'un compte d'emploi annuel."},
+  ]
+},
+qcm:[
+  {q:"Ce qui distingue une organisation d'un simple groupe, c'est…",os:["Un nombre de membres supérieur à 10","Un objectif commun + structure + cadre juridique","L'utilisation d'outils numériques","La présence d'un dirigeant élu"],a:1,e:"L'organisation suppose un objectif commun, une structure hiérarchique et un cadre juridique — le simple groupe ne possède pas ces caractéristiques."},
+  {q:"La pérennité d'une organisation désigne…",os:["Sa capacité à générer du profit","Sa capacité à durer dans le temps en atteignant ses objectifs","Son nombre de salariés","Sa taille sur le marché"],a:1,e:"La pérennité est un objectif central du management : assurer la survie et le développement à long terme."},
+  {q:"Une marque déposée est une ressource…",os:["Matérielle","Financière","Immatérielle","Technologique"],a:2,e:"La marque est une ressource immatérielle (sans forme physique) à forte valeur stratégique."},
+  {q:"Dans une Scop, les salariés détiennent au minimum…",os:["10 % du capital","51 % des droits de vote","La totalité du capital","Aucune part"],a:1,e:"Dans une Scop, les salariés détiennent au moins 51 % du capital et 65 % des droits de vote, ce qui aligne intérêts individuels et collectifs."},
+],
+vf:[
+  {q:"L'action collective organisée est toujours plus efficace que l'action individuelle.",a:true,e:"En regroupant compétences et ressources autour d'un objectif commun, l'action collective génère des synergies inaccessibles à un individu seul."},
+  {q:"Une organisation peut exister sans cadre juridique.",a:false,e:"Pour être reconnue et durable, une organisation doit s'inscrire dans un cadre juridique (statuts, contrat de société, loi 1901...)."},
+  {q:"Les ressources technologiques incluent logiciels, ERP et IA.",a:true,e:"Les ressources technologiques englobent tous les outils numériques : logiciels, ERP, IA, automatisation, plateformes."},
+  {q:"La pérennité de l'organisation est un objectif secondaire du management.",a:false,e:"La pérennité est un objectif CENTRAL : le management doit assurer la survie et le développement à long terme."},
+],
+flash:[
+  {t:"Action collective organisée",d:"Groupe structuré partageant un objectif commun, inscrit dans un cadre juridique avec répartition des tâches et coordination."},
+  {t:"Ressources immatérielles",d:"Actifs sans forme physique : marque, brevet, savoir-faire, réputation. De plus en plus stratégiques."},
+  {t:"Pérennité",d:"Capacité de l'organisation à durer dans le temps en maintenant ses objectifs et ses ressources."},
+  {t:"Cadre juridique",d:"Ensemble de règles (statuts, contrats, lois) qui légitiment et encadrent le fonctionnement d'une organisation."},
+  {t:"Convergence des intérêts",d:"Alignement entre intérêts individuels et collectifs — condition de l'efficacité de l'action collective."},
+]},
+
+{id:1,n:2,th:1,ic:'🏢',cas:'Cabaïa / SNCF',
+title:"Comment appréhender la diversité des organisations ?",
+tags:['Finalités','Entreprises privées','Organisations publiques','Société civile','RSE'],
+cours:{
+  intro:"Les organisations sont extrêmement diverses : entreprises privées, organisations publiques, associations, ONG. Les distinguer selon leurs finalités, leur production et leur financement est fondamental en management.",
+  secs:[
+    {t:"Les trois types d'organisations",tbl:{h:['Type','Finalité','Financement','Exemples'],r:[['Entreprise privée','Lucrative : profit + RSE','Capital privé, CA, emprunts','Cabaïa, LVMH, PME'],['Organisation publique','Service public, intérêt général','Impôts, taxes, subventions','SNCF, Mairie, Hôpital'],['OSC (société civile)','Non lucrative, intérêt collectif','Cotisations, dons, subventions','Croix-Rouge, ONG, syndicats']]}},
+    {t:"Caractériser une organisation",pts:[
+      "<strong>Type de production :</strong> biens marchands (vendus sur un marché) ou services non marchands (offerts gratuitement ou à tarif subventionné).",
+      "<strong>Taille :</strong> MIC/TPE (< 10 salariés), PME (10–249), ETI (250–4 999), GE (≥ 5 000).",
+      "<strong>Secteur :</strong> primaire (agriculture, pêche), secondaire (industrie), tertiaire (services).",
+      "<strong>Champ géographique :</strong> local, national, multinational, mondial.",
+      "Les frontières s'estompent : <strong>partenariats public-privé</strong>, entreprises à mission, associations avec activités marchandes accessoires.",
+    ]},
+  ],
+  ret:["3 types : entreprises privées (lucratif), organisations publiques (service public), OSC (non lucratif)","Caractériser : finalité, production, taille, secteur, financement, champ géographique","TPE < 10 / PME 10–249 / ETI 250–4 999 / GE ≥ 5 000","Les frontières entre types s'estompent (PPP, entreprises à mission)"],
+},
+bac:{
+  ent:"La SNCF",desc:"La SNCF est une entreprise publique créée en 1938. Elle assure une mission de service public (transport ferroviaire) tout en dégageant un résultat commercial.",
+  docs:[
+    {lbl:"Document 1 — La mission de la SNCF",txt:"La SNCF a pour mission de contribuer à la vitalité de la société et de ses territoires en offrant des services de transport indispensables au dynamisme économique et au lien social. Elle s'engage pour la transition écologique (arrêt du diesel à l'horizon 2030, TER à batterie). Son chiffre d'affaires 2023 est de 41,3 Mds €, son résultat net de 1,4 Md €, pour 150 000 salariés."},
+    {lbl:"Document 2 — Tensions stratégiques SNCF",txt:"La SNCF doit concilier trois impératifs parfois contradictoires : (1) mission de service public (continuité, égalité, adaptabilité des transports) ; (2) maîtrise des coûts imposée par l'État actionnaire unique ; (3) qualité du service attendue par les 5 millions de voyageurs quotidiens. Le taux de trains en retard (>5 min) est de 18 % en 2023, illustrant la difficulté de cet équilibre."},
+  ],
+  qs:[
+    {n:1,pts:3,q:"À partir des documents, déterminez le type d'organisation de la SNCF, ses finalités et caractérisez sa taille et son secteur d'activité.",rep:"Type : entreprise publique (l'État en est l'actionnaire unique). Finalités multiples : (1) principale non lucrative — assurer un service public de transport ferroviaire (intérêt général, continuité, égalité, adaptabilité) ; (2) accessoire commerciale — CA de 41,3 Mds € et résultat net de 1,4 Md €. Taille : grande entreprise (GE) avec 150 000 salariés (≥ 5 000). Secteur : tertiaire (services de transport ferroviaire, marchands et non marchands)."},
+    {n:2,pts:3,q:"À partir du document 2, montrez que la SNCF doit concilier des objectifs potentiellement contradictoires et expliquez comment cela se manifeste concrètement.",rep:"La SNCF doit articuler trois impératifs en tension : (1) Mission de service public : desservir tous les territoires (y compris peu rentables), maintenir une continuité même en cas de grève (service minimum) ; (2) Maîtrise des coûts : l'État impose des contraintes budgétaires, ce qui limite les investissements dans la maintenance et la modernisation des infrastructures ; (3) Qualité de service : les 5 millions de voyageurs quotidiens exigent ponctualité et confort. La contradiction se manifeste concrètement dans le taux de retard de 18 % : des infrastructures vieillissantes (coût de rénovation élevé) entraînent des retards, dégradant la qualité de service malgré la mission de continuité."},
+    {n:3,pts:2,q:"En quoi la RSE est-elle un enjeu stratégique pour la SNCF en tant qu'entreprise publique ?",rep:"La RSE est particulièrement stratégique pour la SNCF car : (1) Image de service public : les Français attendent d'une entreprise publique qu'elle soit exemplaire sur les plans social et environnemental ; (2) Engagement écologique : l'arrêt du diesel à 2030 et les TER à batterie répondent aux attentes sociétales et aux réglementations environnementales (facteur PESTEL écologique) ; (3) Cohérence avec la mission : le transport ferroviaire est déjà l'un des modes de transport les moins polluants — le valoriser RSE renforce la légitimité de la SNCF face à la voiture et à l'avion. La RSE d'une entreprise publique va donc au-delà de l'image : elle est au cœur de sa mission d'intérêt général."},
+  ]
+},
+qcm:[
+  {q:"Une association humanitaire appartient à…",os:["La sphère marchande privée","Les organisations publiques","La société civile (OSC)","Les entreprises multinationales"],a:2,e:"Les associations, ONG et fondations appartiennent à la société civile : elles poursuivent un but non lucratif."},
+  {q:"Le financement d'une mairie provient principalement de…",os:["La vente de biens sur les marchés","Les impôts et taxes locaux","Les cotisations des adhérents","Les dividendes des actionnaires"],a:1,e:"Les organisations publiques sont financées par les prélèvements obligatoires (impôts, taxes) et parfois par le prix payé par l'usager."},
+  {q:"Une PME emploie entre…",os:["Moins de 10 salariés","10 et 249 salariés","250 et 4 999 salariés","Plus de 5 000 salariés"],a:1,e:"TPE/MIC < 10 / PME 10–249 / ETI 250–4 999 / GE ≥ 5 000."},
+  {q:"Les partenariats public-privé (PPP) montrent que les frontières entre types d'organisations…",os:["Sont totalement étanches","S'estompent de plus en plus","Sont définies une fois pour toutes","N'existent pas"],a:1,e:"Les PPP, entreprises à mission et associations avec activités commerciales montrent que les frontières entre les 3 types d'organisations s'estompent."},
+],
+vf:[
+  {q:"Une entreprise privée peut avoir des objectifs sociaux et environnementaux (RSE).",a:true,e:"La RSE engage les entreprises au-delà de la finalité lucrative : impacts sociaux, environnementaux et économiques."},
+  {q:"La SNCF est une entreprise privée.",a:false,e:"La SNCF est une entreprise PUBLIQUE : l'État en est l'actionnaire unique."},
+  {q:"Le secteur tertiaire regroupe toutes les activités de services.",a:true,e:"Le tertiaire comprend services marchands (banque, restauration) et non marchands (éducation publique, santé publique)."},
+  {q:"Une association peut développer des activités marchandes accessoires.",a:true,e:"Une OSC peut avoir des recettes commerciales accessoires pour financer sa mission principale, dans la limite de son objet social."},
+],
+flash:[
+  {t:"Finalité lucrative",d:"Objectif d'une entreprise privée : réaliser un profit pour ses actionnaires tout en assumant sa RSE."},
+  {t:"Service public",d:"Mission d'intérêt général assurée par les organisations publiques : continuité, égalité, adaptabilité."},
+  {t:"OSC",d:"Organisation de la Société Civile : association, ONG, fondation, syndicat poursuivant un but non lucratif."},
+  {t:"RSE",d:"Responsabilité Sociétale des Entreprises : engagement volontaire au-delà des obligations légales pour les impacts sociaux et environnementaux."},
+  {t:"Partenariat public-privé (PPP)",d:"Collaboration entre organisation publique et entreprise privée pour gérer un service d'intérêt général."},
+]},
+
+{id:2,n:3,th:1,ic:'⚙️',cas:'Europa-Park / Pimpant',
+title:"Qu'est-ce que le management des organisations ?",
+tags:['Fonctions du management','Stratégique','Opérationnel','RSE','Parties prenantes'],
+cours:{
+  intro:"Le management est le gouvernement des organisations. Il consiste à gérer une action collective en tenant compte de contraintes multiples. Il comporte quatre fonctions et se décline en deux niveaux : stratégique (long terme) et opérationnel (quotidien).",
+  secs:[
+    {t:"Les quatre fonctions du management",tbl:{h:['Fonction','Description','Exemples Europa-Park'],r:[['1. Fixer des objectifs','Définir les résultats à atteindre','Augmenter la fréquentation de 5 %/an'],['2. Organiser','Structurer ressources et tâches','Créer un département innovations numériques'],['3. Animer / Mobiliser','Motiver les équipes et coordonner','Former les 4 000 collaborateurs saisonniers'],['4. Contrôler / Évaluer','Mesurer et déclencher des corrections','Tableaux de bord satisfaction visiteurs']]}},
+    {t:"Management stratégique vs opérationnel",pts:[
+      "<strong>Management stratégique :</strong> décisions à long terme (3–10 ans), prises par la direction générale, engageant l'avenir de l'organisation. Ex : ouvrir un nouveau parc en Asie.",
+      "<strong>Management opérationnel :</strong> gestion quotidienne des ressources pour atteindre les objectifs fixés, assurée par les managers de terrain. Ex : gérer le planning hebdomadaire.",
+    ]},
+    {t:"Management et RSE",pts:[
+      "Le management intègre une <strong>dimension éthique</strong> via la RSE : responsabilités sociales (conditions de travail), environnementales (empreinte carbone) et économiques (relations fournisseurs).",
+      "La <strong>digitalisation</strong> transforme les pratiques : télétravail, outils collaboratifs, tableaux de bord en temps réel, IA d'aide à la décision.",
+    ]},
+  ],
+  ret:["4 fonctions : fixer objectifs → organiser → animer/mobiliser → contrôler/évaluer","Management stratégique = long terme = direction générale","Management opérationnel = court terme = managers de terrain","RSE intègre une dimension éthique au management","La digitalisation transforme les pratiques managériales"],
+},
+bac:{
+  ent:"La Cravate solidaire",desc:"La Cravate solidaire est une association dont la mission est d'aider les personnes en recherche d'emploi en leur prêtant des tenues professionnelles et en les accompagnant pour les entretiens. 56 antennes en France, 2 500 bénévoles.",
+  docs:[
+    {lbl:"Document 1 — Les décisions managériales 2023",txt:"La direction nationale de La Cravate solidaire a décidé en 2023 de déployer une application numérique pour permettre aux antennes locales de gérer leurs stocks de vêtements en temps réel (investissement : 45 000 €). Les responsables d'antenne, de leur côté, organisent chaque semaine des permanences d'accueil, recrutent des bénévoles et coordonnent les dons de vêtements avec les entreprises partenaires locales."},
+    {lbl:"Document 2 — Indicateurs 2023",data:{h:['Indicateur','Valeur'],r:[['Personnes accompagnées','60 000 depuis 2011'],['Antennes','56 en France'],['Bénévoles','2 500'],['Budget collecté','1,2 M€'],['Satisfaction bénéficiaires','/10 : 9,1']]}},
+  ],
+  qs:[
+    {n:1,pts:3,q:"À partir du document 1, distinguez les décisions relevant du management stratégique de celles relevant du management opérationnel chez La Cravate solidaire.",rep:"Décision stratégique : le déploiement de l'application numérique nationale (décision prise par la direction nationale, impact à long terme sur les 56 antennes, investissement de 45 000 €, modifie le fonctionnement de l'ensemble de l'organisation — horizon pluriannuel, niveau direction générale). Décisions opérationnelles : organiser les permanences hebdomadaires, recruter des bénévoles ponctuellement, coordonner les dons locaux (décisions prises par les responsables d'antenne, impact à court terme sur le fonctionnement local quotidien — niveau managers de terrain)."},
+    {n:2,pts:3,q:"À partir des deux documents, repérez les quatre fonctions du management chez La Cravate solidaire et illustrez chacune avec un exemple précis.",rep:"1. Fixer les objectifs : accompagner le plus grand nombre de personnes en recherche d'emploi ; objectif chiffré de développement (56 antennes, 60 000 personnes depuis 2011).\n2. Organiser : structurer 56 antennes locales avec responsables dédiés ; déploiement de l'application numérique pour structurer la gestion des stocks.\n3. Animer/Mobiliser : coordonner 2 500 bénévoles sans rémunération financière — maintenir l'engagement par la mission et la reconnaissance ; recrutement continu de bénévoles.\n4. Contrôler/Évaluer : suivi du nombre de personnes accompagnées (indicateur d'impact), contrôle des stocks via l'application, bilan financier (budget 1,2 M€), mesure de la satisfaction (9,1/10)."},
+    {n:3,pts:2,q:"En quoi le déploiement de l'application numérique constitue-t-il une réponse aux changements de l'environnement ?",rep:"La digitalisation est un facteur technologique majeur du PESTEL. Le déploiement de l'application numérique répond à plusieurs évolutions de l'environnement : (1) Transformation numérique de la gestion associative (les outils de gestion des stocks et des stocks sont désormais attendus même dans le secteur associatif) ; (2) Croissance du réseau (56 antennes réparties en France → impossible à coordonner sans outil numérique) ; (3) Exigence d'efficacité des donateurs et partenaires (l'application permet de réduire les gaspillages de vêtements non utilisés). C'est une décision managériale stratégique qui répond à l'environnement technologique et à la croissance organisationnelle."},
+  ]
+},
+qcm:[
+  {q:"La décision de fusionner avec une autre entreprise relève du…",os:["Management opérationnel","Management stratégique","Management de proximité","Management des ressources humaines"],a:1,e:"Une fusion-acquisition engage l'avenir de l'organisation sur le long terme : c'est une décision stratégique de la direction générale."},
+  {q:"Un tableau de bord de gestion est un outil de la fonction…",os:["Fixation d'objectifs","Organisation","Animation","Contrôle et évaluation"],a:3,e:"Le tableau de bord permet de mesurer l'atteinte des objectifs et de détecter les écarts pour déclencher des actions correctives."},
+  {q:"Les managers de terrain assurent principalement le management…",os:["Stratégique","Opérationnel","Institutionnel","International"],a:1,e:"Le management opérationnel (gestion quotidienne) est assuré par les chefs d'équipe, responsables de service, managers de terrain."},
+  {q:"La RSE est une dimension… du management",os:["Uniquement financière","Éthique (sociale, environnementale, économique)","Juridique uniquement","Commerciale"],a:1,e:"La RSE ajoute au management une dimension éthique : impacts sociaux, environnementaux et économiques au-delà des obligations légales."},
+],
+vf:[
+  {q:"Le management stratégique est pris en charge par les managers de terrain.",a:false,e:"Le management stratégique (long terme) est assuré par la DIRECTION GÉNÉRALE. Les managers de terrain assurent le management opérationnel."},
+  {q:"Contrôler est la 4ème fonction du management.",a:true,e:"Les 4 fonctions dans l'ordre : 1. Fixer des objectifs 2. Organiser 3. Animer/mobiliser 4. Contrôler/évaluer."},
+  {q:"La RSE est obligatoire pour toutes les organisations.",a:false,e:"La RSE est d'abord volontaire. Seule la publication d'une DPEF est obligatoire pour les grandes entreprises (>500 salariés, >100 M€ de CA)."},
+  {q:"La digitalisation transforme les pratiques managériales.",a:true,e:"Télétravail, outils collaboratifs, IA d'aide à la décision, tableaux de bord temps réel... le numérique révolutionne le management."},
+],
+flash:[
+  {t:"Management stratégique",d:"Décisions à long terme (>3 ans) engageant l'avenir de l'organisation, prises par la direction générale."},
+  {t:"Management opérationnel",d:"Gestion quotidienne des ressources et activités pour atteindre les objectifs. Assuré par les managers de terrain."},
+  {t:"4 fonctions du management",d:"1. Fixer des objectifs 2. Organiser 3. Animer/Mobiliser 4. Contrôler/Évaluer."},
+  {t:"RSE",d:"Responsabilité Sociétale des Entreprises : intégration volontaire des enjeux sociaux, environnementaux et économiques dans le management."},
+  {t:"Parties prenantes",d:"Acteurs internes (salariés, dirigeants) et externes (clients, fournisseurs, État, ONG) qui influencent ou sont influencés par l'organisation."},
+]},
+
+{id:3,n:4,th:1,ic:'🌍',cas:'Haribo / Confiserie des Hautes-Vosges',
+title:"Comment le management permet-il de répondre aux changements de l'environnement ?",
+tags:['PESTEL','Parties prenantes','RSE','Transformations numériques','Mutations écologiques'],
+cours:{
+  intro:"L'organisation est un système complexe plongé dans un environnement en perpétuelle évolution. Le management doit identifier les facteurs externes (PESTEL, parties prenantes) et internes (culture, taille, histoire) pour adapter ses pratiques.",
+  secs:[
+    {t:"L'organisation comme système complexe",pts:[
+      "<strong>Parties prenantes :</strong> acteurs internes (salariés, dirigeants) et externes (clients, fournisseurs, actionnaires, État, ONG, communautés) qui influencent ou sont influencés par les décisions.",
+      "L'organisation doit rechercher son équilibre dans ses dimensions : financière, politique, économique, sociale, technologique et écologique.",
+    ]},
+    {t:"L'analyse PESTEL",tbl:{h:['Facteur','Exemples d\'impact managérial'],r:[['Politique','Lois, réglementations, subventions, politique fiscale'],['Économique','Taux d\'intérêt, inflation, pouvoir d\'achat, croissance'],['Socioculturel','Modes de vie, tendances, démographie, valeurs'],['Technologique','IA, automatisation, numérique, robotique'],['Écologique','Réglementations vertes, changement climatique, RSE'],['Légal','Droit du travail, RGPD, réglementation sectorielle']]}},
+    {t:"Transformations numériques et mutations écologiques",pts:[
+      "La <strong>révolution numérique</strong> transforme les organisations : e-commerce, télétravail, automatisation, IA, big data. Opportunités (nouvelles offres, efficacité) ET risques (cybersécurité, emploi).",
+      "Les <strong>mutations écologiques</strong> obligent à repenser le modèle : éco-conception, économie circulaire, réduction des émissions. <strong>Haribo</strong> a robotisé ses usines et développé son e-commerce tout en maintenant 5 000 emplois.",
+    ]},
+  ],
+  ret:["PESTEL : 6 facteurs macro-environnementaux à surveiller en permanence","Parties prenantes : acteurs internes et externes qui influencent l'organisation","Transformations numériques = opportunités + risques","Mutations écologiques → RSE, économie circulaire, réglementation","Facteurs internes (taille, culture, histoire) influencent aussi le management"],
+},
+bac:{
+  ent:"Minelli (chaussures)",desc:"Minelli est une enseigne française de chaussures (150 points de vente). Elle a dû adapter son management face à la montée du e-commerce (+25 % du marché, +8 pts en 5 ans), à l'inflation (+4,8 % en 2023) et aux nouvelles attentes des consommateurs (durabilité, transparence).",
+  docs:[
+    {lbl:"Document 1 — L'environnement de Minelli",txt:"Le marché de la chaussure en France est en transformation profonde : les ventes en ligne représentent désormais 25 % du marché total (+8 pts en 5 ans). Les consommateurs recherchent davantage de transparence sur la fabrication (origine des matières, conditions de travail) et de durabilité (produits réparables, marques engagées). La hausse de l'inflation (+4,8 % en 2023) a réduit le budget chaussures des ménages, intensifiant la concurrence sur les prix."},
+    {lbl:"Document 2 — Les réponses managériales de Minelli",txt:"Face à ces évolutions, Minelli a mis en place : (1) lancement d'un site e-commerce avec livraison en 24h et click & collect ; (2) service de réparation de chaussures dans ses boutiques ; (3) publication d'un rapport RSE sur la traçabilité de sa chaîne d'approvisionnement ; (4) formation de ses équipes de vente au conseil personnalisé pour créer de la valeur ajoutée face aux acteurs du web."},
+  ],
+  qs:[
+    {n:1,pts:3,q:"À partir du document 1, identifiez et classez les facteurs PESTEL qui impactent Minelli.",rep:"Économique : hausse de l'inflation (+4,8 % en 2023) → réduction du budget chaussures des ménages → intensification de la concurrence prix. Technologique : montée du e-commerce (+25 % du marché, +8 pts en 5 ans) → disruption du modèle de distribution en boutique physique. Socioculturel : nouvelles attentes des consommateurs (transparence sur la fabrication, durabilité, engagement RSE des marques). Écologique : demande de produits réparables et durables, traçabilité de la chaîne d'approvisionnement. Ces 4 facteurs forment un environnement sous forte pression nécessitant une adaptation managériale rapide."},
+    {n:2,pts:3,q:"À partir du document 2, montrez que chaque décision managériale de Minelli constitue une réponse précise à un facteur de l'environnement identifié.",rep:"(1) E-commerce + click & collect → réponse au facteur technologique (montée des achats en ligne) : Minelli s'adapte au canal numérique pour ne pas perdre des parts de marché. (2) Service de réparation → réponse aux mutations écologiques et sociétales (durabilité, économie circulaire) : valorise les attentes consommateurs pour des produits à longue durée de vie. (3) Rapport RSE sur la traçabilité → réponse au facteur socioculturel (transparence attendue sur la fabrication) : rassure les consommateurs exigeants. (4) Formation au conseil personnalisé → réponse au facteur économique (concurrence prix avec le e-commerce) : créer une valeur ajoutée spécifique au réseau physique que le web ne peut pas offrir."},
+    {n:3,pts:2,q:"Identifiez les parties prenantes concernées par les décisions managériales de Minelli et précisez leurs attentes.",rep:"Clients : attendent un service en ligne (e-commerce, click & collect), des produits durables (réparation), de la transparence (rapport RSE) et un conseil personnalisé. Salariés : leur métier évolue (formation au conseil), nouvelles compétences numériques requises (gestion e-commerce). Fournisseurs et sous-traitants : soumis aux exigences de traçabilité RSE. Actionnaires/investisseurs : sensibles à la valorisation de l'image marque RSE. Chaque partie prenante a des attentes spécifiques que Minelli doit concilier dans son management."},
+  ]
+},
+qcm:[
+  {q:"Le facteur 'E' écologique du PESTEL concerne…",os:["L'économie de marché","L'environnement naturel et les réglementations vertes","L'emploi des jeunes","Les exportations"],a:1,e:"Le facteur Écologique analyse l'impact des contraintes naturelles et réglementaires : changement climatique, normes environnementales, attentes RSE."},
+  {q:"Les parties prenantes INTERNES comprennent…",os:["Les clients et fournisseurs","Les actionnaires et ONG","Les salariés et dirigeants","L'État et les collectivités"],a:2,e:"Parties prenantes internes = membres de l'organisation (salariés, dirigeants, syndicats). Les parties prenantes externes sont à l'extérieur."},
+  {q:"La transformation numérique crée pour les organisations…",os:["Uniquement des opportunités","Uniquement des risques","Des opportunités ET des risques","Aucun impact majeur"],a:2,e:"La digitalisation est à double tranchant : opportunités (efficacité, nouveaux marchés) ET risques (cybersécurité, emploi, dépendance technologique)."},
+  {q:"La hausse de l'inflation est un facteur PESTEL…",os:["Technologique","Politique","Économique","Socioculturel"],a:2,e:"L'inflation est un facteur ÉCONOMIQUE du PESTEL : elle affecte le pouvoir d'achat des ménages et les coûts de production."},
+],
+vf:[
+  {q:"PESTEL analyse l'environnement macro-économique d'une organisation.",a:true,e:"PESTEL analyse 6 facteurs macro-environnementaux : Politique, Économique, Socioculturel, Technologique, Écologique, Légal."},
+  {q:"Les facteurs internes (taille, culture, histoire) n'influencent pas le management.",a:false,e:"La taille, la culture et l'histoire de l'organisation influencent fortement ses pratiques managériales (principe de contingence du management)."},
+  {q:"La RSE est une réponse du management aux mutations écologiques et sociétales.",a:true,e:"La RSE traduit l'intégration par le management des enjeux environnementaux et sociaux dans la stratégie de l'organisation."},
+  {q:"Une ONG est une partie prenante externe de l'entreprise.",a:true,e:"Les ONG sont des parties prenantes externes : elles peuvent influencer les décisions par leurs campagnes, leur lobbying ou des actions de boycott."},
+],
+flash:[
+  {t:"PESTEL",d:"Outil d'analyse macro-environnementale : Politique, Économique, Socioculturel, Technologique, Écologique, Légal."},
+  {t:"Parties prenantes",d:"Acteurs internes et externes qui influencent ou sont influencés par les décisions de l'organisation."},
+  {t:"Transformations numériques",d:"Révolution digitale transformant les organisations (e-commerce, IA, automatisation) → opportunités et risques."},
+  {t:"Mutations écologiques",d:"Évolutions environnementales contraignant les organisations à adapter leur modèle : réglementation, éco-conception, économie circulaire."},
+  {t:"Contingence du management",d:"Les pratiques managériales dépendent du contexte : taille, secteur, culture, technologie, environnement externe."},
+]},
+
+{id:4,n:5,th:2,ic:'🗺️',cas:'Renault Group',
+title:"Qu'est-ce que la stratégie ?",
+tags:['Stratégie','Démarche stratégique','Veille stratégique','SWOT','Stratégie agile'],
+cours:{
+  intro:"La stratégie est l'ensemble des décisions et actions qui engagent l'organisation sur le long terme pour atteindre ses objectifs. La démarche stratégique part d'un diagnostic pour aboutir à un plan d'actions coordonnées.",
+  secs:[
+    {t:"La stratégie",pts:[
+      "<strong>Définition :</strong> ensemble de décisions et d'actions engageant l'organisation sur le long terme, en tenant compte de ses ressources et de son environnement.",
+      "Stratégie <strong>planifiée</strong> (contexte stable, plans à long terme) vs stratégie <strong>agile</strong> (ajustements permanents en environnement incertain). Exemple : <strong>Renault Group</strong> a dû réviser en urgence sa 'Renaulution' après son retrait forcé du marché russe (perte 1 Md€).",
+    ]},
+    {t:"La démarche stratégique et le SWOT",pts:[
+      "Démarche : <strong>diagnostic interne</strong> (Forces/Faiblesses) + <strong>diagnostic externe</strong> (Opportunités/Menaces) → synthèse <strong>SWOT</strong> → objectifs stratégiques → plan d'actions.",
+      "<strong>SWOT</strong> = Strengths (Forces) + Weaknesses (Faiblesses) + Opportunities (Opportunités) + Threats (Menaces). Outil de synthèse du diagnostic stratégique.",
+    ]},
+    {t:"La veille stratégique",pts:[
+      "<strong>Définition :</strong> surveillance permanente et systématique de l'environnement (technologique, concurrentiel, réglementaire, sociétal) pour anticiper les changements.",
+      "Une veille précoce peut devenir un avantage concurrentiel décisif : <strong>Nvidia</strong> a anticipé le boom de l'IA en développant l'architecture CUDA dès 2006, avant que le marché n'explose.",
+    ]},
+  ],
+  ret:["Stratégie = décisions LT pour atteindre les objectifs avec les ressources disponibles","Démarche : diagnostic interne + externe → SWOT → objectifs → plan d'actions","SWOT : Forces/Faiblesses (internes) | Opportunités/Menaces (externes)","Veille stratégique = surveillance permanente pour anticiper","Stratégie agile vs stratégie planifiée selon la stabilité de l'environnement"],
+},
+bac:{
+  ent:"La Poste",desc:"La Poste est un groupe public français (160 000 salariés, CA 35 Mds€) qui a dû adapter sa stratégie face à l'effondrement du courrier (–60 % en 10 ans) et à la montée du e-commerce.",
+  docs:[
+    {lbl:"Document 1 — La stratégie d'adaptation de La Poste",txt:"Pour faire face à la baisse du courrier (–6 Mds€ de CA en 10 ans), La Poste a progressivement transformé ses bureaux en véritables comptoirs de services. Elle propose désormais des services à la personne (jardinage, bricolage, aide aux seniors), des services financiers (La Banque Postale), des conseils en rénovation énergétique, et a installé des cabines d'essayage dans certains bureaux pour les achats en ligne. Les activités e-commerce (Colissimo) ont généré 840 M€ de CA supplémentaire."},
+    {lbl:"Document 2 — SWOT La Poste 2023 (extrait)",data:{h:['Catégorie','Éléments clés'],r:[['Forces','Réseau capillaire de 17 000 bureaux, marque reconnue, 160 000 facteurs (présence quotidienne)'],['Faiblesses','Coûts fixes élevés, image vieillissante, lourdeur administrative'],['Opportunités','Boom e-commerce (+Colissimo), silver économie (services seniors), dématérialisation'],['Menaces','Concurrence DHL/UPS, déclin structurel du courrier, digitalisation des services']]}},
+  ],
+  qs:[
+    {n:1,pts:2,q:"À partir du document 1, expliquez comment la stratégie de La Poste illustre la notion de stratégie agile.",rep:"La stratégie de La Poste illustre la stratégie agile car elle s'est adaptée en permanence à un environnement en forte mutation : (1) elle n'a pas maintenu un plan fixe face au déclin du courrier mais a pivoté progressivement vers les services (jardinage, aide seniors, rénovation) ; (2) elle a saisi une opportunité émergente (boom e-commerce → Colissimo +840 M€) non anticipable 20 ans auparavant ; (3) elle a transformé son principal actif (réseau de bureaux et de facteurs) en nouvelles offres, s'adaptant au contexte. La stratégie agile consiste à ajuster en permanence la stratégie aux signaux de l'environnement, contrairement à un plan fixe et rigide."},
+    {n:2,pts:3,q:"À partir du document 2, analysez le SWOT de La Poste et déduisez les orientations stratégiques cohérentes.",rep:"Le SWOT de La Poste révèle une tension entre des forces distinctives (réseau de 17 000 bureaux, 160 000 facteurs présents quotidiennement, marque de confiance) et des faiblesses structurelles (coûts fixes élevés, image vieillissante). Les orientations stratégiques cohérentes consistent à exploiter les forces pour saisir les opportunités : (1) utiliser le réseau capillaire pour développer les services de proximité (silver économie, services à la personne) → aligner Force + Opportunité ; (2) Colissimo profite du boom e-commerce en s'appuyant sur la logistique existante → Force + Opportunité ; (3) moderniser l'image (faiblesse) pour réduire la menace de la concurrence DHL/UPS. La stratégie doit éviter de dépenser des ressources sur le courrier en déclin (Menace structurelle incontournable)."},
+    {n:3,pts:3,q:"En quoi la veille stratégique est-elle déterminante pour La Poste dans ce contexte de transformation ?",rep:"La veille stratégique est cruciale pour La Poste car son environnement se transforme rapidement et simultanément sur plusieurs dimensions : (1) Veille technologique : anticiper les nouveaux usages numériques (dématérialisation des courriers administratifs → réorienter les activités avant la chute) ; (2) Veille concurrentielle : surveiller DHL, Amazon Logistics et les nouveaux entrants pour adapter son positionnement Colissimo ; (3) Veille sociétale : détecter l'émergence des besoins des seniors (silver économie) et des services de proximité avant la concurrence ; (4) Veille réglementaire : les réformes du service public postal imposent des adaptations. Sans veille permanente, La Poste aurait été paralysée par le déclin du courrier comme Kodak par le numérique."},
+  ]
+},
+qcm:[
+  {q:"Dans le SWOT, les menaces appartiennent au…",os:["Diagnostic interne","Diagnostic externe","Plan stratégique","Tableau de bord"],a:1,e:"Les menaces viennent de l'environnement EXTERNE (concurrence, nouvelles lois, crise économique...)."},
+  {q:"La veille stratégique est…",os:["Une analyse ponctuelle annuelle","Une surveillance permanente de l'environnement","Un outil de contrôle de gestion","Une technique de recrutement"],a:1,e:"La veille stratégique est PERMANENTE et systématique : elle surveille en continu l'environnement pour anticiper les mutations."},
+  {q:"Une stratégie agile est préférable quand…",os:["L'environnement est stable et prévisible","L'environnement est incertain et en rapide mutation","L'organisation est très grande","Les ressources sont abondantes"],a:1,e:"La stratégie agile s'adapte en temps réel aux évolutions imprévisibles de l'environnement."},
+  {q:"Le SWOT est un outil de…",os:["Contrôle financier","Diagnostic stratégique synthétisant interne et externe","Gestion des ressources humaines","Communication externe"],a:1,e:"Le SWOT synthétise le diagnostic stratégique en 4 quadrants : Forces et Faiblesses (interne) + Opportunités et Menaces (externe)."},
+],
+vf:[
+  {q:"La stratégie concerne uniquement les décisions à court terme.",a:false,e:"La stratégie concerne les décisions à LONG TERME (3–10 ans). Le court terme relève du management opérationnel."},
+  {q:"La veille stratégique peut devenir un avantage concurrentiel décisif.",a:true,e:"Nvidia illustre parfaitement : en anticipant le boom de l'IA dès 2006 grâce à sa veille technologique, elle a pris une avance considérable sur ses concurrents."},
+  {q:"Les opportunités et menaces proviennent du diagnostic interne.",a:false,e:"Opportunités et Menaces viennent du diagnostic EXTERNE. Forces et Faiblesses viennent du diagnostic interne."},
+  {q:"Une stratégie bien définie ne nécessite jamais d'ajustements.",a:false,e:"Toute stratégie doit être révisée face aux évolutions de l'environnement. Renault a dû adapter sa stratégie après le retrait forcé du marché russe."},
+],
+flash:[
+  {t:"Stratégie",d:"Ensemble de décisions et d'actions à long terme pour atteindre les objectifs en tenant compte des ressources et de l'environnement."},
+  {t:"SWOT",d:"Outil de diagnostic stratégique : Forces + Faiblesses (interne) / Opportunités + Menaces (externe)."},
+  {t:"Veille stratégique",d:"Surveillance permanente de l'environnement pour anticiper les changements et adapter la stratégie."},
+  {t:"Stratégie agile",d:"Approche flexible qui s'ajuste en permanence aux évolutions imprévisibles de l'environnement."},
+  {t:"Démarche stratégique",d:"Processus : diagnostic interne + externe → synthèse SWOT → objectifs → plan d'actions coordonnées."},
+]},
+
+{id:5,n:6,th:2,ic:'🔍',cas:'Smoby / Laulhère',
+title:"Comment élaborer le diagnostic stratégique ?",
+tags:['Diagnostic interne','Diagnostic externe','Compétences distinctives','FCS','Ressources'],
+cours:{
+  intro:"Le diagnostic stratégique analyse les ressources et compétences internes (ce qu'on fait bien) et les facteurs de l'environnement externe (ce qui compte dans le secteur) pour identifier les leviers de succès.",
+  secs:[
+    {t:"Le diagnostic interne",pts:[
+      "<strong>Compétences distinctives :</strong> ce que l'organisation maîtrise mieux que ses concurrents → avantage concurrentiel durable. Ex : le savoir-faire artisanal de <strong>Laulhère</strong> (bérets depuis 1840, label EPV).",
+      "Le diagnostic interne analyse les ressources humaines, financières, matérielles, immatérielles et technologiques pour identifier les Forces et les Faiblesses.",
+    ]},
+    {t:"Le diagnostic externe",pts:[
+      "<strong>Facteurs Clés de Succès (FCS) :</strong> éléments que toute organisation d'un secteur doit maîtriser pour réussir. Ils s'imposent à tous. Ex : innovation et design dans le jouet (Smoby).",
+      "Le diagnostic externe identifie les <strong>Opportunités</strong> (tendances favorables) et les <strong>Menaces</strong> (concurrence, ruptures) de l'environnement.",
+      "<strong>Distinction clé :</strong> compétence distinctive = interne, propre à l'organisation. FCS = externe, imposé à tous dans le secteur.",
+    ]},
+  ],
+  ret:["Diagnostic interne = Forces et Faiblesses = ressources et compétences propres","Compétences distinctives = ce qu'on fait mieux que les concurrents → avantage concurrentiel","Diagnostic externe = Opportunités et Menaces = environnement","FCS = conditions de succès imposées à tous les acteurs du secteur","Compétence distinctive ≠ FCS (l'une est interne, l'autre est externe et commune à tous)"],
+},
+bac:{
+  ent:"Laulhère (bérets)",desc:"Laulhère est le dernier bérettier français (fondé en 1840 à Oloron-Sainte-Marie). Il fabrique des bérets haut de gamme dans 500 boutiques en France et 1 000 dans le monde. 35 % des ventes sont militaires.",
+  docs:[
+    {lbl:"Document 1 — Les ressources de Laulhère",txt:"Laulhère emploie 65 artisans qualifiés maîtrisant un savoir-faire transmis depuis 180 ans. L'entreprise est l'unique atelier de fabrication artisanale de bérets en France. Sa marque est reconnue comme 'Entreprise du Patrimoine Vivant' (EPV). 22 % du CA est réalisé en ligne. Elle exporte dans 35 pays. Son résultat net est positif depuis 5 ans consécutifs."},
+    {lbl:"Document 2 — L'environnement de Laulhère",txt:"Le marché du béret connaît une évolution : la tendance 'made in France' et le retour des accessoires vintage favorisent les ventes civiles (+15 % en 2023). Le marché militaire reste solide (35 % du CA). La concurrence des bérets asiatiques low-cost se renforce, mais les consommateurs premium restent fidèles à l'authenticité. Les réseaux sociaux (Instagram, TikTok) sont devenus essentiels pour toucher les nouvelles générations."},
+  ],
+  qs:[
+    {n:1,pts:3,q:"À partir du document 1, identifiez les ressources de Laulhère et repérez sa ou ses compétences distinctives.",rep:"Ressources identifiées : Humaines (65 artisans qualifiés, savoir-faire transmis sur 180 ans). Immatérielles (marque reconnue, label EPV, image Made in France, relation client premium). Matérielles (unique atelier artisanal de bérets en France). Financières (résultat net positif 5 ans consécutifs). Technologiques (site e-commerce : 22 % du CA, export 35 pays). Compétences distinctives : (1) le savoir-faire artisanal de 180 ans (unique, difficile à imiter, reconnu par le label EPV) ; (2) l'image 'dernier bérettier français' (unicité concurrentielle). Ces compétences sont propres à Laulhère et lui confèrent un avantage concurrentiel durable que les concurrents asiatiques low-cost ne peuvent pas copier."},
+    {n:2,pts:3,q:"À partir du document 2, réalisez le diagnostic externe de Laulhère (opportunités, menaces, FCS).",rep:"Opportunités : (1) Tendance 'made in France' et mode vintage en hausse → ventes civiles +15 % (facteur socioculturel favorable) ; (2) Marché militaire stable et récurrent (35 % du CA) ; (3) Réseaux sociaux pour toucher les jeunes générations (facteur technologique favorable) ; (4) Export dans 35 pays = diversification géographique possible. Menaces : (1) Concurrence des bérets asiatiques low-cost (facteur économique) ; (2) Nécessité de maîtriser les réseaux sociaux pour rester visible (facteur technologique menaçant si non maîtrisé). Facteurs Clés de Succès du secteur du béret haut de gamme : authenticité et savoir-faire artisanal, image de marque forte, présence digitale, distribution premium (boutiques + web)."},
+    {n:3,pts:2,q:"Montrez que Laulhère dispose d'un positionnement stratégique cohérent entre ses compétences distinctives et les FCS de son secteur.",rep:"La cohérence stratégique de Laulhère est forte car ses compétences distinctives internes (savoir-faire 180 ans, label EPV, unicité artisanale) s'alignent parfaitement avec les FCS du secteur (authenticité, image de marque). Cette correspondance lui permet de résister à la concurrence low-cost asiatique : un client premium cherche précisément ce que Laulhère est le seul à pouvoir offrir. Son seul point de vigilance : le FCS 'présence digitale' est un facteur où Laulhère doit encore progresser (22 % de CA en ligne est bien mais insuffisant pour toucher les jeunes générations de TikTok) → c'est une faiblesse à corriger pour saisir l'opportunité réseaux sociaux."},
+  ]
+},
+qcm:[
+  {q:"Les compétences distinctives d'une organisation sont…",os:["Des compétences communes à tous les acteurs du secteur","Ce que l'organisation maîtrise mieux que ses concurrents","Des indicateurs financiers","Des FCS imposés par l'environnement"],a:1,e:"Les compétences distinctives sont propres à l'organisation : elles lui permettent de se différencier durablement de ses concurrents."},
+  {q:"Les Facteurs Clés de Succès (FCS) sont…",os:["Propres à chaque entreprise","Les mêmes pour toutes les entreprises d'un secteur","Des compétences internes uniques","Des ressources financières uniquement"],a:1,e:"Les FCS s'imposent à TOUS les acteurs d'un secteur : c'est ce qu'il faut maîtriser pour réussir dans ce secteur."},
+  {q:"Le diagnostic interne identifie…",os:["Les menaces de la concurrence","Les FCS du secteur","Les ressources et compétences propres à l'organisation","Les tendances macro-économiques"],a:2,e:"Le diagnostic interne analyse les forces et faiblesses propres : ressources humaines, financières, matérielles, immatérielles et technologiques."},
+  {q:"Le label EPV (Entreprise du Patrimoine Vivant) est une ressource…",os:["Matérielle","Financière","Immatérielle","Technologique"],a:2,e:"Le label EPV est une ressource immatérielle (sans forme physique) qui valorise le savoir-faire artisanal français."},
+],
+vf:[
+  {q:"Une compétence distinctive peut être source d'avantage concurrentiel durable.",a:true,e:"Si difficile à imiter, rare et valorisée par les clients, la compétence distinctive confère un avantage concurrentiel durable."},
+  {q:"Les FCS sont identiques dans tous les secteurs d'activité.",a:false,e:"Les FCS dépendent du secteur : innovation/design dans le jouet ; authenticité dans le luxe ; localisation/prix dans la restauration rapide."},
+  {q:"Le diagnostic externe identifie forces et faiblesses.",a:false,e:"Le diagnostic EXTERNE identifie OPPORTUNITÉS et MENACES. Forces et Faiblesses = diagnostic INTERNE."},
+  {q:"Compétence distinctive et FCS sont deux notions différentes.",a:true,e:"Compétence distinctive = interne, propre à l'org. FCS = externe, imposé à tous. Leur combinaison crée un avantage concurrentiel."},
+],
+flash:[
+  {t:"Diagnostic interne",d:"Analyse des Forces et Faiblesses : ressources humaines, financières, matérielles, immatérielles et technologiques."},
+  {t:"Compétences distinctives",d:"Ce que l'organisation maîtrise mieux que ses concurrents → avantage concurrentiel difficile à imiter."},
+  {t:"Diagnostic externe",d:"Analyse des Opportunités et Menaces : environnement macro (PESTEL) et concurrents (FCS)."},
+  {t:"Facteurs Clés de Succès (FCS)",d:"Ce que tous les acteurs d'un secteur doivent maîtriser pour réussir. S'impose à tous, pas propre à une seule organisation."},
+  {t:"Label EPV",d:"Entreprise du Patrimoine Vivant : reconnaissance officielle du savoir-faire artisanal français. Ressource immatérielle précieuse."},
+]},
+
+{id:6,n:7,th:2,ic:'🎯',cas:'Adidas / Zero Waste France',
+title:"Comment interpréter le diagnostic, définir et évaluer les objectifs ?",
+tags:['Objectifs stratégiques','Indicateurs','Tableaux de bord','Actions correctives','RSE'],
+cours:{
+  intro:"Une fois le diagnostic établi, l'organisation traduit ses analyses en objectifs stratégiques mesurables. Des indicateurs permettent de piloter leur atteinte et de déclencher des actions correctives si nécessaire.",
+  secs:[
+    {t:"De la finalité aux objectifs",pts:[
+      "<strong>Objectifs stratégiques :</strong> résultats précis, mesurables et temporels à atteindre, en cohérence avec la finalité et le SWOT.",
+      "La <strong>RSE</strong> est intégrée dans les objectifs : objectifs financiers + sociaux (parité, conditions de travail) + environnementaux (CO₂, recyclage).",
+      "Les objectifs sont soumis aux <strong>parties prenantes</strong>. Des <strong>conflits</strong> naissent quand leurs intérêts divergent (actionnaires vs salariés vs ONG).",
+    ]},
+    {t:"Les indicateurs de performance",tbl:{h:['Dimension','Exemples d\'indicateurs'],r:[['Financière','CA, résultat net, marge, rentabilité'],['Commerciale','Parts de marché, NPS, fidélisation'],['Sociale','Absentéisme, turnover, index égalité H/F'],['Environnementale','Émissions CO₂, taux de recyclage'],['Opérationnelle','Délai livraison, taux de défauts']]}},
+    {t:"Pilotage et actions correctives",pts:[
+      "Le <strong>tableau de bord</strong> regroupe les indicateurs clés pour piloter l'atteinte des objectifs en temps réel.",
+      "Un <strong>écart</strong> entre résultats et objectifs déclenche des <strong>actions correctives</strong> : révision des objectifs, réallocation des ressources, changement de stratégie.",
+    ]},
+  ],
+  ret:["Objectifs : précis, mesurables, temporels, cohérents avec la finalité","5 dimensions d'indicateurs : financier, commercial, social, environnemental, opérationnel","Tableau de bord = outil de pilotage en temps réel","Écart → actions correctives","Conflits possibles entre parties prenantes sur les objectifs"],
+},
+bac:{
+  ent:"Zero Waste France",desc:"Zero Waste France est une association (mission : accélérer la transition vers une société sans gaspillage). Objectifs 2023-2025 : 5 000 adhérents, 1 000 entreprises formées/an, 5 nouvelles réglementations influencées. Budget : 1,8 M€.",
+  docs:[
+    {lbl:"Document 1 — Indicateurs de suivi 2023",data:{h:['Indicateur','Objectif 2024','Réalisé 2023','Écart'],r:[['Nombre d\'adhérents','5 000','3 850','−1 150'],['Entreprises formées/an','1 000','780','−220'],['Réglementations influencées','5','2','−3'],['Budget collecté','1,8 M€','1,72 M€','−0,08 M€'],['Satisfaction adhérents (/10)','8,5','8,7','+0,2']]}},
+    {lbl:"Document 2 — Contexte stratégique",txt:"Zero Waste France fait face à une concurrence croissante entre associations environnementales (les dons et subventions se fragmentent entre de nombreuses OSC). En 2023, le gouvernement a réduit de 15 % les subventions aux associations environnementales. Par ailleurs, la sensibilité du grand public aux enjeux 'zéro déchet' augmente (+8 pts en 3 ans selon un sondage IFOP), ce qui représente une opportunité de recrutement de membres."},
+  ],
+  qs:[
+    {n:1,pts:3,q:"À partir du document 1, analysez la performance de Zero Waste France. Identifiez les points forts et les domaines nécessitant des actions correctives.",rep:"Points forts : satisfaction des adhérents supérieure à l'objectif (8,7 vs 8,5/10 → +0,2 pt) → la qualité du service est reconnue. Budget quasi atteint (1,72/1,8 M€ = 95,5 %). Domaines nécessitant des actions correctives : (1) Adhérents : seulement 3 850 pour un objectif 5 000 (77 % de l'objectif, écart −1 150) → action corrective prioritaire ; (2) Entreprises formées : 780 pour 1 000 (78 %, écart −220) → augmenter la capacité de formation ; (3) Réglementations influencées : seulement 2 pour 5 (40 %, écart −3) → renforcer le lobbying et les coalitions."},
+    {n:2,pts:3,q:"À partir du document 2, identifiez les facteurs de l'environnement qui expliquent les écarts constatés et proposez des actions correctives adaptées.",rep:"Facteurs expliquant les écarts : (1) Réduction des subventions gouvernementales (−15 %) → explique l'écart budgétaire (−0,08 M€) et les difficultés à financer plus de formations ; (2) Concurrence entre OSC environnementales → fragmentent les dons et subventions, ce qui freine le recrutement d'adhérents et l'influence réglementaire. Actions correctives : (1) Adhérents : lancer une campagne digitale exploitant la tendance favorable (+8 pts de sensibilité du public) → campagne réseaux sociaux, partenariats avec influenceurs écologiques ; (2) Formations : proposer des formations en ligne (e-learning) pour réduire les coûts et augmenter la capacité sans augmenter le budget ; (3) Réglementations : constituer une coalition d'OSC pour peser collectivement dans les négociations législatives."},
+    {n:3,pts:2,q:"En quoi les objectifs de Zero Waste France peuvent-ils être contradictoires ? Illustrez avec un exemple.",rep:"Les objectifs de Zero Waste France peuvent être contradictoires : augmenter le nombre d'adhérents (objectif de croissance) nécessite un investissement en communication et en services, ce qui alourdit les charges et peut menacer l'équilibre budgétaire (objectif financier). De même, influencer 5 nouvelles réglementations (objectif politique) nécessite des ressources humaines dédiées au lobbying, au détriment peut-être des 1 000 entreprises à former (objectif opérationnel). Le management doit arbitrer entre des objectifs multiples qui se concurrencent pour les mêmes ressources limitées (budget de 1,8 M€)."},
+  ]
+},
+qcm:[
+  {q:"Un bon objectif stratégique doit être…",os:["Vague et inspirant","Précis, mesurable et temporel","Uniquement financier","Fixé unilatéralement par la direction"],a:1,e:"Un objectif stratégique doit être SMART : Spécifique, Mesurable, Atteignable, Réaliste, Temporel."},
+  {q:"Le taux d'absentéisme est un indicateur…",os:["Financier","Commercial","Social","Environnemental"],a:2,e:"Le taux d'absentéisme est un indicateur social : il mesure le bien-être et les conditions de travail des salariés."},
+  {q:"Quand les résultats s'écartent des objectifs, le manager doit…",os:["Attendre la fin de l'exercice","Déclencher des actions correctives","Supprimer les objectifs","Licencier les responsables"],a:1,e:"Le pilotage implique de réagir dès qu'un écart est détecté : analyser les causes et mettre en place des actions correctives."},
+  {q:"L'émission de CO₂ est un indicateur de performance…",os:["Commerciale","Financière","Sociale","Environnementale"],a:3,e:"Les émissions de CO₂ mesurent l'impact environnemental de l'organisation : indicateur de performance environnementale lié aux objectifs RSE."},
+],
+vf:[
+  {q:"Les objectifs stratégiques peuvent inclure des objectifs sociaux et environnementaux.",a:true,e:"Dans le cadre de la RSE, les organisations intègrent des objectifs sociaux et environnementaux à leurs objectifs stratégiques."},
+  {q:"Le tableau de bord contient uniquement des indicateurs financiers.",a:false,e:"Un tableau de bord équilibré intègre des indicateurs financiers, commerciaux, sociaux, environnementaux et opérationnels."},
+  {q:"Un écart positif entre résultats et objectifs ne nécessite jamais d'action.",a:false,e:"Un écart positif peut indiquer des objectifs trop faciles → les réviser à la hausse. Analyser les causes même des bons résultats."},
+  {q:"Les parties prenantes peuvent créer des conflits sur les objectifs.",a:true,e:"Actionnaires (profit), salariés (conditions de travail), ONG (environnement) peuvent avoir des attentes contradictoires sur les objectifs."},
+],
+flash:[
+  {t:"Objectif stratégique",d:"Résultat précis, mesurable et temporel à atteindre, en cohérence avec la finalité et le diagnostic SWOT."},
+  {t:"Tableau de bord",d:"Outil regroupant des indicateurs clés pour piloter en temps réel l'atteinte des objectifs."},
+  {t:"Indicateur de performance",d:"Mesure quantitative ou qualitative permettant d'évaluer l'atteinte d'un objectif."},
+  {t:"Actions correctives",d:"Mesures prises quand un écart est constaté entre résultats réels et objectifs fixés."},
+  {t:"Performance globale",d:"Vision multidimensionnelle : financière, commerciale, sociale et environnementale. Les dimensions peuvent être contradictoires."},
+]},
+
+{id:7,n:8,th:3,ic:'🏁',cas:'Nintendo / Sony',
+title:"Quelles options stratégiques pour les entreprises : spécialisation ou diversification ?",
+tags:['Spécialisation','Diversification','DAS','Stratégie globale','Synergies'],
+cours:{
+  intro:"Au niveau global, les entreprises doivent choisir entre concentrer leurs ressources sur un seul domaine (spécialisation) ou développer plusieurs activités (diversification). Ces choix définissent leur portefeuille d'activités.",
+  secs:[
+    {t:"Le Domaine d'Activité Stratégique (DAS)",pts:[
+      "<strong>DAS :</strong> ensemble d'activités partageant les mêmes ressources, compétences et concurrents, et faisant face aux mêmes FCS. Une organisation peut en avoir plusieurs.",
+      "<strong>Nintendo</strong> (1 DAS : jeux vidéo/consoles) vs <strong>Sony</strong> (multiples DAS : jeux vidéo, musique, cinéma, capteurs d'image). Même secteur d'origine, stratégies globales diamétralement opposées.",
+    ]},
+    {t:"Spécialisation vs Diversification",tbl:{h:['Stratégie','Définition','Avantages','Risques'],r:[['Spécialisation','1 seul DAS maîtrisé','Maîtrise totale, économies d\'échelle, image forte','Dépendance à un seul marché'],['Diversification liée','Plusieurs DAS avec synergies','Synergies, transfert de compétences, répartition des risques','Complexité managériale'],['Diversification conglomérale','DAS sans lien entre eux','Répartition maximale des risques','Perte de cohérence, piloter difficile']]}},
+  ],
+  ret:["DAS = activités avec mêmes FCS, ressources et concurrents","Spécialisation = 1 DAS | Diversification = plusieurs DAS","Diversification liée (synergies) vs conglomérale (sans lien)","Spécialisation : maîtrise totale mais dépendance au marché","Diversification : répartit les risques mais complexité managériale"],
+},
+bac:{
+  ent:"Huawei",desc:"Huawei opère sur 4 DAS : Réseaux télécoms (40 %), Terminaux smartphones (35 %), Cloud (15 %), IA/logiciels (10 %). Depuis les sanctions américaines de 2019 (interdiction d'accès aux puces TSMC/Qualcomm), Huawei a dû adapter sa stratégie.",
+  docs:[
+    {lbl:"Document 1 — L'impact des sanctions américaines sur Huawei",txt:"Les sanctions américaines (2019) ont interdit à Huawei l'accès aux puces TSMC et aux logiciels Google. Résultat : les ventes de smartphones ont chuté de 30,1 Mds$ (2019) à 10,3 Mds$ (2021), soit une perte de 66 %. En réponse, Huawei a développé ses propres puces (Kirin) et son système d'exploitation HarmonyOS, et a accéléré son développement sur les DAS cloud et IA moins exposés aux sanctions."},
+    {lbl:"Document 2 — Évolution du CA Huawei par DAS (Mds USD)",data:{h:['DAS','CA 2019','CA 2021','CA 2023'],r:[['Réseaux télécoms','36,9','32,3','35,2'],['Terminaux (smartphones)','30,1','10,3','17,8'],['Cloud','5,5','11,4','18,2'],['IA / logiciels','—','—','—'],['Total','72,5','54,0','71,2']]}},
+  ],
+  qs:[
+    {n:1,pts:2,q:"À partir des documents, identifiez la stratégie globale de Huawei et justifiez-la.",rep:"Huawei pratique une stratégie de diversification liée : elle opère sur 4 DAS (réseaux télécoms, terminaux, cloud, IA/logiciels) qui entretiennent des synergies technologiques (semi-conducteurs, software partagés, compétences communes en engineering). Ce n'est pas une diversification conglomérale car les DAS partagent des compétences et technologies communes."},
+    {n:2,pts:4,q:"À partir du document 2, analysez l'évolution du CA de Huawei entre 2019 et 2023 et montrez que sa stratégie de diversification a joué un rôle d'amortisseur face aux sanctions.",rep:"L'analyse du CA montre l'effet amortisseur de la diversification : (1) DAS Terminaux : effondrement de 30,1 à 10,3 Mds$ en 2021 (−66 %) à cause des sanctions. Sans diversification, Huawei n'aurait pas survécu. (2) DAS Cloud : +208 % (de 5,5 à 11,4 Mds$ en 2021) → compensé partiellement la chute des terminaux. (3) DAS Réseaux : relativement stable (36,9 → 32,3 → 35,2). (4) CA total : chute de 72,5 à 54,0 Mds$ (−25 %) mais pas de faillite, grâce aux autres DAS. En 2023, le CA remonte à 71,2 Mds$ (retour quasi aux niveaux pré-sanctions) grâce aux puces Kirin maison et au développement du cloud. La diversification a donc joué son rôle stratégique d'amortisseur des chocs externes."},
+    {n:3,pts:2,q:"Quels sont les risques d'une stratégie de spécialisation dans le contexte de Huawei ? Illustrez.",rep:"Si Huawei avait pratiqué une stratégie de spécialisation (uniquement les smartphones), les sanctions américaines de 2019 l'auraient probablement conduit à la faillite : chute de 66 % des ventes en 2 ans, sans activité compensatrice. La spécialisation expose à une dépendance totale à un seul marché → vulnérabilité maximale aux chocs externes (technologiques, réglementaires, géopolitiques). C'est exactement ce risque que Sony a cherché à éviter en se diversifiant dans la musique, le cinéma et les capteurs d'image."},
+  ]
+},
+qcm:[
+  {q:"La stratégie de spécialisation consiste à…",os:["Développer plusieurs DAS","Concentrer toutes les ressources sur un seul DAS","Racheter des concurrents","Externaliser la production"],a:1,e:"La spécialisation = concentrer toutes les ressources sur le DAS où l'organisation est la meilleure, pour dominer ce marché."},
+  {q:"Un DAS regroupe des activités partageant les mêmes…",os:["Locaux et équipements","FCS, ressources et concurrents","Salariés uniquement","Sources de financement"],a:1,e:"Un DAS est défini par : mêmes facteurs clés de succès, mêmes ressources stratégiques, mêmes concurrents directs."},
+  {q:"La diversification liée offre l'avantage de…",os:["La concentration sur un seul marché","Les synergies et le transfert de compétences entre DAS","L'absence de concurrence","La réduction des coûts fixes uniquement"],a:1,e:"La diversification liée exploite les synergies entre DAS partageant des compétences ou technologies communes."},
+  {q:"La spécialisation présente comme principal risque…",os:["La complexité managériale","La dispersion des ressources","La dépendance totale à un seul marché","Le manque de synergies"],a:2,e:"La spécialisation rend l'organisation vulnérable : si son unique marché est en crise ou obsolète, elle n'a pas d'autre activité pour compenser."},
+],
+vf:[
+  {q:"Nintendo est un exemple de stratégie de spécialisation.",a:true,e:"Nintendo se concentre exclusivement sur le jeu vidéo et les consoles familiales → spécialisation sur 1 DAS."},
+  {q:"La diversification liée implique des synergies entre les DAS.",a:true,e:"La diversification liée regroupe des DAS partageant des compétences, technologies ou marchés communs."},
+  {q:"La spécialisation permet toujours d'éviter les crises de marché.",a:false,e:"La spécialisation expose à un risque de concentration : si le marché unique plonge, toute l'organisation est menacée."},
+  {q:"Sony pratique une stratégie de diversification liée.",a:true,e:"Sony opère sur plusieurs DAS (jeux vidéo, musique, cinéma, capteurs) ayant des synergies (contenu numérique, technologie partagée)."},
+],
+flash:[
+  {t:"DAS",d:"Domaine d'Activité Stratégique : activités partageant mêmes FCS, mêmes ressources et mêmes concurrents."},
+  {t:"Spécialisation",d:"Stratégie concentrant toutes les ressources sur un seul DAS. Maîtrise totale mais dépendance à un seul marché."},
+  {t:"Diversification liée",d:"Plusieurs DAS avec synergies (compétences ou marchés communs). Répartit les risques tout en exploitant les effets d'apprentissage."},
+  {t:"Diversification conglomérale",d:"DAS sans lien entre eux. Répartition maximale des risques mais complexité managériale élevée."},
+  {t:"Synergie",d:"Valeur supplémentaire créée par la combinaison de plusieurs activités : 1+1 > 2."},
+]},
+
+{id:8,n:9,th:3,ic:'⚔️',cas:'Magnum / Lidl (Glaces de Meuse)',
+title:"Quelles options stratégiques pour les entreprises : domination par les coûts ou différenciation ?",
+tags:['Avantage concurrentiel','Domination par les coûts','Différenciation','Stratégie de domaine'],
+cours:{
+  intro:"Au niveau de chaque DAS, l'organisation doit construire un avantage concurrentiel. Les deux grandes stratégies de domaine sont la domination par les coûts (être le moins cher) et la différenciation (se distinguer pour justifier un prix élevé).",
+  secs:[
+    {t:"Les stratégies de domaine",tbl:{h:['Stratégie','Principe','Exemples','Risques'],r:[['Domination par les coûts','Prix les plus bas via réduction maximale des coûts','Lidl, Ryanair, Kiabi, Free Mobile','Guerre des prix, marges faibles'],['Différenciation-Sophistication','Se distinguer pour justifier un prix élevé (qualité, image, innovation)','Magnum, Apple, Hermès, Nespresso','Coût élevé, clientèle réduite'],['Différenciation-Épuration','Offre simple et minimaliste à prix très bas (sans services annexes)','Low-cost aérien strict, Hard discount','Banalisation, marges très faibles']]}},
+    {t:"L'avantage concurrentiel",pts:[
+      "<strong>Avantage concurrentiel :</strong> ce qui permet à l'organisation d'être préférée par les clients. Il peut être un avantage de coût (prix inférieur) ou de valeur perçue (qualité supérieure).",
+      "L'avantage concurrentiel est <strong>éphémère</strong> : les concurrents cherchent à l'imiter. Il faut l'entretenir en permanence par l'innovation.",
+    ]},
+  ],
+  ret:["2 grandes stratégies de domaine : domination par les coûts vs différenciation","Différenciation : sophistication (prix élevé) ou épuration (ultra-bas)","Avantage concurrentiel = avantage de coût OU avantage de valeur perçue","L'avantage concurrentiel est éphémère : l'entretenir en permanence","Les stratégies hybrides (coût + différenciation) se développent avec le numérique"],
+},
+bac:{
+  ent:"Kiabi vs Hermès",desc:"Deux marques du secteur textile français : Kiabi (mode à petits prix, 2,2 Mds€ de CA, 500 magasins) et Hermès (maroquinerie de luxe, 13,4 Mds€ de CA, 300 boutiques dans le monde). Même secteur, stratégies opposées.",
+  docs:[
+    {lbl:"Document 1 — Kiabi : la domination par les coûts",txt:"Kiabi affiche une santé insolente face à des concurrents en crise. Son modèle : des stylistes intégrés (6 collections par an), une logistique ultra-optimisée, des fournisseurs en Europe proche (Espagne, Portugal, Maroc) pour des délais courts. Son positionnement 'la mode à petits prix' s'appuie sur un bouclier anti-inflation de 140 produits à prix bloqués en 2022. CA 2023 : +1,1 % à 2,2 Mds€ malgré un marché textile en crise."},
+    {lbl:"Document 2 — Hermès : la différenciation par sophistication",txt:"Hermès réalise 13,4 Mds€ de CA en 2023 (+21 %). Ses sacs Birkin et Kelly sont fabriqués à la main par des artisans en France, avec des délais d'attente de 2 à 5 ans. La marque refuse délibérément de produire plus pour maintenir la rareté (et donc le désir). Son taux de marge opérationnelle est de 42 %, contre 5 à 8 % pour les enseignes de fast fashion. Hermès n'a pas de promotion ni de soldes."},
+  ],
+  qs:[
+    {n:1,pts:3,q:"À partir des documents, identifiez et comparez les stratégies de domaine de Kiabi et Hermès.",rep:"Kiabi = stratégie de domination par les coûts : positionnement 'mode à petits prix', logistique ultra-optimisée, 140 produits anti-inflation, fournisseurs en Europe proche pour réduire les coûts. L'avantage concurrentiel est le PRIX le plus bas. Hermès = stratégie de différenciation par sophistication : fabrication artisanale en France, délai d'attente 2 à 5 ans, rareté entretenue, aucune promotion ni soldes. L'avantage concurrentiel est la VALEUR PERÇUE exceptionnelle (exclusivité, savoir-faire, prestige). Mêmes secteur (textile) mais stratégies diamétralement opposées : Kiabi cible la masse, Hermès une clientèle premium mondiale."},
+    {n:2,pts:3,q:"À partir des documents, montrez que chaque stratégie est cohérente avec les ressources propres à chaque organisation et analysez les risques associés.",rep:"Kiabi : cohérence entre la domination par les coûts et ses ressources (logistique optimisée, stylistes intégrés, réseau de fournisseurs Europe proche). Risques : guerre des prix si Primark ou Shein s'intensifient, marges très faibles (5-8 %) vulnérables à la hausse des coûts (matières premières, énergie). Hermès : cohérence entre la sophistication et ses ressources distinctives (savoir-faire artisanal, rareté maîtrisée, image centenaire). Risques : clientèle très réduite, dépendance à la clientèle ultra-premium (crise économique mondiale toucherait le luxe), coût de maintien du savoir-faire artisanal (recrutement, formation des artisans)."},
+    {n:3,pts:2,q:"En vous appuyant sur les indicateurs des documents, expliquez pourquoi l'avantage concurrentiel d'Hermès est plus durable que celui de Kiabi.",rep:"L'avantage concurrentiel d'Hermès est plus durable car : (1) Difficile à imiter : le savoir-faire artisanal centenaire, les délais d'attente de 2 à 5 ans et la rareté ne peuvent pas être copiés du jour au lendemain (contrairement à des prix bas que n'importe quel concurrent peut aligner) ; (2) Marge supérieure : 42 % vs 5-8 % pour Kiabi → Hermès génère plus de ressources pour investir dans son avantage. (3) Désirabilité cultivée : en refusant de produire plus, Hermès entretient le désir (demande > offre), renforçant son avantage. L'avantage de Kiabi est plus fragile car la domination par les coûts exige une course permanente à l'optimisation, menacée par des concurrents comme Shein."},
+  ]
+},
+qcm:[
+  {q:"La stratégie de Ryanair (vols low-cost sans frais) est une stratégie de…",os:["Différenciation-sophistication","Domination par les coûts","Diversification","Alliance stratégique"],a:1,e:"Ryanair pratique la domination par les coûts : réduction maximale des charges pour proposer les prix les plus bas."},
+  {q:"Apple pratique une stratégie de…",os:["Domination par les coûts","Spécialisation sans différenciation","Différenciation-sophistication","Externalisation totale"],a:2,e:"Apple se différencie par la sophistication : design premium, écosystème, innovation → ces éléments justifient des prix élevés."},
+  {q:"L'avantage concurrentiel est dit 'éphémère' car…",os:["Il disparaît après 1 an","Les concurrents cherchent en permanence à l'imiter","Il coûte trop cher","Les clients ne le valorisent pas"],a:1,e:"L'avantage concurrentiel est menacé en permanence par la concurrence : il faut l'entretenir activement par l'innovation."},
+  {q:"La stratégie d'épuration propose…",os:["Un positionnement premium","Une offre simplifiée à prix très bas, sans services annexes","Un service complet à prix élevé","Une diversification géographique"],a:1,e:"L'épuration propose l'essentiel uniquement à prix ultra-bas. Différent de la domination classique par les coûts car l'offre est volontairement simplifiée."},
+],
+vf:[
+  {q:"La domination par les coûts consiste à vendre plus cher que les concurrents.",a:false,e:"La domination par les coûts vise à proposer les PRIX LES PLUS BAS en réduisant les coûts de production."},
+  {q:"L'avantage concurrentiel une fois obtenu est définitif.",a:false,e:"L'avantage concurrentiel est ÉPHÉMÈRE : les concurrents cherchent à l'imiter. Il doit être entretenu en permanence."},
+  {q:"Hermès pratique une stratégie de différenciation-sophistication.",a:true,e:"Hermès crée une valeur perçue exceptionnelle (artisanat, rareté, prestige) justifiant des prix et marges très élevés."},
+  {q:"Les stratégies hybrides (coût + différenciation) se développent grâce au numérique.",a:true,e:"Des plateformes comme Amazon pratiquent la domination par les coûts (logistique) ET la différenciation (service Prime) → stratégies hybrides permises par le numérique."},
+],
+flash:[
+  {t:"Domination par les coûts",d:"Proposer les prix les plus bas via une réduction maximale des coûts de production. Ex : Lidl, Ryanair, Kiabi."},
+  {t:"Différenciation-sophistication",d:"Créer une valeur perçue supérieure (qualité, image, innovation) justifiant un prix élevé. Ex : Apple, Magnum, Hermès."},
+  {t:"Avantage concurrentiel",d:"Ce qui permet d'être préféré par les clients face à la concurrence. Toujours éphémère, à entretenir."},
+  {t:"Épuration",d:"Offre simplifiée à l'essentiel, sans services annexes, à prix très bas. Variante de la différenciation low-cost."},
+  {t:"Stratégie hybride",d:"Combine domination par les coûts et différenciation simultanément. Possible grâce au numérique."},
+]},
+
+{id:9,n:10,th:3,ic:'🔗',cas:'Sanofi / Welcoop / Recyc Matelas',
+title:"Quelles options stratégiques pour les entreprises : externalisation ou intégration ?",
+tags:['Chaîne de valeur','Externalisation','Intégration','Avantage concurrentiel','Économie circulaire'],
+cours:{
+  intro:"L'entreprise doit choisir quelles activités maîtriser en interne (intégration) et lesquelles confier à des partenaires (externalisation). Ces décisions sur la chaîne de valeur déterminent la compétitivité et la flexibilité.",
+  secs:[
+    {t:"La chaîne de valeur et les choix d'intégration",pts:[
+      "<strong>Chaîne de valeur :</strong> ensemble des étapes par lesquelles l'organisation crée de la valeur (approvisionnement → production → logistique → vente → SAV). Chaque maillon peut être intégré ou externalisé.",
+    ]},
+    {t:"Intégration vs externalisation",tbl:{h:['Choix','Définition','Avantages','Risques'],r:[['Intégration','Réaliser l\'activité en interne','Contrôle qualité, maîtrise des coûts, compétences','Rigidité, coûts fixes élevés'],['Externalisation','Confier à un prestataire externe','Flexibilité, réduction coûts fixes, expertise','Dépendance, perte de savoir-faire']]}},
+    {t:"Économie circulaire et nouvelles chaînes de valeur",pts:[
+      "L'économie circulaire crée de nouvelles chaînes de valeur <strong>inversées</strong> : <strong>Recyc Matelas</strong> collecte les matelas usagés, les démantèle et revend les matières premières secondaires (mousse, ressorts, fibres, bois). Une intégration verticale complète est nécessaire pour garantir la qualité du recyclage.",
+    ]},
+  ],
+  ret:["Chaîne de valeur = ensemble des étapes créatrices de valeur","Intégration = maîtrise, contrôle, mais rigidité et coûts fixes","Externalisation = flexibilité, spécialisation, mais dépendance","L'économie circulaire crée de nouvelles chaînes de valeur inversées","La décision dépend des compétences distinctives et de la stratégie"],
+},
+bac:{
+  ent:"Shein",desc:"Shein est une plateforme de fast fashion fondée en 2012 en Chine. Elle domine le marché américain avec 40 % de parts de marché début 2023. Son modèle repose sur une chaîne d'approvisionnement externalisée extrême.",
+  docs:[
+    {lbl:"Document 1 — Le modèle Shein : externalisation maximale",txt:"Shein dispose d'un réseau de 6 000 fournisseurs, tous situés à moins de 2 heures de route de son entrepôt principal en Espagne. La production est entièrement externalisée. Shein passe des commandes de 100 pièces minimum (contre 500 chez Zara) : si le produit se vend, de nouvelles commandes sont passées. Ce modèle 'mode en temps réel' génère des délais de production de 7 jours. En 2023, Shein dépasse 11 % du marché fast fashion américain (contre 11 % en 2020 il était à... déjà)."},
+    {lbl:"Document 2 — Les risques de l'externalisation chez Shein",txt:"Shein a été régulièrement accusée de violations des droits du travail chez ses sous-traitants (salaires insuffisants, conditions de travail dangereuses). Confrontée à ces révélations, Shein a dû mener des audits chez ses 6 000 fournisseurs. Par ailleurs, Shein et Temu se livrent une concurrence féroce : Shein a imposé des accords d'exclusivité à ses fournisseurs pour éviter qu'ils ne travaillent aussi pour Temu, et les deux entreprises s'affrontent en justice."},
+  ],
+  qs:[
+    {n:1,pts:3,q:"À partir du document 1, caractérisez la stratégie de la chaîne de valeur de Shein et montrez en quoi elle constitue un avantage concurrentiel.",rep:"Shein pratique une externalisation maximale : l'ensemble de la production est sous-traitée à 6 000 fournisseurs, concentrés géographiquement près de l'entrepôt principal. Cette stratégie crée un avantage concurrentiel par : (1) Délais ultra-courts (7 jours de la conception à la vente) vs 2-3 semaines pour Zara → réactivité inégalée ; (2) Commandes minimales réduites (100 pièces) → test de marché en temps réel, réduction des invendus ; (3) Coûts fixes très faibles (pas d'usines propres) → flexibilité maximale pour absorber les variations de la demande ; (4) Accumulation de données sur les tendances → avantage stratégique numérique."},
+    {n:2,pts:3,q:"À partir du document 2, identifiez les risques liés à l'externalisation maximale de Shein et proposez des mesures pour les atténuer.",rep:"Risques identifiés : (1) Risque RSE : accusations de violations des droits du travail chez les sous-traitants → image dégradée, menace réglementaire (loi française sur le devoir de vigilance, réglementation européenne sur la fast fashion) ; (2) Risque de dépendance : 6 000 fournisseurs = complexité de contrôle, un prestataire défaillant peut perturber la chaîne ; (3) Risque concurrentiel : les fournisseurs peuvent aussi travailler pour Temu si Shein ne les lie pas par contrats d'exclusivité. Mesures : (1) Audits qualité et RSE systématiques chez les fournisseurs (Shein l'a déjà initié) + certifications sociales exigées ; (2) Contractualisation renforcée (exclusivité) pour fidéliser les fournisseurs stratégiques ; (3) Communication transparente sur les conditions de production pour restaurer l'image."},
+    {n:3,pts:2,q:"Comparez brièvement la stratégie de chaîne de valeur de Shein avec celle de Zara (Inditex). Quelle est la principale différence ?",rep:"La principale différence : Zara (Inditex) intègre une partie de sa chaîne de valeur (design, coupe, finition dans ses ateliers espagnols et portugais) pour contrôler la qualité et réduire les délais grâce à la proximité géographique. Shein externalise TOUT à des sous-traitants proches mais sans intégration directe. Résultat : Shein est plus flexible et réactive (7 jours vs 2-3 semaines pour Zara) mais perd le contrôle direct sur les conditions de production → risque RSE plus élevé. Zara intègre davantage pour maîtriser la qualité et l'image 'mode responsable' — Shein optimise uniquement la vitesse et le coût."},
+  ]
+},
+qcm:[
+  {q:"La chaîne de valeur d'une organisation est…",os:["Le résultat comptable de l'exercice","L'ensemble des étapes par lesquelles elle crée de la valeur","La liste de ses actionnaires","Son positionnement sur le marché"],a:1,e:"La chaîne de valeur (Porter) décompose les activités pour identifier où l'organisation crée de la valeur."},
+  {q:"L'externalisation offre principalement comme avantage…",os:["Le contrôle total de la qualité","La réduction des coûts fixes et la flexibilité","La maîtrise totale du savoir-faire","L'indépendance vis-à-vis des partenaires"],a:1,e:"L'externalisation flexibilise les coûts (variables au lieu de fixes) et donne accès à des expertises spécialisées."},
+  {q:"L'intégration présente comme risque principal…",os:["La perte de savoir-faire","La dépendance aux fournisseurs","Des coûts fixes élevés et une certaine rigidité","L'absence de contrôle qualité"],a:2,e:"L'intégration immobilise des ressources : coûts fixes élevés (salariés, équipements, locaux), ce qui réduit la flexibilité."},
+  {q:"L'économie circulaire crée des chaînes de valeur…",os:["Linéaires (extraire-produire-jeter)","Inversées : des produits usagés vers de nouvelles matières premières","Purement virtuelles","Entièrement automatisées"],a:1,e:"L'économie circulaire inverse la chaîne : elle part des produits en fin de vie (collecte, démantèlement) pour créer de nouvelles matières."},
+],
+vf:[
+  {q:"L'externalisation supprime définitivement le risque de dépendance.",a:false,e:"L'externalisation CRÉE une dépendance vis-à-vis du prestataire. Si celui-ci défaille, l'organisation peut se retrouver sans solution."},
+  {q:"L'intégration permet un meilleur contrôle de la qualité.",a:true,e:"En réalisant l'activité en interne, l'organisation contrôle directement les processus et les standards."},
+  {q:"Une entreprise doit intégrer toutes les activités de sa chaîne de valeur.",a:false,e:"L'organisation doit intégrer les activités qui constituent ses compétences distinctives et externaliser celles où des spécialistes sont plus efficaces."},
+  {q:"L'économie circulaire valorise les produits en fin de vie.",a:true,e:"L'économie circulaire prolonge la vie des produits (réutilisation, réparation, recyclage) au lieu de les jeter."},
+],
+flash:[
+  {t:"Chaîne de valeur",d:"Décomposition des activités d'une organisation pour identifier où et comment elle crée de la valeur."},
+  {t:"Intégration",d:"Réaliser une activité en interne. Avantage : contrôle. Risque : coûts fixes élevés et rigidité."},
+  {t:"Externalisation",d:"Confier une activité à un prestataire externe. Avantage : flexibilité. Risque : dépendance."},
+  {t:"Économie circulaire",d:"Modèle prolongeant la vie des produits : réutilisation, réparation, recyclage. Inverse la chaîne de valeur classique."},
+  {t:"Décision d'externaliser",d:"Basée sur la comparaison entre compétences distinctives internes et efficacité des spécialistes externes."},
+]},
+
+{id:10,n:11,th:3,ic:'🌱',cas:'Inditex / Salomon',
+title:"Quelles options stratégiques pour les entreprises : croissance interne, externe ou partenariats ?",
+tags:['Croissance interne','Croissance externe','Partenariat','Internationalisation'],
+cours:{
+  intro:"Pour se développer, les organisations disposent de trois modalités : croître par leurs propres moyens (croissance interne), acquérir d'autres organisations (croissance externe), ou coopérer avec des partenaires (alliances).",
+  secs:[
+    {t:"Les modalités de développement",tbl:{h:['Modalité','Définition','Avantages','Inconvénients'],r:[['Croissance interne','Développement par ses propres ressources','Indépendance, culture maintenue, financement progressif','Lente, limitée par les ressources'],['Croissance externe','Acquisition ou fusion avec une autre org.','Rapide, accès immédiat à compétences et marchés','Coûteuse, risques d\'intégration culturelle'],['Partenariat / Alliance','Coopération sans rachat','Partage des risques et coûts, synergies','Divergence des intérêts possible'],['Internationalisation','Extension vers des marchés étrangers','Nouveaux débouchés, économies d\'échelle','Risques géopolitiques, adaptation culturelle']]}},
+    {t:"Exemples",pts:[
+      "<strong>Inditex (Zara) :</strong> croissance interne privilégiée pour son expansion internationale → contrôle total de la supply chain, maintien de la réactivité (2 semaines de la conception à la vente).",
+      "<strong>Salomon :</strong> croissance externe (intégration dans Amer Sports 2005) + partenariats (co-développement avec Kilian Jornet) + internationalisation (de 45 à 75 pays, CA doublé en 8 ans).",
+    ]},
+  ],
+  ret:["3 modalités : croissance interne (lente/indépendante), externe (rapide/chère), partenariat (synergies/risques)","Internationalisation : exportation, implantation, franchise, joint-venture","Croissance externe = acquisition ou fusion","Partenariat = coopération sans rachat, partage des risques"],
+},
+bac:{
+  ent:"Salomon",desc:"Salomon (Annecy, 1947) est une marque française de sport outdoor (ski, trail, randonnée). Intégrée dans le groupe Amer Sports en 2005, valorisée à 6,3 Mds USD lors de l'entrée en bourse d'Amer Sports en 2024.",
+  docs:[
+    {lbl:"Document 1 — La stratégie de développement de Salomon",txt:"Salomon a combiné trois modalités de développement : (1) Croissance interne : développement de nouvelles gammes (ski → trail → outdoor → padel) depuis ses ingénieurs et ses ateliers savoyards ; (2) Croissance externe : intégration dans le groupe Amer Sports (2005) qui a apporté les ressources financières pour s'internationaliser rapidement ; (3) Partenariats : co-développement de chaussures avec l'athlète Kilian Jornet (champion de trail mondial) pour une innovation produit crédible."},
+    {lbl:"Document 2 — Résultats de l'internationalisation Salomon",data:{h:['Indicateur','2015','2023','Évolution'],r:[['CA (M€)','280','520','+86 %'],['Marchés internationaux','45 pays','75 pays','+30 pays'],['Part marché Asie','5 %','22 %','+17 pts'],['Gammes produits','Ski/Hiver','Ski+Trail+Outdoor+Padel','+3 gammes']]}},
+  ],
+  qs:[
+    {n:1,pts:3,q:"À partir du document 1, identifiez et caractérisez les différentes modalités de développement utilisées par Salomon.",rep:"Salomon a utilisé les 3 modalités : (1) Croissance interne : développement de nouvelles gammes (trail, padel) en s'appuyant sur les ingénieurs et le savoir-faire technique interne → lente mais préserve l'identité de marque ; (2) Croissance externe : intégration dans Amer Sports (2005) = acquisition par un groupe plus grand → accès immédiat aux ressources financières et au réseau de distribution international d'Amer Sports (75 pays), sinon impossible seul ; (3) Partenariat co-développement avec Kilian Jornet = coopération sans rachat, partage de compétences (athlète + ingénieurs) → innovation crédible, notoriété accrue dans le trail."},
+    {n:2,pts:3,q:"À partir du document 2, analysez la stratégie d'internationalisation de Salomon et évaluez ses résultats.",rep:"La stratégie d'internationalisation de Salomon est un succès mesurable : passage de 45 à 75 pays (+30 marchés en 8 ans), CA doublé (+86 %, de 280 à 520 M€), percée spectaculaire en Asie (de 5 % à 22 % du CA, +17 pts). L'Asie est le moteur de croissance (marché outdoor chinois et japonais en explosion). La diversification des gammes (ski/trail/outdoor/padel) réduit la saisonnalité et élargit la base de clients. La valorisation à 6,3 Mds USD (entrée en bourse Amer Sports 2024) confirme la réussite : la valeur a été multipliée depuis l'acquisition de 2005."},
+    {n:3,pts:2,q:"En quoi la croissance externe via Amer Sports illustre-t-elle les avantages ET les inconvénients de ce type de modalité pour Salomon ?",rep:"Avantages pour Salomon : (1) Accès immédiat aux ressources financières du groupe (investissements pour passer de 45 à 75 marchés sans s'endetter seul) ; (2) Réseau de distribution mondial d'Amer Sports (synergies avec Wilson, Arc'teryx) ; (3) Entrée en bourse permettant une valorisation forte à 6,3 Mds USD. Inconvénients : (1) Perte d'indépendance (Salomon n'est plus indépendante, soumise aux décisions stratégiques d'Amer Sports et de son actionnaire Anta Sports, groupe chinois) ; (2) Risque de conflits culturels (culture entrepreneuriale française vs groupe international coté) ; (3) Risque de dilution de l'identité de marque si les orientations du groupe divergent des valeurs de Salomon."},
+  ]
+},
+qcm:[
+  {q:"Une entreprise qui ouvre une nouvelle usine pratique une croissance…",os:["Externe","Par partenariat","Interne","Par internationalisation"],a:2,e:"Ouvrir une nouvelle usine avec ses propres ressources = croissance interne. Développement par ses propres moyens."},
+  {q:"La croissance externe implique…",os:["Un développement progressif avec ses propres ressources","L'acquisition ou la fusion avec une autre organisation","Une coopération temporaire","L'exportation vers de nouveaux marchés"],a:1,e:"La croissance externe = acquérir ou fusionner avec une autre organisation pour accéder rapidement à ses ressources et marchés."},
+  {q:"Un partenariat stratégique permet…",os:["Une acquisition complète d'un concurrent","De partager risques et coûts sans rachat","Une croissance interne rapide","L'intégration verticale totale"],a:1,e:"Le partenariat permet de coopérer avec d'autres organisations (partage risques, coûts, synergies) sans que l'une rachète l'autre."},
+  {q:"La croissance externe présente comme principal risque…",os:["La lenteur","L'endettement et les difficultés d'intégration culturelle","La dépendance aux partenaires","Le manque de synergies"],a:1,e:"La croissance externe coûte cher et peut échouer si les cultures d'entreprise sont incompatibles."},
+],
+vf:[
+  {q:"La croissance interne est généralement plus rapide que la croissance externe.",a:false,e:"La croissance EXTERNE est plus rapide : elle permet d'acquérir immédiatement les ressources d'une autre organisation. La croissance interne est progressive."},
+  {q:"Une joint-venture est un exemple de partenariat.",a:true,e:"La joint-venture est une société commune créée par deux partenaires qui partagent ressources, risques et bénéfices."},
+  {q:"L'internationalisation expose uniquement à des opportunités.",a:false,e:"L'internationalisation comporte aussi des risques : géopolitiques, culturels, réglementaires et de change."},
+  {q:"Le partenariat avec Kilian Jornet est une croissance externe.",a:false,e:"Un partenariat de co-développement est un PARTENARIAT (pas de rachat). La croissance externe implique une acquisition ou fusion."},
+],
+flash:[
+  {t:"Croissance interne",d:"Développement par ses propres ressources : nouveaux produits, usines, marchés. Lente mais préserve l'indépendance."},
+  {t:"Croissance externe",d:"Acquisition ou fusion. Rapide mais coûteuse, risques d'intégration culturelle."},
+  {t:"Partenariat / Alliance",d:"Coopération sans rachat. Partage des risques, coûts et synergies."},
+  {t:"Internationalisation",d:"Extension vers des marchés étrangers via exportation, filiales, franchises ou joint-ventures."},
+  {t:"Joint-venture",d:"Société commune créée par deux partenaires partageant ressources, risques et bénéfices."},
+]},
+
+{id:11,n:12,th:3,ic:'🏛️',cas:"DK'Bus / COJOP Paris 2024",
+title:"Les stratégies des organisations publiques : quelles spécificités ?",
+tags:['Service public','Continuité','Égalité','Adaptabilité','DSP','Groupes de pression'],
+cours:{
+  intro:"Les organisations publiques développent des stratégies dans un cadre contraint par leurs missions de service public et l'exigence de l'intérêt général. Leurs stratégies diffèrent fondamentalement de celles des entreprises privées.",
+  secs:[
+    {t:"Les 3 principes fondamentaux du service public",tbl:{h:['Principe','Définition','Exemple'],r:[['Continuité','Le service ne peut pas être interrompu','Service minimum en cas de grève SNCF/RATP'],['Égalité','Traitement identique de tous les usagers','Même accès à l\'école publique partout en France'],['Adaptabilité','Le service évolue selon les besoins','Dématérialisation des démarches administratives']]}},
+    {t:"Les spécificités stratégiques",pts:[
+      "Tension permanente : <strong>mission de service public</strong> vs <strong>maîtrise des coûts</strong> (contraintes budgétaires) vs <strong>qualité de service</strong>.",
+      "<strong>DSP (Délégation de Service Public) :</strong> confier la gestion d'un service public à une entreprise privée sous contrôle de l'autorité publique. Ex : DK'Bus (transports Dunkerque, géré par Transdev).",
+      "<strong>Groupes de pression</strong> (syndicats, associations d'usagers, élus) influencent les stratégies publiques.",
+      "<strong>Cour des comptes :</strong> contrôle l'usage des fonds publics et sanctionne les manquements.",
+    ]},
+  ],
+  ret:["3 principes SP : continuité, égalité, adaptabilité","DSP = gestion d'un service public confiée à une entreprise privée","Tension : mission SP / maîtrise des coûts / qualité","Cour des comptes = contrôle des fonds publics","Groupes de pression influencent les stratégies publiques"],
+},
+bac:{
+  ent:"COJOP Paris 2024",desc:"Le Comité d'Organisation des Jeux Olympiques et Paralympiques de Paris 2024 est une association à mission d'intérêt général. Budget : 4,4 Mds€ financé à 84 % par des sources privées.",
+  docs:[
+    {lbl:"Document 1 — Les objectifs stratégiques du COJOP",txt:"Le COJOP s'est fixé 3 objectifs stratégiques : (1) Équilibre budgétaire total (4,4 Mds€, financé à 97 % par des sources non-publiques : droits TV, sponsors, billetterie) ; (2) Héritage durable : 80 % des infrastructures réutilisées après les JO ; (3) Jeux responsables : bilan carbone divisé par 2 vs les JO précédents. Ces objectifs doivent concilier excellence sportive, contraintes budgétaires et exigences RSE."},
+    {lbl:"Document 2 — Financement COJOP 2024",data:{h:['Source','Montant (M€)','Part'],r:[['Droits TV (CIO)','1 420','32 %'],['Partenaires TOP et nationaux','1 200','27 %'],['Billetterie','1 100','25 %'],['Aides publiques (CIO, collectivités)','680','16 %'],['Total','4 400','100 %']]}},
+  ],
+  qs:[
+    {n:1,pts:3,q:"À partir des documents, caractérisez le COJOP comme organisation et analysez les spécificités de son financement.",rep:"Le COJOP est une association (statut de droit privé) à mission d'intérêt général (organisation des JO, rayonnement international de la France, promotion du sport). Spécificité du financement : il est majoritairement PRIVÉ (84 % : droits TV 32 %, sponsors 27 %, billetterie 25 %), contrairement aux organisations publiques classiques financées par l'impôt. Seules les aides publiques (CIO + collectivités) représentent 16 %. Cette structure crée des contraintes spécifiques : (1) dépendance aux partenaires commerciaux (exigences des sponsors sur les disciplines médiatisées, horaires) ; (2) obligation de remplir les stades pour atteindre 1,1 Md€ de recettes billetterie ; (3) transparence renforcée vis-à-vis du CIO et des collectivités qui apportent les 16 % publics."},
+    {n:2,pts:3,q:"Montrez que les objectifs stratégiques du COJOP sont potentiellement contradictoires et illustrez avec des exemples.",rep:"Les 3 objectifs peuvent se contredire : (1) Excellence sportive vs équilibre budgétaire : construire les meilleures infrastructures (natation, athlétisme) coûte plus cher que le strict nécessaire → arbitrage permanent entre qualité et coût. (2) Héritage durable vs coût : construire des installations permanentes (80 % réutilisables) coûte plus cher que du provisoire démontable → tension avec la contrainte budgétaire. (3) Bilan carbone réduit (÷2) vs confort des sponsors et partenaires : les sponsors premium exigent parfois des moyens de transport et d'hébergement plus confortables (mais polluants) → tension RSE / satisfaction partenaires commerciaux dont dépend 59 % du financement."},
+    {n:3,pts:2,q:"En quoi le COJOP illustre-t-il les principes du service public, bien qu'il ait le statut d'association privée ?",rep:"Le COJOP incarne les 3 principes du service public malgré son statut juridique d'association : (1) Continuité : les JO ne peuvent pas être interrompus (délai de préparation 7 ans, engagement international) → équivalent d'une obligation de continuité absolue ; (2) Égalité : accès aux épreuves ouvert à tous (tarifs billetterie populaires à partir de 24 € pour les épreuves d'athlétisme), respect du principe de non-discrimination dans les politiques de recrutement des 45 000 bénévoles ; (3) Adaptabilité : le COJOP a dû adapter plusieurs fois le plan des sites (budget, sécurité, héritage) pour répondre aux nouvelles contraintes et aux attentes de la société (RSE, parité dans les délégations). La mission d'intérêt national et international dépasse le simple cadre associatif."},
+  ]
+},
+qcm:[
+  {q:"Le principe de continuité du service public signifie…",os:["Le service peut s'interrompre librement","Le service ne peut pas être interrompu (service minimum)","Le service est gratuit en permanence","Le service s'adapte aux préférences individuelles"],a:1,e:"La continuité impose que le service public soit assuré sans interruption, y compris en cas de grève (service minimum)."},
+  {q:"Une DSP (Délégation de Service Public) consiste à…",os:["Nationaliser une entreprise privée","Confier la gestion d'un service public à une entreprise privée sous contrôle public","Supprimer un service public","Créer une entreprise publique"],a:1,e:"La DSP délègue la gestion (mais pas la responsabilité) d'un service public à une entreprise privée, sous contrat et contrôle de l'autorité publique."},
+  {q:"La Cour des comptes contrôle…",os:["Les entreprises privées cotées","L'usage des fonds publics par les organisations publiques","Les associations uniquement","Les banques et assurances"],a:1,e:"La Cour des comptes vérifie que les deniers publics sont bien utilisés et sanctionne les manquements."},
+  {q:"Le principe d'adaptabilité du service public signifie que…",os:["Le service ne change jamais","Le service s'adapte selon les besoins et évolutions de la société","Le service est gratuit","Le service est géré par une entreprise privée"],a:1,e:"L'adaptabilité impose aux services publics d'évoluer selon les besoins de la société (ex: dématérialisation des démarches administratives)."},
+],
+vf:[
+  {q:"Les organisations publiques cherchent à maximiser leur profit.",a:false,e:"Les organisations publiques ont une finalité non lucrative : assurer l'intérêt général et satisfaire les usagers, pas maximiser le profit."},
+  {q:"Une DSP transfère la responsabilité du service public à l'entreprise privée.",a:false,e:"La DSP transfère la GESTION mais pas la RESPONSABILITÉ. L'autorité publique reste responsable du service public."},
+  {q:"Les groupes de pression peuvent influencer les stratégies des organisations publiques.",a:true,e:"Syndicats, associations d'usagers, élus locaux et lobbys peuvent influencer les décisions stratégiques des organisations publiques."},
+  {q:"Le COJOP se finance uniquement par des fonds publics.",a:false,e:"Le COJOP se finance à 84 % par des sources PRIVÉES (droits TV, sponsors, billetterie). Les fonds publics ne représentent que 16 %."},
+],
+flash:[
+  {t:"Continuité",d:"Principe du SP : le service ne peut pas être interrompu. Service minimum obligatoire dans certains secteurs."},
+  {t:"Égalité",d:"Principe du SP : traitement identique de tous les usagers quelle que soit leur situation."},
+  {t:"Adaptabilité",d:"Principe du SP : le service évolue selon les besoins de la société (ex : dématérialisation)."},
+  {t:"DSP",d:"Délégation de Service Public : gestion d'un service public confiée à une entreprise privée sous contrôle de l'autorité publique."},
+  {t:"Cour des comptes",d:"Institution française contrôlant l'usage des fonds publics et sanctionnant les manquements."},
+]},
+
+{id:12,n:13,th:3,ic:'🌿',cas:'Afuté / Sport dans la Ville',
+title:"Les organisations de la société civile peuvent-elles se passer de stratégie ?",
+tags:['OSC','Objet social','Stratégie associative','Transparence','Pérennité des ressources'],
+cours:{
+  intro:"Les organisations de la société civile (associations, ONG, fondations) doivent elles aussi élaborer une stratégie pour pérenniser leurs ressources et accomplir leur mission dans un environnement concurrentiel entre associations.",
+  secs:[
+    {t:"Les contraintes stratégiques des OSC",pts:[
+      "<strong>Objet social :</strong> finalité non lucrative inscrite dans les statuts. La stratégie ne peut pas s'en écarter.",
+      "Les OSC font face à la <strong>raréfaction des ressources</strong> (baisse des subventions, concurrence entre associations, instabilité des dons) → une démarche stratégique est indispensable.",
+      "Certaines développent des <strong>activités marchandes accessoires</strong> pour diversifier leurs ressources : vente de produits, formation payante, prestations de service.",
+    ]},
+    {t:"Performance et transparence des OSC",pts:[
+      "La performance d'une OSC est <strong>multidimensionnelle</strong> : impact social (bénéficiaires), financière (équilibre budgétaire), humaine (engagement bénévoles), gouvernance (transparence).",
+      "Les OSC qui font appel à la <strong>générosité publique</strong> sont soumises à une <strong>obligation de transparence</strong> : publication annuelle d'un compte d'emploi des ressources.",
+    ]},
+  ],
+  ret:["OSC = associations, ONG, fondations, syndicats","Objet social = raison d'être non lucrative définie dans les statuts","Raréfaction des ressources → stratégie indispensable","Performance OSC : impact social, financier, humain, gouvernance","Transparence obligatoire pour les OSC faisant appel à la générosité publique"],
+},
+bac:{
+  ent:"Sport dans la Ville",desc:"Sport dans la Ville est une association créée en 1998 qui accompagne des jeunes en difficulté via le sport. Elle emploie 220 salariés, mobilise 1 500 bénévoles et intervient dans 70 villes. Budget : 22 M€.",
+  docs:[
+    {lbl:"Document 1 — La stratégie de Sport dans la Ville",txt:"Sport dans la Ville a développé une stratégie de diversification de ses financements pour ne pas dépendre d'une seule source : (1) Entreprises partenaires (39 % du budget) : mécénat, détachement de salariés, cofinancements ; (2) Subventions publiques (35 %) : État, collectivités locales, Union Européenne ; (3) Fondations et appels à projets (16 %) ; (4) Prestations propres et vente de services (10 %). Elle publie un rapport d'impact annuel détaillé (indicateurs sociaux, financiers, ressources humaines)."},
+    {lbl:"Document 2 — Indicateurs d'impact 2022",data:{h:['Indicateur','Valeur 2022'],r:[['Jeunes accompagnés/an','16 000'],['Taux d\'insertion professionnelle','78 %'],['Villes d\'intervention','70'],['Budget total','22 M€'],['Salariés','220'],['Bénévoles','1 500'],['Note satisfaction partenaires','/10 : 9,2']]}},
+  ],
+  qs:[
+    {n:1,pts:3,q:"À partir du document 1, montrez que Sport dans la Ville a développé une véritable démarche stratégique malgré son statut associatif.",rep:"Sport dans la Ville démontre qu'une OSC ne peut pas se passer de stratégie, surtout dans un contexte de concurrence entre associations : (1) Elle a défini une stratégie de diversification des financements (4 sources distinctes : entreprises 39 %, public 35 %, fondations 16 %, prestations 10 %) pour ne pas dépendre d'une seule source → résilience face à la raréfaction des ressources ; (2) Elle développe des activités marchandes accessoires (prestations propres, vente de services : 10 % du budget) pour compléter les financements non marchands ; (3) Elle mesure et publie son impact (rapport annuel) → démarche de pilotage par les indicateurs et de transparence vis-à-vis des parties prenantes financeurs."},
+    {n:2,pts:3,q:"À partir du document 2, évaluez la performance multidimensionnelle de Sport dans la Ville.",rep:"Performance sociale (impact) : 16 000 jeunes accompagnés/an dans 70 villes, taux d'insertion professionnelle de 78 % → impact social mesurable et positif. C'est l'indicateur central d'une OSC. Performance financière : budget de 22 M€ diversifié sur 4 sources → résilience financière. Performance humaine : 1 500 bénévoles mobilisés → capacité à fédérer des engagements bénévoles, signe d'attractivité de la mission. Performance de gouvernance : note satisfaction partenaires 9,2/10 et publication d'un rapport d'impact annuel → transparence et qualité de la relation avec les parties prenantes. L'ensemble des 4 dimensions est performant, confirmant l'efficacité du management stratégique de l'association."},
+    {n:3,pts:2,q:"Pourquoi la transparence est-elle particulièrement stratégique pour Sport dans la Ville ?",rep:"La transparence est stratégique pour Sport dans la Ville pour plusieurs raisons : (1) Confiance des financeurs : les entreprises (39 % du budget) et les fondations (16 %) attendent des preuves d'efficacité et une utilisation rigoureuse des fonds → le rapport d'impact annuel les rassure et fidélise leurs contributions ; (2) Exigence légale : toute association faisant appel à la générosité publique ou recevant des subventions importantes doit publier ses comptes d'emploi → obligation légale de transparence ; (3) Différenciation concurrentielle : dans un secteur saturé d'associations, la transparence et les indicateurs d'impact permettent à Sport dans la Ville de se démarquer pour attirer les meilleurs partenaires."},
+  ]
+},
+qcm:[
+  {q:"L'objet social d'une association est…",os:["Son capital social","Sa raison d'être non lucrative définie dans les statuts","Son chiffre d'affaires","Son organigramme"],a:1,e:"L'objet social est la finalité inscrite dans les statuts de l'association. La stratégie ne peut pas s'en écarter."},
+  {q:"Les OSC sont confrontées à la raréfaction des ressources car…",os:["Elles n'ont pas le droit de générer des recettes","Les subventions publiques baissent et la concurrence entre associations augmente","Elles sont mal gérées","Les dons sont interdits fiscalement"],a:1,e:"La baisse des subventions publiques et la multiplication des associations créent une concurrence accrue pour les mêmes ressources."},
+  {q:"Une OSC qui fait appel à la générosité publique est soumise à…",os:["Aucune obligation particulière","Une obligation de transparence sur l'utilisation des fonds","Un audit par l'État chaque année","L'approbation préalable de ses projets"],a:1,e:"Les OSC sollicitant des dons doivent publier un compte annuel d'emploi des ressources collectées."},
+  {q:"La performance d'une OSC est évaluée principalement par…",os:["Son résultat net","Son chiffre d'affaires","Son impact social sur les bénéficiaires","Sa taille (nombre de salariés)"],a:2,e:"Pour une OSC, l'indicateur central est l'IMPACT SOCIAL : nombre de bénéficiaires touchés, amélioration de leur situation. Le résultat financier est secondaire."},
+],
+vf:[
+  {q:"Les OSC n'ont pas besoin de stratégie car elles ont une mission non lucrative.",a:false,e:"Au contraire, la raréfaction des ressources et la concurrence entre associations rendent la stratégie INDISPENSABLE pour pérenniser la mission."},
+  {q:"La transparence est une obligation pour les OSC faisant appel à la générosité publique.",a:true,e:"Toute OSC sollicitant des dons doit publier un compte d'emploi annuel des ressources collectées pour justifier l'utilisation des fonds."},
+  {q:"Une fondation peut recevoir des dons d'entreprises privées (mécénat).",a:true,e:"Les fondations peuvent recevoir des dotations et mécénats d'entreprises, défiscalisables pour le donateur (60 % de réduction IS)."},
+  {q:"L'objet social d'une OSC peut être modifié facilement à tout moment.",a:false,e:"L'objet social est inscrit dans les statuts. Sa modification nécessite un vote en assemblée générale extraordinaire."},
+],
+flash:[
+  {t:"OSC",d:"Organisation de la Société Civile : association, ONG, fondation, syndicat poursuivant un but non lucratif."},
+  {t:"Objet social",d:"Finalité non lucrative définie dans les statuts d'une OSC. La stratégie ne peut pas s'en écarter."},
+  {t:"Raréfaction des ressources",d:"Baisse des subventions publiques + concurrence accrue entre associations → nécessité d'une stratégie de diversification des financements."},
+  {t:"Transparence des OSC",d:"Obligation de publier un compte d'emploi annuel pour les OSC faisant appel à la générosité publique."},
+  {t:"Mécénat",d:"Don d'une entreprise à une OSC sans contrepartie directe. Défiscalisable pour le donateur (60 % de réduction IS)."},
+]},
+
+]; /* fin CH */
+
+/* ══ ÉTAT ══ */
+let scores={},curChap=null,curTab='cours',activeF=0;
+let matchSel=null,matchPairs={},vfAns={},qcmAns={},fi=0,fSeen=new Set();
+
+function loadS(){try{scores=JSON.parse(localStorage.getItem('mgt1_s')||'{}')}catch(e){scores={}}}
+function saveS(){try{localStorage.setItem('mgt1_s',JSON.stringify(scores))}catch(e){}}
+loadS();
+
+/* ══ CATALOGUE ══ */
+function renderCat(){
+  const el=document.getElementById('cat');
+  const chaps=CH.filter(c=>activeF===0||c.th===activeF);
+  let html='';
+  [1,2,3].forEach(th=>{
+    const th_chaps=chaps.filter(c=>c.th===th);
+    if(!th_chaps.length)return;
+    const T=TH[th];
+    const done=th_chaps.filter(c=>{const s=scores[c.id];return s&&s.t>0&&s.c/s.t>=.75}).length;
+    const pct=Math.round(done/th_chaps.length*100);
+    html+=`<div class="tband" style="background:${T.bg};color:${T.c}">
+      <div class="tstr" style="color:${T.c}"></div>
+      <div class="ticon" style="background:rgba(255,255,255,.08)">📋</div>
+      <div class="tinfo">
+        <div class="ttag" style="color:${T.c}">Thème ${th}</div>
+        <div class="tname">${T.n}</div>
+        <div class="tmeta">${th_chaps.length} chapitres · ${done} validé${done>1?'s':''}</div>
+      </div>
+      <div class="tpw" style="color:${T.c}"><div class="tpn">${pct}%</div><div class="tpl">avancement</div></div>
+    </div>
+    <div class="cg">`;
+    th_chaps.forEach(c=>{
+      const s=scores[c.id];
+      const pct2=s&&s.t>0?Math.round(s.c/s.t):0;
+      const st=!s?'n2':pct2>=75?'sd':'sw';
+      const sic=st==='sd'?'✓':st==='sw'?'⋯':'○';
+      html+=`<div class="cc" onclick="openC(${c.id})" style="border-color:${st!=='n2'?T.c+'44':''}">
+        <div class="cth" style="background:linear-gradient(135deg,${T.c}22,${T.c}08)">
+          <div class="ctic">${c.ic}</div><div class="cov">▶</div>
+          <div class="cst ${st}">${sic}</div>
+        </div>
+        <div class="cb">
+          <div class="cn">Ch.${c.n} · Thème ${c.th}</div>
+          <div class="ct">${c.title}</div>
+          <div class="cf">
+            <span class="ctag" style="background:${T.c}22;color:${T.c}">MGT T${c.th}</span>
+            <span class="ccas">${c.cas}</span>
+            <div class="mp"><div class="mb"><div class="mf" style="width:${pct2}%;background:${T.c}"></div></div><span class="mp2">${pct2}%</span></div>
+          </div>
+        </div>
+      </div>`;
+    });
+    html+='</div>';
+  });
+  el.innerHTML=html;
+  updateStats();
+}
+
+function updateStats(){
+  const tot=CH.length;let done=0,sum=0;
+  CH.forEach(c=>{const s=scores[c.id];const p=s&&s.t>0?s.c/s.t:0;sum+=p;if(p>=.75)done++;});
+  const g=Math.round(sum/tot*100);
+  document.getElementById('hfill').style.width=g+'%';
+  document.getElementById('hpct').textContent=g+'%';
+  document.getElementById('sfill').style.width=g+'%';
+  document.getElementById('spct').textContent=g+'%';
+  document.getElementById('sdone').textContent=done;
+  document.getElementById('nsc').textContent=done+' / '+tot;
+}
+
+function fAll(btn){activeF=0;document.querySelectorAll('.nb').forEach(b=>b.classList.remove('ac'));btn.classList.add('ac');renderCat();}
+function fTh(n,btn){activeF=n;document.querySelectorAll('.nb').forEach(b=>b.classList.remove('ac'));btn.classList.add('ac');renderCat();}
+function goTop(){window.scrollTo({top:0,behavior:'smooth'})}
+
+/* ══ MODAL ══ */
+function openC(id){
+  curChap=CH.find(c=>c.id===id);
+  if(!curChap)return;
+  const T=TH[curChap.th];
+  document.getElementById('mIc').textContent=curChap.ic;
+  document.getElementById('mIc').style.background=T.c+'22';
+  document.getElementById('mLb').textContent=`Management · Thème ${curChap.th}`;
+  document.getElementById('mLb').style.color=T.c;
+  document.getElementById('mTi').textContent=curChap.title;
+  document.getElementById('mCa').textContent='📍 Cas : '+curChap.cas;
+  document.getElementById('mTg').innerHTML=curChap.tags.map(t=>`<span class="mt">${t}</span>`).join('');
+  const tabs=[{k:'cours',l:'📖 Cours'},{k:'bac',l:'📝 Cas BAC'},{k:'qcm',l:'🎯 QCM'},{k:'vf',l:'✅ Vrai/Faux'},{k:'flash',l:'⚡ Flashcards'},{k:'bilan',l:'📊 Bilan'}];
+  document.getElementById('tbar').innerHTML=tabs.map(t=>`<button class="tb ${t.k==='cours'?'ac':''}" onclick="swTab('${t.k}',this)" style="${t.k==='cours'?'border-bottom-color:'+T.c+';color:'+T.c:''}">${t.l}</button>`).join('');
+  matchSel=null;matchPairs={};vfAns={};qcmAns={};fi=0;fSeen=new Set();
+  renderCours();
+  document.getElementById('mbd').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeM(){document.getElementById('mbd').classList.remove('open');document.body.style.overflow='';renderCat();}
+function hdBd(e){if(e.target===document.getElementById('mbd'))closeM();}
+
+function swTab(k,btn){
+  curTab=k;
+  const T=TH[curChap.th];
+  document.querySelectorAll('.tb').forEach(b=>{b.classList.remove('ac');b.style.borderBottomColor='transparent';b.style.color='';});
+  btn.classList.add('ac');btn.style.borderBottomColor=T.c;btn.style.color=T.c;
+  if(k==='cours')renderCours();
+  else if(k==='bac')renderBac();
+  else if(k==='qcm')renderQcm();
+  else if(k==='vf')renderVf();
+  else if(k==='flash')renderFlash();
+  else if(k==='bilan')renderBilan();
+}
+
+/* ══ COURS ══ */
+function renderCours(){
+  const c=curChap.cours;
+  const T=TH[curChap.th];
+  let h=`<div class="cop"><div class="ci" style="border-left-color:${T.c};background:${T.c}11;border-color:${T.c}33">${c.intro}</div>`;
+  c.secs.forEach(s=>{
+    h+=`<div class="cs"><div class="cst2">${s.t}</div>`;
+    if(s.pts)s.pts.forEach(p=>{h+=`<div class="cp"><span class="bl">▸</span><span>${p}</span></div>`;});
+    if(s.tbl){
+      h+=`<table class="ctb"><thead><tr>${s.tbl.h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>`;
+      s.tbl.r.forEach(r=>{h+=`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`;});
+      h+=`</tbody></table>`;
+    }
+    if(s.fo)h+=`<div class="cfo"><div class="cfol">${s.fo.l}</div><div class="cfoq">${s.fo.eq}</div></div>`;
+    if(s.tip)h+=`<div class="ctip">${s.tip}</div>`;
+    if(s.def)h+=`<div class="cdf"><div class="cdft">${s.def.t}</div><div class="cdfd">${s.def.d}</div></div>`;
+    h+='</div>';
+  });
+  h+=`<div class="cre"><div class="crel">📌 À retenir</div>${c.ret.map(r=>`<div class="cri">${r}</div>`).join('')}</div></div>`;
+  document.getElementById('tc').innerHTML=h;
+}
+
+/* ══ CAS BAC ══ */
+function renderBac(){
+  const b=curChap.bac;
+  const T=TH[curChap.th];
+  let h=`<div class="bop">
+    <div class="bhd"><div class="bhl" style="color:${T.c}">📝 Cas d'entreprise — Type Bac</div>
+    <div class="ben">${b.ent}</div><div class="bds">${b.desc}</div></div>`;
+  b.docs.forEach(d=>{
+    h+=`<div class="bdo"><div class="bdol">📄 ${d.lbl}</div>`;
+    if(d.txt)h+=`<div class="bdot">${d.txt}</div>`;
+    if(d.data){
+      h+=`<table class="bdt"><thead><tr>${d.data.h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>`;
+      d.data.r.forEach(r=>{h+=`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`;});
+      h+=`</tbody></table>`;
+    }
+    h+=`</div>`;
+  });
+  h+=`<div class="bqt" style="color:${T.c}">📝 Questions — Barème ${b.qs.reduce((a,q)=>a+q.pts,0)} points</div>`;
+  b.qs.forEach((q,i)=>{
+    h+=`<div class="bq">
+      <div class="bqh"><div class="bqn" style="background:${T.c}33;color:${T.c}">${q.n}</div><div class="bqq">${q.q}</div></div>
+      <div class="bqp">${q.pts} point${q.pts>1?'s':''}</div>
+      <button class="bbtn" id="bbtn${i}" onclick="toggleCor(${i})">👁 Voir le corrigé</button>
+      <div class="bcor" id="bcor${i}"><div class="bcl">✓ Corrigé</div>${q.rep}</div>
+    </div>`;
+  });
+  h+=`</div>`;
+  document.getElementById('tc').innerHTML=h;
+}
+function toggleCor(i){
+  const el=document.getElementById(`bcor${i}`);
+  const btn=document.getElementById(`bbtn${i}`);
+  el.classList.toggle('show');
+  btn.textContent=el.classList.contains('show')?'▲ Masquer':'👁 Voir le corrigé';
+}
+
+/* ══ QCM ══ */
+function renderQcm(){
+  const T=TH[curChap.th];
+  let h=`<div class="aop"><div class="ati">🎯 QCM <span class="abd" style="background:${T.c}22;color:${T.c}">QCM</span></div>
+    <div class="ade">Clique sur la bonne réponse. Une seule réponse correcte.</div>`;
+  curChap.qcm.forEach((q,qi)=>{
+    const ans=qcmAns[qi];
+    h+=`<div class="qc"><div class="qq">${qi+1}. ${q.q}</div><div class="qos">`;
+    q.os.forEach((o,oi)=>{
+      let cl='';if(ans!==undefined){cl=oi===q.a?' ok':oi===ans?' ko':'';}
+      h+=`<button class="qo${cl}" onclick="ansQ(${qi},${oi})" ${ans!==undefined?'disabled':''}>${o}</button>`;
+    });
+    h+=`</div><div class="qe${ans!==undefined?' show':''}">${q.e}</div></div>`;
+  });
+  const all=Object.keys(qcmAns).length===curChap.qcm.length;
+  if(all){
+    const ok=curChap.qcm.filter((_,i)=>qcmAns[i]===_.a).length;
+    const pct=Math.round(ok/curChap.qcm.length*100);
+    const col=pct>=75?'#22c55e':pct>=50?'#f59e0b':'#f43f5e';
+    h+=`<div class="sw show" style="background:${col}11;border-color:${col}44">
+      <div class="sc" style="border-color:${col};color:${col}"><div class="sp2">${pct}%</div></div>
+      <div><div class="sm" style="color:${col}">${pct>=75?'🏆 Excellent !':pct>=50?'👍 Bien !':'💪 Révise !'}</div>
+      <div class="sd2">${ok}/${curChap.qcm.length} bonnes réponses</div></div></div>`;
+  }
+  h+=`</div>`;
+  document.getElementById('tc').innerHTML=h;
+}
+function ansQ(qi,oi){
+  qcmAns[qi]=oi;
+  const c=curChap;
+  if(Object.keys(qcmAns).length===c.qcm.length){
+    const ok=c.qcm.filter((_,i)=>qcmAns[i]===_.a).length;
+    saveAct('qcm',ok,c.qcm.length);
+    if(ok/c.qcm.length>=.75)confetti();
+  }
+  renderQcm();
+}
+
+/* ══ VF ══ */
+function renderVf(){
+  const T=TH[curChap.th];
+  let h=`<div class="aop"><div class="ati">✅ Vrai / Faux <span class="abd" style="background:rgba(34,197,94,.15);color:var(--g)">V/F</span></div>
+    <div class="ade">Clique sur V ou F pour chaque affirmation.</div>`;
+  curChap.vf.forEach((item,i)=>{
+    const ans=vfAns[i];const ok=ans!==undefined?(ans===item.a):null;
+    h+=`<div class="vb">
+      <div class="vq">${i+1}. ${item.q}${ans!==undefined?`<div class="ve show">${item.e}</div>`:''}</div>
+      <div class="vbs">
+        <button class="vbn vrai${ans===true?(ok?' ok':' ko'):''}" onclick="ansVf(${i},true)" ${ans!==undefined?'disabled':''}>V</button>
+        <button class="vbn faux${ans===false?(ok?' ok':' ko'):''}" onclick="ansVf(${i},false)" ${ans!==undefined?'disabled':''}>F</button>
+      </div></div>`;
+  });
+  const all=Object.keys(vfAns).length===curChap.vf.length;
+  if(all){
+    const ok=curChap.vf.filter((_,i)=>vfAns[i]===_.a).length;
+    const pct=Math.round(ok/curChap.vf.length*100);
+    const col=pct>=75?'#22c55e':pct>=50?'#f59e0b':'#f43f5e';
+    h+=`<div class="sw show" style="background:${col}11;border-color:${col}44">
+      <div class="sc" style="border-color:${col};color:${col}"><div class="sp2">${pct}%</div></div>
+      <div><div class="sm" style="color:${col}">${pct>=75?'🏆 Excellent !':pct>=50?'👍 Bien !':'💪 Révise !'}</div>
+      <div class="sd2">${ok}/${curChap.vf.length} bonnes réponses</div></div></div>`;
+  }
+  h+=`</div>`;
+  document.getElementById('tc').innerHTML=h;
+}
+function ansVf(i,v){
+  vfAns[i]=v;
+  const c=curChap;
+  if(Object.keys(vfAns).length===c.vf.length){
+    const ok=c.vf.filter((_,j)=>vfAns[j]===_.a).length;
+    saveAct('vf',ok,c.vf.length);
+    if(ok/c.vf.length>=.75)confetti();
+  }
+  renderVf();
+}
+
+/* ══ FLASHCARDS ══ */
+function renderFlash(){
+  const cards=curChap.flash;const card=cards[fi];
+  fSeen.add(fi);
+  const T=TH[curChap.th];
+  let h=`<div class="aop"><div class="ati">⚡ Flashcards <span class="abd" style="background:${T.c}22;color:${T.c}">FLASH</span></div>
+    <div class="ade">Clique sur la carte pour voir la définition.</div>
+    <div class="fwp"><div class="fca" id="fca" onclick="flipF()">
+      <div class="ffa ffr"><div class="ffl">TERME — ${fi+1}/${cards.length}</div><div class="fft">${card.t}</div></div>
+      <div class="ffa fbk"><div class="fbl">✓ DÉFINITION</div><div class="fbd">${card.d}</div></div>
+    </div></div>
+    <div class="fh">👆 Clique pour retourner</div>
+    <div class="fn">
+      <button class="fnb" onclick="navF(-1)" ${fi===0?'disabled':''}>←</button>
+      <span class="fc">${fi+1} / ${cards.length}</span>
+      <button class="fnb" onclick="navF(1)" ${fi===cards.length-1?'disabled':''}>→</button>
+    </div>
+    <div class="fp">${cards.map((_,i)=>`<div class="fd ${i===fi?'cu':fSeen.has(i)?'se':''}" onclick="gotoF(${i})"></div>`).join('')}</div>
+    <div style="text-align:center;font-size:10px;color:var(--mu);margin-top:8px">${fSeen.size}/${cards.length} vues</div>
+  </div>`;
+  document.getElementById('tc').innerHTML=h;
+  if(fSeen.size===cards.length)saveAct('flash',cards.length,cards.length);
+}
+function flipF(){document.getElementById('fca')?.classList.toggle('fl')}
+function navF(d){fi=Math.max(0,Math.min(curChap.flash.length-1,fi+d));renderFlash();}
+function gotoF(i){fi=i;renderFlash();}
+
+/* ══ BILAN ══ */
+function renderBilan(){
+  const acts=[{k:'qcm',l:'QCM'},{k:'vf',l:'Vrai/Faux'},{k:'flash',l:'Flashcards'}];
+  const as=scores[curChap.id]?.activities||{};
+  const done=acts.filter(a=>as[a.k]);
+  const tot=done.length?Math.round(done.reduce((a,x)=>{const s=as[x.k];return a+s.c/s.t*100},0)/done.length):0;
+  const col=tot>=75?'#22c55e':tot>=50?'#f59e0b':'#f43f5e';
+  let h=`<div class="biop"><div class="bicw"><div class="bic" style="border-color:${col}">
+    <div class="bip" style="color:${col}">${tot}%</div><div class="bil">Score</div></div></div>
+    <div class="bibs">`;
+  acts.forEach(a=>{
+    const s=as[a.k];const p=s?Math.round(s.c/s.t*100):0;
+    const c=p>=75?'#22c55e':p>=50?'#f59e0b':p>0?'#f43f5e':undefined;
+    h+=`<div class="bibr"><div class="bibl">${a.l}</div><div class="bibt"><div class="bibf" style="width:${p}%;background:${c||'var(--b1)'}"></div></div>
+    <div class="bibv" style="color:${c||'var(--mu)'}">${s?p+'%':'—'}</div></div>`;
+  });
+  h+=`</div><div class="bim">${done.length===0?'🚀 Commence les activités pour voir ton bilan !':tot>=75?'🏆 Excellent ! Tu maîtrises ce chapitre.':tot>=50?'👍 Bonne progression ! Quelques notions à revoir.':'💪 Relis le cours et retente les activités.'}</div></div>`;
+  document.getElementById('tc').innerHTML=h;
+}
+
+/* ══ SCORES ══ */
+function saveAct(k,c,t){
+  const id=curChap.id;
+  if(!scores[id])scores[id]={activities:{}};
+  if(!scores[id].activities)scores[id].activities={};
+  scores[id].activities[k]={c,t};
+  const all=Object.values(scores[id].activities);
+  if(all.length){const avg=all.reduce((a,s)=>a+s.c/s.t,0)/all.length;scores[id].c=Math.round(avg*100);scores[id].t=100;}
+  saveS();updateStats();
+}
+
+/* ══ CONFETTI ══ */
+function confetti(){
+  const cols=['#7c3aed','#f97316','#06b6d4','#22c55e','#f59e0b','#fff'];
+  for(let i=0;i<16;i++){
+    const el=document.createElement('div');
+    el.className='cp';
+    el.style.cssText=`left:${20+Math.random()*60}%;top:30%;background:${cols[Math.floor(Math.random()*cols.length)]};animation-delay:${Math.random()*.35}s;animation-duration:${.65+Math.random()*.45}s;width:${5+Math.random()*7}px;height:${5+Math.random()*7}px;border-radius:${Math.random()>.5?'50%':'2px'}`;
+    document.body.appendChild(el);setTimeout(()=>el.remove(),1100);
+  }
+}
+
+/* ══ INIT ══ */
+renderCat();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  const swCode = atob('CmNvbnN0IENBQ0hFID0gJ2xscC1tYW5hZ2VtZW50XzFlcmVfc3RtZ19kZWxhZ3JhdmVfbGxwX3YxJzsKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdpbnN0YWxsJywgZSA9PiB7CiAgZS53YWl0VW50aWwoCiAgICBjYWNoZXMub3BlbihDQUNIRSkudGhlbihjID0+IGMuYWRkQWxsKFsnLi8nXSkpCiAgICAgIC50aGVuKCgpID0+IHNlbGYuc2tpcFdhaXRpbmcoKSkKICApOwp9KTsKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdhY3RpdmF0ZScsIGUgPT4gewogIGUud2FpdFVudGlsKAogICAgY2FjaGVzLmtleXMoKS50aGVuKGtleXMgPT4gUHJvbWlzZS5hbGwoCiAgICAgIGtleXMuZmlsdGVyKGsgPT4gayAhPT0gQ0FDSEUpLm1hcChrID0+IGNhY2hlcy5kZWxldGUoaykpCiAgICApKS50aGVuKCgpID0+IHNlbGYuY2xpZW50cy5jbGFpbSgpKQogICk7Cn0pOwpzZWxmLmFkZEV2ZW50TGlzdGVuZXIoJ2ZldGNoJywgZSA9PiB7CiAgZS5yZXNwb25kV2l0aCgKICAgIGNhY2hlcy5tYXRjaChlLnJlcXVlc3QpLnRoZW4ociA9PiByIHx8IGZldGNoKGUucmVxdWVzdCkudGhlbihyZXMgPT4gewogICAgICBjb25zdCBjbG9uZSA9IHJlcy5jbG9uZSgpOwogICAgICBjYWNoZXMub3BlbihDQUNIRSkudGhlbihjID0+IGMucHV0KGUucmVxdWVzdCwgY2xvbmUpKTsKICAgICAgcmV0dXJuIHJlczsKICAgIH0pKS5jYXRjaCgoKSA9PiBjYWNoZXMubWF0Y2goJy4vJykpCiAgKTsKfSk7Cg==');
+  const blob = new Blob([swCode], {type: 'application/javascript'});
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl, {scope: '.'})
+    .then(r => console.log('SW registered'))
+    .catch(e => console.log('SW error:', e));
+}
+</script>
+</body>
+</html>
